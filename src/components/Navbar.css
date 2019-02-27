@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 10px
+}
+
+.title h1 {
+  margin: 0;
+}
+
+.auth-link a {
+  margin: 10px;
+}

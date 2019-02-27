@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import AuthProvider from './components/AuthProvider';
+import './App.css';
 
 
 class App extends Component {
@@ -15,7 +16,7 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <h1>Basic React Authentication</h1>
+          {/* <h1>Basic React Authentication</h1> */}
           <Navbar />
           {/* <Switch> */}
             <AnonRoute exact path="/signup" component={Signup} />
