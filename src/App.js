@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
-        <div className="container">
+        <div className="main-container">
           {/* <h1>Basic React Authentication</h1> */}
           <Navbar />
           {/* <Switch> */}

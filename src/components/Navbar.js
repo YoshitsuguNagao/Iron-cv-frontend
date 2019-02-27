@@ -8,7 +8,7 @@ class Navbar extends Component {
     const { isLogged, user, logout } = this.props;
     const { username } = user;
     if (isLogged) {
-      return <div className="navbar">
+      return <div className="main-navbar">
         <div className="title">
           <h1>IRON CV</h1>
         </div>
