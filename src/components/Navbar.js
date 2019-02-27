@@ -12,9 +12,13 @@ class Navbar extends Component {
         <div className="title">
           <h1>IRON CV</h1>
         </div>
-        <div>
-          <p>username: { username }</p>
-          <p onClick={logout}>Logout</p>
+        <div className="username">
+          <div>
+            <p>username: { username }</p>
+          </div>
+          <div>
+            <p onClick={logout}>Logout</p>
+          </div>
         </div>
       </div>
     } else {

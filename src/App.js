@@ -7,6 +7,7 @@ import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Home from './pages/Home';
+import EditCV from './pages/EditCV';
 import AuthProvider from './components/AuthProvider';
 import './App.css';
 
@@ -23,6 +24,7 @@ class App extends Component {
             <AnonRoute exact path="/login" component={Login} />
             <PrivateRoute exact path="/private" component={Private} />
             <PrivateRoute exact path="/home" component={Home} />
+            <PrivateRoute exact path="/edit/:cvId" component={EditCV} />
           {/* </Switch> */}
         </div>
       </AuthProvider>
