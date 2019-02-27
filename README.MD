@@ -213,7 +213,7 @@ content - [ObjectID<Content>]
 
 ### Git
 
-The url to your repository and to your deployed project
+The url to your repository and to your deployed project.
 
 [Client repository Link](http://github.com)
 [Server repository Link](http://github.com)
