@@ -5,6 +5,7 @@ import './EditCV.css';
 
 class EditCV extends Component {
   render() {
+    // console.log(this.props)
     return (
       <div className="edit-cv-container">
         <CV />
