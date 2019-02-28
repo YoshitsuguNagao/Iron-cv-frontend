@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import './Edit.css'
-import Tab from './Tab';
+import Tabs from './Tabs';
 import Content from './Content';
+import { withRouter } from "react-router";
 
 class Edit extends Component {
+  status = {
+    selectTab: 'profile'
+  }
+
   render() {
-    console.log(this.props)
+    // const { url } = this.props.match;
+    // console.log(url)
+    const { selectTab } = this.state;
     return (
       <div className="edit-component-container">
-        <ul className="nav nav-tabs">
-          <Tab title={'profile'} link={`edit/profile`}/>
-          <Tab title={'Work'} link={'/work'}/>
-          <Tab title={'Education'} link={'/education'}/>
-          <Tab title={'Soft Skills'} link={'/soft-skills'}/>
-          <Tab title={'Skills'} link={'/skills'}/>
-          <Tab title={'Language'} link={'/laguage'}/>
-          <Tab title={'Interests'} link={'/interests'}/>
-        </ul>
+        <Tabs selectTab={selectTab}/>
         <div className="edit-content-container">
           <Content />
         </div>
@@ -25,4 +24,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit
+export default withRouter(Edit)
