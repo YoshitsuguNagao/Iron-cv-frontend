@@ -1,6 +1,6 @@
 .edit-cv-container {
   border: 1px solid black;
   display: flex;
-  height: 95vh;
+  height: 100vh;
   padding-top: 50px;
 }
