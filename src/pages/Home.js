@@ -25,16 +25,16 @@ class Home extends Component {
      })
   }
 
-  
   fetchCVs = () => {
     cv.getCvs()
       .then((cvs) => {
-        console.log(cvs)
+        // console.log(cvs)
         this.setState({
           cvs
         })
       })
   }
+
   componentDidMount(){
     this.fetchCVs();
   }
