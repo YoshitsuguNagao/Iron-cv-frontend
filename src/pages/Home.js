@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
 import CvPreview from '../components/CvPreview';
+import './Home.css';
+import cv from '../lib/cv-service';
 
 class Home extends Component {
   state = {
     cvs: []
   }
-  handleCreateCV = () => {
 
+  handleCreateCV = () => {
+    cv.createCv({name:'test2'})
   }
 
 
   render() {
     const { cvs } = this.state;
     return (
-      <div>
+      <div className="cv-list-container">
         <button onClick={this.handleCreateCV}>New CV</button>
         <div className="cv-Preview-container">
           {

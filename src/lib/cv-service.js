@@ -1,15 +1,16 @@
 import axios from 'axios';
 
-class CvService {
+class Cv {
   constructor() {
     this.cv = axios.create({
-      baseURL: 'http://localhost:5000/cv',
+      baseURL: 'http://localhost:5000',
       withCredentials: true
     })
   }
 
-  createCv(body) {
+  createCv(cv) {
     const { name, contentId } = cv;
+    console.log(cv)
     return this.cv.post('/cv', {name, contentId})
       .then(({ data }) => data);
   }
@@ -20,6 +21,6 @@ class CvService {
   }
 }
 
-const cvService = new CvService();
+const cv = new Cv();
 
-export default cvService;
+export default cv;
