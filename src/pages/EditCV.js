@@ -5,6 +5,9 @@ import './EditCV.css';
 import { withAuth } from '../components/AuthProvider';
 
 class EditCV extends Component {
+  state = {
+    contents: [],
+  }
   render() {
     return (
       <div className="edit-cv-container">

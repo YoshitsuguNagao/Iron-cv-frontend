@@ -17,11 +17,12 @@ class Edit extends Component {
 
   render() {
     const { selectedTab, contents } = this.state
+    // console.log(selectedTab)
     return (
       <div className="edit-component-container">
         <Tabs selectedTab={selectedTab} contents={contents}/>
         <div className="edit-content-container">
-          <Content selectedTab={selectedTab}/>
+          <Content />
         </div>
       </div>
     )
