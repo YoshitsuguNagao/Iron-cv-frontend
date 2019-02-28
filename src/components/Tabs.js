@@ -10,13 +10,8 @@ class Tabs extends Component {
     selectedTab: this.props.selectedTab,
   }
 
-  // handleTab = (title) => {
-  //   console.log('handleTab',title)
-  // }
-
   render() {
     const { selectedTab, contents } = this.props;
-    // console.log(this.props)
     return (
       <div className="tabs-container">
         <nav>
