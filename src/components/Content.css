@@ -1,7 +1,11 @@
 .content-container {
   background-color: lightgray;
+  padding: 1rem;
+}
+
+.content-container p {
+  margin: 0px;
 }
 
 .title-container p {
-  margin: 0px;
 }
