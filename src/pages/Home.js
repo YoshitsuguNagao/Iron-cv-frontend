@@ -10,8 +10,23 @@ class Home extends Component {
 
   handleCreateCV = () => {
     cv.createCv({name:'test2'})
+      .then((data) =>{
+        let cvs = data[0].cvs
+       this.setState({
+         cvs,
+       })
+      })
   }
-
+  
+  componentDidMount(){
+    cv.getCvs()
+      .then((cvs) => {
+        console.log(cvs)
+        this.setState({
+          cvs
+        })
+      })
+  }
 
   render() {
     const { cvs } = this.state;
