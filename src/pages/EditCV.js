@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CV from '../components/CV';
 import Edit from '../components/Edit';
 import './EditCV.css';
+import { withAuth } from '../components/AuthProvider';
 
 class EditCV extends Component {
   render() {
@@ -14,4 +15,4 @@ class EditCV extends Component {
   }
 }
 
-export default EditCV;
+export default withAuth()(EditCV);

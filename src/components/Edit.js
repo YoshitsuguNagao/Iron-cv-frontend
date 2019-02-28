@@ -3,25 +3,29 @@ import './Edit.css'
 import Tabs from './Tabs';
 import Content from './Content';
 import { withRouter } from "react-router";
+import { withAuth } from '../components/AuthProvider';
 
 class Edit extends Component {
-  status = {
-    selectTab: 'profile'
+  state = {
+    selectedTab: this.props.selectedTab,
+    contents: [
+      {title: "profile"},
+      {title: "work"},
+      {title: "education"},
+    ]
   }
 
   render() {
-    // const { url } = this.props.match;
-    // console.log(url)
-    const { selectTab } = this.state;
+    const { selectedTab, contents } = this.state
     return (
       <div className="edit-component-container">
-        <Tabs selectTab={selectTab}/>
+        <Tabs selectedTab={selectedTab} contents={contents}/>
         <div className="edit-content-container">
-          <Content />
+          <Content selectedTab={selectedTab}/>
         </div>
       </div>
     )
   }
 }
 
-export default withRouter(Edit)
+export default withAuth()(withRouter(Edit))

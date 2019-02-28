@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 import Tab from './Tab';
 import './Tabs.css';
+import { withRouter } from "react-router";
+import { withAuth } from '../components/AuthProvider'
+
 
 class Tabs extends Component {
+  state = {
+    selectedTab: this.props.selectedTab,
+  }
+
+  // handleTab = (title) => {
+  //   console.log('handleTab',title)
+  // }
+
   render() {
+    const { selectedTab, contents } = this.props;
+    // console.log(this.props)
     return (
       <div className="tabs-container">
         <nav>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
-            <Tab nav-item nav-link active title={'Profile'} ariaSelected="true" />
-            <Tab nav-item nav-link title={'Work'} ariaSelected="false" />
-            <Tab nav-item nav-link title={'Education'} ariaSelected="false" />
+            {
+              contents.map((content, index) => {
+                if(content.title === selectedTab) {
+                  return <Tab nav-item nav-link active title={content.title} ariaSelected="true" key={`${content.title}-${index}`} />
+                } else {
+                  return <Tab nav-item nav-link title={content.title} ariaSelected="false" key={`${content.title}-${index}`} />
+                }
+              })
+            }
           </div>
         </nav>
       </div>
@@ -18,4 +37,4 @@ class Tabs extends Component {
   }
 }
 
-export default Tabs
+export default withAuth()(withRouter(Tabs));

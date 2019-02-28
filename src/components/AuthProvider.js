@@ -18,6 +18,8 @@ export const withAuth = () => (Comp) => {
               user={authStore.user}
               logout={authStore.logout}
               setUser={authStore.setUser}
+              setTab={authStore.setTab}
+              selectedTab={authStore.selectedTab} // add
               {...this.props} />
           }}
         </Consumer>
@@ -30,7 +32,15 @@ export default class AuthProvider extends Component {
   state = {
     isLogged: false,
     user: {},
-    status: 'loading'
+    status: 'loading',
+    selectedTab: 'profile', // add
+  }
+
+  // add
+  setTab = (tab) => {
+    this.setState({
+      selectedTab: tab
+    })
   }
 
   setUser = (user) => {
@@ -70,14 +80,14 @@ export default class AuthProvider extends Component {
   }
 
   render() {
-    const { isLogged, user, status } = this.state;
+    const { isLogged, user, status, selectedTab } = this.state; // add
     const { children } = this.props;
     switch (status) {
       case 'loading':
         return <div>Loading</div>
       default:
         return (
-          <Provider value={{ isLogged, user, logout: this.logoutUser, setUser: this.setUser }}>
+          <Provider value={{ isLogged, user, logout: this.logoutUser, setUser: this.setUser, setTab: this.setTab, selectedTab }}>
             {children}
           </Provider>
         );
