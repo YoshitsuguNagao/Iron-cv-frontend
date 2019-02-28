@@ -10,15 +10,23 @@ class Home extends Component {
 
   handleCreateCV = () => {
     cv.createCv({name:'test2'})
-      .then((data) =>{
+      .then((data) => {
         let cvs = data[0].cvs
        this.setState({
          cvs,
        })
       })
   }
+
+  handleDeleteCV = (cvItem) => {
+    cv.deleteCv(cvItem._id)
+    .then(() => {
+      this.fetchCVs()
+     })
+  }
+
   
-  componentDidMount(){
+  fetchCVs = () => {
     cv.getCvs()
       .then((cvs) => {
         console.log(cvs)
@@ -26,6 +34,9 @@ class Home extends Component {
           cvs
         })
       })
+  }
+  componentDidMount(){
+    this.fetchCVs();
   }
 
   render() {
@@ -36,7 +47,7 @@ class Home extends Component {
         <div className="cv-Preview-container">
           {
             cvs.map((cv,index) => {
-              return <CvPreview key={index} cv={cv} />
+              return <CvPreview key={index} cv={cv} deletecv={this.handleDeleteCV} />
             })
           }
 

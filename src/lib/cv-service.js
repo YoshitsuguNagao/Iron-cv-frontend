@@ -26,10 +26,11 @@ class Cv {
 
   deleteCv(id) {
     const { name, contentId } = cv;
+    console.log(id)
     // post to an id - use string interpolation to pass this into url endpoint e.g cv${id}
-    return this.cv.post('/:id', {name, contentId})
+    return this.cv.delete(`/cv/${id}`, {name, contentId})
     .then(({ data }) => {
-      //console log here to see it in chrome console
+      //console.log
       return data;
     })
   }
