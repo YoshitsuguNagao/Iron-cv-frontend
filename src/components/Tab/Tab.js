@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import classnames from 'classnames';
-import { withAuth } from './AuthProvider';
+import { withAuth } from '../AuthProvider';
 
 class Tab extends Component {
   state = {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 export default class Description extends Component {
   state = {
     textInput: '',
@@ -11,9 +10,6 @@ export default class Description extends Component {
   //   })
   //   let sendInputUp = this.props.handleOnChange(event.target.name, this.state[[`${event.target.name}`]])
   //   Promise.all([setInput, sendInputUp])
-
-
-
   // }
 
   handleInput = (event) => {
@@ -22,12 +18,10 @@ export default class Description extends Component {
     })
   }
 
-
-  componentDidUpdate(prevProps, prevState){
-    let fieldName = prevProps.description
-    let fieldValue = prevProps.value
-    console.log('compdidup',prevState)
-
+  // componentDidUpdate(prevProps, prevState){
+  //   let fieldName = prevProps.description
+  //   let fieldValue = prevProps.value
+  //   console.log('compdidup',prevState)
   //   if(prevState[`${fieldName}`] !== fieldValue ) {
   //     console.log("props are different")
   //     this.props.handleOnChange(prevProps.description, prevState[`${fieldName}`])
@@ -35,8 +29,7 @@ export default class Description extends Component {
   //     //   [prevProps.description] : prevState[`${fieldName}`],
   //     // })
   //   }
-
-  }
+  // }
 
   render() {
     console.log("desctiption render", this.state)

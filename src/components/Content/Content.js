@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import './Content.css'
-import Title from './Title';
-import Description from './Description';
-import Term from './Term';
-import { withAuth } from '../components/AuthProvider';
+import Title from '../Title';
+import Description from '../Description';
+import Term from '../Term';
+import Profile from './Profile';
+import Work from './Work';
+import { withAuth } from '../AuthProvider';
 
 class Content extends Component {
   state = {
@@ -34,36 +36,15 @@ class Content extends Component {
       })
   }
 
-
   render() {
     console.log("content Render", this.state)
     const { selectedTab } = this.props;
 
     // console.log('content.js', this.props);
     if (selectedTab === 'profile') {
-      return (
-        <div className="content-container">
-          <h3>{selectedTab}</h3>
-          <Title title={'First Name'}/>
-          <Title title={'Last Name'}/>
-          <Title title={'Email'}/>
-          <Title title={'Address'}/>
-          <Title title={'Phone number'}/>
-          <button onClick={this.handleSaveUserData}>Save</button>
-        </div>
-      )
+      return <Profile selectedTab={selectedTab} />
     } else if (selectedTab === 'work') {
-      return (
-        <div className="content-container">
-          <h3>{selectedTab}</h3>
-          <Title title={'Position'}/>
-          <Title title={'Company'}/>
-          <Term title={'From'}/>
-          <Term title={'To'}/>
-          <Description value={this.state.Tasks} description={'Tasks'}/>
-          {/* <Description handleOnChange={this.handleOnChangeDescription} value={this.state.Tasks} description={'Tasks'}/> */}
-        </div>
-      )
+      return <Work selectedTab={selectedTab} />
     } else if (selectedTab === 'education') {
       return (
         <div className="content-container">

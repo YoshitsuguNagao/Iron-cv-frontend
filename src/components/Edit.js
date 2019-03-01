@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Edit.css'
-import Tabs from './Tabs';
-import Content from './Content';
+import Tabs from './Tab/Tabs';
+import Content from './Content/Content';
 import { withRouter } from "react-router";
 import { withAuth } from '../components/AuthProvider';
 
@@ -10,12 +10,11 @@ class Edit extends Component {
     selectedTab: this.props.selectedTab,
     contents: [
       {contentType: "profile"},
-      {contentType: "work",
-       description: 'sometask'},
-      {contentType: "education",
-       description: 'project??'},
+      {contentType: "work"},
+      {contentType: "education"},
       {contentType: "skills"},
-      {contentType: "languages"}
+      {contentType: "languages"},
+      {contentType: "Interests"}
     ]
   }
 
