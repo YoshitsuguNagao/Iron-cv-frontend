@@ -10,6 +10,10 @@ class Navbar extends Component {
     if (isLogged) {
       return <div className="main-navbar">
         <div className="title">
+        <div>
+          {/* <img src={require("../images/logo.png")} alt=""/> */}
+
+        </div>
           <h1>IRON CV</h1>
         </div>
         <div className="username">

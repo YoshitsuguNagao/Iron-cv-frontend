@@ -24,8 +24,17 @@ class Cv {
   }
 
   deleteCv(id) {
-    const { name, contentId } = cv;
-    return this.cv.delete(`/cv/${id}`, {name, contentId})
+    // const { name, contentId } = cv;
+    return this.cv.delete(`/cv/${id}`)
+    .then(({ data }) => {
+      return data;
+    })
+  }
+
+  updateCv(cv) {
+    // const { name, user } = cv;
+    console.log('cv-service', cv._id)
+    return this.cv.put(`/cv/${cv._id}`, cv)
     .then(({ data }) => {
       return data;
     })

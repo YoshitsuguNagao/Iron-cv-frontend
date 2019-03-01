@@ -3,11 +3,13 @@ import CvList from '../components/CvList';
 import './Home.css';
 import cv from '../lib/cv-service';
 import { withAuth } from '../components/AuthProvider';
+import EditCvList from '../components/EditCvList'
 
 
 class Home extends Component {
   state = {
-    cvList: []
+    cvList: [],
+    editIndex: '',
   }
 
   handleCreateCV = () => {
@@ -41,21 +43,60 @@ class Home extends Component {
     this.fetchCVs();
   }
 
-  render() {
+  handleEditCV = (index) => {
+    this.setState({
+      editIndex: index
+    })
+  }
+
+  handleUpdateCV = (index, editInput) => {
     const { cvList } = this.state;
+    cvList[index].name = editInput
+    cv.updateCv(cvList[index])
+    .then(() => {
+      this.fetchCVs()
+      this.setState({
+        editIndex: '',
+      })
+     })
+  }
+
+  listCvs = () => {
+    const { cvList, editIndex } = this.state;
+    return (
+      <div className="cv-Preview-container">
+      <ul>
+        {
+          cvList.map((cv,index) => {
+            if(editIndex !== index) {
+              return <CvList
+                key={index}
+                cv={cv}
+                index={index}
+                deleteCv={this.handleDeleteCV}
+                editCv={this.handleEditCV}
+              />
+            } else {
+              return <EditCvList
+                key={index}
+                cv={cv}
+                index={index}
+                updateCv={this.handleUpdateCV}
+              />
+            }
+            // return <CvPreview key={index} cv={cv} deletecv={this.handleDeleteCV} />
+          })
+        }
+      </ul>
+    </div>
+    )
+  }
+
+  render() {
     return (
       <div className="home-container">
         <button onClick={this.handleCreateCV}>New CV</button>
-        <div className="cv-Preview-container">
-          <ul>
-            {
-              cvList.map((cv,index) => {
-                return <CvList key={index} cv={cv} deletecv={this.handleDeleteCV} />
-                // return <CvPreview key={index} cv={cv} deletecv={this.handleDeleteCV} />
-              })
-            }
-          </ul>
-        </div>
+        { this.listCvs() }
       </div>
     )
   }
