@@ -8,28 +8,28 @@ class Cv {
     })
   }
 
-  getCvs(cvId) {
-    console.log('getCVs cvId', cvId)
-    return this.cv.get('/cv',{cvId})
+  getCvs(user) {
+    // console.log('getCVs cvId', user)
+    return this.cv.get('/cv',{user})
     .then(({ data }) => {
-        console.log('getCvs fntend', data)
+        // console.log('getCvs fntend', data)
         return data
       })
   }
 
   createCv(cv) {
-    const { name, contentId } = cv;
-    // console.log('createCv fntend',cv)
-    return this.cv.post('/cv', {name, contentId})
+    const { name, user } = cv;
+    // console.log('createCv fntend',user)
+    return this.cv.post('/cv', {name, user})
       .then(({ data }) => {
-        console.log('createCv fntend',data)
+        // console.log('createCv fntend',data)
         return data;
       })
   }
 
   deleteCv(id) {
     const { name, contentId } = cv;
-    console.log(id)
+    // console.log(id)
     // post to an id - use string interpolation to pass this into url endpoint e.g cv${id}
     return this.cv.delete(`/cv/${id}`, {name, contentId})
     .then(({ data }) => {
