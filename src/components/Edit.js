@@ -11,9 +11,9 @@ class Edit extends Component {
     contents: [
       {contentType: "profile"},
       {contentType: "work",
-      description: ''},
+       description: 'sometask'},
       {contentType: "education",
-      description: ''},
+       description: 'project??'},
       {contentType: "skills"},
       {contentType: "languages"}
     ]
@@ -25,7 +25,7 @@ class Edit extends Component {
       <div className="edit-component-container">
         <Tabs selectedTab={selectedTab} contents={contents}/>
         <div className="edit-content-container">
-          <Content />
+          <Content content={contents}/>
         </div>
       </div>
     )

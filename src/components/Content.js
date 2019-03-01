@@ -22,12 +22,16 @@ class Content extends Component {
 
   }
 
+  handleSaveUserData = () => {
+    const { user } = this.props;
+    console.log(user)
+  }
+
   handleOnChangeDescription = (eventName, value) => {
     console.log("changeDescriptionUpdate")
       this.setState({
         [eventName] : value,
       })
-  
   }
 
 
@@ -40,12 +44,12 @@ class Content extends Component {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          <Title title={'Name'}/>
+          <Title title={'First Name'}/>
           <Title title={'Last Name'}/>
-          <Title title={'email'}/>
+          <Title title={'Email'}/>
           <Title title={'Address'}/>
           <Title title={'Phone number'}/>
-          <button >Save</button>
+          <button onClick={this.handleSaveUserData}>Save</button>
         </div>
       )
     } else if (selectedTab === 'work') {
@@ -56,7 +60,8 @@ class Content extends Component {
           <Title title={'Company'}/>
           <Term title={'From'}/>
           <Term title={'To'}/>
-          <Description handleOnChange={this.handleOnChangeDescription} value={this.state.Tasks} description={'Tasks'}/>
+          <Description value={this.state.Tasks} description={'Tasks'}/>
+          {/* <Description handleOnChange={this.handleOnChangeDescription} value={this.state.Tasks} description={'Tasks'}/> */}
         </div>
       )
     } else if (selectedTab === 'education') {

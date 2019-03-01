@@ -33,7 +33,7 @@ class Cv {
 
   updateCv(cv) {
     // const { name, user } = cv;
-    console.log('cv-service', cv._id)
+    // console.log('cv-service', cv._id)
     return this.cv.put(`/cv/${cv._id}`, cv)
     .then(({ data }) => {
       return data;

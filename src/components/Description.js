@@ -2,37 +2,39 @@ import React, { Component } from 'react'
 
 export default class Description extends Component {
   state = {
-   textInput: '',
+    textInput: '',
   }
+
+  // handleInput = (event) => {
+  //   let setInput =  this.setState({
+  //     [event.target.name] : event.target.value,
+  //   })
+  //   let sendInputUp = this.props.handleOnChange(event.target.name, this.state[[`${event.target.name}`]])
+  //   Promise.all([setInput, sendInputUp])
+
+
+
+  // }
 
   handleInput = (event) => {
-  
-  let setInput =  this.setState({
-      [event.target.name] : event.target.value,
+    this.setState({
+      textInput: event.target.value,
     })
-      
-    let sendInputUp = this.props.handleOnChange(event.target.name, this.state[[`${event.target.name}`]])
-
-    Promise.all([setInput, sendInputUp])
-
- 
-
   }
-
 
 
   componentDidUpdate(prevProps, prevState){
-
     let fieldName = prevProps.description
     let fieldValue = prevProps.value
+    console.log('compdidup',prevState)
 
-    if(prevState[`${fieldName}`] !== fieldValue ) {
-      console.log("props are different")
-      this.props.handleOnChange(prevProps.description, prevState[`${fieldName}`])
-      // this.setState({
-      //   [prevProps.description] : prevState[`${fieldName}`],
-      // })
-    }
+  //   if(prevState[`${fieldName}`] !== fieldValue ) {
+  //     console.log("props are different")
+  //     this.props.handleOnChange(prevProps.description, prevState[`${fieldName}`])
+  //     // this.setState({
+  //     //   [prevProps.description] : prevState[`${fieldName}`],
+  //     // })
+  //   }
 
   }
 
@@ -44,7 +46,8 @@ export default class Description extends Component {
     return (
       <div className="description-container">
         <h3>{description}</h3>
-        <textarea type="text" name={description} value={this.props.value} onInputCapture={this.handleInput}/>
+        <textarea type="text" name={description} value={textInput} onChange={this.handleInput}/>
+        {/* <textarea type="text" name={description} value={this.props.value} onInputCapture={this.handleInput}/> */}
       </div>
     )
   }
