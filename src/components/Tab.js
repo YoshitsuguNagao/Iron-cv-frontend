@@ -15,7 +15,12 @@ class Tab extends Component {
 
   render() {
     const { title, ariaSelected } = this.props;
-    const className = classnames(this.props).replace(/ children/g,'').replace(/ href/g,'').replace(/ className/g,'').replace(/ title/g,'').replace(/ ariaSelected/g,'');
+    const className = classnames(this.props)
+                        .replace(/ children/g,'')
+                        .replace(/ href/g,'')
+                        .replace(/ className/g,'')
+                        .replace(/ title/g,'')
+                        .replace(/ ariaSelected/g,'');
     return ( <a className={className}
           id={`nav-${title.toLowerCase()}-tab`}
           data-toggle="tab"

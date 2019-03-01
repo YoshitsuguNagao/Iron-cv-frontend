@@ -9,11 +9,13 @@ class Edit extends Component {
   state = {
     selectedTab: this.props.selectedTab,
     contents: [
-      {title: "profile"},
-      {title: "work"},
-      {title: "education"},
-      {title: "skills"},
-      {title: "languages"}
+      {contentType: "profile"},
+      {contentType: "work",
+      description: ''},
+      {contentType: "education",
+      description: ''},
+      {contentType: "skills"},
+      {contentType: "languages"}
     ]
   }
 
