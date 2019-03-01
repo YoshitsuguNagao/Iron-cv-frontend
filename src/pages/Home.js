@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import CvPreview from '../components/CvPreview';
 import './Home.css';
 import cv from '../lib/cv-service';
+import { withAuth } from '../components/AuthProvider';
+
 
 class Home extends Component {
   state = {
@@ -9,14 +11,13 @@ class Home extends Component {
   }
 
   handleCreateCV = () => {
-    cv.createCv({name:'test2'})
+    cv.createCv({name:'cv title', user: this.props.user})
       .then((newCv) => {
-        console.log('hahaha',newCv)
         let newCvList = [...this.state.cvList,newCv];
         this.setState({
          cvList: newCvList,
        })
-      })
+    })
   }
 
   handleDeleteCV = (cvItem) => {
@@ -27,10 +28,9 @@ class Home extends Component {
   }
 
   fetchCVs = () => {
-    const cvId = '5c78d2322b2e724401e62d7a';
-    cv.getCvs(cvId)
+    const { user } = this.props;
+    cv.getCvs(user)
       .then((cvs) => {
-        console.log('fetch',cvs)
         this.setState({
           cvList: cvs,
         })
@@ -43,7 +43,7 @@ class Home extends Component {
 
   render() {
     const { cvList } = this.state;
-    console.log('render',cvList)
+    // console.log('render',cvList)
     return (
       <div className="cv-list-container">
         <button onClick={this.handleCreateCV}>New CV</button>
@@ -60,4 +60,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withAuth()(Home);
