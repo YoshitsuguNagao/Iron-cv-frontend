@@ -8,9 +8,9 @@ class Tab extends Component {
   }
 
   handleClick = () => {
-    const { setTab } = this.props
-    setTab(this.props.title)
-    console.log(this.props.title)
+    const { setTab } = this.props;
+    setTab(this.props.title);
+    console.log(this.props.title);
   }
 
   render() {

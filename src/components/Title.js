@@ -14,9 +14,11 @@ export default class Title extends Component {
 
   render() {
     const { textInput } = this.state;
+    const { title } = this.props;
+    console.log(this.props);
     return (
     <div className="title-container">
-      <h3>title</h3>
+      <h3>{title}</h3>
       <input type="text" value={textInput} onChange={this.handleInput}/>
     </div>
     )

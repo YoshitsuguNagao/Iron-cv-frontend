@@ -12,12 +12,13 @@ class Edit extends Component {
       {title: "profile"},
       {title: "work"},
       {title: "education"},
+      {title: "skills"},
+      {title: "languages"}
     ]
   }
 
   render() {
     const { selectedTab, contents } = this.state
-    // console.log(selectedTab)
     return (
       <div className="edit-component-container">
         <Tabs selectedTab={selectedTab} contents={contents}/>
