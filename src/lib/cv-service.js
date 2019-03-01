@@ -8,18 +8,21 @@ class Cv {
     })
   }
 
-  getCvs() {
-    return this.cv.get('/cv')
-      .then(({ data }) => {
+  getCvs(cvId) {
+    console.log('getCVs cvId', cvId)
+    return this.cv.get('/cv',{cvId})
+    .then(({ data }) => {
+        console.log('getCvs fntend', data)
         return data
       })
   }
 
   createCv(cv) {
     const { name, contentId } = cv;
-    console.log(cv)
+    // console.log('createCv fntend',cv)
     return this.cv.post('/cv', {name, contentId})
       .then(({ data }) => {
+        console.log('createCv fntend',data)
         return data;
       })
   }

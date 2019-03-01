@@ -5,15 +5,16 @@ import cv from '../lib/cv-service';
 
 class Home extends Component {
   state = {
-    cvs: []
+    cvList: []
   }
 
   handleCreateCV = () => {
     cv.createCv({name:'test2'})
-      .then((data) => {
-        let cvs = data[0].cvs
-       this.setState({
-         cvs,
+      .then((newCv) => {
+        console.log('hahaha',newCv)
+        let newCvList = [...this.state.cvList,newCv];
+        this.setState({
+         cvList: newCvList,
        })
       })
   }
@@ -26,11 +27,12 @@ class Home extends Component {
   }
 
   fetchCVs = () => {
-    cv.getCvs()
+    const cvId = '5c78d2322b2e724401e62d7a';
+    cv.getCvs(cvId)
       .then((cvs) => {
-        // console.log(cvs)
+        console.log('fetch',cvs)
         this.setState({
-          cvs
+          cvList: cvs,
         })
       })
   }
@@ -40,13 +42,14 @@ class Home extends Component {
   }
 
   render() {
-    const { cvs } = this.state;
+    const { cvList } = this.state;
+    console.log('render',cvList)
     return (
       <div className="cv-list-container">
         <button onClick={this.handleCreateCV}>New CV</button>
         <div className="cv-Preview-container">
           {
-            cvs.map((cv,index) => {
+            cvList.map((cv,index) => {
               return <CvPreview key={index} cv={cv} deletecv={this.handleDeleteCV} />
             })
           }
