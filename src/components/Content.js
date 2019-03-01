@@ -8,7 +8,7 @@ import { withAuth } from '../components/AuthProvider';
 class Content extends Component {
   state = {
     selectedTab: '',
-    Tasks: '',
+    Tasks: 'some tasks',
   }
 
   handleTabTitle = () => {
@@ -23,13 +23,16 @@ class Content extends Component {
   }
 
   handleOnChangeDescription = (eventName, value) => {
-    this.setState({
-      [eventName] : value,
-    })
+    console.log("changeDescriptionUpdate")
+      this.setState({
+        [eventName] : value,
+      })
+  
   }
 
 
   render() {
+    console.log("content Render", this.state)
     const { selectedTab } = this.props;
 
     // console.log('content.js', this.props);
