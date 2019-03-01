@@ -25,49 +25,48 @@ class Content extends Component {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          <Title title={'username'}/>
+          <Title title={'Name'}/>
+          <Title title={'Last Name'}/>
           <Title title={'email'}/>
+          <Title title={'Address'}/>
+          <Title title={'Phone number'}/>
         </div>
       )
     } else if (selectedTab === 'work') {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          <Title title={'position'}/>
+          <Title title={'Position'}/>
+          <Title title={'Company'}/>
           <Term title={'From'}/>
           <Term title={'To'}/>
-          <Description />
+          <Description description={'Tasks'}/>
         </div>
       )
     } else if (selectedTab === 'education') {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          {/* <DegreeTitle />
-          <AcademicInstitution /> */}
+          <Title title={'Degree'}/>
+          <Title title={'Academic Institution'}/>
           <Term title={'From'}/>
           <Term title={'To'}/>
-          <Description />
+          <Description description={'Main subjects'}/>
         </div>
       )
     } else if (selectedTab === 'skills') {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          <Title />
-          <Term title={'From'}/>
-          <Term title={'To'}/>
-          <Description />
+          <Description description={'Hard skills'}/>
+          <Description description={'Soft skills'}/>
         </div>
       )
     } else if (selectedTab === 'languages') {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          <Title />
-          <Term title={'From'}/>
-          <Term title={'To'}/>
-          <Description />
+          <Description description={''}/>
         </div>
       )
     }

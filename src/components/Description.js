@@ -13,9 +13,10 @@ export default class Description extends Component {
 
   render() {
     const { textInput } = this.state;
+    const { description } = this.props;
     return (
       <div className="description-container">
-        <h3>description</h3>
+        <h3>{description}</h3>
         <textarea type="text" value={textInput} onChange={this.handleInput}/>
       </div>
     )
