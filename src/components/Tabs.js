@@ -18,10 +18,10 @@ class Tabs extends Component {
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
             {
               contents.map((content, index) => {
-                if(content.title === selectedTab) {
-                  return <Tab nav-item nav-link active title={content.title} ariaSelected="true" key={`${content.title}-${index}`} />
+                if(content.contentType === selectedTab) {
+                  return <Tab nav-item nav-link active title={content.contentType} ariaSelected="true" key={`${content.contentType}-${index}`} />
                 } else {
-                  return <Tab nav-item nav-link title={content.title} ariaSelected="false" key={`${content.title}-${index}`} />
+                  return <Tab nav-item nav-link title={content.contentType} ariaSelected="false" key={`${content.contentType}-${index}`} />
                 }
               })
             }

@@ -8,6 +8,7 @@ import { withAuth } from '../components/AuthProvider';
 class Content extends Component {
   state = {
     selectedTab: '',
+    Tasks: '',
   }
 
   handleTabTitle = () => {
@@ -16,6 +17,17 @@ class Content extends Component {
       selectedTab: selectedTab,
     })
   }
+
+  handleSaveData = () => {
+
+  }
+
+  handleOnChangeDescription = (eventName, value) => {
+    this.setState({
+      [eventName] : value,
+    })
+  }
+
 
   render() {
     const { selectedTab } = this.props;
@@ -30,6 +42,7 @@ class Content extends Component {
           <Title title={'email'}/>
           <Title title={'Address'}/>
           <Title title={'Phone number'}/>
+          <button >Save</button>
         </div>
       )
     } else if (selectedTab === 'work') {
@@ -40,7 +53,7 @@ class Content extends Component {
           <Title title={'Company'}/>
           <Term title={'From'}/>
           <Term title={'To'}/>
-          <Description description={'Tasks'}/>
+          <Description handleOnChange={this.handleOnChangeDescription} value={this.state.Tasks} description={'Tasks'}/>
         </div>
       )
     } else if (selectedTab === 'education') {
@@ -58,15 +71,15 @@ class Content extends Component {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          <Description description={'Hard skills'}/>
-          <Description description={'Soft skills'}/>
+          {/* <Description description={'Hard skills'}/>
+          <Description description={'Soft skills'}/> */}
         </div>
       )
     } else if (selectedTab === 'languages') {
       return (
         <div className="content-container">
           <h3>{selectedTab}</h3>
-          <Description description={''}/>
+          <Description description={'languages'}/>
         </div>
       )
     }
