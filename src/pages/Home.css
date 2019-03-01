@@ -1,3 +1,7 @@
-.cv-list-container {
+.home-container {
   margin-top: 50px;
+}
+
+.cv-Preview-container ul {
+  list-style-type: none;
 }

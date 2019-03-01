@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CvPreview from '../components/CvPreview';
+import CvList from '../components/CvList';
 import './Home.css';
 import cv from '../lib/cv-service';
 import { withAuth } from '../components/AuthProvider';
@@ -11,7 +11,7 @@ class Home extends Component {
   }
 
   handleCreateCV = () => {
-    cv.createCv({name:'cv title', user: this.props.user})
+    cv.createCv({name:'My resume', user: this.props.user})
       .then((newCv) => {
         let newCvList = [...this.state.cvList,newCv];
         this.setState({
@@ -43,17 +43,18 @@ class Home extends Component {
 
   render() {
     const { cvList } = this.state;
-    // console.log('render',cvList)
     return (
-      <div className="cv-list-container">
+      <div className="home-container">
         <button onClick={this.handleCreateCV}>New CV</button>
         <div className="cv-Preview-container">
-          {
-            cvList.map((cv,index) => {
-              return <CvPreview key={index} cv={cv} deletecv={this.handleDeleteCV} />
-            })
-          }
-
+          <ul>
+            {
+              cvList.map((cv,index) => {
+                return <CvList key={index} cv={cv} deletecv={this.handleDeleteCV} />
+                // return <CvPreview key={index} cv={cv} deletecv={this.handleDeleteCV} />
+              })
+            }
+          </ul>
         </div>
       </div>
     )
