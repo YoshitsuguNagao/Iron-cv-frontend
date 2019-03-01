@@ -22,6 +22,7 @@ export const withAuth = () => (Comp) => {
               selectedTab={authStore.selectedTab} // add
               profile={authStore.profile} // add
               work={authStore.work} // add
+              education={authStore.education} // add
               {...this.props} />
           }}
         </Consumer>
@@ -46,6 +47,19 @@ export default class AuthProvider extends Component {
     work: {
       positionInput: '',
       companyInput: '',
+      startDateInput: {
+        monthInput: '',
+        yearInput: '',
+      },
+      endDateInput: {
+        monthInput: '',
+        yearInput: '',
+      },
+      descriptionInput: '',
+    },
+    education: {
+      degreeInput: '',
+      institutionInput: '',
       startDateInput: {
         monthInput: '',
         yearInput: '',
@@ -102,14 +116,14 @@ export default class AuthProvider extends Component {
   }
 
   render() {
-    const { isLogged, user, status, selectedTab, profile, work } = this.state; // add
+    const { isLogged, user, status, selectedTab, profile, work, education } = this.state; // add
     const { children } = this.props;
     switch (status) {
       case 'loading':
         return <div>Loading</div>
       default:
         return (
-          <Provider value={{ isLogged, user, logout: this.logoutUser, setUser: this.setUser, setTab: this.setTab, selectedTab, profile, work }}>
+          <Provider value={{ isLogged, user, logout: this.logoutUser, setUser: this.setUser, setTab: this.setTab, selectedTab, profile, work, education }}>
             {children}
           </Provider>
         );

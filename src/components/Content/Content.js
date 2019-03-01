@@ -6,6 +6,7 @@ import Term from '../Term';
 import Profile from './Profile';
 import Work from './Work';
 import { withAuth } from '../AuthProvider';
+import Education from './Education';
 
 class Content extends Component {
   state = {
@@ -46,16 +47,7 @@ class Content extends Component {
     } else if (selectedTab === 'work') {
       return <Work selectedTab={selectedTab} />
     } else if (selectedTab === 'education') {
-      return (
-        <div className="content-container">
-          <h3>{selectedTab}</h3>
-          <Title title={'Degree'}/>
-          <Title title={'Academic Institution'}/>
-          <Term title={'From'}/>
-          <Term title={'To'}/>
-          <Description description={'Main subjects'}/>
-        </div>
-      )
+      return <Education selectedTab={selectedTab} />
     } else if (selectedTab === 'skills') {
       return (
         <div className="content-container">
