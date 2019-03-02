@@ -11,8 +11,6 @@ class EditCvList extends Component {
     })
   }
 
-
-
   render() {
     const { editInput } = this.state;
     const { updateCv,index } = this.props;

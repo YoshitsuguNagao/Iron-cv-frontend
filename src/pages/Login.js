@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import auth from '../lib/auth-service';
 // import { AuthConsumer } from '../components/AuthProvider';
 
+
 class Login extends Component {
   state = {
     username: "",
@@ -32,7 +33,7 @@ class Login extends Component {
         <input type="text" name="username" value={username} onChange={this.handleChange}/>
         <label>Password:</label>
         <input type="password" name="password" value={password} onChange={this.handleChange} />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login"/>
       </form>
     )
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CvList from '../components/CvList';
 import './Home.css';
 import cv from '../lib/cv-service';
+import auth from '../lib/auth-service';
 import { withAuth } from '../components/AuthProvider';
 import EditCvList from '../components/EditCvList'
 
@@ -39,8 +40,22 @@ class Home extends Component {
       })
   }
 
+  fetchUserInfo = () => {
+    auth.gutUser()
+      .then(({contact}) => {
+        this.props.contact.firstName = contact.firstName;
+        this.props.contact.lastName = contact.lastName;
+        this.props.contact.email = contact.email;
+        this.props.contact.address = contact.address;
+        this.props.contact.phone = contact.phone;
+      })
+    .then(() => {
+    })
+  }
+
   componentDidMount(){
     this.fetchCVs();
+    this.fetchUserInfo();
   }
 
   handleEditCV = (index) => {

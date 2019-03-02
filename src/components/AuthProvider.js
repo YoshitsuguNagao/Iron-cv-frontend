@@ -20,7 +20,7 @@ export const withAuth = () => (Comp) => {
               setUser={authStore.setUser}
               setTab={authStore.setTab}
               selectedTab={authStore.selectedTab} // add
-              profile={authStore.profile} // add
+              contact={authStore.contact} // add
               work={authStore.work} // add
               education={authStore.education} // add
               {...this.props} />
@@ -37,13 +37,14 @@ export default class AuthProvider extends Component {
     user: {},
     status: 'loading',
     selectedTab: 'profile', // add
-    profile: {
-      firstNameInput: '',
-      lastNameInput: '',
-      emailInput: '',
-      addressInput: '',
-      phoneInput: '',
-    },
+    // contact: {
+    //   firstName: '',
+    //   lastName: '',
+    //   email: '',
+    //   address: '',
+    //   phone: '',
+    // },
+    contact: {},
     work: {
       positionInput: '',
       companyInput: '',
@@ -116,14 +117,14 @@ export default class AuthProvider extends Component {
   }
 
   render() {
-    const { isLogged, user, status, selectedTab, profile, work, education } = this.state; // add
+    const { isLogged, user, status, selectedTab, contact, work, education } = this.state; // add
     const { children } = this.props;
     switch (status) {
       case 'loading':
         return <div>Loading</div>
       default:
         return (
-          <Provider value={{ isLogged, user, logout: this.logoutUser, setUser: this.setUser, setTab: this.setTab, selectedTab, profile, work, education }}>
+          <Provider value={{ isLogged, user, logout: this.logoutUser, setUser: this.setUser, setTab: this.setTab, selectedTab, contact, work, education }}>
             {children}
           </Provider>
         );

@@ -57,7 +57,6 @@ class Education extends Component {
     this.props.education.descriptionInput = this.state.education.descriptionInput;
   }
 
-
   render() {
     const { degreeInput, institutionInput, startDateInput, endDateInput, descriptionInput} = this.state.education;
     console.log(this.props)
@@ -75,7 +74,6 @@ class Education extends Component {
         <p><input type="text" className="month-input"  value={endDateInput.monthInput} onChange={this.handleEDMInput}/> / <input type="text" className="year-input"  value={endDateInput.yearInput} onChange={this.handleEDYInput}/></p>
         <h4>Description</h4>
         <textarea type="text" value={descriptionInput} onChange={this.handleDescriptionInput}/>
-
       </div>
     )
   }
