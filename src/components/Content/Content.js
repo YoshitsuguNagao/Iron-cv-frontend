@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './Content.css'
-import Title from '../Title';
+// import Title from '../Title';
 import Description from '../Description';
-import Term from '../Term';
+// import Term from '../Term';
 import Profile from './Profile';
 import Work from './Work';
 import { withAuth } from '../AuthProvider';
@@ -21,14 +21,12 @@ class Content extends Component {
     })
   }
 
-  handleSaveData = () => {
-
-  }
-
-  handleSaveUserData = () => {
-    const { user } = this.props;
-    console.log(user)
-  }
+  // handleSaveData = () => {
+  // }
+  // handleSaveUserData = () => {
+  //   const { user } = this.props;
+  //   console.log(user)
+  // }
 
   handleOnChangeDescription = (eventName, value) => {
     console.log("changeDescriptionUpdate")
@@ -38,7 +36,6 @@ class Content extends Component {
   }
 
   render() {
-    console.log("content Render", this.state)
     const { selectedTab } = this.props;
 
     // console.log('content.js', this.props);

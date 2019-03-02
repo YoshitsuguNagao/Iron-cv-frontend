@@ -38,7 +38,6 @@ class Profile extends Component {
   }
 
   componentDidUpdate() {
-    // console.log('ohaoha',this.props.contact)
     this.props.contact.firstName = this.state.contact.firstName;
     this.props.contact.lastName = this.state.contact.lastName;
     this.props.contact.email = this.state.contact.email;
@@ -57,7 +56,6 @@ class Profile extends Component {
   fetchUserInfo = () => {
     auth.getUser()
     .then(({contact}) => {
-      console.log('IMHERE',this.props.contact)
       if(this.props.contact.firstName === "" &&
          this.props.contact.lastName === "" &&
          this.props.contact.email === "" &&
@@ -81,7 +79,6 @@ class Profile extends Component {
   render() {
     const { firstName, lastName, email, address, phone } = this.state.contact;
     const { selectedTab } = this.props;
-    console.log('renderrrr',this.state.contact)
     return (
       <div className="title-container">
         <h3>{selectedTab}</h3>
