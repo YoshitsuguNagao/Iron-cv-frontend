@@ -9,6 +9,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
+    isWrong: false,
   }
 
   handleFormSubmit = (event) => {
@@ -19,7 +20,12 @@ class Login extends Component {
     .then( (user) => {
       this.props.setUser(user)
     })
-    .catch( error => console.log(error) )
+    .catch( error => {
+      console.log('hhh',error)
+      this.setState({
+        isWrong: true,
+      })
+    })
   }
 
   handleChange = (event) => {
@@ -28,7 +34,7 @@ class Login extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, isWrong } = this.state;
     return (
       <div className="auth-container">
         <div className="border-auth-container">
@@ -44,6 +50,11 @@ class Login extends Component {
               <input className="auth-button" type="submit" value="Login"/>
             </div>
             <div className="switch-auth">
+              { isWrong ? 
+                <div className="incorrect-message">
+                  <p>Incorrect username or password</p>
+                </div>
+              : null }
               <p>Don't have an account? 
                 <Link to={"/signup"}> Signup</Link>
               </p>

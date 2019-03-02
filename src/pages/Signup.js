@@ -8,6 +8,7 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
+    isWrong: false,
   };
 
   handleFormSubmit = (event) => {
@@ -23,7 +24,12 @@ class Signup extends Component {
         });
         this.props.setUser(user)
       })
-      .catch( error => console.log(error) )
+      .catch((error) => {
+        console.log('exists!', error);
+        this.setState({
+          isWrong: true,
+        }) 
+      });
   }
 
   handleChange = (event) => {
@@ -49,6 +55,11 @@ class Signup extends Component {
               <input className="auth-button" type="submit" value="Signup" />
             </div>
             <div className="switch-auth">
+              { this.state.isWrong ? 
+                <div className="incorrect-message">
+                  <p>User already exists</p>
+                </div>
+              : null }
               <p>Already have account? 
                 <Link to={"/login"}> Login</Link>
               </p>
