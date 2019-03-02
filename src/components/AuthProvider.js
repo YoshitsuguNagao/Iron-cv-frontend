@@ -37,14 +37,14 @@ export default class AuthProvider extends Component {
     user: {},
     status: 'loading',
     selectedTab: 'profile', // add
-    // contact: {
-    //   firstName: '',
-    //   lastName: '',
-    //   email: '',
-    //   address: '',
-    //   phone: '',
-    // },
-    contact: {},
+    contact: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      address: '',
+      phone: '',
+    },
+    // contact: {},
     work: {
       positionInput: '',
       companyInput: '',

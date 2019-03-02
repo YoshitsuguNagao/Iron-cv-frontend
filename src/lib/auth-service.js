@@ -35,7 +35,7 @@ class Auth {
       .then(({ data }) => data);
   }
 
-  gutUser() {
+  getUser() {
     return this.auth.get(`/auth`)
       .then(({ data }) => data);
   }
