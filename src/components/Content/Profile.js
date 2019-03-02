@@ -38,7 +38,6 @@ class Profile extends Component {
   }
 
   componentDidUpdate() {
-    console.log('ohaoha',this.props.contact)
     this.props.contact.firstName = this.state.contact.firstName;
     this.props.contact.lastName = this.state.contact.lastName;
     this.props.contact.email = this.state.contact.email;
@@ -55,23 +54,21 @@ class Profile extends Component {
   }
 
   fetchUserInfo = () => {
-    console.log('holaholahola',this.state.contact)
-    auth.gutUser()
-      .then(({contact}) => {
-        console.log('IMHERE',this.props.contact)
+    auth.getUser()
+    .then(({contact}) => {
+      if(this.props.contact.firstName === "" &&
+         this.props.contact.lastName === "" &&
+         this.props.contact.email === "" &&
+         this.props.contact.address === "" &&
+         this.props.contact.phone === "" ) {
         this.setState({
-          contact: contact,
+            contact: contact,
         })
-        // this.props.contact.firstName = contact.firstName;
-        // this.props.contact.lastName = contact.lastName;
-        // this.props.contact.email = contact.email;
-        // this.props.contact.address = contact.address;
-        // this.props.contact.phone = contact.phone;
-      })
-    .then(() => {
-      this.setState({
-        // contact: {...this.state.contact, phone: event.target.value},
-      })
+      } else {
+        this.setState({
+          contact: this.props.contact,
+        })
+      }
     })
   }
 
@@ -82,7 +79,6 @@ class Profile extends Component {
   render() {
     const { firstName, lastName, email, address, phone } = this.state.contact;
     const { selectedTab } = this.props;
-    console.log('renderrrr',this.state.contact)
     return (
       <div className="title-container">
         <h3>{selectedTab}</h3>

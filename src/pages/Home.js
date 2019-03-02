@@ -41,7 +41,7 @@ class Home extends Component {
   }
 
   fetchUserInfo = () => {
-    auth.gutUser()
+    auth.getUser()
       .then(({contact}) => {
         this.props.contact.firstName = contact.firstName;
         this.props.contact.lastName = contact.lastName;
