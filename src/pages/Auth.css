@@ -1,11 +1,70 @@
+html {
+  background-color: rgb(52, 68, 81);
+}
+
 .auth-container {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 20%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(52, 68, 81);
+}
+
+.border-auth-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(162, 174, 184);
+  border-radius: 7px;
+  margin: 0 30%;
+}
+
+.form-container {
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  background-color: rgb(52, 68, 81);
+  border-radius: 7px;
 }
 
 .signup-form {
   display: flex;
   flex-direction: column;
+  margin: 0 auto 5% auto;
+}
+
+.switch-auth {
+  margin: 5% auto;
+  width: 80%;
+}
+
+.switch-auth p {
+  font-size: 0.9rem;
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+}
+
+.logo {
+  margin: 10% auto;
+  padding: 5% 0;
+  width: 20%;
+}
+
+.signup-input {
+  margin: 7% auto;
+}
+
+.signup-input input {
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.auth-button {
+  margin: 7% auto;
+  border-radius: 5px;
+  background-color: rgb(33, 107, 173);
+  color: white;
+  width: 100%;
 }
