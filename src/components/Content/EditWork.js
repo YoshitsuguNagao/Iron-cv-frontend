@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
-import content from '../../lib/content-service'
 
 class EditWork extends Component {
   state = {
@@ -67,10 +66,6 @@ class EditWork extends Component {
 
   handleUpdate = (index) => {
     this.props.updateContent(index);
-    // const { work } = this.state;
-    // const { cvId } = this.props.match.params;
-    // console.log(work)
-    // content.createContent(work, cvId)
   }
 
   render() {

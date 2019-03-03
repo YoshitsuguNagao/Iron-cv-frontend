@@ -60,17 +60,19 @@ export default class AuthProvider extends Component {
       list: [],
     },
     education: {
-      degreeInput: '',
-      institutionInput: '',
-      startDateInput: {
-        monthInput: '',
-        yearInput: '',
+      contentType: 'education',
+      title: '',
+      name: '',
+      startDate: {
+        month: '',
+        year: '',
       },
-      endDateInput: {
-        monthInput: '',
-        yearInput: '',
+      endDate: {
+        month: '',
+        year: '',
       },
-      descriptionInput: '',
+      description: '',
+      list: [],
     },
   }
 
