@@ -9,3 +9,17 @@
 
 .title-container p {
 }
+
+.content-container input {
+  /* width: 100%; */
+}
+
+.month-input {
+  width: 2rem;
+  text-align: center;
+}
+
+.year-input {
+  width: 4rem;
+  text-align: center;
+}

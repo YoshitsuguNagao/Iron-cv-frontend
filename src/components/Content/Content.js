@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import './Content.css'
-// import Title from '../Title';
 import Description from '../Description';
-// import Term from '../Term';
 import Profile from './Profile';
-import Work from './Work';
+import EditProfile from './EditProfile';
+import EditWork from './EditWork';
 import { withAuth } from '../AuthProvider';
 import Education from './Education';
 
@@ -12,6 +11,7 @@ class Content extends Component {
   state = {
     selectedTab: '',
     Tasks: 'some tasks',
+    editProfile: false,
   }
 
   handleTabTitle = () => {
@@ -21,13 +21,6 @@ class Content extends Component {
     })
   }
 
-  // handleSaveData = () => {
-  // }
-  // handleSaveUserData = () => {
-  //   const { user } = this.props;
-  //   console.log(user)
-  // }
-
   handleOnChangeDescription = (eventName, value) => {
     console.log("changeDescriptionUpdate")
       this.setState({
@@ -35,14 +28,31 @@ class Content extends Component {
       })
   }
 
+  handleEditProfile = () => {
+    this.setState({
+      editProfile: !this.state.editProfile,
+    })
+  }
+
+  showProfile = () => {
+    const { editProfile } = this.state;
+    console.log(editProfile)
+    if(editProfile) {
+      return <EditProfile editProfile={this.handleEditProfile}/>
+    } else {
+      return <Profile editProfile={this.handleEditProfile} />
+    }
+  }
+
   render() {
     const { selectedTab } = this.props;
 
-    // console.log('content.js', this.props);
     if (selectedTab === 'profile') {
-      return <Profile selectedTab={selectedTab} />
+      return (<div>{
+        this.showProfile()
+      }</div>)
     } else if (selectedTab === 'work') {
-      return <Work selectedTab={selectedTab} />
+      return <EditWork selectedTab={selectedTab} />
     } else if (selectedTab === 'education') {
       return <Education selectedTab={selectedTab} />
     } else if (selectedTab === 'skills') {

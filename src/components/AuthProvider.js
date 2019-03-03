@@ -44,19 +44,20 @@ export default class AuthProvider extends Component {
       address: '',
       phone: '',
     },
-    // contact: {},
     work: {
-      positionInput: '',
-      companyInput: '',
-      startDateInput: {
-        monthInput: '',
-        yearInput: '',
+      contentType: 'work',
+      title: '',
+      name: '',
+      startDate: {
+        month: '',
+        year: '',
       },
-      endDateInput: {
-        monthInput: '',
-        yearInput: '',
+      endDate: {
+        month: '',
+        year: '',
       },
-      descriptionInput: '',
+      description: '',
+      list: [],
     },
     education: {
       degreeInput: '',
