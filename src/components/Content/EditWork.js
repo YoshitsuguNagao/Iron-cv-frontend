@@ -65,15 +65,17 @@ class EditWork extends Component {
     this.props.work.description = this.state.work.description;
   }
 
-  handleUpdateWork = () => {
-    const { work } = this.state;
-    const { cvId } = this.props.match.params;
-    content.createContent(work, cvId)
+  handleUpdate = (index) => {
+    this.props.updateContent(index);
+    // const { work } = this.state;
+    // const { cvId } = this.props.match.params;
+    // console.log(work)
+    // content.createContent(work, cvId)
   }
 
   render() {
-    const { title, name, startDate, endDate, description, task} = this.state.work;
-    const { selectedTab } = this.props;
+    const { title, name, startDate, endDate, description, tasks} = this.state.work;
+    const { selectedTab,index } = this.props;
     return (
       <div className="content-container">
         <h3>{selectedTab}</h3>
@@ -96,8 +98,12 @@ class EditWork extends Component {
         <h4>Description</h4>
         <textarea type="text" value={description} onChange={this.handleDescriptionInput}/>
         <h4>Tasks/Responsibility</h4>
-        <input type="text" value={task} onChange={this.handleTaskInput}/>
-        <button onClick={this.handleUpdateWork}>Save</button>
+        {
+          tasks.map((task,index) => {
+            return <input key={index} type="text" value={task} onChange={this.handleTaskInput}/>
+          })
+        }
+        <button onClick={() => {this.handleUpdate(index)}}>Save</button>
       </div>
     )
   }

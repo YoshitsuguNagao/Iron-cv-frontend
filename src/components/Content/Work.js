@@ -24,8 +24,12 @@ class Work extends Component {
     this.props.deleteContent(index)
   }
 
+  handleEdit = (index) => {
+    this.props.editContent(index)
+  }
+
   render() {
-    const { work } = this.props;
+    const { work, index } = this.props;
     // console.log(work)
     return (
       <div className="work-item-conteiner">
@@ -37,12 +41,12 @@ class Work extends Component {
         <ul>
           {
             work.tasks.map((task,index) => {
-            return (<li>{task}</li>)
+            return (<li key={index}>{task}</li>)
             })
           }
 
         </ul>
-        <button onClick={() => {  }}>edit</button>
+        <button onClick={() => { this.handleEdit(index) }}>edit</button>
         <button onClick={this.handleDelete}>delete</button>
 
       </div>

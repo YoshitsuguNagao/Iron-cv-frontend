@@ -19,6 +19,7 @@ class Content extends Component {
     editProfile: false,
     work: [],
     editWorkIndex: '',
+    newEditWork: false,
   }
 
   handleTabTitle = () => {
@@ -43,7 +44,6 @@ class Content extends Component {
 
   fatchContentInfo = () => {
     const { cvId } = this.props.match.params;
-    const newContent =[]
     content.getContent(cvId)
       .then(contents => {
         this.setState({
@@ -70,26 +70,58 @@ class Content extends Component {
       })
   }
 
+  handleEditWork = (index) => {
+    console.log('index',index)
+    this.setState({
+      editWorkIndex: index
+    })
+  }
+
+  handleUpdateWork = (index) => {
+    const { work } = this.state;
+    console.log(work)
+    content.updateContent(work[index])
+    this.setState({
+      editWorkIndex: '',
+    })
+  }
+
+  handleCreateWork = () => {
+    const { work } = this.state;
+    const { cvId } = this.props.match.params;
+    let index = work.length
+    content.createContent(this.props.work,cvId)
+      .then((data) => {
+        console.log(data,this.state.work)
+        this.fatchContentInfo();
+        this.setState({
+          editWorkIndex: index,
+        })
+      })
+  }
+
   getWork = () => {
     const { work, editWorkIndex } = this.state;
     return (<div>
-       {
-         work.map((content,index) => {
-           if(editWorkIndex === index) {
-             return <EditWork
-               key={index}
-               work={content}
-               index={index}/>
-           } else {
-             return <Work
-               key={index}
-               work={content}
-               index={index}
-               editContent={this.handleEditWork}
-               deleteContent={this.handleDeleteWork}/>
-           }
+        {
+          work.map((content,index) => {
+            if(editWorkIndex === index) {
+              return <EditWork
+                key={index}
+                work={content}
+                index={index}
+                updateContent={this.handleUpdateWork}/>
+            } else {
+              return <Work
+                key={index}
+                work={content}
+                index={index}
+                editContent={this.handleEditWork}
+                deleteContent={this.handleDeleteWork}/>
+            }
          })
-       }
+        }
+        <button onClick={this.handleCreateWork} >New</button>
       </div>)
   }
 
@@ -99,7 +131,7 @@ class Content extends Component {
 
   render() {
     const { selectedTab } = this.props;
-
+    console.log('Im hrer',this.state.editWorkIndex)
     if (selectedTab === 'profile') {
       return this.getProfile()
     } else if (selectedTab === 'work') {
