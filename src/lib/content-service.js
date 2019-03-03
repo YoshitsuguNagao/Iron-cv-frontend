@@ -22,15 +22,16 @@ class Content {
       })
   }
 
-  deleteContent(id) {
-    return this.content.delete(`/edit/${id}`)
+  deleteContent(content) {
+    const contentId = content._id
+    return this.content.delete(`/edit/${contentId}`)
     .then(({ data }) => {
       return data;
     })
   }
 
   updateContent(content) {
-    console.log('edit-service', content._id)
+    // console.log('edit-service', content._id)
     return this.content.put(`/edit/${content._id}`, content)
     .then(({ data }) => {
       return data;

@@ -1,6 +1,5 @@
 .content-container {
-  /* background-color: lightgray; */
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .content-container p {
@@ -11,7 +10,6 @@
 }
 
 .content-container input {
-  /* width: 100%; */
 }
 
 .month-input {
@@ -53,4 +51,14 @@
 
 .term-conteiner {
   display: flex;
+}
+
+.work-item-conteiner {
+  padding: 1rem;
+  border: 1px solid lightgray;
+  /* background-color: white; */
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
+  
 }
