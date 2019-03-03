@@ -66,7 +66,9 @@ class EditWork extends Component {
   }
 
   handleUpdateWork = () => {
-    content.createContent(this.state.work, this.props.match.params.cvId)
+    const { work } = this.state;
+    const { cvId } = this.props.match.params;
+    content.createContent(work, cvId)
   }
 
   render() {
@@ -75,14 +77,22 @@ class EditWork extends Component {
     return (
       <div className="content-container">
         <h3>{selectedTab}</h3>
-        <h4>Position</h4>
-        <input type="text" value={title} onChange={this.handlePositionInput}/>
-        <h4>Company</h4>
-        <input type="text" value={name} onChange={this.handleCompanyInput}/>
-        <h4>From</h4>
-        <p><input type="text" className="month-input"  value={startDate.month} onChange={this.handleSDMInput}/> / <input type="text" className="year-input"  value={startDate.year} onChange={this.handleSDYInput}/></p>
-        <h4>To</h4>
-        <p><input type="text" className="month-input"  value={endDate.month} onChange={this.handleEDMInput}/> / <input type="text" className="year-input"  value={endDate.year} onChange={this.handleEDYInput}/></p>
+        <div>
+          <input type="text" value={title} onChange={this.handlePositionInput} placeholder=" Position / Title" />
+        </div>
+        <div>
+          <input type="text" value={name} onChange={this.handleCompanyInput} placeholder=" Company" />
+        </div>
+        <div className="term-conteiner">
+          <div>
+            <h5>From</h5>
+            <p><input type="text" className="month-input"  value={startDate.month} onChange={this.handleSDMInput} placeholder="mm"/> / <input type="text" className="year-input"  value={startDate.year} onChange={this.handleSDYInput} placeholder="yyyy"/></p>
+          </div>
+          <div>
+            <h5>To</h5>
+            <p><input type="text" className="month-input"  value={endDate.month} onChange={this.handleEDMInput} placeholder="mm"/> / <input type="text" className="year-input"  value={endDate.year} onChange={this.handleEDYInput} placeholder="yyyy"/></p>
+          </div>
+        </div>
         <h4>Description</h4>
         <textarea type="text" value={description} onChange={this.handleDescriptionInput}/>
         <h4>Tasks/Responsibility</h4>

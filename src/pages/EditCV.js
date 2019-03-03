@@ -8,6 +8,7 @@ class EditCV extends Component {
   state = {
     contents: [],
   }
+
   render() {
     return (
       <div className="edit-cv-container">

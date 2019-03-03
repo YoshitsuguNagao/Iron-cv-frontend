@@ -8,16 +8,14 @@ class Content {
     })
   }
 
-  getContent(cv) {
-    return this.content.get('/edit/:id', {cv})
+  getContent(cvId) {
+    return this.content.get(`/edit/${cvId}`)
     .then(({ data }) => {
       return data
     })
   }
 
   createContent(content, cvId) {
-    console.log('createContent',content)
-    // const { contentType, title } = content;
     return this.content.post(`/edit/${cvId}`, {content})
       .then(({ data }) => {
         return data;
@@ -25,7 +23,6 @@ class Content {
   }
 
   deleteContent(id) {
-    // const { name, contentId } = cv;
     return this.content.delete(`/edit/${id}`)
     .then(({ data }) => {
       return data;
@@ -33,7 +30,6 @@ class Content {
   }
 
   updateContent(content) {
-    // const { name, user } = cv;
     console.log('edit-service', content._id)
     return this.content.put(`/edit/${content._id}`, content)
     .then(({ data }) => {

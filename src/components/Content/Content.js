@@ -3,6 +3,7 @@ import './Content.css'
 import Description from '../Description';
 import Profile from './Profile';
 import EditProfile from './EditProfile';
+import Work from './Work';
 import EditWork from './EditWork';
 import { withAuth } from '../AuthProvider';
 import Education from './Education';
@@ -34,7 +35,7 @@ class Content extends Component {
     })
   }
 
-  showProfile = () => {
+  getProfile = () => {
     const { editProfile } = this.state;
     console.log(editProfile)
     if(editProfile) {
@@ -43,16 +44,24 @@ class Content extends Component {
       return <Profile editProfile={this.handleEditProfile} />
     }
   }
+  
+  getWork = () => {
+    return <Work />
+    // return <EditWork />
+  }
+
 
   render() {
     const { selectedTab } = this.props;
 
     if (selectedTab === 'profile') {
       return (<div>{
-        this.showProfile()
+        this.getProfile()
       }</div>)
     } else if (selectedTab === 'work') {
-      return <EditWork selectedTab={selectedTab} />
+      return (<div>{
+        this.getWork()
+      }</div>)
     } else if (selectedTab === 'education') {
       return <Education selectedTab={selectedTab} />
     } else if (selectedTab === 'skills') {

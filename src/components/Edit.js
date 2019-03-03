@@ -13,6 +13,7 @@ class Edit extends Component {
       {contentType: "work"},
       {contentType: "education"},
       {contentType: "skills"},
+      {contentType: "project"},
       {contentType: "languages"},
       {contentType: "Interests"}
     ]
