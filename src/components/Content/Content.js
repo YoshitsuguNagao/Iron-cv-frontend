@@ -5,6 +5,7 @@ import EditProfile from './EditProfile';
 import Item from './Item';
 import EditWork from './EditWork';
 import EditEdu from './EditEdu';
+import EditProject from './EditProject';
 
 import content from '../../lib/content-service';
 import { withRouter } from "react-router";
@@ -23,6 +24,9 @@ class Content extends Component {
     education: [],
     editEduIndex: '',
     newEditEdu: false,
+    project: [],
+    editProjectIndex: '',
+    newEditProject: false,
   }
 
   handleTabTitle = () => {
@@ -49,18 +53,22 @@ class Content extends Component {
     const { cvId } = this.props.match.params;
     content.getContent(cvId)
       .then(contents => {
-        let newWorkArr =[];
-        let newEduArr =[];
+        let newWorkArr = [];
+        let newEduArr = [];
+        let newProjectArr = [];
         contents.forEach((content) => {
           if(content.contentType === 'work') {
             newWorkArr = [...newWorkArr, content];
           } else if (content.contentType === 'education') {
             newEduArr = [...newEduArr, content];
+          } else if (content.contentType === 'project') {
+            newProjectArr = [...newProjectArr, content];
           }
         })
         this.setState({
           work: newWorkArr,
           education: newEduArr,
+          project: newProjectArr,
         })
       })
   }
@@ -174,7 +182,6 @@ class Content extends Component {
       })
   }
 
-
   getEdu = () => {
     const { education, editEduIndex } = this.state;
     console.log(education)
@@ -203,6 +210,69 @@ class Content extends Component {
       </div>)
   }
 
+  // Project Component
+  handleCreateProject = () => {
+    const { project } = this.state;
+    const { cvId } = this.props.match.params;
+    let index = project.length
+    content.createContent(this.props.project,cvId)
+      .then((data) => {
+        this.fatchContentInfo();
+        this.setState({
+          editProjectIndex: index,
+        })
+      })
+  }
+
+  handleEditProject = (index) => {
+    this.setState({
+      editProjectIndex: index,
+    })
+  }
+
+  handleUpdateProject = (index) => {
+    const { project } = this.state;
+    content.updateContent(project[index])
+    this.setState({
+      editProjectIndex: '',
+    })
+  }
+
+  handleDeleteProject = (index) => {
+    const { project } = this.state;
+    content.deleteContent(project[index])
+      .then(() => {
+        this.fatchContentInfo();
+      })
+  }
+  getProject = () => {
+    const { project, editProjectIndex } = this.state;
+    console.log(project)
+    return (<div>
+        {
+          project.map((content,index) => {
+            if(editProjectIndex === index) {
+              return <EditProject
+                contentType={'project'}
+                key={index}
+                project={content}
+                index={index}
+                updateContent={this.handleUpdateProject}/>
+            } else {
+              return <Item
+                contentType={'project'}
+                key={index}
+                content={content}
+                index={index}
+                editContent={this.handleEditProject}
+                deleteContent={this.handleDeleteProject}/>
+            }
+         })
+        }
+        <button onClick={this.handleCreateProject} >New</button>
+      </div>)
+  }
+
   componentWillMount() {
     this.fatchContentInfo();
   }
@@ -224,6 +294,8 @@ class Content extends Component {
           <Description description={'Soft skills'}/> */}
         </div>
       )
+    } else if (selectedTab === 'project') {
+      return this.getProject()
     } else if (selectedTab === 'languages') {
       return (
         <div className="content-container">

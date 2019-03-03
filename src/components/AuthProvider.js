@@ -23,6 +23,7 @@ export const withAuth = () => (Comp) => {
               contact={authStore.contact} // add
               work={authStore.work} // add
               education={authStore.education} // add
+              project={authStore.project} // add
               {...this.props} />
           }}
         </Consumer>
@@ -57,7 +58,7 @@ export default class AuthProvider extends Component {
         year: '',
       },
       description: '',
-      list: [],
+      tasks: [],
     },
     education: {
       contentType: 'education',
@@ -72,7 +73,22 @@ export default class AuthProvider extends Component {
         year: '',
       },
       description: '',
-      list: [],
+      tasks: [],
+    },
+    project: {
+      contentType: 'project',
+      title: '',
+      name: '',
+      startDate: {
+        month: '',
+        year: '',
+      },
+      endDate: {
+        month: '',
+        year: '',
+      },
+      description: '',
+      tasks: [],
     },
   }
 
@@ -120,14 +136,32 @@ export default class AuthProvider extends Component {
   }
 
   render() {
-    const { isLogged, user, status, selectedTab, contact, work, education } = this.state; // add
+    const { isLogged,
+            user,
+            status,
+            selectedTab,
+            contact,
+            work,
+            education,
+            project
+          } = this.state; // add
     const { children } = this.props;
     switch (status) {
       case 'loading':
         return <div>Loading</div>
       default:
         return (
-          <Provider value={{ isLogged, user, logout: this.logoutUser, setUser: this.setUser, setTab: this.setTab, selectedTab, contact, work, education }}>
+          <Provider value={{isLogged,
+                            user,
+                            logout: this.logoutUser,
+                            setUser: this.setUser,
+                            setTab: this.setTab,
+                            selectedTab,
+                            contact,
+                            work,
+                            education,
+                            project
+                          }}>
             {children}
           </Provider>
         );
