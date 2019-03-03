@@ -8,7 +8,7 @@ class Navbar extends Component {
     const { isLogged, user, logout } = this.props;
     const { username } = user;
     if (isLogged) {
-      return <div className="main-navbar">
+      return <div className="navbar-css">
         <div className="title">
         <div>
           {/* <img src={require("../images/logo.png")} alt=""/> */}
@@ -18,15 +18,15 @@ class Navbar extends Component {
         </div>
         <div className="username">
           <div>
-            <p>username: { username }</p>
+            <p className="username-name">{ username }</p>
           </div>
           <div>
-            <p onClick={logout}>Logout</p>
+            <p className="username-logout" onClick={logout}>Logout</p>
           </div>
         </div>
       </div>
     } else {
-      return <div className="navbar">
+      return <div className="navbar-hidden">
         <div className="title">
         <h1><b>IRON</b> CV</h1>
         </div>

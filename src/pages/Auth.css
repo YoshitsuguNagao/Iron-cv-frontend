@@ -5,10 +5,11 @@ html {
 .auth-container {
   width: 100%;
   margin: 0 auto 20% auto;
-  padding-top: 20%;
+  padding-top: 6%;
   display: flex;
   flex-direction: column;
   background-color: rgb(52, 68, 81);
+  height: 100vh;
 }
 
 .border-auth-container {
@@ -31,7 +32,7 @@ html {
 .signup-form {
   display: flex;
   flex-direction: column;
-  margin: 0 auto 5% auto;
+  margin: 0 auto;
 }
 
 .switch-auth {
@@ -52,7 +53,7 @@ html {
 }
 
 .logo {
-  margin: 10% auto;
+  margin: 10% auto 5% auto;
   padding: 5% 0;
   width: 20%;
 }
@@ -85,4 +86,9 @@ html {
 
 .incorrect-message {
   color: rgb(193, 37, 60);
+}
+
+.iron-title {
+  color: white;
+  margin: 0 auto 10% auto;
 }

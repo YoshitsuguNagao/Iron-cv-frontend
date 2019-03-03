@@ -22,7 +22,6 @@ class CvPreview extends Component {
     return (
       <div className="cv-preview-container">
         <h3>My resume</h3>
-        <img src="" alt=""/>
         <button>edit</button>
         <button onClick={this.handleDeleteCV}>delete</button>
       </div>
