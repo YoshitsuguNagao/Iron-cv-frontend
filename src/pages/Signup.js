@@ -28,7 +28,7 @@ class Signup extends Component {
         console.log('exists!', error);
         this.setState({
           isWrong: true,
-        }) 
+        })
       });
   }
 
@@ -42,7 +42,7 @@ class Signup extends Component {
     return (
       <div className="auth-container">
         <div className="border-auth-container">
-          <form className="form-container" onSubmit={this.handleFormSubmit}>
+          <form className="auth-form-container" onSubmit={this.handleFormSubmit}>
             <img className="logo" src={require("../images/logo.png")} alt="logo"/>
 
             <div className="signup-form">
@@ -55,12 +55,12 @@ class Signup extends Component {
               <input className="auth-button" type="submit" value="Signup" />
             </div>
             <div className="switch-auth">
-              { this.state.isWrong ? 
+              { this.state.isWrong ?
                 <div className="incorrect-message">
                   <p>User already exists</p>
                 </div>
               : null }
-              <p>Already have account? 
+              <p>Already have account?
                 <Link to={"/login"}> Login</Link>
               </p>
             </div>

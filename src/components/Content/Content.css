@@ -1,6 +1,6 @@
 .content-container {
-  background-color: lightgray;
-  padding: 1rem;
+  /* background-color: lightgray; */
+  padding: 2rem;
 }
 
 .content-container p {
@@ -22,4 +22,31 @@
 .year-input {
   width: 4rem;
   text-align: center;
+}
+
+.profile-card {
+  align-items: center;
+  display: flex;
+  height: 30px;
+}
+
+.profile-card input {
+  width: 100%;
+}
+
+.profile-card i {
+  margin-right: 1rem;
+  width: 20px;
+}
+
+.content-text-container {
+  margin-right: 1rem;
+}
+
+.profile-card-name {
+  width: 100%;
+}
+
+.profile-card-name input {
+  width: 50%;
 }

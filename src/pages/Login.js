@@ -38,7 +38,7 @@ class Login extends Component {
     return (
       <div className="auth-container">
         <div className="border-auth-container">
-          <form className="form-container" onSubmit={this.handleFormSubmit}>
+          <form className="auth-form-container" onSubmit={this.handleFormSubmit}>
             <img className="logo" src={require("../images/logo.png")} alt="logo"/>
             <div className="signup-form">
               <div className="signup-input">
@@ -50,12 +50,12 @@ class Login extends Component {
               <input className="auth-button" type="submit" value="Login"/>
             </div>
             <div className="switch-auth">
-              { isWrong ? 
+              { isWrong ?
                 <div className="incorrect-message">
                   <p>Incorrect username or password</p>
                 </div>
               : null }
-              <p>Don't have an account? 
+              <p>Don't have an account?
                 <Link to={"/signup"}> Signup</Link>
               </p>
             </div>

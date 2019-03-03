@@ -32,18 +32,34 @@ class Profile extends Component {
 
   render() {
     const { firstName, lastName, email, address, phone } = this.state.contact;
-    console.log('kjhg',this.state.contact)
+    // console.log('kjhg',this.state.contact)
     const { editProfile } = this.props;
     return (
-      <div className="content-container">
-        <h3>Profile</h3>
-        <p>{firstName}</p>
-        <p>{lastName}</p>
-        <p>{email}</p>
-        <p>{address}</p>
-        <p>{phone}</p>
-        <button onClick={() => { editProfile() }}>Edit</button>
-      </div>
+      <article className="content-container">
+        {/* <h3>Profile</h3> */}
+        <div className="profile-card">
+          <i className="fas fa-user"></i>
+          <div className="content-text-container">
+            <p>{firstName}</p>
+          </div>
+          <div className="content-text-container">
+            <p>{lastName}</p>
+          </div>
+        </div>
+        <div className="profile-card">
+          <i className="fas fa-envelope"></i>
+          <p>{email}</p>
+        </div>
+        <div className="profile-card">
+          <i className="fas fa-map-marker-alt"></i>
+          <p>{address}</p>
+        </div>
+        <div className="profile-card">
+          <i className="fas fa-phone"></i>
+          <p>{phone}</p>
+        </div>
+        <button onClick={() => { editProfile() }}><i className="fas fa-edit"></i></button>
+      </article>
     )
   }
 }

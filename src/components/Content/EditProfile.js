@@ -81,18 +81,27 @@ class EditProfile extends Component {
     const { firstName, lastName, email, address, phone } = this.state.contact;
     return (
       <div className="content-container">
-        <h3>Edit Profile</h3>
-        {/* <h4>First Name</h4> */}
-        <input type="text" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
-        {/* <h4>Last Name</h4> */}
-        <input type="text" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
-        {/* <h4>Email</h4> */}
-        <input type="email" value={email} onChange={this.handleEmailInput} placeholder="Email" />
-        {/* <h4>Address</h4> */}
-        <input type="text" value={address} onChange={this.handleAddressInput} placeholder="Address" />
-        {/* <h4>Phone</h4> */}
-        <input type="text" value={phone} onChange={this.handlePhoneInput} placeholder="Phone Number" />
-        <button onClick={this.handleUpdateContact}>Save</button>
+        {/* <h3>Edit Profile</h3> */}
+        <div className="profile-card">
+          <i className="fas fa-user"></i>
+          <div className="profile-card-name">
+            <input type="text" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
+            <input type="text" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
+          </div>
+        </div>
+        <div className="profile-card">
+          <i className="fas fa-envelope"></i>
+          <input type="email" value={email} onChange={this.handleEmailInput} placeholder="Email" />
+        </div>
+        <div className="profile-card">
+          <i className="fas fa-map-marker-alt"></i>
+          <input type="text" value={address} onChange={this.handleAddressInput} placeholder="Address" />
+        </div>
+        <div className="profile-card">
+          <i className="fas fa-phone"></i>
+          <input type="text" value={phone} onChange={this.handlePhoneInput} placeholder="Phone Number" />
+        </div>
+        <button onClick={this.handleUpdateContact}><i className="fas fa-save"></i></button>
       </div>
     )
   }
