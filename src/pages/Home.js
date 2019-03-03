@@ -110,7 +110,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container">
-        <button onClick={this.handleCreateCV}>New CV</button>
+        <button className="add-btn" onClick={this.handleCreateCV}><i className="fas fa-plus"></i></button>
         { this.listCvs() }
       </div>
     )
