@@ -4,7 +4,7 @@ import Profile from './Profile';
 import EditProfile from './EditProfile';
 import Item from './Item';
 import EditWork from './EditWork';
-import Education from './Education';
+import EditEdu from './EditEdu';
 
 import content from '../../lib/content-service';
 import { withRouter } from "react-router";
@@ -20,7 +20,7 @@ class Content extends Component {
     work: [],
     editWorkIndex: '',
     newEditWork: false,
-    edu: [],
+    education: [],
     editEduIndex: '',
     newEditEdu: false,
   }
@@ -60,7 +60,7 @@ class Content extends Component {
         })
         this.setState({
           work: newWorkArr,
-          edu: newEduArr,
+          education: newEduArr,
         })
       })
   }
@@ -140,9 +140,9 @@ class Content extends Component {
 
   //Education Component
   handleCreateEdu = () => {
-    const { edu } = this.state;
+    const { education } = this.state;
     const { cvId } = this.props.match.params;
-    let index = edu.length
+    let index = education.length
     content.createContent(this.props.education,cvId)
       .then((data) => {
         this.fatchContentInfo();
@@ -152,19 +152,42 @@ class Content extends Component {
       })
   }
 
+  handleEditEdu = (index) => {
+    this.setState({
+      editEduIndex: index,
+    })
+  }
+
+  handleUpdateEdu = (index) => {
+    const { education } = this.state;
+    content.updateContent(education[index])
+    this.setState({
+      editEduIndex: '',
+    })
+  }
+
+  handleDeleteEdu = (index) => {
+    const { education } = this.state;
+    content.deleteContent(education[index])
+      .then(() => {
+        this.fatchContentInfo();
+      })
+  }
+
+
   getEdu = () => {
-    const { edu, editEduIndex } = this.state;
-    console.log(edu)
+    const { education, editEduIndex } = this.state;
+    console.log(education)
     return (<div>
         {
-          edu.map((content,index) => {
+          education.map((content,index) => {
             if(editEduIndex === index) {
-              // return <EditWork
-              //   contentType={'work'}
-              //   key={index}
-              //   work={content}
-              //   index={index}
-              //   updateContent={this.handleUpdateWork}/>
+              return <EditEdu
+                contentType={'education'}
+                key={index}
+                education={content}
+                index={index}
+                updateContent={this.handleUpdateEdu}/>
             } else {
               return <Item
                 contentType={'education'}
