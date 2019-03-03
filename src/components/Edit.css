@@ -1,4 +1,9 @@
 .edit-component-container {
   border: 1px solid black;
   width: 50vw;
+  background-color: #F4F4F4;
+}
+
+.edit-content-container {
+  margin: 1rem;
 }
