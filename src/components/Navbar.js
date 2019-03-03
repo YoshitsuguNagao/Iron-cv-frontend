@@ -14,7 +14,7 @@ class Navbar extends Component {
           {/* <img src={require("../images/logo.png")} alt=""/> */}
 
         </div>
-          <h1>IRON CV</h1>
+        <h1><b>IRON</b> CV</h1>
         </div>
         <div className="username">
           <div>
@@ -28,7 +28,7 @@ class Navbar extends Component {
     } else {
       return <div className="navbar">
         <div className="title">
-          <h1>IRON CV</h1>
+        <h1><b>IRON</b> CV</h1>
         </div>
         <div className="auth-link">
           <Link to='/login'>Login</Link>
