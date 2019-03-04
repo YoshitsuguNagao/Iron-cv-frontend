@@ -6,8 +6,6 @@ import { networkInterfaces } from 'os';
 class EditProfile extends Component {
   state = {
     contact: this.props.contact,
-    // title: this.props.title,
-    // summary: this.props.summary,
     socialNetwork: this.props.socialNetwork
   }
 
@@ -22,18 +20,6 @@ class EditProfile extends Component {
       contact: {...this.state.contact, lastName: event.target.value},
     })
   }
-
-  // handleTitleInput = (event) => {
-  //   this.setState({
-  //     title: {...this.state.title, title: event.target.value},
-  //   })
-  // }
-
-  // handleSummaryInput = (event) => {
-  //   this.setState({
-  //     title: {...this.state.summary, summary: event.target.value},
-  //   })
-  // }
 
   handleEmailInput = (event) => {
     this.setState({
@@ -74,8 +60,6 @@ class EditProfile extends Component {
   componentDidUpdate() {
     this.props.contact.firstName = this.state.contact.firstName;
     this.props.contact.lastName = this.state.contact.lastName;
-    // this.props.title = this.state.title;
-    // this.props.summary = this.state.summary;
     this.props.contact.email = this.state.contact.email;
     this.props.contact.address = this.state.contact.address;
     this.props.contact.phone = this.state.contact.phone;
@@ -85,21 +69,19 @@ class EditProfile extends Component {
   }
 
   handleUpdateContact = () => {
-    const { contact, title, summary, socialNetwork } = this.state;
+    const { contact, socialNetwork } = this.state;
     const { user,editProfile } = this.props;
     editProfile();
-    auth.updateUser(contact, title, summary, socialNetwork, user)
+    auth.updateUser(contact, socialNetwork, user)
       .then((data) => {
       })
   }
 
   fetchUserInfo = () => {
     auth.getUser()
-    .then(({contact, title, summary, socialNetwork}) => {
+    .then(({contact, socialNetwork}) => {
       if(this.props.contact.firstName === "" &&
          this.props.contact.lastName === "" &&
-        //  this.props.title === "" &&
-        //  this.props.summary === "" &&
          this.props.contact.email === "" &&
          this.props.contact.address === "" &&
          this.props.contact.phone === "" &&
@@ -108,15 +90,11 @@ class EditProfile extends Component {
          this.props.socialNetwork.linkedin === "") {
         this.setState({
             contact: contact,
-            title: title,
-            summary: summary,
             socialNetwork: socialNetwork,
         })
       } else {
         this.setState({
           contact: this.props.contact,
-          title: this.props.title,
-          summary: this.props.summary,
           socialNetwork: this.props.socialNetwork,
         })
       }
@@ -128,7 +106,7 @@ class EditProfile extends Component {
   }
 
   render() {
-    const { firstName, lastName, title, summary, email, address, phone, github, medium, linkedin } = this.state.contact;
+    const { firstName, lastName, email, address, phone, github, medium, linkedin } = this.state.contact;
     return (
       <div className="content-container">
         {/* <h3>Edit Profile</h3> */}

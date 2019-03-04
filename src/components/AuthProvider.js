@@ -48,8 +48,8 @@ export default class AuthProvider extends Component {
       address: '',
       phone: '',
     },
-    title: '',
-    summary: '',
+    // title: '',
+    // summary: '',
     socialNetwork: {
       github: '',
       medium: '',

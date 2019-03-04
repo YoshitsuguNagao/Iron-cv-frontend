@@ -6,7 +6,7 @@ class CvProfile extends Component {
     return (
       <article className="cv-profile-article">
         { email ? <div className="profile-card"><i className="fas fa-envelope"></i>{email}</div>: null }
-        { phone ? <div className="profile-card"><i class="fas fa-mobile-alt"></i>{phone}</div>: null }
+        { phone ? <div className="profile-card"><i className="fas fa-mobile-alt"></i>{phone}</div>: null }
         { address ? <div className="profile-card"><i className="fas fa-map-marker-alt"></i>{address}</div>: null }
       </article>
     )

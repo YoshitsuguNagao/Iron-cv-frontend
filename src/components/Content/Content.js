@@ -284,7 +284,7 @@ class Content extends Component {
 
   render() {
     const { selectedTab } = this.props;
-    console.log('render content.js',this.state.editWorkIndex)
+    // console.log('render content.js',this.state.editWorkIndex)
     if (selectedTab === 'profile') {
       return this.getProfile()
     } else if (selectedTab === 'work') {
