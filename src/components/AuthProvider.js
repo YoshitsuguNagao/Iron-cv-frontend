@@ -20,7 +20,10 @@ export const withAuth = () => (Comp) => {
               setUser={authStore.setUser}
               setTab={authStore.setTab}
               selectedTab={authStore.selectedTab} // add
-              contact={authStore.contact} // add
+              contact={authStore.contact}
+              title={authStore.title}
+              summary={authStore.summary}
+              socialNetwork={authStore.user.socialNetwork} // add
               work={authStore.work} // add
               education={authStore.education} // add
               project={authStore.project} // add
@@ -44,6 +47,13 @@ export default class AuthProvider extends Component {
       email: '',
       address: '',
       phone: '',
+    },
+    title: '',
+    summary: '',
+    socialNetwork: {
+      github: '',
+      medium: '',
+      linkedin: '',
     },
     interests:[],
     work: {
@@ -142,6 +152,7 @@ export default class AuthProvider extends Component {
             status,
             selectedTab,
             contact,
+            socialNetwork,
             work,
             education,
             project
@@ -159,6 +170,7 @@ export default class AuthProvider extends Component {
                             setTab: this.setTab,
                             selectedTab,
                             contact,
+                            socialNetwork,
                             work,
                             education,
                             project
