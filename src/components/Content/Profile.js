@@ -31,6 +31,7 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.props)
     const { firstName, lastName, email, address, phone } = this.state.contact;
     // console.log('kjhg',this.state.contact)
     const { editProfile } = this.props;
