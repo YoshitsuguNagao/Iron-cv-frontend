@@ -6,8 +6,8 @@ import { networkInterfaces } from 'os';
 class EditProfile extends Component {
   state = {
     contact: this.props.contact,
-    title: this.props.title,
-    summary: this.props.summary,
+    // title: this.props.title,
+    // summary: this.props.summary,
     socialNetwork: this.props.socialNetwork
   }
 
@@ -23,17 +23,17 @@ class EditProfile extends Component {
     })
   }
 
-  handleTitleInput = (event) => {
-    this.setState({
-      title: {...this.state.title, title: event.target.value},
-    })
-  }
+  // handleTitleInput = (event) => {
+  //   this.setState({
+  //     title: {...this.state.title, title: event.target.value},
+  //   })
+  // }
 
-  handleSummaryInput = (event) => {
-    this.setState({
-      title: {...this.state.summary, summary: event.target.value},
-    })
-  }
+  // handleSummaryInput = (event) => {
+  //   this.setState({
+  //     title: {...this.state.summary, summary: event.target.value},
+  //   })
+  // }
 
   handleEmailInput = (event) => {
     this.setState({
@@ -98,8 +98,8 @@ class EditProfile extends Component {
     .then(({contact, title, summary, socialNetwork}) => {
       if(this.props.contact.firstName === "" &&
          this.props.contact.lastName === "" &&
-         this.props.title === "" &&
-         this.props.summary === "" &&
+        //  this.props.title === "" &&
+        //  this.props.summary === "" &&
          this.props.contact.email === "" &&
          this.props.contact.address === "" &&
          this.props.contact.phone === "" &&
@@ -137,8 +137,8 @@ class EditProfile extends Component {
           <div className="profile-card-name">
             <input type="text" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
             <input type="text" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
-            <input type="text" value={title} onChange={this.handleTitleInput} placeholder="Title" required/>
-            <input type="text" value={summary} onChange={this.handleSummaryInput} placeholder="Summary" required/>
+            {/* <input type="text" value={title} onChange={this.handleTitleInput} placeholder="Title" required/>
+            <input type="text" value={summary} onChange={this.handleSummaryInput} placeholder="Summary" required/> */}
           </div>
         </div>
         <div className="profile-card">

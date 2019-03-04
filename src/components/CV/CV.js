@@ -38,6 +38,9 @@ class CV extends Component {
     } else {
           return (
       <div className="cv-component-container">
+        {/* <div>
+          <button onClick={()=>{}}>download</button>
+        </div> */}
         <div className="cv-view">
          <PDFButton />
          <CvTitle user={user}/>
