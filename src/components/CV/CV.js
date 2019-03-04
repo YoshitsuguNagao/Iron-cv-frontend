@@ -5,6 +5,7 @@ import auth from '../../lib/auth-service';
 import content from '../../lib/content-service';
 import CvTitle from './CvTitle';
 import CvProfile from './CvProfile';
+import PDFButton from './PDFButton';
 
 class CV extends Component {
   state = {
@@ -41,8 +42,10 @@ class CV extends Component {
           <button onClick={()=>{}}>download</button>
         </div> */}
         <div className="cv-view">
+         <PDFButton />
          <CvTitle user={user}/>
          <CvProfile user={user}/>
+         
         </div>
       </div>
     )
