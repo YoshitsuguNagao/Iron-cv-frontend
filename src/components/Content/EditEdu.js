@@ -2,66 +2,66 @@ import React, { Component } from 'react';
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
 
-class EditWork extends Component {
+class EditEdu extends Component {
   state = {
-    work: this.props.work,
+    education: this.props.education,
   }
 
 
   handlePositionInput = (event) => {
     this.setState({
-      work: {...this.state.work, title: event.target.value},
+      education: {...this.state.education, title: event.target.value},
     })
   }
 
   handleCompanyInput = (event) => {
     this.setState({
-      work: {...this.state.work, name: event.target.value},
+      education: {...this.state.education, name: event.target.value},
     })
   }
 
   handleDescriptionInput = (event) => {
     this.setState({
-      work: {...this.state.work, description: event.target.value},
+      education: {...this.state.education, description: event.target.value},
     })
   }
 
   handleSDMInput = (event) => {
     this.setState({
-      work: {...this.state.work, startDate: {...this.state.work.startDate, month: event.target.value}},
+      education: {...this.state.education, startDate: {...this.state.education.startDate, month: event.target.value}},
     })
   }
 
   handleSDYInput = (event) => {
     this.setState({
-      work: {...this.state.work, startDate: {...this.state.work.startDate, year: event.target.value}},
+      education: {...this.state.education, startDate: {...this.state.education.startDate, year: event.target.value}},
     })
   }
 
   handleEDMInput = (event) => {
     this.setState({
-      work: {...this.state.work, endDate: {...this.state.work.endDate, month: event.target.value}},
+      education: {...this.state.education, endDate: {...this.state.education.endDate, month: event.target.value}},
     })
   }
 
   handleEDYInput = (event) => {
     this.setState({
-      work: {...this.state.work, endDate: {...this.state.work.endDate, year: event.target.value}},
+      education: {...this.state.education, endDate: {...this.state.education.endDate, year: event.target.value}},
     })
   }
 
   handleTaskInput = (event) => {
     this.setState({
-      work: {...this.state.work, tasks  : event.target.value},
+      education: {...this.state.education, tasks  : event.target.value},
     })
   }
 
   componentDidUpdate() {
-    this.props.work.title = this.state.work.title;
-    this.props.work.name = this.state.work.name;
-    this.props.work.startDate = this.state.work.startDate;
-    this.props.work.endDate = this.state.work.endDate;
-    this.props.work.description = this.state.work.description;
+    this.props.education.title = this.state.education.title;
+    this.props.education.name = this.state.education.name;
+    this.props.education.startDate = this.state.education.startDate;
+    this.props.education.endDate = this.state.education.endDate;
+    this.props.education.description = this.state.education.description;
   }
 
   handleUpdate = (index) => {
@@ -69,7 +69,7 @@ class EditWork extends Component {
   }
 
   render() {
-    const { title, name, startDate, endDate, description, tasks} = this.state.work;
+    const { title, name, startDate, endDate, description, tasks} = this.state.education;
     const { selectedTab,index } = this.props;
     return (
       <div className="content-container">
@@ -104,4 +104,4 @@ class EditWork extends Component {
   }
 }
 
-export default withAuth()(withRouter(EditWork));
+export default withAuth()(withRouter(EditEdu));
