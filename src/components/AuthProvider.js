@@ -45,6 +45,7 @@ export default class AuthProvider extends Component {
       address: '',
       phone: '',
     },
+    interests:[],
     work: {
       contentType: 'work',
       title: '',

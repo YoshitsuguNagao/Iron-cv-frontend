@@ -27,6 +27,7 @@ class Content extends Component {
     project: [],
     editProjectIndex: '',
     newEditProject: false,
+    interests: [],
   }
 
   handleTabTitle = () => {
@@ -247,7 +248,6 @@ class Content extends Component {
   }
   getProject = () => {
     const { project, editProjectIndex } = this.state;
-    console.log(project)
     return (<div>
         {
           project.map((content,index) => {
@@ -273,13 +273,18 @@ class Content extends Component {
       </div>)
   }
 
+  // Interests
+  getInterests = () => {
+    const { interests } = this.state;
+  }
+
   componentWillMount() {
     this.fatchContentInfo();
   }
 
   render() {
     const { selectedTab } = this.props;
-    console.log('Im hrer',this.state.editWorkIndex)
+    console.log('render content.js',this.state.editWorkIndex)
     if (selectedTab === 'profile') {
       return this.getProfile()
     } else if (selectedTab === 'work') {
@@ -303,6 +308,8 @@ class Content extends Component {
           <Description description={'languages'}/>
         </div>
       )
+    } else if  (selectedTab === 'interests') {
+      return this.getInterests()
     }
   }
 }

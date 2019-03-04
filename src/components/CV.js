@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './CV.css';
-import { Document, Page } from 'react-pdf';
+// import { Document, Page } from 'react-pdf';
 
 
 class CV extends Component {
   state = {
-numPages: null,
-pageNumber: 1,
+  // numPages: null,
+  // pageNumber: 1,
 }
   onDocumentLoadSuccess = ({ numPages }) => {
     this.setState({ numPages });
@@ -19,7 +19,7 @@ pageNumber: 1,
         <div className="cv-view">
           my cv
         </div>
-        <div>
+        {/* <div>
           <Document
             file="somefile.pdf"
             onLoadSuccess={this.onDocumentLoadSuccess}
@@ -27,7 +27,7 @@ pageNumber: 1,
             <Page pageNumber={pageNumber} />
           </Document>
           <p>Page {pageNumber} of {numPages}</p>
-        </div>
+        </div> */}
       </div>
     )
   }
