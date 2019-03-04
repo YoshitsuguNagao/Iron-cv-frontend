@@ -21,8 +21,8 @@ export const withAuth = () => (Comp) => {
               setTab={authStore.setTab}
               selectedTab={authStore.selectedTab} // add
               contact={authStore.contact}
-              title={authStore.title}
-              summary={authStore.summary}
+              // title={authStore.title}
+              // summary={authStore.summary}
               socialNetwork={authStore.user.socialNetwork} // add
               work={authStore.work} // add
               education={authStore.education} // add
