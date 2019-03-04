@@ -10,16 +10,15 @@ class Profile extends Component {
 
   fetchUserInfo = () => {
     auth.getUser()
-    .then((user) => {
-      const { contact, socialNetwork } = user
+    .then(({contact, socialNetwork}) => {
       if (this.props.contact.firstName === "" &&
         this.props.contact.lastName === "" &&
         this.props.contact.email === "" &&
         this.props.contact.address === "" &&
-        this.props.contact.phone === ""
-        // this.props.socialNetwork.github === "" &&
-        // this.props.socialNetwork.medium === "" &&
-        // this.props.socialNetwork.linkedin === ""
+        this.props.contact.phone === "" &&
+        this.props.socialNetwork.github === "" &&
+        this.props.socialNetwork.medium === "" &&
+        this.props.socialNetwork.linkedin === ""
         ) {
         this.setState({
           contact: contact,
@@ -44,7 +43,6 @@ class Profile extends Component {
     const { editProfile } = this.props;
     return (
       <article className="content-container">
-        {/* <h3>Profile</h3> */}
         <div className="profile-card">
           <i className="fas fa-user"></i>
           <div className="content-text-container">
@@ -66,11 +64,11 @@ class Profile extends Component {
           <i className="fas fa-mobile-alt"></i>
           <p>{phone}</p>
         </div>
-        <div className="network-card">
+        <div className="profile-card">
           <i className="fab fa-github-square"></i>
           <p>{github}</p>
         </div>
-        <div className="network-card">
+        <div className="profile-card">
           <i className="fab fa-medium"></i>
           <p>{medium}</p>
         </div>

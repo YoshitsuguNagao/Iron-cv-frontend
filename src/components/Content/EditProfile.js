@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { withAuth } from '../AuthProvider';
+import { withRouter } from "react-router";
+
 import auth from '../../lib/auth-service';
-import { networkInterfaces } from 'os';
+import cv from '../../lib/cv-service';
+// import { networkInterfaces } from 'os';
 
 class EditProfile extends Component {
   state = {
     contact: this.props.contact,
-    socialNetwork: this.props.socialNetwork
+    socialNetwork: this.props.socialNetwork,
+    headline: this.props.headline,
+    summary: this.props.summary,
+    cv: {},
   }
 
   handleFirstNameInput = (event) => {
@@ -18,6 +24,18 @@ class EditProfile extends Component {
   handleLastNameInput = (event) => {
     this.setState({
       contact: {...this.state.contact, lastName: event.target.value},
+    })
+  }
+
+  handleHeadlineInput = (event) => {
+    this.setState({
+      headline: event.target.value,
+    })
+  }
+
+  handleSummaryInput = (event) => {
+    this.setState({
+      summary: event.target.value,
     })
   }
 
@@ -58,6 +76,7 @@ class EditProfile extends Component {
   }
 
   componentDidUpdate() {
+    console.log('oreore',this.props)
     this.props.contact.firstName = this.state.contact.firstName;
     this.props.contact.lastName = this.state.contact.lastName;
     this.props.contact.email = this.state.contact.email;
@@ -66,31 +85,58 @@ class EditProfile extends Component {
     this.props.socialNetwork.github = this.state.socialNetwork.github;
     this.props.socialNetwork.medium = this.state.socialNetwork.medium;
     this.props.socialNetwork.linkedin = this.state.socialNetwork.linkedin;
+    // this.props.headline = this.state.headline;
+    // this.props.summary = this.state.summary;
   }
 
   handleUpdateContact = () => {
-    const { contact, socialNetwork } = this.state;
-    const { user,editProfile } = this.props;
+    const { contact, socialNetwork, headline, summary, cv } = this.state;
+    const { user, editProfile } = this.props;
     editProfile();
     auth.updateUser(contact, socialNetwork, user)
       .then((data) => {
       })
+
+
+
+      cv.headline = headline
+      cv.summary = summary
+      cv.updateCv(cv)
+
+
+
+    // const { cvId } = this.props.match.params;
+    // console.log('vcvcvcvcvcvcv',this.state.cv)
+
+    // cv.getCv(cvId)
+    //   .then((cv) => {
+    //     console.log('be',cv)
+    //     console.log('af',cv)
+    //   })
+
+    //   .then((cv) => {
+    //   })
+    //   .then((data) => {
+    //     console.log(user)
+    //   })
   }
 
   fetchUserInfo = () => {
     auth.getUser()
     .then(({contact, socialNetwork}) => {
       if(this.props.contact.firstName === "" &&
-         this.props.contact.lastName === "" &&
-         this.props.contact.email === "" &&
-         this.props.contact.address === "" &&
-         this.props.contact.phone === "" &&
-         this.props.socialNetwork.github === "" &&
-         this.props.socialNetwork.medium === "" &&
-         this.props.socialNetwork.linkedin === "") {
+      this.props.contact.lastName === "" &&
+      this.props.contact.email === "" &&
+      this.props.contact.address === "" &&
+      this.props.contact.phone === "" &&
+      this.props.socialNetwork.github === "" &&
+      this.props.socialNetwork.medium === "" &&
+      this.props.socialNetwork.linkedin === ""
+      ) {
         this.setState({
-            contact: contact,
-            socialNetwork: socialNetwork,
+          contact: contact,
+          socialNetwork: socialNetwork,
+
         })
       } else {
         this.setState({
@@ -101,24 +147,48 @@ class EditProfile extends Component {
     })
   }
 
+  fetchCvInfo = () => {
+    const { cvId } = this.props.match.params;
+    cv.getCv(cvId)
+    .then((cv) => {
+      const { headline, summary } = cv
+      if(this.props.headline === '' &&
+         this.props.summary === '') {
+        this.setState({
+          headline: headline,
+          summary: summary,
+          cv: cv,
+        })
+      } else {
+        this.setState({
+          headline: this.props.headline,
+          summary: this.props.summary,
+          cv: cv,
+        })
+      }
+    })
+  }
+
   componentWillMount() {
     this.fetchUserInfo();
+    this.fetchCvInfo();
   }
 
   render() {
-    const { firstName, lastName, email, address, phone, github, medium, linkedin } = this.state.contact;
+    const { firstName, lastName, email, address, phone } = this.state.contact;
+    const { github, medium, linkedin } = this.state.socialNetwork;
+    const { headline, summary } = this.state;
     return (
       <div className="content-container">
-        {/* <h3>Edit Profile</h3> */}
         <div className="profile-card">
           <i className="fas fa-user"></i>
           <div className="profile-card-name">
             <input type="text" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
             <input type="text" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
-            {/* <input type="text" value={title} onChange={this.handleTitleInput} placeholder="Title" required/>
-            <input type="text" value={summary} onChange={this.handleSummaryInput} placeholder="Summary" required/> */}
           </div>
         </div>
+        <input type="text" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
+        <input type="text" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
         <div className="profile-card">
           <i className="fas fa-envelope"></i>
           <input type="email" value={email} onChange={this.handleEmailInput} placeholder="Email" />
@@ -128,7 +198,7 @@ class EditProfile extends Component {
           <input type="text" value={address} onChange={this.handleAddressInput} placeholder="Address" />
         </div>
         <div className="profile-card">
-          <i className="fas fa-phone"></i>
+          <i className="fas fa-mobile-alt"></i>
           <input type="text" value={phone} onChange={this.handlePhoneInput} placeholder="Phone Number" />
         </div>
         <div className="profile-card">
@@ -149,4 +219,4 @@ class EditProfile extends Component {
   }
 }
 
-export default withAuth()(EditProfile);
+export default withAuth()(withRouter(EditProfile));

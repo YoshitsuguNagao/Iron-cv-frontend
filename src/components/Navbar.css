@@ -26,6 +26,15 @@
   display: none;
 }
 
+.title-logo {
+  display: flex;
+}
+
+.title-logo img {
+  height: 50px;
+  margin-left: 1rem;
+}
+
 .title {
   padding-top: 4px;
 }
@@ -33,7 +42,14 @@
 .title h1 {
   color: white;
   margin: 0;
-  padding-left: 2rem;
+  padding-left: 0.5rem;
+}
+
+.title a {
+}
+
+.title-link {
+  text-decoration: none;
 }
 
 .auth-link a {
