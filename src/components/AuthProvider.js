@@ -23,7 +23,7 @@ export const withAuth = () => (Comp) => {
               contact={authStore.contact}
               headline={authStore.headline}
               summary={authStore.summary}
-              socialNetwork={authStore.user.socialNetwork} // add
+              socialNetwork={authStore.socialNetwork} // add
               work={authStore.work} // add
               education={authStore.education} // add
               project={authStore.project} // add

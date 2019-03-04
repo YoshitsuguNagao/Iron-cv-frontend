@@ -80,6 +80,7 @@ class Content extends Component {
     if(editProfile) {
       return <EditProfile editProfile={this.handleEditProfile}/>
     } else {
+
       return <Profile editProfile={this.handleEditProfile} />
     }
   }

@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import { withAuth } from '../AuthProvider';
+import { withRouter } from "react-router"
 import auth from '../../lib/auth-service';
+import cv from '../../lib/cv-service';
+
 
 class Profile extends Component {
   state = {
     contact: this.props.contact,
     socialNetwork: this.props.socialNetwork,
+    newCv: {},
   }
 
   fetchUserInfo = () => {
     auth.getUser()
     .then(({contact, socialNetwork}) => {
       if (this.props.contact.firstName === "" &&
-        this.props.contact.lastName === "" &&
-        this.props.contact.email === "" &&
-        this.props.contact.address === "" &&
-        this.props.contact.phone === "" &&
-        this.props.socialNetwork.github === "" &&
-        this.props.socialNetwork.medium === "" &&
-        this.props.socialNetwork.linkedin === ""
-        ) {
+      this.props.contact.lastName === "" &&
+      this.props.contact.email === "" &&
+      this.props.contact.address === "" &&
+      this.props.contact.phone === "" &&
+      this.props.socialNetwork.github === "" &&
+      this.props.socialNetwork.medium === "" &&
+      this.props.socialNetwork.linkedin === ""
+      ) {
         this.setState({
           contact: contact,
           socialNetwork: socialNetwork,
@@ -33,14 +37,33 @@ class Profile extends Component {
     })
   }
 
+  fetchCvInfo = () => {
+    const { cvId } = this.props.match.params;
+    cv.getCv(cvId)
+    .then((cv) => {
+      if(this.props.headline === '' &&
+         this.props.summary === '') {
+        this.setState({
+          newCv: cv,
+        })
+      } else {
+        this.setState({
+          newCv: cv,
+        })
+      }
+    })
+  }
+
   componentWillMount() {
     this.fetchUserInfo();
+    this.fetchCvInfo();
   }
 
   render() {
     const { firstName, lastName, email, address, phone } = this.state.contact;
     const { github, medium, linkedin } = this.state.socialNetwork;
     const { editProfile } = this.props;
+    const { headline, summary } = this.state.newCv
     return (
       <article className="content-container">
         <div className="profile-card">
@@ -52,6 +75,8 @@ class Profile extends Component {
             <p>{lastName}</p>
           </div>
         </div>
+        <p>{headline}</p>
+        <p>{summary}</p>
         <div className="profile-card">
           <i className="fas fa-envelope"></i>
           <p>{email}</p>
@@ -82,4 +107,4 @@ class Profile extends Component {
   }
 }
 
-export default withAuth()(Profile);
+export default withAuth()(withRouter(Profile));

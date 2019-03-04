@@ -12,7 +12,7 @@ class EditProfile extends Component {
     socialNetwork: this.props.socialNetwork,
     headline: this.props.headline,
     summary: this.props.summary,
-    cv: {},
+    newCv: {},
   }
 
   handleFirstNameInput = (event) => {
@@ -76,7 +76,6 @@ class EditProfile extends Component {
   }
 
   componentDidUpdate() {
-    console.log('oreore',this.props)
     this.props.contact.firstName = this.state.contact.firstName;
     this.props.contact.lastName = this.state.contact.lastName;
     this.props.contact.email = this.state.contact.email;
@@ -90,35 +89,17 @@ class EditProfile extends Component {
   }
 
   handleUpdateContact = () => {
-    const { contact, socialNetwork, headline, summary, cv } = this.state;
+    const { contact, socialNetwork, headline, summary, newCv } = this.state;
     const { user, editProfile } = this.props;
     editProfile();
     auth.updateUser(contact, socialNetwork, user)
       .then((data) => {
       })
+      newCv.headline = headline
+      newCv.summary = summary
+      console.log('cvcvcvcvcvcvvc',newCv)
+      cv.updateCv(newCv)
 
-
-
-      cv.headline = headline
-      cv.summary = summary
-      cv.updateCv(cv)
-
-
-
-    // const { cvId } = this.props.match.params;
-    // console.log('vcvcvcvcvcvcv',this.state.cv)
-
-    // cv.getCv(cvId)
-    //   .then((cv) => {
-    //     console.log('be',cv)
-    //     console.log('af',cv)
-    //   })
-
-    //   .then((cv) => {
-    //   })
-    //   .then((data) => {
-    //     console.log(user)
-    //   })
   }
 
   fetchUserInfo = () => {
@@ -157,13 +138,13 @@ class EditProfile extends Component {
         this.setState({
           headline: headline,
           summary: summary,
-          cv: cv,
+          newCv: cv,
         })
       } else {
         this.setState({
           headline: this.props.headline,
           summary: this.props.summary,
-          cv: cv,
+          newCv: cv,
         })
       }
     })
@@ -187,8 +168,10 @@ class EditProfile extends Component {
             <input type="text" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
           </div>
         </div>
-        <input type="text" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
-        <input type="text" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
+        <div className="profile-card">
+          <input type="text" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
+        </div>
+        <textarea type="text" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
         <div className="profile-card">
           <i className="fas fa-envelope"></i>
           <input type="email" value={email} onChange={this.handleEmailInput} placeholder="Email" />
