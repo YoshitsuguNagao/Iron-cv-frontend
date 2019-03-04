@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CV from '../components/CV';
+import CV from '../components/CV/CV';
 import Edit from '../components/Edit';
 import './EditCV.css';
 import { withAuth } from '../components/AuthProvider';

@@ -1,0 +1,76 @@
+.cv-component-container {
+  border: 1px solid black;
+  width: 50vw;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+}
+
+.cv-view {
+  width: 21cm;
+  height: 29.7cm;
+  /* width: 595px;
+  height: 842px; */
+  border: 1px solid black;
+  background-color: white;
+  margin-top: 10px
+}
+
+/* page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+page[size="A4"] {
+  width: 21cm;
+  height: 29.7cm;
+} */
+/*page[size="A4"][layout="landscape"] {
+  width: 29.7cm;
+  height: 21cm;
+}
+page[size="A3"] {
+  width: 29.7cm;
+  height: 42cm;
+}
+page[size="A3"][layout="landscape"] {
+  width: 42cm;
+  height: 29.7cm;
+}
+page[size="A5"] {
+  width: 14.8cm;
+  height: 21cm;
+}
+page[size="A5"][layout="landscape"] {
+  width: 21cm;
+  height: 14.8cm;
+} */
+@media print {
+  body, page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+.cv-title-article {
+  padding: 1.5rem 2rem 0 2rem;
+  display: flex;
+}
+
+.cv-title-article img {
+  height: 100px;
+}
+
+.cv-profile-article {
+  padding: 1rem 2rem 1rem 2rem;
+  background-color: rgb(227, 227, 227);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-card {
+  width: 50%;
+}
