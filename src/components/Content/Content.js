@@ -50,7 +50,7 @@ class Content extends Component {
     })
   }
 
-  fatchContentInfo = () => {
+  fetchContentInfo = () => {
     const { cvId } = this.props.match.params;
     content.getContent(cvId)
       .then(contents => {
@@ -90,7 +90,7 @@ class Content extends Component {
     let index = work.length
     content.createContent(this.props.work,cvId)
       .then((data) => {
-        this.fatchContentInfo();
+        this.fetchContentInfo();
         this.setState({
           editWorkIndex: index,
         })
@@ -115,7 +115,7 @@ class Content extends Component {
     const { work } = this.state;
     content.deleteContent(work[index])
       .then(() => {
-        this.fatchContentInfo();
+        this.fetchContentInfo();
       })
   }
 
@@ -154,7 +154,7 @@ class Content extends Component {
     let index = education.length
     content.createContent(this.props.education,cvId)
       .then((data) => {
-        this.fatchContentInfo();
+        this.fetchContentInfo();
         this.setState({
           editEduIndex: index,
         })
@@ -179,7 +179,7 @@ class Content extends Component {
     const { education } = this.state;
     content.deleteContent(education[index])
       .then(() => {
-        this.fatchContentInfo();
+        this.fetchContentInfo();
       })
   }
 
@@ -218,7 +218,7 @@ class Content extends Component {
     let index = project.length
     content.createContent(this.props.project,cvId)
       .then((data) => {
-        this.fatchContentInfo();
+        this.fetchContentInfo();
         this.setState({
           editProjectIndex: index,
         })
@@ -243,7 +243,7 @@ class Content extends Component {
     const { project } = this.state;
     content.deleteContent(project[index])
       .then(() => {
-        this.fatchContentInfo();
+        this.fetchContentInfo();
       })
   }
   getProject = () => {
@@ -279,7 +279,7 @@ class Content extends Component {
   }
 
   componentWillMount() {
-    this.fatchContentInfo();
+    this.fetchContentInfo();
   }
 
   render() {
