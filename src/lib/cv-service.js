@@ -15,14 +15,21 @@ class Cv {
       })
   }
 
+  getCv(id) {
+    return this.cv.get(`/cv/${id}`)
+    .then(({ data }) => {
+      return data
+    })
+  }
+  
   createCv(cv) {
     const { name, user } = cv;
     return this.cv.post('/cv', {name, user})
-      .then(({ data }) => {
-        return data;
-      })
+    .then(({ data }) => {
+      return data;
+    })
   }
-
+  
   deleteCv(id) {
     // const { name, contentId } = cv;
     return this.cv.delete(`/cv/${id}`)
@@ -30,10 +37,11 @@ class Cv {
       return data;
     })
   }
-
+  
   updateCv(cv) {
     // const { name, user } = cv;
     // console.log('cv-service', cv._id)
+    console.log('datadatadadatdtatdadta',cv)
     return this.cv.put(`/cv/${cv._id}`, cv)
     .then(({ data }) => {
       return data;

@@ -6,7 +6,7 @@
   padding: 1.5rem 2rem;
   -webkit-box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
-  box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75); 
+  box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
 }
 
 .cv-list-container:last-child {
@@ -14,33 +14,28 @@
   background-color: white;
 }
 
-.cv-list-btn {
+.cv-list-btns {
   margin-top: 6px;
 }
 
-.edit-btn-cvlist {
-  margin: 0 1rem;
+.cv-list-btn {
+  margin: 0 0.5rem;
   background-color: white;
   border-radius: 3px;
 }
 
-.edit-btn-cvlist i {
+.edit-btn i {
   color: rgb(187, 190, 193);
 }
 
-.edit-btn-cvlist i:hover {
+.edit-btn i:hover {
   color: rgb(105, 234, 109);
 }
 
-.delete-btn-cvlist {
-  background-color: white;
-  border-radius: 3px;
-}
-
-.delete-btn-cvlist i {
+.delete-btn i {
   color: rgb(187, 190, 193);
 }
 
-.delete-btn-cvlist i:hover {
+.delete-btn i:hover {
   color: rgb(250, 80, 80);
 }

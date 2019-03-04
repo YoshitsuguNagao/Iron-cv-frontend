@@ -30,8 +30,8 @@ class Auth {
       .then(response => response.data);
   }
 
-  updateUser(contact, user) {
-    return this.auth.put(`/auth/update`, {contact, user})
+  updateUser(contact, socialNetwork, user) {
+    return this.auth.put(`/auth/update`, {contact, socialNetwork, user})
       .then(({ data }) => data);
   }
 

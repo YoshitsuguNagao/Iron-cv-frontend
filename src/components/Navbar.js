@@ -10,11 +10,10 @@ class Navbar extends Component {
     if (isLogged) {
       return <div className="navbar-css">
         <div className="title">
-        <div>
-          {/* <img src={require("../images/logo.png")} alt=""/> */}
-
-        </div>
-        <h1><b>IRON</b> CV</h1>
+          <a href="/home" className="title-link"><div className="title-logo">
+            <img src={require("../images/logo.png")} alt=""/>
+            <h1><b>IRON</b> CV</h1>
+          </div></a>
         </div>
         <div className="username">
           <div>
@@ -28,7 +27,10 @@ class Navbar extends Component {
     } else {
       return <div className="navbar-hidden">
         <div className="title">
-        <h1><b>IRON</b> CV</h1>
+          <a href="/home" className="title-link"><div className="title-logo">
+            <img src={require("../images/logo.png")} alt=""/>
+            <h1><b>IRON</b> CV</h1>
+          </div></a>
         </div>
         <div className="auth-link">
           <Link to='/login'>Login</Link>

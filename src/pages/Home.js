@@ -14,7 +14,7 @@ class Home extends Component {
   }
 
   handleCreateCV = () => {
-    cv.createCv({name:'My resume', user: this.props.user})
+    cv.createCv({ user: this.props.user})
       .then((newCv) => {
         let newCvList = [...this.state.cvList,newCv];
         this.setState({

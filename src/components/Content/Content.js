@@ -76,6 +76,7 @@ class Content extends Component {
 
   getProfile = () => {
     const { editProfile } = this.state;
+    console.log('get profile',this.props.socialNetwork)
     if(editProfile) {
       return <EditProfile editProfile={this.handleEditProfile}/>
     } else {
