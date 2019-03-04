@@ -74,8 +74,8 @@ class EditProfile extends Component {
   componentDidUpdate() {
     this.props.contact.firstName = this.state.contact.firstName;
     this.props.contact.lastName = this.state.contact.lastName;
-    this.props.title = this.state.title;
-    this.props.summary = this.state.summary;
+    this.props.user.title = this.state.title;
+    this.props.user.summary = this.state.summary;
     this.props.contact.email = this.state.contact.email;
     this.props.contact.address = this.state.contact.address;
     this.props.contact.phone = this.state.contact.phone;
