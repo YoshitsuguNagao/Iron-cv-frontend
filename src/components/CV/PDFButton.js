@@ -16,11 +16,10 @@ class PDFButton extends Component {
   }
 
   render () {
-    console.log(this.printCV)
+    // console.log(this.printCV)
     return (
       <div>
         <button onClick={this.printCV}>LOVE ME</button>
-        
       </div>
     )
   }

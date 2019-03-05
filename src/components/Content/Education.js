@@ -59,7 +59,7 @@ class Education extends Component {
 
   render() {
     const { degreeInput, institutionInput, startDateInput, endDateInput, descriptionInput} = this.state.education;
-    console.log(this.props)
+    // console.log(this.props)
     const { selectedTab } = this.props;
     return (
       <div className="content-container">

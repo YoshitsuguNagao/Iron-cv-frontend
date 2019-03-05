@@ -21,7 +21,6 @@ class Login extends Component {
       this.props.setUser(user)
     })
     .catch( error => {
-      console.log('hhh',error)
       this.setState({
         isWrong: true,
       })

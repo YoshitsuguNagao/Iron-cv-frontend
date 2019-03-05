@@ -21,7 +21,6 @@ class Edit extends Component {
 
   render() {
     const { selectedTab, contents } = this.state
-
     return (
       <div className="edit-component-container">
         <Tabs selectedTab={selectedTab} contents={contents}/>

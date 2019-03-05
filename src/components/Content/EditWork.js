@@ -52,11 +52,12 @@ class EditWork extends Component {
 
   handleTaskInput = (event) => {
     this.setState({
-      work: {...this.state.work, tasks  : event.target.value},
+      work: {...this.state.work, tasks: event.target.value},
     })
   }
 
   componentDidUpdate() {
+    console.log('im here',this.props)
     this.props.work.title = this.state.work.title;
     this.props.work.name = this.state.work.name;
     this.props.work.startDate = this.state.work.startDate;

@@ -3,8 +3,7 @@ import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
 
 class Item extends Component {
-  handleDelete = () => {
-    const { index } = this.props;
+  handleDelete = (index) => {
     this.props.deleteContent(index)
   }
 
@@ -29,7 +28,7 @@ class Item extends Component {
           }
         </ul>
         <button onClick={() => { this.handleEdit(index) }}>edit</button>
-        <button onClick={this.handleDelete}>delete</button>
+        <button onClick={() => { this.handleDelete(index)} }>delete</button>
       </div>
     )
   }

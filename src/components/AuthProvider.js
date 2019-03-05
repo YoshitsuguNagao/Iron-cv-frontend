@@ -23,6 +23,10 @@ export const withAuth = () => (Comp) => {
               contact={authStore.contact}
               headline={authStore.headline}
               summary={authStore.summary}
+              interest={authStore.interest}
+              languages={authStore.languages}
+              softSkill={authStore.softSkill}
+              hardSkill={authStore.hardSkill}
               socialNetwork={authStore.socialNetwork} // add
               work={authStore.work} // add
               education={authStore.education} // add
@@ -50,12 +54,18 @@ export default class AuthProvider extends Component {
     },
     headline: '',
     summary: '',
+    softSkill: [''],
+    hardSkill: [''],
+    interest: [''],
+    languages: {
+      language: '',
+      level: '',
+    },
     socialNetwork: {
       github: '',
       medium: '',
       linkedin: '',
     },
-    interests:[],
     work: {
       contentType: 'work',
       title: '',
@@ -69,7 +79,7 @@ export default class AuthProvider extends Component {
         year: '',
       },
       description: '',
-      tasks: [],
+      tasks: '',
     },
     education: {
       contentType: 'education',
@@ -84,7 +94,7 @@ export default class AuthProvider extends Component {
         year: '',
       },
       description: '',
-      tasks: [],
+      tasks: '',
     },
     project: {
       contentType: 'project',
@@ -153,6 +163,10 @@ export default class AuthProvider extends Component {
             contact,
             headline,
             summary,
+            interest,
+            languages,
+            softSkill,
+            hardSkill,
             socialNetwork,
             work,
             education,
@@ -173,6 +187,10 @@ export default class AuthProvider extends Component {
                             contact,
                             headline,
                             summary,
+                            interest,
+                            languages,
+                            softSkill,
+                            hardSkill,
                             socialNetwork,
                             work,
                             education,

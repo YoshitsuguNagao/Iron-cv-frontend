@@ -3,11 +3,13 @@ import Description from '../Description';
 import Profile from './Profile';
 import EditProfile from './EditProfile';
 import Item from './Item';
+import Language from './Language';
 import ListItem from './ListItem';
 import EditWork from './EditWork';
 import EditEdu from './EditEdu';
 import EditProject from './EditProject';
-import EditListItem from './EditListItem';
+import EditInterest from './EditInterest';
+import EditLanguage from './EditLanguage';
 
 import content from '../../lib/content-service';
 import { withRouter } from "react-router";
@@ -32,6 +34,12 @@ class Content extends Component {
     newEditProject: false,
     interests: [],
     editInterestIndex: '',
+    languages: [],
+    editLanguageIndex: '',
+    softSkills: [],
+    editSoftSkillIndex: '',
+    hardSkills: [],
+    editHardSkillIndex: '',
   }
 
   handleTabTitle = () => {
@@ -277,31 +285,69 @@ class Content extends Component {
       </div>)
   }
 
+  // Interests
   handleCreateInterest = () => {
     const { interests } = this.state;
-    const newInterestArr = [...interests, 'text2']
-    const newUser = {...this.props.user, interests: newInterestArr}
+    const newInterests = [...interests, 'text2']
+    this.updateInterestInfo(newInterests);
+  }
+
+  handleEditInterest = (index) => {
+    this.setState({
+      editInterestIndex: index,
+    })
+  }
+
+  handleUpdateInterest = (index, editInput) => {
+    const { interests } = this.state;
+    const newInterests = [...interests]
+    newInterests[index] = editInput;
+    this.updateInterestInfo(newInterests);
+  }
+
+  handleDeleteInterest = (index) => {
+    const { interests } = this.state;
+    const newInterests = [...interests]
+    newInterests.splice(index,1)
+    this.updateInterestInfo(newInterests);
+  }
+
+  updateInterestInfo = (newInterests) => {
+    const newUser = {...this.props.user, interests: newInterests}
     this.props.setUser(newUser)
     auth.updateUser(newUser)
       .then(()=>{
         this.setState({
-          interests: this.props.user.interests
+          interests: this.props.user.interests,
+          editInterestIndex: '',
+
         })
       })
   }
 
-  // Interests
   getInterests = () => {
     const { interests, editInterestIndex } = this.state;
-    console.log(interests)
     return (
       <article className="ineterest-list">
         {
           interests.map((interest,index) => {
             if (editInterestIndex === index) {
-              return <EditListItem key={index} listContent={interest} />
+              return <EditInterest
+                itemType='interest'
+                key={index}
+                index={index}
+                listContent={interest}
+                updateListItem={this.handleUpdateInterest} />
             } else {
-              return <ListItem key={index} listContent={interest} />
+              return <ListItem
+                itemType='interest'
+                key={index}
+                index={index}
+                listContent={interest}
+                upListItem={this.handleUpInterest}
+                downListItem={this.handleDownInterest}
+                editListItem={this.handleEditInterest}
+                deleteListItem={this.handleDeleteInterest} />
             }
           })
         }
@@ -310,23 +356,236 @@ class Content extends Component {
     )
   }
 
+  // Languages
+  handleCreateLanguage = () => {
+    const { languages } = this.state;
+    const newLanguages = [...languages, {language:'Japanese', level:'Native'}]
+    this.updateLanguageInfo(newLanguages)
+  }
+
+  handleUpdateLanguage = (index, editLanguageInput, editLevelInput) => {
+    const { languages } = this.state;
+    const newLanguages = [...languages]
+    newLanguages[index].language = editLanguageInput;
+    newLanguages[index].level = editLevelInput;
+    this.updateLanguageInfo(newLanguages)
+  }
+
+  handleEditLanguage = (index) => {
+    this.setState({
+      editLanguageIndex: index,
+    })
+  }
+
+  handleDeleteLanguage = (index) => {
+    const { languages } = this.state;
+    const newLanguages = [...languages]
+    newLanguages.splice(index,1)
+    this.updateLanguageInfo(newLanguages)
+  }
+
+  updateLanguageInfo = (newLanguages) => {
+    const newUser = {...this.props.user, languages: newLanguages}
+    this.props.setUser(newUser)
+    auth.updateUser(newUser)
+      .then(()=>{
+        this.setState({
+          editLanguageIndex: '',
+          languages: this.props.user.languages
+        })
+      })
+  }
+
+  getLanguages = () => {
+    const { languages, editLanguageIndex } = this.state;
+    return (
+      <article className="language-list">
+        {
+          languages.map((languages,index) => {
+            if (editLanguageIndex === index) {
+              return <EditLanguage
+                itemType='language'
+                key={index}
+                index={index}
+                listContent={languages}
+                updateLanguage={this.handleUpdateLanguage} />
+            } else {
+              return <Language
+                key={index}
+                index={index}
+                listContent={languages}
+                upLanguage={this.handleUpLanguage}
+                downLanguage={this.handleDownLanguage}
+                editLanguage={this.handleEditLanguage}
+                deleteLanguage={this.handleDeleteLanguage} />
+            }
+          })
+        }
+        <button onClick={this.handleCreateLanguage} ><i className="fas fa-plus-square"></i></button>
+      </article>
+    )
+  }
+
+  // Skill
+  // soft skill
+  handleCreateSoftSkill = () => {
+    const { softSkills } = this.state;
+    const newSoftSkills = [...softSkills, 'new skill']
+    this.updateSoftSkillInfo(newSoftSkills)
+  }
+
+  updateSoftSkillInfo = (newSoftSkills) => {
+    const newUser = {...this.props.user, softSkills: newSoftSkills}
+    this.props.setUser(newUser)
+    auth.updateUser(newUser)
+      .then(()=>{
+        this.setState({
+          editSoftSkillIndex: '',
+          softSkills: this.props.user.softSkills
+        })
+      })
+  }
+
+  handleUpdateSoftSkill = (index, editInput) => {
+    const { softSkills } = this.state;
+    const newSoftSkills = [...softSkills]
+    newSoftSkills[index] = editInput;
+    this.updateSoftSkillInfo(newSoftSkills);
+  }
+
+  handleEditSoftSkill = (index) => {
+    this.setState({
+      editSoftSkillIndex: index,
+    })
+  }
+
+  handleDeleteSoftSkill = (index) => {
+    const { softSkills } = this.state;
+    const newSoftSkills = [...softSkills]
+    newSoftSkills.splice(index,1)
+    this.updateSoftSkillInfo(newSoftSkills)
+  }
+
+  // hard skill
+  handleCreateHardSkill = () => {
+    const { hardSkills } = this.state;
+    const newHardSkills = [...hardSkills, 'new skill']
+    this.updateHardSkillInfo(newHardSkills)
+  }
+
+  updateHardSkillInfo = (newHardSkills) => {
+    const newUser = {...this.props.user, hardSkills: newHardSkills}
+    this.props.setUser(newUser)
+    auth.updateUser(newUser)
+      .then(()=>{
+        this.setState({
+          editHardSkillIndex: '',
+          hardSkills: this.props.user.hardSkills
+        })
+      })
+  }
+
+  handleUpdateHardSkill = (index, editInput) => {
+    const { hardSkills } = this.state;
+    const newHardSkills = [...hardSkills]
+    newHardSkills[index] = editInput;
+    this.updateHardSkillInfo(newHardSkills);
+  }
+
+  handleEditHardSkill = (index) => {
+    this.setState({
+      editHardSkillIndex: index,
+    })
+  }
+
+  handleDeleteHardSkill = (index) => {
+    const { hardSkills } = this.state;
+    const newHardSkills = [...hardSkills]
+    newHardSkills.splice(index,1)
+    this.updateHardSkillInfo(newHardSkills)
+  }
+
+  getSkill = () => {
+    const { hardSkills, editHardSkillIndex, softSkills, editSoftSkillIndex } = this.state;
+    console.log('object')
+    return (
+      <article className="skill-list">
+        <div className="soft-skill-container">
+          <p>Soft Skill</p>
+          {
+            softSkills.map((softSkill,index) => {
+              if (editSoftSkillIndex === index) {
+                return <EditInterest
+                  itemType='softSkill'
+                  key={index}
+                  index={index}
+                  listContent={softSkill}
+                  updateListItem={this.handleUpdateSoftSkill} />
+              } else {
+                return <ListItem
+                  itemType='softSkill'
+                  key={index}
+                  index={index}
+                  listContent={softSkill}
+                  upListItem={this.handleUpSoftSkill}
+                  downListItem={this.handleDownSoftSkill}
+                  editListItem={this.handleEditSoftSkill}
+                  deleteListItem={this.handleDeleteSoftSkill} />
+              }
+            })
+          }
+          <button onClick={this.handleCreateSoftSkill} ><i className="fas fa-plus-square"></i></button>
+        </div>
+        <div className="hard-skill-container">
+          <p>Hard Skill</p>
+          {
+            hardSkills.map((hardSkill,index) => {
+              if (editHardSkillIndex === index) {
+                return <EditInterest
+                  itemType='hardSkill'
+                  key={index}
+                  index={index}
+                  listContent={hardSkill}
+                  updateListItem={this.handleUpdateHardSkill} />
+              } else {
+                return <ListItem
+                  itemType='hardSkill'
+                  key={index}
+                  index={index}
+                  listContent={hardSkill}
+                  upListItem={this.handleUpHardSkill}
+                  downListItem={this.handleDownHardSkill}
+                  editListItem={this.handleEditHardSkill}
+                  deleteListItem={this.handleDeleteHardSkill} />
+              }
+            })
+          }
+          <button onClick={this.handleCreateHardSkill} ><i className="fas fa-plus-square"></i></button>
+        </div>
+      </article>
+    )
+  }
+
   fetchUserInfo = () => {
     auth.getUser()
     .then((user) => {
+      this.props.setUser(user)
       this.setState({
-        interests: user.interests
+        interests: this.props.user.interests,
+        languages: this.props.user.languages,
+        softSkills: this.props.user.softSkills,
+        hardSkills: this.props.user.hardSkills,
       })
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchContentInfo();
     this.fetchUserInfo();
   }
 
   render() {
     const { selectedTab } = this.props;
-    // console.log('render content.js',this.state.editWorkIndex)
     if (selectedTab === 'profile') {
       return this.getProfile()
     } else if (selectedTab === 'work') {
@@ -334,22 +593,11 @@ class Content extends Component {
     } else if (selectedTab === 'education') {
       return this.getEdu()
     } else if (selectedTab === 'skills') {
-      return (
-        <div className="content-container">
-          <h3>{selectedTab}</h3>
-          {/* <Description description={'Hard skills'}/>
-          <Description description={'Soft skills'}/> */}
-        </div>
-      )
+      return this.getSkill()
     } else if (selectedTab === 'project') {
       return this.getProject()
     } else if (selectedTab === 'languages') {
-      return (
-        <div className="content-container">
-          <h3>{selectedTab}</h3>
-          <Description description={'languages'}/>
-        </div>
-      )
+      return this.getLanguages()
     } else if  (selectedTab === 'interests') {
       return this.getInterests()
     }

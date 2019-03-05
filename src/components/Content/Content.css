@@ -61,3 +61,13 @@
   -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
   box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.5);
 }
+
+.list-item-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-list-item-container {
+  display: flex;
+  justify-content: space-between;
+}

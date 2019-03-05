@@ -42,15 +42,15 @@ class Home extends Component {
 
   fetchUserInfo = () => {
     auth.getUser()
-      .then(({contact}) => {
-        this.props.contact.firstName = contact.firstName;
-        this.props.contact.lastName = contact.lastName;
-        this.props.contact.email = contact.email;
-        this.props.contact.address = contact.address;
-        this.props.contact.phone = contact.phone;
+      .then((user) => {
+        this.props.setUser(user)
+        // this.props.user = user
+        // this.props.contact.firstName = contact.firstName;
+        // this.props.contact.lastName = contact.lastName;
+        // this.props.contact.email = contact.email;
+        // this.props.contact.address = contact.address;
+        // this.props.contact.phone = contact.phone;
       })
-    .then(() => {
-    })
   }
 
   componentDidMount(){
@@ -108,6 +108,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log('hajime no hajime',this.props.user)
     return (
       <div className="home-container">
         <button className="add-btn" onClick={this.handleCreateCV}><i className="fas fa-plus"></i></button>

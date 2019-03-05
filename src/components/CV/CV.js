@@ -6,27 +6,12 @@ import content from '../../lib/content-service';
 import CvTitle from './CvTitle';
 import CvProfile from './CvProfile';
 import PDFButton from './PDFButton';
+import { withAuth } from '../AuthProvider';
+
 
 class CV extends Component {
-  state = {
-    user: '',
-  }
-
-  fetchUserInfo = () => {
-    auth.getUser()
-      .then((user) => {
-        this.setState({
-          user: user,
-        })
-      })
-  }
-
-  componentWillMount() {
-    this.fetchUserInfo();
-  }
-
   render() {
-    const { user } = this.state;
+    const { user } = this.props;
     if (user === '') {
       return (
         <div className="cv-component-container">
@@ -36,16 +21,12 @@ class CV extends Component {
         </div>
       )
     } else {
-          return (
-      <div className="cv-component-container">
-        {/* <div>
-          <button onClick={()=>{}}>download</button>
-        </div> */}
+      return (
+        <div className="cv-component-container">
+          <PDFButton />
         <div className="cv-view">
-         <PDFButton />
          <CvTitle user={user}/>
          <CvProfile user={user}/>
-         
         </div>
       </div>
     )
@@ -54,4 +35,4 @@ class CV extends Component {
   }
 }
 
-export default CV
+export default withAuth()(CV)
