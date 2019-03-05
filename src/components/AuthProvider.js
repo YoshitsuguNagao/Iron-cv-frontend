@@ -103,7 +103,6 @@ export default class AuthProvider extends Component {
     },
   }
 
-  // add
   setTab = (tab) => {
     this.setState({
       selectedTab: tab
@@ -158,7 +157,7 @@ export default class AuthProvider extends Component {
             work,
             education,
             project
-          } = this.state; // add
+          } = this.state;
     const { children } = this.props;
     switch (status) {
       case 'loading':

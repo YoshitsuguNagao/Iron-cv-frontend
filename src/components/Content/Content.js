@@ -3,15 +3,18 @@ import Description from '../Description';
 import Profile from './Profile';
 import EditProfile from './EditProfile';
 import Item from './Item';
+import ListItem from './ListItem';
 import EditWork from './EditWork';
 import EditEdu from './EditEdu';
 import EditProject from './EditProject';
+import EditListItem from './EditListItem';
 
 import content from '../../lib/content-service';
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
 
 import './Content.css'
+import auth from '../../lib/auth-service';
 
 class Content extends Component {
   state = {
@@ -28,6 +31,7 @@ class Content extends Component {
     editProjectIndex: '',
     newEditProject: false,
     interests: [],
+    editInterestIndex: '',
   }
 
   handleTabTitle = () => {
@@ -76,7 +80,6 @@ class Content extends Component {
 
   getProfile = () => {
     const { editProfile } = this.state;
-    console.log('get profile',this.props.socialNetwork)
     if(editProfile) {
       return <EditProfile editProfile={this.handleEditProfile}/>
     } else {
@@ -123,7 +126,6 @@ class Content extends Component {
 
   getWork = () => {
     const { work, editWorkIndex } = this.state;
-    console.log(work)
     return (<div>
         {
           work.map((content,index) => {
@@ -145,7 +147,7 @@ class Content extends Component {
             }
          })
         }
-        <button onClick={this.handleCreateWork} >New</button>
+        <button onClick={this.handleCreateWork} ><i className="fas fa-plus-square"></i></button>
       </div>)
   }
 
@@ -187,7 +189,6 @@ class Content extends Component {
 
   getEdu = () => {
     const { education, editEduIndex } = this.state;
-    console.log(education)
     return (<div>
         {
           education.map((content,index) => {
@@ -209,7 +210,7 @@ class Content extends Component {
             }
          })
         }
-        <button onClick={this.handleCreateEdu} >New</button>
+        <button onClick={this.handleCreateEdu} ><i className="fas fa-plus-square"></i></button>
       </div>)
   }
 
@@ -248,6 +249,7 @@ class Content extends Component {
         this.fetchContentInfo();
       })
   }
+
   getProject = () => {
     const { project, editProjectIndex } = this.state;
     return (<div>
@@ -271,17 +273,55 @@ class Content extends Component {
             }
          })
         }
-        <button onClick={this.handleCreateProject} >New</button>
+        <button onClick={this.handleCreateProject} ><i className="fas fa-plus-square"></i></button>
       </div>)
+  }
+
+  handleCreateInterest = () => {
+    const { interests } = this.state;
+    const newInterestArr = [...interests, 'text2']
+    const newUser = {...this.props.user, interests: newInterestArr}
+    this.props.setUser(newUser)
+    auth.updateUser(newUser)
+      .then(()=>{
+        this.setState({
+          interests: this.props.user.interests
+        })
+      })
   }
 
   // Interests
   getInterests = () => {
-    const { interests } = this.state;
+    const { interests, editInterestIndex } = this.state;
+    console.log(interests)
+    return (
+      <article className="ineterest-list">
+        {
+          interests.map((interest,index) => {
+            if (editInterestIndex === index) {
+              return <EditListItem key={index} listContent={interest} />
+            } else {
+              return <ListItem key={index} listContent={interest} />
+            }
+          })
+        }
+        <button onClick={this.handleCreateInterest} ><i className="fas fa-plus-square"></i></button>
+      </article>
+    )
+  }
+
+  fetchUserInfo = () => {
+    auth.getUser()
+    .then((user) => {
+      this.setState({
+        interests: user.interests
+      })
+    })
   }
 
   componentWillMount() {
     this.fetchContentInfo();
+    this.fetchUserInfo();
   }
 
   render() {

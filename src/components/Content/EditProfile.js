@@ -4,7 +4,6 @@ import { withRouter } from "react-router";
 
 import auth from '../../lib/auth-service';
 import cv from '../../lib/cv-service';
-// import { networkInterfaces } from 'os';
 
 class EditProfile extends Component {
   state = {
@@ -84,22 +83,18 @@ class EditProfile extends Component {
     this.props.socialNetwork.github = this.state.socialNetwork.github;
     this.props.socialNetwork.medium = this.state.socialNetwork.medium;
     this.props.socialNetwork.linkedin = this.state.socialNetwork.linkedin;
-    // this.props.headline = this.state.headline;
-    // this.props.summary = this.state.summary;
   }
 
   handleUpdateContact = () => {
     const { contact, socialNetwork, headline, summary, newCv } = this.state;
     const { user, editProfile } = this.props;
     editProfile();
-    auth.updateUser(contact, socialNetwork, user)
-      .then((data) => {
-      })
+    const newUser = {user: {...user, contact, socialNetwork}}
+    auth.updateUser(newUser.user)
+      this.props.setUser(newUser.user)
       newCv.headline = headline
       newCv.summary = summary
-      console.log('cvcvcvcvcvcvvc',newCv)
       cv.updateCv(newCv)
-
   }
 
   fetchUserInfo = () => {
