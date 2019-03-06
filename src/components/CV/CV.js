@@ -15,6 +15,8 @@ import { withAuth } from '../AuthProvider';
 class CV extends Component {
   render() {
     const { user, cv } = this.props;
+    const { isDisplayContent } = this.props;
+    console.log('DisplayContent',isDisplayContent)
     if (user === '') {
       return (
         <div className="cv-component-container">

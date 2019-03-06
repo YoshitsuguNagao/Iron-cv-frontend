@@ -50,9 +50,15 @@ class EditEdu extends Component {
     })
   }
 
-  handleTaskInput = (event) => {
+  handleTasksInput = (event) => {
     this.setState({
       education: {...this.state.education, tasks  : event.target.value},
+    })
+  }
+
+  handleCityInput = (event) => {
+    this.setState({
+      education: {...this.state.education, city: event.target.value},
     })
   }
 
@@ -69,16 +75,16 @@ class EditEdu extends Component {
   }
 
   render() {
-    const { title, name, startDate, endDate, description, tasks} = this.state.education;
+    const { title, name, startDate, endDate, description, city, tasks} = this.state.education;
     const { selectedTab,index } = this.props;
     return (
       <div className="content-container">
         <h3>{selectedTab}</h3>
         <div>
-          <input type="text" value={title} onChange={this.handlePositionInput} placeholder=" Position / Title" />
+          <input type="text" value={title} onChange={this.handlePositionInput} placeholder=" Study Program" />
         </div>
         <div>
-          <input type="text" value={name} onChange={this.handleCompanyInput} placeholder=" Company" />
+          <input type="text" value={name} onChange={this.handleCompanyInput} placeholder=" Institution / School" />
         </div>
         <div className="term-conteiner">
           <div>
@@ -90,14 +96,18 @@ class EditEdu extends Component {
             <p><input type="text" className="month-input"  value={endDate.month} onChange={this.handleEDMInput} placeholder="mm"/> / <input type="text" className="year-input"  value={endDate.year} onChange={this.handleEDYInput} placeholder="yyyy"/></p>
           </div>
         </div>
+        <div>
+          <input type="text" value={city} onChange={this.handleCityInput} placeholder=" City, Country" />
+        </div>
         <h4>Description</h4>
         <textarea type="text" value={description} onChange={this.handleDescriptionInput}/>
         <h4>Tasks/Responsibility</h4>
-        {
+        <textarea type="text" value={tasks} onChange={this.handleTasksInput}/>
+        {/* {
           tasks.map((task,index) => {
             return <input key={index} type="text" value={task} onChange={this.handleTaskInput}/>
           })
-        }
+        } */}
         <button onClick={() => {this.handleUpdate(index)}}>Save</button>
       </div>
     )

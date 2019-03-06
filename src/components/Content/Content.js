@@ -40,7 +40,7 @@ class Content extends Component {
     editSoftSkillIndex: '',
     hardSkills: [],
     editHardSkillIndex: '',
-    displayContent: {
+    isDisplayContent: {
       work:[],
       education:[],
       project:[]
@@ -79,33 +79,56 @@ class Content extends Component {
             let newWorkArr = [];
             let newEduArr = [];
             let newProjectArr = [];
+            const isDisplayContent = {
+              work:[],
+              education:[],
+              project:[],
+            };
             const displayContent = {
               work:[],
               education:[],
               project:[],
             };
+            console.log('ontents',contents)
             contents.forEach((content,index) => {
               if(content.contentType === 'work') {
                 newWorkArr = [...newWorkArr, content];
-                displayContent.work[newWorkArr.length-1] = false
-                if(this.props.cv.contentId.indexOf(content._id) >= 0)  displayContent.work[newWorkArr.length-1] = true
+                isDisplayContent.work[newWorkArr.length-1] = false
+                // if(this.props.cv.contentId[index] && this.props.cv.contentId[index].indexOf(content._id) >= 0) isDisplayContent.work[newWorkArr.length-1] = true
+                console.log('mmmaaaaa',this.props.cv.contentId[index])
+                if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) {
+                  isDisplayContent.work[newWorkArr.length-1] = true
+                  displayContent.work[newWorkArr.length-1] = content
+                  console.log('huhuhuh')
+                }
               } else if (content.contentType === 'education') {
                 newEduArr = [...newEduArr, content];
-                displayContent.education[newEduArr.length-1] = false
-                if(this.props.cv.contentId.indexOf(content._id) >= 0)  displayContent.education[newEduArr.length-1] = true
+                isDisplayContent.education[newEduArr.length-1] = false
+                // if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) isDisplayContent.education[newEduArr.length-1] = true
+                if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) {
+                  isDisplayContent.education[newEduArr.length-1] = true
+                  displayContent.education[newEduArr.length-1] = content
+                  console.log('hyhyhy')
+                }
               } else if (content.contentType === 'project') {
                 newProjectArr = [...newProjectArr, content];
-                displayContent.project[newProjectArr.length-1] = false
-                if(this.props.cv.contentId.indexOf(content._id) >= 0)  displayContent.project[newProjectArr.length-1] = true
+                isDisplayContent.project[newProjectArr.length-1] = false
+                // if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0)  isDisplayContent.project[newProjectArr.length-1] = true
+                if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) {
+                  isDisplayContent.project[newProjectArr.length-1] = true
+                  displayContent.project[newProjectArr.length-1] = content
+                  console.log('hohoho')
+                }
               }
             })
             this.setState({
               work: newWorkArr,
               education: newEduArr,
               project: newProjectArr,
-              displayContent: displayContent,
+              isDisplayContent: isDisplayContent,
+              // displayContent,
             })
-            console.log(displayContent)
+            this.props.setIsDisplayContent(isDisplayContent)
             this.props.setDisplayContent(displayContent)
           })
       })
@@ -116,7 +139,6 @@ class Content extends Component {
     if(editProfile) {
       return <EditProfile editProfile={this.handleEditProfile}/>
     } else {
-
       return <Profile editProfile={this.handleEditProfile} />
     }
   }
@@ -158,20 +180,28 @@ class Content extends Component {
   }
 
   handleDisplayWork = (index) => {
-    const { displayContent } = this.state;
-    displayContent.work[index] = !displayContent.work[index]
-    let newObj = displayContent
+    const { isDisplayContent } = this.state;
+    isDisplayContent.work[index] = !isDisplayContent.work[index]
+    let newObj = isDisplayContent
     this.setState({
-      displayContent: newObj,
+      isDisplayContent: newObj,
     })
   }
 
   getWork = () => {
-    const { work, editWorkIndex ,displayContent} = this.state;
-    console.log('ahahahaha',displayContent)
+    const { work, editWorkIndex, isDisplayContent} = this.state;
+    console.log('this get work',this.props.displayContent)
+    this.props.displayContent.work = [];
+    // this.props.setDisplayContent([])
     return (<div>
         {
           work.map((content,index) => {
+            if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content]
+            // console.log('hey',this.props.displayContent)
+            // if(this.props.isDisplayContent.work[index]) {
+            //   const newArr = [...this.props.displayContent.work,content]
+            //   this.props.setDisplayContent
+            // }
             if(editWorkIndex === index) {
               return <EditWork
                 contentType={'work'}
@@ -185,14 +215,40 @@ class Content extends Component {
                 key={index}
                 content={content}
                 index={index}
+                isUse={isDisplayContent.work[index]}
                 useContent={this.handleDisplayWork}
                 editContent={this.handleEditWork}
                 deleteContent={this.handleDeleteWork}/>
             }
-         })
+          })
         }
         <button onClick={this.handleCreateWork} ><i className="fas fa-plus-square"></i></button>
+        {this.handleUpdateDisplay()}
       </div>)
+  }
+
+  handleUpdateDisplay = () =>{
+    const newCv =this.props.cv
+    newCv.contentId = [];
+    console.log('haitteru')
+    if(this.props.displayContent.work) {
+      this.props.displayContent.work.map((item)=>{
+        newCv.contentId = [...newCv.contentId,item._id]
+        // newDisplayContact.work = [...newDisplayContact.work,
+      })
+    }
+    if(this.props.displayContent.education) {
+      this.props.displayContent.education.map((item)=>{
+        newCv.contentId = [...newCv.contentId,item._id]
+      })
+    }
+    if(this.props.displayContent.project) {
+      this.props.displayContent.project.map((item)=>{
+        newCv.contentId = [...newCv.contentId,item._id]
+      })
+    }
+    // this.props.setDisplayContent()
+    cv.updateCv(newCv)
   }
 
   //Education Component
@@ -232,19 +288,22 @@ class Content extends Component {
   }
 
   handleDisplayEdu = (index) => {
-    const { displayContent } = this.state;
-    displayContent.education[index] = !displayContent.education[index]
-    let newObj = displayContent
+    const { isDisplayContent } = this.state;
+    isDisplayContent.education[index] = !isDisplayContent.education[index]
+    let newObj = isDisplayContent
     this.setState({
-      displayContent: newObj,
+      isDisplayContent: newObj,
     })
   }
 
   getEdu = () => {
-    const { education, editEduIndex, displayContent } = this.state;
+    const { education, editEduIndex, isDisplayContent } = this.state;
+    this.props.displayContent.education = [];
     return (<div>
         {
           education.map((content,index) => {
+            // console.log('hay',this.props.displayContent)
+            if(this.props.isDisplayContent.education[index]) this.props.displayContent.education = [...this.props.displayContent.education,content]
             if(editEduIndex === index) {
               return <EditEdu
                 contentType={'education'}
@@ -258,6 +317,7 @@ class Content extends Component {
                 key={index}
                 content={content}
                 index={index}
+                isUse={isDisplayContent.education[index]}
                 useContent={this.handleDisplayEdu}
                 editContent={this.handleEditEdu}
                 deleteContent={this.handleDeleteEdu}/>
@@ -265,6 +325,7 @@ class Content extends Component {
          })
         }
         <button onClick={this.handleCreateEdu} ><i className="fas fa-plus-square"></i></button>
+        {this.handleUpdateDisplay()}
       </div>)
   }
 
@@ -305,19 +366,23 @@ class Content extends Component {
   }
 
   handleDisplayProject = (index) => {
-    const { displayContent } = this.state;
-    displayContent.project[index] = !displayContent.project[index]
-    let newObj = displayContent
+    const { isDisplayContent } = this.state;
+    isDisplayContent.project[index] = !isDisplayContent.project[index]
+    let newObj = isDisplayContent
     this.setState({
-      displayContent: newObj,
+      isDisplayContent: newObj,
     })
   }
 
   getProject = () => {
-    const { project, editProjectIndex } = this.state;
+    const { project, editProjectIndex, isDisplayContent } = this.state;
+    this.props.displayContent.project = [];
     return (<div>
         {
           project.map((content,index) => {
+            // console.log('kay',this.props.displayContent)
+
+            if(this.props.isDisplayContent.project[index]) this.props.displayContent.project = [...this.props.displayContent.project,content]
             if(editProjectIndex === index) {
               return <EditProject
                 contentType={'project'}
@@ -331,6 +396,7 @@ class Content extends Component {
                 key={index}
                 content={content}
                 index={index}
+                isUse={isDisplayContent.project[index]}
                 useContent={this.handleDisplayProject}
                 editContent={this.handleEditProject}
                 deleteContent={this.handleDeleteProject}/>
@@ -338,6 +404,7 @@ class Content extends Component {
          })
         }
         <button onClick={this.handleCreateProject} ><i className="fas fa-plus-square"></i></button>
+        {this.handleUpdateDisplay()}
       </div>)
   }
 
@@ -640,6 +707,7 @@ class Content extends Component {
   }
 
   render() {
+    console.log('render',)
     const { selectedTab } = this.props;
     if (selectedTab === 'profile') {
       return this.getProfile()

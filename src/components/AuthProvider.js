@@ -24,7 +24,9 @@ export const withAuth = () => (Comp) => {
               selectedTab={authStore.selectedTab} // add
               contact={authStore.contact}
               setContact={authStore.setContact}
+              isDisplayContent={authStore.isDisplayContent}
               displayContent={authStore.displayContent}
+              setIsDisplayContent={authStore.setIsDisplayContent}
               setDisplayContent={authStore.setDisplayContent}
               headline={authStore.headline}
               summary={authStore.summary}
@@ -62,7 +64,12 @@ export default class AuthProvider extends Component {
       address: '',
       phone: '',
     },
-    displayContent: {},
+    isDisplayContent: {},
+    displayContent: {
+      work:[],
+      education:[],
+      project:[],
+    },
     headline: '',
     summary: '',
     softSkill: [''],
@@ -151,6 +158,13 @@ export default class AuthProvider extends Component {
       contact,
     })
   }
+
+  setIsDisplayContent = (isDisplayContent) => {
+    this.setState({
+      isDisplayContent,
+    })
+  }
+
   setDisplayContent = (displayContent) => {
     this.setState({
       displayContent,
@@ -200,6 +214,7 @@ export default class AuthProvider extends Component {
             status,
             selectedTab,
             contact,
+            isDisplayContent,
             displayContent,
             headline,
             summary,
@@ -229,10 +244,12 @@ export default class AuthProvider extends Component {
                             setCv: this.setCv,
                             setContact: this.setContact,
                             setHeadlines: this.setHeadlines,
+                            setIsDisplayContent: this.setIsDisplayContent,
                             setDisplayContent: this.setDisplayContent,
                             setTab: this.setTab,
                             selectedTab,
                             contact,
+                            isDisplayContent,
                             displayContent,
                             headline,
                             summary,
