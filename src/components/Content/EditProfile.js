@@ -198,7 +198,9 @@ class EditProfile extends Component {
           <i className="fab fa-linkedin"></i>
           <input type="text" className="width-full" value={linkedin} onChange={this.handleLinkedinInput} placeholder="LinkedIn" />
         </div>
-        <button onClick={this.handleUpdateContact}><i className="fas fa-save"></i></button>
+        <div className="save-profile-btn">
+          <button onClick={this.handleUpdateContact}>Save</button>
+        </div>
       </div>
     )
   }

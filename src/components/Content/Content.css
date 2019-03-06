@@ -99,3 +99,20 @@
   display: flex;
   justify-content: space-between;
 }
+
+.add-profile-btn, .save-profile-btn {
+  margin-top: 5rem;
+}
+
+.add-profile-btn button, .save-profile-btn button {
+  color: white;
+  margin: 0 45%;
+  width: 5rem;
+  background-color: rgb(33, 107, 173);
+  border-radius: 5px;
+}
+
+.add-profile-btn button:hover, .save-profile-btn button:hover {
+  color: black;
+  background-color: rgb(227, 227, 227);
+}
