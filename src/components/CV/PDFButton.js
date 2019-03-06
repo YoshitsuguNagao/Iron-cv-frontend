@@ -18,7 +18,7 @@ class PDFButton extends Component {
   render () {
     return (
       <div>
-        <button onClick={this.printCV}>LOVE ME</button>
+        <button className="print-btn" onClick={this.printCV}><p>Print</p></button>
       </div>
     )
   }

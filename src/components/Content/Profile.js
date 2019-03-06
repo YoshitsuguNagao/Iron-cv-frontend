@@ -104,7 +104,7 @@ class Profile extends Component {
           <i className="fab fa-linkedin"></i>
           <p>{linkedin}</p>
         </div>
-        <button onClick={() => { editProfile() }}><i className="fas fa-edit"></i></button>
+        <button className="" onClick={() => { editProfile() }}><i className="fas fa-edit"></i></button>
       </article>
     )
   }

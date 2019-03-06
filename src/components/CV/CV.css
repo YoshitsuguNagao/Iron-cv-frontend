@@ -57,6 +57,10 @@ page[size="A5"][layout="landscape"] {
   }
 }
 
+.cv-title-text {
+  margin-left: 2rem;
+}
+
 .cv-title-article {
   padding: 1.5rem 2rem 0 2rem;
   display: flex;
@@ -74,6 +78,11 @@ page[size="A5"][layout="landscape"] {
   flex-wrap: wrap;
 }
 
+.cv-profile-article i {
+  margin-right: 1.3rem;
+  width: 5px;
+}
+
 .cv-profile-card {
   width: 50%;
 }
@@ -82,7 +91,7 @@ page[size="A5"][layout="landscape"] {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 50%;
+  width: 40%;
 }
 
 .text-skill {
@@ -91,5 +100,60 @@ page[size="A5"][layout="landscape"] {
   padding: 1px 2px;
   background-color: rgb(33, 107, 173);
   border-radius: 2px;
+}
+
+.text-interest {
+  color: black;
+  background-color: rgb(227, 227, 227);
+  margin: 2px;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.cv-body-title {
+  font-size: 1.1rem;
+  color: #00a2ff; 
+}
+
+.cv-text-view {
+  padding: 1.5rem 2rem;
+  /* width: 90%; */
+  border-right-style: solid;
+  border-right-color: rgb(227, 227, 227);
+}
+
+.hard-container, .soft-container, .languages-container, .interests-container {
+  margin-bottom: 2.5rem;
+}
+
+.single-language {
+  margin-bottom: 1rem;
+}
+.p-language {
+  font-style: italic;
+}
+
+.print-btn {
+  background-color: rgb(33, 107, 173);
+  position: fixed;
+  border-radius: 10px;
+  height: 4rem;
+  width: 5rem;
+  right: 52%;
+  top: 7rem;
+  z-index: 3;
+  -webkit-box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
+}
+
+.print-btn p {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+
+.secondary {
+  border-right-style: solid;
 }
 
