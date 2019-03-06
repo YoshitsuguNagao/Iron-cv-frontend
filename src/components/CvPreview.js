@@ -13,12 +13,10 @@ class CvPreview extends Component {
     //    cvs,
     //  })
     // })
-    console.log(this.props)
     this.props.deletecv(this.props.cv)
   }
   
   render() {
-    console.log(this.props)
     return (
       <div className="cv-preview-container">
         <h3>My resume</h3>

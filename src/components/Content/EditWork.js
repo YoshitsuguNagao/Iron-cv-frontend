@@ -57,7 +57,6 @@ class EditWork extends Component {
   }
 
   componentDidUpdate() {
-    console.log('im here',this.props)
     this.props.work.title = this.state.work.title;
     this.props.work.name = this.state.work.name;
     this.props.work.startDate = this.state.work.startDate;

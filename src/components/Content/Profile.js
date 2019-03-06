@@ -37,6 +37,7 @@ class Profile extends Component {
     })
   }
 
+
   fetchCvInfo = () => {
     const { cvId } = this.props.match.params;
     cv.getCv(cvId)
@@ -54,7 +55,7 @@ class Profile extends Component {
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchUserInfo();
     this.fetchCvInfo();
   }
@@ -63,7 +64,7 @@ class Profile extends Component {
     const { firstName, lastName, email, address, phone } = this.state.contact;
     const { github, medium, linkedin } = this.state.socialNetwork;
     const { editProfile } = this.props;
-    const { headline, summary } = this.state.newCv
+    const { headline, summary } = this.props.cv
     return (
       <article className="content-container">
         <div className="profile-card">
