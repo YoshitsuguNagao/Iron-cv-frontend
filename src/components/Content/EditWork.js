@@ -50,7 +50,7 @@ class EditWork extends Component {
     })
   }
 
-  handleTaskInput = (event) => {
+  handleTasksInput = (event) => {
     this.setState({
       work: {...this.state.work, tasks: event.target.value},
     })
@@ -62,6 +62,7 @@ class EditWork extends Component {
     this.props.work.startDate = this.state.work.startDate;
     this.props.work.endDate = this.state.work.endDate;
     this.props.work.description = this.state.work.description;
+    this.props.work.tasks = this.state.work.tasks;
   }
 
   handleUpdate = (index) => {
@@ -93,11 +94,13 @@ class EditWork extends Component {
         <h4>Description</h4>
         <textarea type="text" value={description} onChange={this.handleDescriptionInput}/>
         <h4>Tasks/Responsibility</h4>
-        {
+        <textarea type="text" value={tasks} onChange={this.handleTasksInput}/>
+
+        {/* {
           tasks.map((task,index) => {
             return <input key={index} type="text" value={task} onChange={this.handleTaskInput}/>
           })
-        }
+        } */}
         <button onClick={() => {this.handleUpdate(index)}}>Save</button>
       </div>
     )

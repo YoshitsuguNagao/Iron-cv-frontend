@@ -11,7 +11,7 @@ class Item extends Component {
     this.props.editContent(index)
   }
 
-  handleUse = (index) => {
+  handleDisplay = (index) => {
     this.props.useContent(index)
   }
 
@@ -24,14 +24,15 @@ class Item extends Component {
         <p>{content.description}</p>
         <p>{`${content.startDate.month}/${content.startDate.year} ~ ${content.endDate.month}/${content.endDate.year}`}</p>
         <p>{content.city}</p>
-        <ul>
+        <p>{content.tasks}</p>
+        {/* <ul>
           {
             content.tasks.map((task,index) => {
             return (<li key={index}>{task}</li>)
             })
           }
-        </ul>
-        {isUse ? <button onClick={() => { this.handleUse(index) }}>Use</button>: <button onClick={() => { this.handleUse(index) }}>not Use</button>}
+        </ul> */}
+        {isUse ? <button onClick={() => { this.handleDisplay(index) }}>Use</button>: <button onClick={() => { this.handleDisplay(index) }}>not Use</button>}
         <button onClick={() => { this.handleEdit(index) }}>edit</button>
         <button onClick={() => { this.handleDelete(index)} }>delete</button>
       </div>

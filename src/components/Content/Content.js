@@ -10,6 +10,7 @@ import EditProject from './EditProject';
 import EditListItem from './EditListItem';
 import EditLanguage from './EditLanguage';
 
+import cv from '../../lib/cv-service';
 import content from '../../lib/content-service';
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
@@ -23,7 +24,6 @@ class Content extends Component {
     Tasks: 'some tasks',
     editProfile: false,
     work: [],
-    cvWork: [],
     editWorkIndex: '',
     newEditWork: false,
     education: [],
@@ -40,6 +40,11 @@ class Content extends Component {
     editSoftSkillIndex: '',
     hardSkills: [],
     editHardSkillIndex: '',
+    displayContent: {
+      work:[],
+      education:[],
+      project:[]
+    },
   }
 
   handleTabTitle = () => {
@@ -64,25 +69,45 @@ class Content extends Component {
 
   fetchContentInfo = () => {
     const { cvId } = this.props.match.params;
-    content.getContent(cvId)
-      .then(contents => {
-        let newWorkArr = [];
-        let newEduArr = [];
-        let newProjectArr = [];
-        contents.forEach((content) => {
-          if(content.contentType === 'work') {
-            newWorkArr = [...newWorkArr, content];
-          } else if (content.contentType === 'education') {
-            newEduArr = [...newEduArr, content];
-          } else if (content.contentType === 'project') {
-            newProjectArr = [...newProjectArr, content];
-          }
-        })
-        this.setState({
-          work: newWorkArr,
-          education: newEduArr,
-          project: newProjectArr,
-        })
+    cv.getCv(cvId)
+      .then(cv => {
+        this.props.setCv(cv)
+      })
+      .then(() => {
+        content.getContent(cvId)
+          .then(contents => {
+            let newWorkArr = [];
+            let newEduArr = [];
+            let newProjectArr = [];
+            const displayContent = {
+              work:[],
+              education:[],
+              project:[],
+            };
+            contents.forEach((content,index) => {
+              if(content.contentType === 'work') {
+                newWorkArr = [...newWorkArr, content];
+                displayContent.work[newWorkArr.length-1] = false
+                if(this.props.cv.contentId.indexOf(content._id) >= 0)  displayContent.work[newWorkArr.length-1] = true
+              } else if (content.contentType === 'education') {
+                newEduArr = [...newEduArr, content];
+                displayContent.education[newEduArr.length-1] = false
+                if(this.props.cv.contentId.indexOf(content._id) >= 0)  displayContent.education[newEduArr.length-1] = true
+              } else if (content.contentType === 'project') {
+                newProjectArr = [...newProjectArr, content];
+                displayContent.project[newProjectArr.length-1] = false
+                if(this.props.cv.contentId.indexOf(content._id) >= 0)  displayContent.project[newProjectArr.length-1] = true
+              }
+            })
+            this.setState({
+              work: newWorkArr,
+              education: newEduArr,
+              project: newProjectArr,
+              displayContent: displayContent,
+            })
+            console.log(displayContent)
+            this.props.setDisplayContent(displayContent)
+          })
       })
   }
 
@@ -132,13 +157,21 @@ class Content extends Component {
       })
   }
 
+  handleDisplayWork = (index) => {
+    const { displayContent } = this.state;
+    displayContent.work[index] = !displayContent.work[index]
+    let newObj = displayContent
+    this.setState({
+      displayContent: newObj,
+    })
+  }
+
   getWork = () => {
-    const { work, editWorkIndex } = this.state;
-    
+    const { work, editWorkIndex ,displayContent} = this.state;
+    console.log('ahahahaha',displayContent)
     return (<div>
         {
           work.map((content,index) => {
-            // if()
             if(editWorkIndex === index) {
               return <EditWork
                 contentType={'work'}
@@ -152,7 +185,7 @@ class Content extends Component {
                 key={index}
                 content={content}
                 index={index}
-                useContent={this.handleUseWork}
+                useContent={this.handleDisplayWork}
                 editContent={this.handleEditWork}
                 deleteContent={this.handleDeleteWork}/>
             }
@@ -198,8 +231,17 @@ class Content extends Component {
       })
   }
 
+  handleDisplayEdu = (index) => {
+    const { displayContent } = this.state;
+    displayContent.education[index] = !displayContent.education[index]
+    let newObj = displayContent
+    this.setState({
+      displayContent: newObj,
+    })
+  }
+
   getEdu = () => {
-    const { education, editEduIndex } = this.state;
+    const { education, editEduIndex, displayContent } = this.state;
     return (<div>
         {
           education.map((content,index) => {
@@ -216,6 +258,7 @@ class Content extends Component {
                 key={index}
                 content={content}
                 index={index}
+                useContent={this.handleDisplayEdu}
                 editContent={this.handleEditEdu}
                 deleteContent={this.handleDeleteEdu}/>
             }
@@ -261,6 +304,15 @@ class Content extends Component {
       })
   }
 
+  handleDisplayProject = (index) => {
+    const { displayContent } = this.state;
+    displayContent.project[index] = !displayContent.project[index]
+    let newObj = displayContent
+    this.setState({
+      displayContent: newObj,
+    })
+  }
+
   getProject = () => {
     const { project, editProjectIndex } = this.state;
     return (<div>
@@ -279,6 +331,7 @@ class Content extends Component {
                 key={index}
                 content={content}
                 index={index}
+                useContent={this.handleDisplayProject}
                 editContent={this.handleEditProject}
                 deleteContent={this.handleDeleteProject}/>
             }
@@ -582,8 +635,8 @@ class Content extends Component {
   }
 
   componentDidMount() {
-    this.fetchContentInfo();
-    this.fetchUserInfo();
+    this.fetchContentInfo()
+    this.fetchUserInfo()
   }
 
   render() {

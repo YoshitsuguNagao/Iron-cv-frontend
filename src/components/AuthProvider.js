@@ -24,6 +24,8 @@ export const withAuth = () => (Comp) => {
               selectedTab={authStore.selectedTab} // add
               contact={authStore.contact}
               setContact={authStore.setContact}
+              displayContent={authStore.displayContent}
+              setDisplayContent={authStore.setDisplayContent}
               headline={authStore.headline}
               summary={authStore.summary}
               setHeadlines={authStore.setHeadlines}
@@ -33,8 +35,11 @@ export const withAuth = () => (Comp) => {
               hardSkill={authStore.hardSkill}
               socialNetwork={authStore.socialNetwork} // add
               work={authStore.work} // add
+              workContent={authStore.workContent}
               education={authStore.education} // add
+              educationContent={authStore.educationContent}
               project={authStore.project} // add
+              projectContent={authStore.projectContent}
               {...this.props} />
           }}
         </Consumer>
@@ -57,6 +62,7 @@ export default class AuthProvider extends Component {
       address: '',
       phone: '',
     },
+    displayContent: {},
     headline: '',
     summary: '',
     softSkill: [''],
@@ -71,6 +77,9 @@ export default class AuthProvider extends Component {
       medium: '',
       linkedin: '',
     },
+    workContent: [],
+    educationContent: [],
+    projectContent: [],
     work: {
       contentType: 'work',
       title: '',
@@ -142,6 +151,11 @@ export default class AuthProvider extends Component {
       contact,
     })
   }
+  setDisplayContent = (displayContent) => {
+    this.setState({
+      displayContent,
+    })
+  }
 
   setHeadlines = (headline,summary) => {
     this.setState({
@@ -186,6 +200,7 @@ export default class AuthProvider extends Component {
             status,
             selectedTab,
             contact,
+            displayContent,
             headline,
             summary,
             interest,
@@ -193,6 +208,9 @@ export default class AuthProvider extends Component {
             softSkill,
             hardSkill,
             socialNetwork,
+            workContent,
+            educationContent,
+            projectContent,
             work,
             education,
             project
@@ -211,9 +229,11 @@ export default class AuthProvider extends Component {
                             setCv: this.setCv,
                             setContact: this.setContact,
                             setHeadlines: this.setHeadlines,
+                            setDisplayContent: this.setDisplayContent,
                             setTab: this.setTab,
                             selectedTab,
                             contact,
+                            displayContent,
                             headline,
                             summary,
                             interest,
@@ -221,6 +241,9 @@ export default class AuthProvider extends Component {
                             softSkill,
                             hardSkill,
                             socialNetwork,
+                            workContent,
+                            educationContent,
+                            projectContent,
                             work,
                             education,
                             project
