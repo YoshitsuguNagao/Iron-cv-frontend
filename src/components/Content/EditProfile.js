@@ -29,12 +29,16 @@ class EditProfile extends Component {
   handleHeadlineInput = (event) => {
     this.setState({
       headline: event.target.value,
+    },() => {
+      this.props.setHeadlines(this.props.headline,this.props.summary)
     })
   }
 
   handleSummaryInput = (event) => {
     this.setState({
       summary: event.target.value,
+    },() => {
+      this.props.setHeadlines(this.state.headline,this.state.summary)
     })
   }
 
@@ -91,10 +95,11 @@ class EditProfile extends Component {
     editProfile();
     const newUser = {user: {...user, contact, socialNetwork}}
     auth.updateUser(newUser.user)
-      this.props.setUser(newUser.user)
-      newCv.headline = headline
-      newCv.summary = summary
-      cv.updateCv(newCv)
+    this.props.setUser(newUser.user)
+    newCv.headline = headline
+    newCv.summary = summary
+    cv.updateCv(newCv)
+    this.props.setCv(newCv)
   }
 
   fetchUserInfo = () => {
@@ -145,7 +150,7 @@ class EditProfile extends Component {
     })
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchUserInfo();
     this.fetchCvInfo();
   }

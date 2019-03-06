@@ -31,14 +31,12 @@ class Auth {
   }
 
   updateUser(user) {
-    console.log('update user', user)
     return this.auth.put(`/auth/update`, {user})
       .then(({ data }) => data);
   }
 
   getUser() {
     return this.auth.get(`/auth`)
-      // .then(( data ) => {console.log('get user',data)});
       .then(({ data }) => data);
   }
 }

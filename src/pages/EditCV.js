@@ -16,14 +16,12 @@ class EditCV extends Component {
         this.props.setCv(cv);
       })
       .then(()=> {
-        console.log('loolololololo',this.props)
       })
   }
   componentDidMount(){
     this.fetchCV();
   }
   render() {
-    console.log('edit cv', this.props.user)
     return (
       <div className="edit-cv-container">
         <CV />

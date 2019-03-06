@@ -108,7 +108,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log('hajime no hajime',this.props.user)
     return (
       <div className="home-container">
         <button className="add-btn" onClick={this.handleCreateCV}><i className="fas fa-plus"></i></button>

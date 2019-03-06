@@ -31,7 +31,6 @@ class Content {
   }
 
   updateContent(content) {
-    console.log('edit-service', content)
     return this.content.put(`/edit/${content._id}`, content)
     .then(({ data }) => {
       return data;
