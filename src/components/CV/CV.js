@@ -5,13 +5,14 @@ import auth from '../../lib/auth-service';
 import content from '../../lib/content-service';
 import CvTitle from './CvTitle';
 import CvProfile from './CvProfile';
+import CvSkills from './CvSkills';
 import PDFButton from './PDFButton';
 import { withAuth } from '../AuthProvider';
 
 
 class CV extends Component {
   render() {
-    const { user } = this.props;
+    const { user, cv } = this.props;
     if (user === '') {
       return (
         <div className="cv-component-container">
@@ -22,11 +23,12 @@ class CV extends Component {
       )
     } else {
       return (
-        <div className="cv-component-container">
+      <div className="cv-component-container">
           <PDFButton />
         <div className="cv-view">
-         <CvTitle user={user}/>
+         <CvTitle user={user} cv={cv}/>
          <CvProfile user={user}/>
+         <CvSkills cv={cv} />
         </div>
       </div>
     )
