@@ -45,6 +45,11 @@ class Content extends Component {
       education:[],
       project:[]
     },
+    displayContent: {
+      work:[],
+      education:[],
+      project:[]
+    },
   }
 
   handleTabTitle = () => {
@@ -95,29 +100,25 @@ class Content extends Component {
                 newWorkArr = [...newWorkArr, content];
                 isDisplayContent.work[newWorkArr.length-1] = false
                 // if(this.props.cv.contentId[index] && this.props.cv.contentId[index].indexOf(content._id) >= 0) isDisplayContent.work[newWorkArr.length-1] = true
-                console.log('mmmaaaaa',this.props.cv.contentId[index])
-                if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) {
+                if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
                   isDisplayContent.work[newWorkArr.length-1] = true
                   displayContent.work[newWorkArr.length-1] = content
-                  console.log('huhuhuh')
                 }
               } else if (content.contentType === 'education') {
                 newEduArr = [...newEduArr, content];
                 isDisplayContent.education[newEduArr.length-1] = false
                 // if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) isDisplayContent.education[newEduArr.length-1] = true
-                if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) {
+                if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
                   isDisplayContent.education[newEduArr.length-1] = true
                   displayContent.education[newEduArr.length-1] = content
-                  console.log('hyhyhy')
                 }
               } else if (content.contentType === 'project') {
                 newProjectArr = [...newProjectArr, content];
                 isDisplayContent.project[newProjectArr.length-1] = false
                 // if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0)  isDisplayContent.project[newProjectArr.length-1] = true
-                if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) {
+                if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
                   isDisplayContent.project[newProjectArr.length-1] = true
                   displayContent.project[newProjectArr.length-1] = content
-                  console.log('hohoho')
                 }
               }
             })
@@ -126,10 +127,12 @@ class Content extends Component {
               education: newEduArr,
               project: newProjectArr,
               isDisplayContent: isDisplayContent,
-              // displayContent,
+              displayContent,
             })
             this.props.setIsDisplayContent(isDisplayContent)
             this.props.setDisplayContent(displayContent)
+            console.log('hohoho')
+            console.log(this.state.displayContent)
           })
       })
   }
@@ -190,14 +193,16 @@ class Content extends Component {
 
   getWork = () => {
     const { work, editWorkIndex, isDisplayContent} = this.state;
-    console.log('this get work',this.props.displayContent)
+    console.log('this get work',this.props.isDisplayContent.work)
     this.props.displayContent.work = [];
+    // debugger
     // this.props.setDisplayContent([])
     return (<div>
         {
           work.map((content,index) => {
             if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content]
-            // console.log('hey',this.props.displayContent)
+            console.log('hey',this.props.displayContent)
+            // debugger
             // if(this.props.isDisplayContent.work[index]) {
             //   const newArr = [...this.props.displayContent.work,content]
             //   this.props.setDisplayContent
@@ -224,31 +229,40 @@ class Content extends Component {
         }
         <button onClick={this.handleCreateWork} ><i className="fas fa-plus-square"></i></button>
         {this.handleUpdateDisplay()}
+          {/* {this.props.setDisplayContent(this.props.displayContent)
+          } */}
       </div>)
   }
 
   handleUpdateDisplay = () =>{
-    const newCv =this.props.cv
-    newCv.contentId = [];
-    console.log('haitteru')
-    if(this.props.displayContent.work) {
-      this.props.displayContent.work.map((item)=>{
-        newCv.contentId = [...newCv.contentId,item._id]
-        // newDisplayContact.work = [...newDisplayContact.work,
-      })
-    }
-    if(this.props.displayContent.education) {
-      this.props.displayContent.education.map((item)=>{
-        newCv.contentId = [...newCv.contentId,item._id]
-      })
-    }
-    if(this.props.displayContent.project) {
-      this.props.displayContent.project.map((item)=>{
-        newCv.contentId = [...newCv.contentId,item._id]
-      })
-    }
-    // this.props.setDisplayContent()
-    cv.updateCv(newCv)
+    // .then(()=>{
+      const newCv =this.props.cv
+      newCv.contentId = [];
+      console.log('haitteru')
+      if(this.props.displayContent.work) {
+        this.props.displayContent.work.map((item)=>{
+          newCv.contentId = [...newCv.contentId,item._id]
+          // newDisplayContact.work = [...newDisplayContact.work,
+        })
+      }
+      if(this.props.displayContent.education) {
+        this.props.displayContent.education.map((item)=>{
+          newCv.contentId = [...newCv.contentId,item._id]
+        })
+      }
+      if(this.props.displayContent.project) {
+        this.props.displayContent.project.map((item)=>{
+          newCv.contentId = [...newCv.contentId,item._id]
+        })
+      }
+      cv.updateCv(newCv)
+
+    // })
+    // this.handleAdd()
+  }
+
+  handleAdd = () => {
+      // this.props.setDisplayContent(this.props.displayContent)
   }
 
   //Education Component
@@ -704,10 +718,18 @@ class Content extends Component {
   componentDidMount() {
     this.fetchContentInfo()
     this.fetchUserInfo()
+    const newObj = this.props.displayContent
+    this.setState({
+      displayContent: newObj
+    })
+    this.props.setDisplayContent(this.state.displayContent)
+
   }
 
   render() {
     console.log('render',)
+      // this.props.setDisplayContent(this.props.displayContent)
+
     const { selectedTab } = this.props;
     if (selectedTab === 'profile') {
       return this.getProfile()
