@@ -23,8 +23,10 @@ export const withAuth = () => (Comp) => {
               setTab={authStore.setTab}
               selectedTab={authStore.selectedTab} // add
               contact={authStore.contact}
+              setContact={authStore.setContact}
               headline={authStore.headline}
               summary={authStore.summary}
+              setHeadlines={authStore.setHeadlines}
               interest={authStore.interest}
               languages={authStore.languages}
               softSkill={authStore.softSkill}
@@ -135,6 +137,19 @@ export default class AuthProvider extends Component {
     })
   }
 
+  setContact = (contact) => {
+    this.setState({
+      contact,
+    })
+  }
+
+  setHeadlines = (headline,summary) => {
+    this.setState({
+      headline,
+      summary
+    })
+  }
+
   logoutUser = () =>{
     auth.logout()
       .then(() => {
@@ -194,6 +209,8 @@ export default class AuthProvider extends Component {
                             logout: this.logoutUser,
                             setUser: this.setUser,
                             setCv: this.setCv,
+                            setContact: this.setContact,
+                            setHeadlines: this.setHeadlines,
                             setTab: this.setTab,
                             selectedTab,
                             contact,

@@ -510,7 +510,6 @@ class Content extends Component {
 
   getSkill = () => {
     const { hardSkills, editHardSkillIndex, softSkills, editSoftSkillIndex } = this.state;
-    console.log('object')
     return (
       <article className="skill-list">
         <div className="soft-skill-container">
