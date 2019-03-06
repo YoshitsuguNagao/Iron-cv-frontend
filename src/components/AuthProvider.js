@@ -19,6 +19,7 @@ export const withAuth = () => (Comp) => {
               cv={authStore.cv}
               logout={authStore.logout}
               setUser={authStore.setUser}
+              setCv={authStore.setCv}
               setTab={authStore.setTab}
               selectedTab={authStore.selectedTab} // add
               contact={authStore.contact}

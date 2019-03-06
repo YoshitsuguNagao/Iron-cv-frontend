@@ -13,10 +13,10 @@ class EditCV extends Component {
     const { cvId } = this.props.match.params
     cv.getCv(cvId)
       .then((cv) => {
-        console.log('loolololololo',this.props)
-        // this.props.setCv(cv);
+        this.props.setCv(cv);
       })
       .then(()=> {
+        console.log('loolololololo',this.props)
       })
   }
   componentDidMount(){
