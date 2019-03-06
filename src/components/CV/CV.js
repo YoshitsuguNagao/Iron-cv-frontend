@@ -6,6 +6,8 @@ import content from '../../lib/content-service';
 import CvTitle from './CvTitle';
 import CvProfile from './CvProfile';
 import CvSkills from './CvSkills';
+import CvLanguages from './CvLanguages';
+import CvInterests from './CvInterests';
 import PDFButton from './PDFButton';
 import { withAuth } from '../AuthProvider';
 
@@ -28,7 +30,9 @@ class CV extends Component {
         <div className="cv-view">
          <CvTitle user={user} cv={cv}/>
          <CvProfile user={user}/>
-         <CvSkills cv={cv} />
+         <CvSkills user={user} />
+         <CvLanguages user={user} />
+         <CvInterests user={user} />
         </div>
       </div>
     )
