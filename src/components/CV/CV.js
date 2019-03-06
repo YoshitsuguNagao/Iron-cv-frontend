@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './CV.css';
-import cv from '../../lib/cv-service';
-import auth from '../../lib/auth-service';
-import content from '../../lib/content-service';
 import CvTitle from './CvTitle';
 import CvProfile from './CvProfile';
 import CvSkills from './CvSkills';
@@ -13,6 +10,13 @@ import { withAuth } from '../AuthProvider';
 
 
 class CV extends Component {
+componentDidUpdate() {
+  const { isDisplayContent,displayContent } = this.props;
+  // console.log('DisplayContent',isDisplayContent)
+  console.log('DisplayContent',displayContent)
+
+}
+
   render() {
     const { user, cv } = this.props;
     if (user === '') {
@@ -35,6 +39,7 @@ class CV extends Component {
             <CvSkills user={user} />
             <CvLanguages user={user} />
             <CvInterests user={user} />
+            {/* {displayContent.work} */}
           </div>
          </div>
         </div>

@@ -40,6 +40,7 @@ class Cv {
   updateCv(cv) {
     return this.cv.put(`/cv/${cv._id}`, cv)
     .then(({ data }) => {
+      console.log('dsdadadgiag',data)
       return data;
     })
   }

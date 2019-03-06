@@ -15,8 +15,6 @@ class EditCV extends Component {
       .then((cv) => {
         this.props.setCv(cv);
       })
-      .then(()=> {
-      })
   }
   componentDidMount(){
     this.fetchCV();

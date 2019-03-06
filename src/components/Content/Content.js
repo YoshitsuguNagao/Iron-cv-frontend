@@ -132,7 +132,7 @@ class Content extends Component {
             this.props.setIsDisplayContent(isDisplayContent)
             this.props.setDisplayContent(displayContent)
             console.log('hohoho')
-            console.log(this.state.displayContent)
+            console.log(this.state.isDisplayContent)
           })
       })
   }
@@ -183,12 +183,15 @@ class Content extends Component {
   }
 
   handleDisplayWork = (index) => {
+    console.log('objectjjjjjjj')
     const { isDisplayContent } = this.state;
     isDisplayContent.work[index] = !isDisplayContent.work[index]
     let newObj = isDisplayContent
     this.setState({
       isDisplayContent: newObj,
     })
+        this.props.setCv(this.props.cv)
+
   }
 
   getWork = () => {
@@ -256,13 +259,18 @@ class Content extends Component {
         })
       }
       cv.updateCv(newCv)
-
+      // .then((data) => {
+      //   this.props.setCv(data.cv)
+      // })
+      // console.log('object')
+      // this.props.setDisplayContent(this.state.displayContent)
+      // this.props.displayContent.work = this.state.displayContent.work
     // })
     // this.handleAdd()
   }
 
   handleAdd = () => {
-      // this.props.setDisplayContent(this.props.displayContent)
+      // 
   }
 
   //Education Component
@@ -308,6 +316,8 @@ class Content extends Component {
     this.setState({
       isDisplayContent: newObj,
     })
+    this.props.setCv(this.props.cv)
+
   }
 
   getEdu = () => {
@@ -386,6 +396,8 @@ class Content extends Component {
     this.setState({
       isDisplayContent: newObj,
     })
+    this.props.setCv(this.props.cv)
+
   }
 
   getProject = () => {
@@ -720,15 +732,14 @@ class Content extends Component {
     this.fetchUserInfo()
     const newObj = this.props.displayContent
     this.setState({
-      displayContent: newObj
+      displayContent: this.props.displayContent
     })
     this.props.setDisplayContent(this.state.displayContent)
-
+     console.log('irukai?',this.props)
   }
 
   render() {
     console.log('render',)
-      // this.props.setDisplayContent(this.props.displayContent)
 
     const { selectedTab } = this.props;
     if (selectedTab === 'profile') {
