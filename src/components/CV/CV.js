@@ -30,9 +30,13 @@ class CV extends Component {
         <div className="cv-view">
          <CvTitle user={user} cv={cv}/>
          <CvProfile user={user}/>
-         <CvSkills user={user} />
-         <CvLanguages user={user} />
-         <CvInterests user={user} />
+         <div className="cv-text-view">
+          <div className="secondary">
+            <CvSkills user={user} />
+            <CvLanguages user={user} />
+            <CvInterests user={user} />
+          </div>
+         </div>
         </div>
       </div>
     )

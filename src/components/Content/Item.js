@@ -32,9 +32,9 @@ class Item extends Component {
             })
           }
         </ul> */}
-        {isUse ? <button onClick={() => { this.handleDisplay(index) }}>Use</button>: <button onClick={() => { this.handleDisplay(index) }}>not Use</button>}
-        <button onClick={() => { this.handleEdit(index) }}>edit</button>
-        <button onClick={() => { this.handleDelete(index)} }>delete</button>
+        {isUse ? <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Use</button>: <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>not Use</button>}
+        <button className="ed-btn" onClick={() => { this.handleEdit(index) }}>edit</button>
+        <button className="del-btn" onClick={() => { this.handleDelete(index)} }>delete</button>
       </div>
     )
   }

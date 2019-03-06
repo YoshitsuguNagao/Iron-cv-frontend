@@ -99,3 +99,42 @@
   display: flex;
   justify-content: space-between;
 }
+
+.add-profile-btn, .save-profile-btn {
+  margin-top: 5rem;
+}
+
+.add-profile-btn button, .save-profile-btn button {
+  color: white;
+  margin: 0 45%;
+  width: 5rem;
+  background-color: rgb(33, 107, 173);
+  border-radius: 5px;
+}
+
+.add-profile-btn button:hover, .save-profile-btn button:hover {
+  color: black;
+  background-color: rgb(227, 227, 227);
+}
+
+.using-btn, .ed-btn, .del-btn {
+  margin-right: 1rem;
+  color: white;
+  background-color: rgb(33, 107, 173);
+  border-radius: 5px;
+  width: 5rem;
+}
+
+.using-btn:hover, .ed-btn:hover, .del-btn:hover {
+  color: black;
+  background-color: rgb(227, 227, 227);
+}
+
+.content-item-conteiner {
+  max-width: 90vw;
+  margin: 1rem 1rem;
+  padding: 1.5rem 2rem;
+  -webkit-box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
+}
