@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withAuth } from '../AuthProvider';
 
 
-class EditInterest extends Component {
+class EditListItem extends Component {
   state = {
     editInput: this.props.listContent,
   }
@@ -55,4 +55,4 @@ class EditInterest extends Component {
   }
 }
 
-export default withAuth()(EditInterest)
+export default withAuth()(EditListItem)

@@ -16,6 +16,7 @@ export const withAuth = () => (Comp) => {
             return <Comp
               isLogged={authStore.isLogged}
               user={authStore.user}
+              cv={authStore.cv}
               logout={authStore.logout}
               setUser={authStore.setUser}
               setTab={authStore.setTab}
@@ -43,6 +44,7 @@ export default class AuthProvider extends Component {
   state = {
     isLogged: false,
     user: {},
+    cv: {},
     status: 'loading',
     selectedTab: 'profile', // add
     contact: {
@@ -126,6 +128,12 @@ export default class AuthProvider extends Component {
     })
   }
 
+  setCv = (cv) => {
+    this.setState({
+      cv,
+    })
+  }
+
   logoutUser = () =>{
     auth.logout()
       .then(() => {
@@ -158,6 +166,7 @@ export default class AuthProvider extends Component {
   render() {
     const { isLogged,
             user,
+            cv,
             status,
             selectedTab,
             contact,
@@ -180,8 +189,10 @@ export default class AuthProvider extends Component {
         return (
           <Provider value={{isLogged,
                             user,
+                            cv,
                             logout: this.logoutUser,
                             setUser: this.setUser,
+                            setCv: this.setCv,
                             setTab: this.setTab,
                             selectedTab,
                             contact,

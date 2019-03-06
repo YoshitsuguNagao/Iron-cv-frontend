@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 class CvTitle extends Component {
   render() {
     const { firstName, lastName, email, address, phone } =this.props.user.contact;
+    // const { firstName, lastName } =this.props.user.contact;
     return (
       <article className="cv-title-article">
         <img src={require("../../images/logo.png")} alt="profile"/>

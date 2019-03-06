@@ -156,40 +156,42 @@ class EditProfile extends Component {
     const { headline, summary } = this.state;
     return (
       <div className="content-container">
-        <div className="profile-card">
+        <div className="edit-profile-card">
           <i className="fas fa-user"></i>
-          <div className="profile-card-name">
-            <input type="text" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
-            <input type="text" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
+          <div className="edit-profile-card-name width-full">
+            <input type="text" className="width-half" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
+            <input type="text" className="width-half" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
           </div>
         </div>
-        <div className="profile-card">
-          <input type="text" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
+        <div className="edit-profile-card headline-card">
+          <input type="text" className="width-full" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
         </div>
-        <textarea type="text" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
-        <div className="profile-card">
+        <div className="edit-profile-card-textarea headline-card">
+          <textarea type="text" className="width-full" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
+        </div>
+        <div className="edit-profile-card">
           <i className="fas fa-envelope"></i>
-          <input type="email" value={email} onChange={this.handleEmailInput} placeholder="Email" />
+          <input type="email" className="width-full" value={email} onChange={this.handleEmailInput} placeholder="Email" />
         </div>
-        <div className="profile-card">
+        <div className="edit-profile-card">
           <i className="fas fa-map-marker-alt"></i>
-          <input type="text" value={address} onChange={this.handleAddressInput} placeholder="Address" />
+          <input type="text" className="width-full" value={address} onChange={this.handleAddressInput} placeholder="Address" />
         </div>
-        <div className="profile-card">
+        <div className="edit-profile-card">
           <i className="fas fa-mobile-alt"></i>
-          <input type="text" value={phone} onChange={this.handlePhoneInput} placeholder="Phone Number" />
+          <input type="text" className="width-full" value={phone} onChange={this.handlePhoneInput} placeholder="Phone Number" />
         </div>
-        <div className="profile-card">
+        <div className="edit-profile-card">
           <i className="fab fa-github-square"></i>
-          <input type="text" value={github} onChange={this.handleGithubInput} placeholder="Github" />
+          <input type="text" className="width-full" value={github} onChange={this.handleGithubInput} placeholder="Github" />
         </div>
-        <div className="profile-card">
+        <div className="edit-profile-card">
           <i className="fab fa-medium"></i>
-          <input type="text" value={medium} onChange={this.handleMediumInput} placeholder="Medium" />
+          <input type="text" className="width-full" value={medium} onChange={this.handleMediumInput} placeholder="Medium" />
         </div>
-        <div className="profile-card">
+        <div className="edit-profile-card">
           <i className="fab fa-linkedin"></i>
-          <input type="text" value={linkedin} onChange={this.handleLinkedinInput} placeholder="LinkedIn" />
+          <input type="text" className="width-full" value={linkedin} onChange={this.handleLinkedinInput} placeholder="LinkedIn" />
         </div>
         <button onClick={this.handleUpdateContact}><i className="fas fa-save"></i></button>
       </div>

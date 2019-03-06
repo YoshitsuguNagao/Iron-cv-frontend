@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Description from '../Description';
 import Profile from './Profile';
 import EditProfile from './EditProfile';
 import Item from './Item';
@@ -8,7 +7,7 @@ import ListItem from './ListItem';
 import EditWork from './EditWork';
 import EditEdu from './EditEdu';
 import EditProject from './EditProject';
-import EditInterest from './EditInterest';
+import EditListItem from './EditListItem';
 import EditLanguage from './EditLanguage';
 
 import content from '../../lib/content-service';
@@ -24,6 +23,7 @@ class Content extends Component {
     Tasks: 'some tasks',
     editProfile: false,
     work: [],
+    cvWork: [],
     editWorkIndex: '',
     newEditWork: false,
     education: [],
@@ -134,9 +134,11 @@ class Content extends Component {
 
   getWork = () => {
     const { work, editWorkIndex } = this.state;
+    
     return (<div>
         {
           work.map((content,index) => {
+            // if()
             if(editWorkIndex === index) {
               return <EditWork
                 contentType={'work'}
@@ -150,6 +152,7 @@ class Content extends Component {
                 key={index}
                 content={content}
                 index={index}
+                useContent={this.handleUseWork}
                 editContent={this.handleEditWork}
                 deleteContent={this.handleDeleteWork}/>
             }
@@ -332,7 +335,7 @@ class Content extends Component {
         {
           interests.map((interest,index) => {
             if (editInterestIndex === index) {
-              return <EditInterest
+              return <EditListItem
                 itemType='interest'
                 key={index}
                 index={index}
@@ -515,7 +518,7 @@ class Content extends Component {
           {
             softSkills.map((softSkill,index) => {
               if (editSoftSkillIndex === index) {
-                return <EditInterest
+                return <EditListItem
                   itemType='softSkill'
                   key={index}
                   index={index}
@@ -541,7 +544,7 @@ class Content extends Component {
           {
             hardSkills.map((hardSkill,index) => {
               if (editHardSkillIndex === index) {
-                return <EditInterest
+                return <EditListItem
                   itemType='hardSkill'
                   key={index}
                   index={index}

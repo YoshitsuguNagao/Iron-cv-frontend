@@ -75,8 +75,10 @@ class Profile extends Component {
             <p>{lastName}</p>
           </div>
         </div>
-        <p>{headline}</p>
-        <p>{summary}</p>
+        <div >
+          <p>{headline}</p>
+          <p>{summary}</p>
+        </div>
         <div className="profile-card">
           <i className="fas fa-envelope"></i>
           <p>{email}</p>

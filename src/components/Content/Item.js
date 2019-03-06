@@ -11,8 +11,12 @@ class Item extends Component {
     this.props.editContent(index)
   }
 
+  handleUse = (index) => {
+    this.props.useContent(index)
+  }
+
   render() {
-    const { content, index } = this.props;
+    const { content, index , isUse } = this.props;
     return (
       <div className="content-item-conteiner">
         <p>{content.title}</p>
@@ -27,6 +31,7 @@ class Item extends Component {
             })
           }
         </ul>
+        {isUse ? <button onClick={() => { this.handleUse(index) }}>Use</button>: <button onClick={() => { this.handleUse(index) }}>not Use</button>}
         <button onClick={() => { this.handleEdit(index) }}>edit</button>
         <button onClick={() => { this.handleDelete(index)} }>delete</button>
       </div>
