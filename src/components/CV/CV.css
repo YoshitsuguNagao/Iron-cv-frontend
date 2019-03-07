@@ -158,10 +158,10 @@ page[size="A5"][layout="landscape"] {
 .secondary {
   border-right-style: solid;
   border-width: 1px;
+  width: 300px;
 }
 
 .primary {
   width: 100%;
   padding-left: 1.5rem;
 }
-
