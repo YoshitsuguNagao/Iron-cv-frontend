@@ -84,10 +84,10 @@ class EditProject extends Component {
       <div className="content-item-container">
         <h5>Project</h5>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Project Name" />
+          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Project Name"/>
         </div>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Organization" />
+          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Organization"/>
         </div>
         <div className="term-container">
           <div>
@@ -99,10 +99,10 @@ class EditProject extends Component {
           </div>
         </div>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country" />
+          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country"/>
         </div>
         <div className="edit-content-item-conteiner">
-          <textarea className="width-full" type="text" value={description} onChange={this.handleDescriptionInput} placeholder="Description" />
+          <textarea className="width-full" type="text" value={description} onChange={this.handleDescriptionInput} placeholder="Description"/>
         </div>
         <div className="edit-content-item-conteiner">
           <textarea className="width-full" type="text" value={tasks} onChange={this.handleTasksInput} placeholder="Tasks / Responsibility"/>

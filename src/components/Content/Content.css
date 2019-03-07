@@ -6,9 +6,6 @@
   margin: 0px;
 }
 
-.title-container p {
-}
-
 .input-style {
   border: 1px solid gray;
   border-radius: 5px;
@@ -83,7 +80,6 @@
   justify-content: space-between;
 }
 
-
 .term-container {
   display: flex;
 }
@@ -93,7 +89,6 @@
 }
 
 .content-item-container h5 {
-  /* font-size: 1rem; */
   text-decoration-line: underline;
 }
 

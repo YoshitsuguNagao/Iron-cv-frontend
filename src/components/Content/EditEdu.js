@@ -78,16 +78,16 @@ class EditEdu extends Component {
   }
 
   render() {
-    const { title, name, startDate, endDate, description, city, tasks} = this.state.education;
+    const { title, name, startDate, endDate, description, city, tasks } = this.state.education;
     const { index } = this.props;
     return (
       <div className="content-item-container">
         <h5>Education</h5>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Study Program" />
+          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Study Program"/>
         </div>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Institution / School" />
+          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Institution / School"/>
         </div>
         <div className="term-container">
           <div>
@@ -99,7 +99,7 @@ class EditEdu extends Component {
           </div>
         </div>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country" />
+          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country"/>
         </div>
         <div className="edit-content-item-conteiner">
           <textarea className="width-full" type="text" value={description} onChange={this.handleDescriptionInput} placeholder="Description"/>

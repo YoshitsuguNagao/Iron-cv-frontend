@@ -9,14 +9,12 @@ import EditEdu from './EditEdu';
 import EditProject from './EditProject';
 import EditListItem from './EditListItem';
 import EditLanguage from './EditLanguage';
-
 import cv from '../../lib/cv-service';
+import auth from '../../lib/auth-service';
 import content from '../../lib/content-service';
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
-
-import './Content.css'
-import auth from '../../lib/auth-service';
+import './Content.css';
 
 class Content extends Component {
   state = {
@@ -43,12 +41,12 @@ class Content extends Component {
     isDisplayContent: {
       work:[],
       education:[],
-      project:[]
+      project:[],
     },
     displayContent: {
       work:[],
       education:[],
-      project:[]
+      project:[],
     },
   }
 
@@ -60,9 +58,9 @@ class Content extends Component {
   }
 
   handleOnChangeDescription = (eventName, value) => {
-      this.setState({
-        [eventName] : value,
-      })
+    this.setState({
+      [eventName] : value,
+    })
   }
 
   // Profile Component
@@ -94,27 +92,27 @@ class Content extends Component {
               education:[],
               project:[],
             };
-            contents.forEach((content,index) => {
+            contents.forEach((content) => {
               if(content.contentType === 'work') {
                 newWorkArr = [...newWorkArr, content];
-                isDisplayContent.work[newWorkArr.length-1] = false
+                isDisplayContent.work[newWorkArr.length - 1] = false;
                 if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
-                  isDisplayContent.work[newWorkArr.length-1] = true
-                  displayContent.work[newWorkArr.length-1] = content
+                  isDisplayContent.work[newWorkArr.length - 1] = true;
+                  displayContent.work[newWorkArr.length-1] = content;
                 }
               } else if (content.contentType === 'education') {
                 newEduArr = [...newEduArr, content];
-                isDisplayContent.education[newEduArr.length-1] = false
+                isDisplayContent.education[newEduArr.length - 1] = false;
                 if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
-                  isDisplayContent.education[newEduArr.length-1] = true
-                  displayContent.education[newEduArr.length-1] = content
+                  isDisplayContent.education[newEduArr.length-1] = true;
+                  displayContent.education[newEduArr.length - 1] = content;
                 }
               } else if (content.contentType === 'project') {
                 newProjectArr = [...newProjectArr, content];
-                isDisplayContent.project[newProjectArr.length-1] = false
+                isDisplayContent.project[newProjectArr.length - 1] = false;
                 if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
-                  isDisplayContent.project[newProjectArr.length-1] = true
-                  displayContent.project[newProjectArr.length-1] = content
+                  isDisplayContent.project[newProjectArr.length - 1] = true;
+                  displayContent.project[newProjectArr.length - 1] = content;
                 }
               }
             })
@@ -144,7 +142,7 @@ class Content extends Component {
   handleCreateWork = () => {
     const { work } = this.state;
     const { cvId } = this.props.match.params;
-    let index = work.length
+    let index = work.length;
     content.createContent(this.props.work,cvId)
       .then((data) => {
         this.fetchContentInfo();
@@ -156,19 +154,19 @@ class Content extends Component {
 
   handleEditWork = (index) => {
     this.setState({
-      editWorkIndex: index
+      editWorkIndex: index,
     })
   }
 
   handleUpdateWork = (index) => {
     const { work } = this.state;
     content.updateContent(work[index])
-    .then(() => {
-      this.fetchContentInfo();
-    })
-    this.setState({
-      editWorkIndex: '',
-    })
+      .then(() => {
+        this.fetchContentInfo();
+      })
+      this.setState({
+        editWorkIndex: '',
+      })
   }
 
   handleDeleteWork = (index) => {
@@ -181,22 +179,23 @@ class Content extends Component {
 
   handleDisplayWork = (index) => {
     const { isDisplayContent } = this.state;
-    isDisplayContent.work[index] = !isDisplayContent.work[index]
-    let newObj = isDisplayContent
+    isDisplayContent.work[index] = !isDisplayContent.work[index];
+    let newObj = isDisplayContent;
     this.setState({
       isDisplayContent: newObj,
     })
-    this.props.setCv(this.props.cv)
-    this.props.setDisplayContent(this.props.displayContent)
+    this.props.setCv(this.props.cv);
+    this.props.setDisplayContent(this.props.displayContent);
   }
 
   getWork = () => {
     const { work, editWorkIndex, isDisplayContent} = this.state;
     this.props.displayContent.work = [];
-    return (<div>
+    return (
+      <div>
         {
           work.map((content,index) => {
-            if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content]
+            if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content];
             if(editWorkIndex === index) {
               return <EditWork
                 contentType={'work'}
@@ -218,43 +217,41 @@ class Content extends Component {
           })
         }
         <div className="add-profile-btn">
-          {/* <button onClick={this.handleCreateWork} ><i className="fas fa-plus-square"></i></button> */}
-          <button onClick={this.handleCreateWork} >Add</button>
+          <button onClick={this.handleCreateWork}>Add</button>
         </div>
         {this.handleUpdateDisplay()}
-          {/* {this.props.setDisplayContent(this.props.displayContent)
-          } */}
-      </div>)
+      </div>
+    )
   }
 
   handleUpdateDisplay = () => {
-    const newCv =this.props.cv
+    const newCv =this.props.cv;
     newCv.contentId = [];
     if(this.props.displayContent.work) {
       this.props.displayContent.work.forEach((item) => {
-        newCv.contentId = [...newCv.contentId,item._id]
+        newCv.contentId = [...newCv.contentId,item._id];
       })
     }
     if(this.props.displayContent.education) {
       this.props.displayContent.education.forEach((item) => {
-        newCv.contentId = [...newCv.contentId,item._id]
+        newCv.contentId = [...newCv.contentId,item._id];
       })
     }
     if(this.props.displayContent.project) {
       this.props.displayContent.project.forEach((item) => {
-        newCv.contentId = [...newCv.contentId,item._id]
+        newCv.contentId = [...newCv.contentId,item._id];
       })
     }
-    cv.updateCv(newCv)
+    cv.updateCv(newCv);
   }
 
   //Education Component
   handleCreateEdu = () => {
     const { education } = this.state;
     const { cvId } = this.props.match.params;
-    let index = education.length
+    let index = education.length;
     content.createContent(this.props.education,cvId)
-      .then((data) => {
+      .then(() => {
         this.fetchContentInfo();
         this.setState({
           editEduIndex: index,
@@ -271,12 +268,12 @@ class Content extends Component {
   handleUpdateEdu = (index) => {
     const { education } = this.state;
     content.updateContent(education[index])
-    .then(() => {
-      this.fetchContentInfo();
-    })
-    this.setState({
-      editEduIndex: '',
-    })
+      .then(() => {
+        this.fetchContentInfo();
+      })
+      this.setState({
+        editEduIndex: '',
+      })
   }
 
   handleDeleteEdu = (index) => {
@@ -289,20 +286,20 @@ class Content extends Component {
 
   handleDisplayEdu = (index) => {
     const { isDisplayContent } = this.state;
-    isDisplayContent.education[index] = !isDisplayContent.education[index]
-    let newObj = isDisplayContent
+    isDisplayContent.education[index] = !isDisplayContent.education[index];
+    let newObj = isDisplayContent;
     this.setState({
       isDisplayContent: newObj,
     })
-    this.props.setCv(this.props.cv)
-    this.props.setDisplayContent(this.props.displayContent)
-
+    this.props.setCv(this.props.cv);
+    this.props.setDisplayContent(this.props.displayContent);
   }
 
   getEdu = () => {
     const { education, editEduIndex, isDisplayContent } = this.state;
     this.props.displayContent.education = [];
-    return (<div>
+    return (
+      <div>
         {
           education.map((content,index) => {
             if(this.props.isDisplayContent.education[index]) this.props.displayContent.education = [...this.props.displayContent.education,content]
@@ -327,20 +324,20 @@ class Content extends Component {
          })
         }
         <div className="add-profile-btn">
-          {/* <button onClick={this.handleCreateEdu} ><i className="fas fa-plus-square"></i></button> */}
           <button onClick={this.handleCreateEdu} >Add</button>
         </div>
         {this.handleUpdateDisplay()}
-      </div>)
+      </div>
+    )
   }
 
   // Project Component
   handleCreateProject = () => {
     const { project } = this.state;
     const { cvId } = this.props.match.params;
-    let index = project.length
+    let index = project.length;
     content.createContent(this.props.project,cvId)
-      .then((data) => {
+      .then(() => {
         this.fetchContentInfo();
         this.setState({
           editProjectIndex: index,
@@ -357,12 +354,12 @@ class Content extends Component {
   handleUpdateProject = (index) => {
     const { project } = this.state;
     content.updateContent(project[index])
-    .then(() => {
-      this.fetchContentInfo();
-    })
-    this.setState({
-      editProjectIndex: '',
-    })
+      .then(() => {
+        this.fetchContentInfo();
+      })
+      this.setState({
+        editProjectIndex: '',
+      })
   }
 
   handleDeleteProject = (index) => {
@@ -375,20 +372,20 @@ class Content extends Component {
 
   handleDisplayProject = (index) => {
     const { isDisplayContent } = this.state;
-    isDisplayContent.project[index] = !isDisplayContent.project[index]
-    let newObj = isDisplayContent
+    isDisplayContent.project[index] = !isDisplayContent.project[index];
+    let newObj = isDisplayContent;
     this.setState({
       isDisplayContent: newObj,
     })
-    this.props.setCv(this.props.cv)
-    this.props.setDisplayContent(this.props.displayContent)
-
+    this.props.setCv(this.props.cv);
+    this.props.setDisplayContent(this.props.displayContent);
   }
 
   getProject = () => {
     const { project, editProjectIndex, isDisplayContent } = this.state;
     this.props.displayContent.project = [];
-    return (<div>
+    return (
+      <div>
         {
           project.map((content,index) => {
             if(this.props.isDisplayContent.project[index]) this.props.displayContent.project = [...this.props.displayContent.project,content]
@@ -413,17 +410,17 @@ class Content extends Component {
          })
         }
         <div className="add-profile-btn">
-          {/* <button onClick={this.handleCreateProject} ><i className="fas fa-plus-square"></i></button> */}
           <button onClick={this.handleCreateProject} >Add</button>
         </div>
         {this.handleUpdateDisplay()}
-      </div>)
+      </div>
+    )
   }
 
   // Interests
   handleCreateInterest = () => {
     const { interests } = this.state;
-    const newInterests = [...interests, 'interest']
+    const newInterests = [...interests, 'interest'];
     this.updateInterestInfo(newInterests);
   }
 
@@ -435,27 +432,26 @@ class Content extends Component {
 
   handleUpdateInterest = (index, editInput) => {
     const { interests } = this.state;
-    const newInterests = [...interests]
+    const newInterests = [...interests];
     newInterests[index] = editInput;
     this.updateInterestInfo(newInterests);
   }
 
   handleDeleteInterest = (index) => {
     const { interests } = this.state;
-    const newInterests = [...interests]
-    newInterests.splice(index,1)
+    const newInterests = [...interests];
+    newInterests.splice(index,1);
     this.updateInterestInfo(newInterests);
   }
 
   updateInterestInfo = (newInterests) => {
     const newUser = {...this.props.user, interests: newInterests}
-    this.props.setUser(newUser)
+    this.props.setUser(newUser);
     auth.updateUser(newUser)
       .then(()=>{
         this.setState({
           interests: this.props.user.interests,
           editInterestIndex: '',
-
         })
       })
   }
@@ -488,7 +484,6 @@ class Content extends Component {
           })
         }
         <div className="add-profile-btn">
-          {/* <button onClick={this.handleCreateInterest} ><i className="fas fa-plus-square"></i></button> */}
           <button onClick={this.handleCreateInterest} >Add</button>
         </div>
       </article>
@@ -525,12 +520,12 @@ class Content extends Component {
 
   updateLanguageInfo = (newLanguages) => {
     const newUser = {...this.props.user, languages: newLanguages}
-    this.props.setUser(newUser)
+    this.props.setUser(newUser);
     auth.updateUser(newUser)
       .then(()=>{
         this.setState({
           editLanguageIndex: '',
-          languages: this.props.user.languages
+          languages: this.props.user.languages,
         })
       })
   }
@@ -540,10 +535,6 @@ class Content extends Component {
     return (
       <article className="language-list content-item-container">
         <h5>Languages</h5>
-        {/* <div className="list-item-container">
-          <div className="language-title"><p>language</p></div>
-          <div className="language-title"><p>level</p></div>
-        </div> */}
         {
           languages.map((languages,index) => {
             if (editLanguageIndex === index) {
@@ -552,7 +543,7 @@ class Content extends Component {
                 key={index}
                 index={index}
                 listContent={languages}
-                updateLanguage={this.handleUpdateLanguage} />
+                updateLanguage={this.handleUpdateLanguage}/>
             } else {
               return <Language
                 key={index}
@@ -561,41 +552,40 @@ class Content extends Component {
                 upLanguage={this.handleUpLanguage}
                 downLanguage={this.handleDownLanguage}
                 editLanguage={this.handleEditLanguage}
-                deleteLanguage={this.handleDeleteLanguage} />
+                deleteLanguage={this.handleDeleteLanguage}/>
             }
           })
         }
-        {/* <button onClick={this.handleCreateLanguage} ><i className="fas fa-plus-square"></i></button> */}
         <div className="add-profile-btn">
-          <button onClick={this.handleCreateLanguage} >Add</button>
+          <button onClick={this.handleCreateLanguage}>Add</button>
         </div>
       </article>
     )
   }
 
   // Skill
-  // soft skill
+  // Soft skill
   handleCreateSoftSkill = () => {
     const { softSkills } = this.state;
-    const newSoftSkills = [...softSkills, 'soft skill']
-    this.updateSoftSkillInfo(newSoftSkills)
+    const newSoftSkills = [...softSkills, 'soft skill'];
+    this.updateSoftSkillInfo(newSoftSkills);
   }
 
   updateSoftSkillInfo = (newSoftSkills) => {
     const newUser = {...this.props.user, softSkills: newSoftSkills}
-    this.props.setUser(newUser)
+    this.props.setUser(newUser);
     auth.updateUser(newUser)
       .then(()=>{
         this.setState({
           editSoftSkillIndex: '',
-          softSkills: this.props.user.softSkills
+          softSkills: this.props.user.softSkills,
         })
       })
   }
 
   handleUpdateSoftSkill = (index, editInput) => {
     const { softSkills } = this.state;
-    const newSoftSkills = [...softSkills]
+    const newSoftSkills = [...softSkills];
     newSoftSkills[index] = editInput;
     this.updateSoftSkillInfo(newSoftSkills);
   }
@@ -608,33 +598,33 @@ class Content extends Component {
 
   handleDeleteSoftSkill = (index) => {
     const { softSkills } = this.state;
-    const newSoftSkills = [...softSkills]
-    newSoftSkills.splice(index,1)
-    this.updateSoftSkillInfo(newSoftSkills)
+    const newSoftSkills = [...softSkills];
+    newSoftSkills.splice(index,1);
+    this.updateSoftSkillInfo(newSoftSkills);
   }
 
   // hard skill
   handleCreateHardSkill = () => {
     const { hardSkills } = this.state;
-    const newHardSkills = [...hardSkills, 'hard skill']
-    this.updateHardSkillInfo(newHardSkills)
+    const newHardSkills = [...hardSkills, 'hard skill'];
+    this.updateHardSkillInfo(newHardSkills);
   }
 
   updateHardSkillInfo = (newHardSkills) => {
     const newUser = {...this.props.user, hardSkills: newHardSkills}
-    this.props.setUser(newUser)
+    this.props.setUser(newUser);
     auth.updateUser(newUser)
       .then(()=>{
         this.setState({
           editHardSkillIndex: '',
-          hardSkills: this.props.user.hardSkills
+          hardSkills: this.props.user.hardSkills,
         })
       })
   }
 
   handleUpdateHardSkill = (index, editInput) => {
     const { hardSkills } = this.state;
-    const newHardSkills = [...hardSkills]
+    const newHardSkills = [...hardSkills];
     newHardSkills[index] = editInput;
     this.updateHardSkillInfo(newHardSkills);
   }
@@ -647,9 +637,9 @@ class Content extends Component {
 
   handleDeleteHardSkill = (index) => {
     const { hardSkills } = this.state;
-    const newHardSkills = [...hardSkills]
-    newHardSkills.splice(index,1)
-    this.updateHardSkillInfo(newHardSkills)
+    const newHardSkills = [...hardSkills];
+    newHardSkills.splice(index,1);
+    this.updateHardSkillInfo(newHardSkills);
   }
 
   getSkill = () => {
@@ -681,7 +671,6 @@ class Content extends Component {
             })
           }
           <div className="add-profile-btn">
-            {/* <button onClick={this.handleCreateSoftSkill} ><i className="fas fa-plus-square"></i></button> */}
             <button onClick={this.handleCreateSoftSkill} >Add</button>
           </div>
         </div>
@@ -710,7 +699,6 @@ class Content extends Component {
             })
           }
           <div className="add-profile-btn">
-            {/* <button onClick={this.handleCreateHardSkill} ><i className="fas fa-plus-square"></i></button> */}
             <button onClick={this.handleCreateHardSkill} >Add</button>
           </div>
         </div>
@@ -721,7 +709,7 @@ class Content extends Component {
   fetchUserInfo = () => {
     auth.getUser()
     .then((user) => {
-      this.props.setUser(user)
+      this.props.setUser(user);
       this.setState({
         interests: this.props.user.interests,
         languages: this.props.user.languages,
@@ -732,30 +720,30 @@ class Content extends Component {
   }
 
   componentDidMount() {
-    this.fetchContentInfo()
-    this.fetchUserInfo()
+    this.fetchContentInfo();
+    this.fetchUserInfo();
     this.setState({
-      displayContent: this.props.displayContent
+      displayContent: this.props.displayContent,
     })
-    this.props.setDisplayContent(this.state.displayContent)
+    this.props.setDisplayContent(this.state.displayContent);
   }
 
   render() {
     const { selectedTab } = this.props;
     if (selectedTab === 'profile') {
-      return this.getProfile()
+      return this.getProfile();
     } else if (selectedTab === 'work') {
-      return this.getWork()
+      return this.getWork();
     } else if (selectedTab === 'education') {
-      return this.getEdu()
+      return this.getEdu();
     } else if (selectedTab === 'skills') {
-      return this.getSkill()
+      return this.getSkill();
     } else if (selectedTab === 'project') {
-      return this.getProject()
+      return this.getProject();
     } else if (selectedTab === 'languages') {
-      return this.getLanguages()
+      return this.getLanguages();
     } else if  (selectedTab === 'interests') {
-      return this.getInterests()
+      return this.getInterests();
     }
   }
 }

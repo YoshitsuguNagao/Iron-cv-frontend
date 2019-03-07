@@ -84,10 +84,10 @@ class EditWork extends Component {
       <div className="content-item-container">
         <h5>Work Experience</h5>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Position / Title" />
+          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Position / Title"/>
         </div>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Company" />
+          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Company"/>
         </div>
         <div className="term-container">
           <div>
@@ -99,7 +99,7 @@ class EditWork extends Component {
           </div>
         </div>
         <div className="edit-content-item-conteiner">
-          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country" />
+          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country"/>
         </div>
         <div className="edit-content-item-conteiner">
         </div>

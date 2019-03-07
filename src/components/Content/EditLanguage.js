@@ -42,7 +42,6 @@ class EditLanguage extends Component {
           <input type="text" value={editLevelInput} onChange={this.handleLevelInput} placeholder="level"/>
         </div>
         <div className="list-item-btns">
-          {/* <button onClick={() => {updateLanguage(index, editLanguageInput, editLevelInput)}}><i className="fas fa-save"></i></button> */}
           <button className="save-btn" onClick={() => {updateLanguage(index, editLanguageInput, editLevelInput)}}>Save</button>
         </div>
       </div>

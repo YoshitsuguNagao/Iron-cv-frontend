@@ -41,18 +41,18 @@ class Profile extends Component {
   fetchCvInfo = () => {
     const { cvId } = this.props.match.params;
     cv.getCv(cvId)
-    .then((cv) => {
-      if(this.props.headline === '' &&
-         this.props.summary === '') {
-        this.setState({
-          newCv: cv,
-        })
-      } else {
-        this.setState({
-          newCv: cv,
-        })
-      }
-    })
+      .then((cv) => {
+        if(this.props.headline === '' &&
+          this.props.summary === '') {
+          this.setState({
+            newCv: cv,
+          })
+        } else {
+          this.setState({
+            newCv: cv,
+          })
+        }
+      })
   }
 
   componentDidMount() {
@@ -64,7 +64,7 @@ class Profile extends Component {
     const { firstName, lastName, email, address, phone } = this.state.contact;
     const { github, medium, linkedin } = this.state.socialNetwork;
     const { editProfile } = this.props;
-    const { headline, summary } = this.props.cv
+    const { headline, summary } = this.props.cv;
     return (
       <article className="content-container content-item-container">
         <div className="profile-card">

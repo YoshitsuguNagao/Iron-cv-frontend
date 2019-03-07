@@ -30,7 +30,7 @@ class EditProfile extends Component {
     this.setState({
       headline: event.target.value,
     },() => {
-      this.props.setHeadlines(this.props.headline,this.props.summary)
+      this.props.setHeadlines(this.props.headline,this.props.summary);
     })
   }
 
@@ -38,7 +38,7 @@ class EditProfile extends Component {
     this.setState({
       summary: event.target.value,
     },() => {
-      this.props.setHeadlines(this.state.headline,this.state.summary)
+      this.props.setHeadlines(this.state.headline,this.state.summary);
     })
   }
 
@@ -94,60 +94,59 @@ class EditProfile extends Component {
     const { user, editProfile } = this.props;
     editProfile();
     const newUser = {user: {...user, contact, socialNetwork}}
-    auth.updateUser(newUser.user)
-    this.props.setUser(newUser.user)
-    newCv.headline = headline
-    newCv.summary = summary
-    cv.updateCv(newCv)
-    this.props.setCv(newCv)
+    auth.updateUser(newUser.user);
+    this.props.setUser(newUser.user);
+    newCv.headline = headline;
+    newCv.summary = summary;
+    cv.updateCv(newCv);
+    this.props.setCv(newCv);
   }
 
   fetchUserInfo = () => {
     auth.getUser()
-    .then(({contact, socialNetwork}) => {
-      if(this.props.contact.firstName === "" &&
-      this.props.contact.lastName === "" &&
-      this.props.contact.email === "" &&
-      this.props.contact.address === "" &&
-      this.props.contact.phone === "" &&
-      this.props.socialNetwork.github === "" &&
-      this.props.socialNetwork.medium === "" &&
-      this.props.socialNetwork.linkedin === ""
-      ) {
-        this.setState({
-          contact: contact,
-          socialNetwork: socialNetwork,
-
-        })
-      } else {
-        this.setState({
-          contact: this.props.contact,
-          socialNetwork: this.props.socialNetwork,
-        })
-      }
-    })
+      .then(({contact, socialNetwork}) => {
+        if(this.props.contact.firstName === "" &&
+        this.props.contact.lastName === "" &&
+        this.props.contact.email === "" &&
+        this.props.contact.address === "" &&
+        this.props.contact.phone === "" &&
+        this.props.socialNetwork.github === "" &&
+        this.props.socialNetwork.medium === "" &&
+        this.props.socialNetwork.linkedin === ""
+        ) {
+          this.setState({
+            contact: contact,
+            socialNetwork: socialNetwork,
+          })
+        } else {
+          this.setState({
+            contact: this.props.contact,
+            socialNetwork: this.props.socialNetwork,
+          })
+        }
+      })
   }
 
   fetchCvInfo = () => {
     const { cvId } = this.props.match.params;
     cv.getCv(cvId)
-    .then((cv) => {
-      const { headline, summary } = cv
-      if(this.props.headline === '' &&
-         this.props.summary === '') {
-        this.setState({
-          headline: headline,
-          summary: summary,
-          newCv: cv,
-        })
-      } else {
-        this.setState({
-          headline: this.props.headline,
-          summary: this.props.summary,
-          newCv: cv,
-        })
-      }
-    })
+      .then((cv) => {
+        const { headline, summary } = cv;
+        if(this.props.headline === '' &&
+          this.props.summary === '') {
+          this.setState({
+            headline: headline,
+            summary: summary,
+            newCv: cv,
+          })
+        } else {
+          this.setState({
+            headline: this.props.headline,
+            summary: this.props.summary,
+            newCv: cv,
+          })
+        }
+      })
   }
 
   componentDidMount() {
@@ -176,15 +175,15 @@ class EditProfile extends Component {
         </div>
         <div className="edit-profile-card">
           <i className="fas fa-envelope"></i>
-          <input type="email" className="width-full" value={email} onChange={this.handleEmailInput} placeholder="Email" />
+          <input type="email" className="width-full" value={email} onChange={this.handleEmailInput} placeholder="Email"/>
         </div>
         <div className="edit-profile-card">
           <i className="fas fa-map-marker-alt"></i>
-          <input type="text" className="width-full" value={address} onChange={this.handleAddressInput} placeholder="Address" />
+          <input type="text" className="width-full" value={address} onChange={this.handleAddressInput} placeholder="Address"/>
         </div>
         <div className="edit-profile-card">
           <i className="fas fa-mobile-alt"></i>
-          <input type="text" className="width-full" value={phone} onChange={this.handlePhoneInput} placeholder="Phone Number" />
+          <input type="text" className="width-full" value={phone} onChange={this.handlePhoneInput} placeholder="Phone Number"/>
         </div>
         <div className="edit-profile-card">
           <i className="fab fa-github-square"></i>
@@ -192,11 +191,11 @@ class EditProfile extends Component {
         </div>
         <div className="edit-profile-card">
           <i className="fab fa-medium"></i>
-          <input type="text" className="width-full" value={medium} onChange={this.handleMediumInput} placeholder="Medium" />
+          <input type="text" className="width-full" value={medium} onChange={this.handleMediumInput} placeholder="Medium"/>
         </div>
         <div className="edit-profile-card">
           <i className="fab fa-linkedin"></i>
-          <input type="text" className="width-full" value={linkedin} onChange={this.handleLinkedinInput} placeholder="LinkedIn" />
+          <input type="text" className="width-full" value={linkedin} onChange={this.handleLinkedinInput} placeholder="LinkedIn"/>
         </div>
         <div className="save-profile-btn">
           <button onClick={this.handleUpdateContact}>Save</button>

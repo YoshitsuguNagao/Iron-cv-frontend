@@ -4,15 +4,15 @@ import { withAuth } from '../AuthProvider';
 
 class Item extends Component {
   handleDelete = (index) => {
-    this.props.deleteContent(index)
+    this.props.deleteContent(index);
   }
 
   handleEdit = (index) => {
-    this.props.editContent(index)
+    this.props.editContent(index);
   }
 
   handleDisplay = (index) => {
-    this.props.useContent(index)
+    this.props.useContent(index);
   }
 
   render() {
