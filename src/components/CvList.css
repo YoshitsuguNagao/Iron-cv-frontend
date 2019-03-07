@@ -39,3 +39,22 @@
 .delete-btn i:hover {
   color: rgb(250, 80, 80);
 }
+
+.edit-title {
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  padding-left: 0.7rem;
+}
+
+.edit-list-btn {
+  color: white;
+  width: 5rem;
+  background-color: rgb(33, 107, 173);
+  border-radius: 5px;
+}
+
+.edit-list-btn:hover {
+  color: black;
+  background-color: rgb(227, 227, 227);
+}

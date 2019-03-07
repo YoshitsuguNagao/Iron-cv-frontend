@@ -13,15 +13,23 @@ import CvWork from './CvWork';
 class CV extends Component {
   state = {
     work: [],
+    education: [],
+    project: [],
   }
-
+ 
   componentDidUpdate() {
-    console.log('cdu',this.state.work,this.props.displayContent.work)
     if(this.props.displayContent.work !== this.state.work) {
       this.setState({
         work: this.props.displayContent.work,
       })
-
+    } else if(this.props.displayContent.education !== this.state.education) {
+      this.setState({
+        education: this.props.displayContent.education,
+      })
+    } else if(this.props.displayContent.project !== this.state.project) {
+      this.setState({
+        project: this.props.displayContent.project,
+      })
     }
   }
 
@@ -49,6 +57,23 @@ class CV extends Component {
         <div>
           <h4 className="cv-body-title">EDUCATION</h4>
           {displayContent.education.map((content,index)=>{
+              return <CvWork key={index} content={content}/>
+            })
+          }
+        </div>
+      ) 
+    } else {
+      return null
+    }
+  }
+
+  projectExperience = () =>{
+    const { isDisplayContent, displayContent } = this.props;
+    if(displayContent.project.length > 0) {
+      return (
+        <div>
+          <h4 className="cv-body-title">PROJECTS</h4>
+          {displayContent.project.map((content,index)=>{
               return <CvWork key={index} content={content}/>
             })
           }
@@ -88,6 +113,7 @@ class CV extends Component {
           <div className="primary">
             {this.workExperience()}
             {this.educationExperience()}
+            {this.projectExperience()}
           </div>
          </div>
         </div>

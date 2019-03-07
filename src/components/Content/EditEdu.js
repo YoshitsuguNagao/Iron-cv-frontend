@@ -67,6 +67,7 @@ class EditEdu extends Component {
     this.props.education.name = this.state.education.name;
     this.props.education.startDate = this.state.education.startDate;
     this.props.education.endDate = this.state.education.endDate;
+    this.props.education.city = this.state.education.city;
     this.props.education.description = this.state.education.description;
   }
 

@@ -18,10 +18,10 @@ class EditCvList extends Component {
       <li>
         <div className="cv-list-container">
           <div className="cv-list-title">
-            <input type="text" value={editInput} onChange={this.handleInput}/>
+            <input className="edit-title" type="text" value={editInput} onChange={this.handleInput}/>
           </div>
           <div className="cv-list-btn">
-            <button onClick={() => { updateCv(index, editInput) }}>Save</button>
+            <button className="edit-list-btn" onClick={() => { updateCv(index, editInput) }}>Save</button>
           </div>
         </div>
       </li>

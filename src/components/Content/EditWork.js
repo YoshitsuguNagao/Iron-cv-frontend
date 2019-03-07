@@ -67,6 +67,7 @@ class EditWork extends Component {
     this.props.work.name = this.state.work.name;
     this.props.work.startDate = this.state.work.startDate;
     this.props.work.endDate = this.state.work.endDate;
+    this.props.work.city = this.state.work.city;
     this.props.work.description = this.state.work.description;
     this.props.work.tasks = this.state.work.tasks;
   }
