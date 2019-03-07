@@ -25,7 +25,7 @@ class CvLanguages extends Component {
         </article>
       )
     } else {
-      return (<div></div>)
+      return null
     }
   }
 }

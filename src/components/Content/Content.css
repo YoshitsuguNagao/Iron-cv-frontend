@@ -173,3 +173,20 @@
   -moz-box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
   box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
 }
+
+.work-container {
+  margin-bottom: 1.5rem;
+}
+
+.work-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.work-company {
+  font-style: italic;
+}
+
+.work-text {
+  font-size: 0.8rem;
+}
