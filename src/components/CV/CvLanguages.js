@@ -9,7 +9,7 @@ class CvLanguages extends Component {
           <h4 className="cv-body-title">LANGUAGES</h4>
           <div>
             { languages.map((languageItem, index) => {
-              const { language, level } = this.props.user.languages[0];
+              const { language, level } = this.props.user.languages[index];
               return (
                 <div className="single-language" key={index}>
                   <div>
