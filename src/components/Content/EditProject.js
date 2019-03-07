@@ -67,6 +67,7 @@ class EditProject extends Component {
     this.props.project.name = this.state.project.name;
     this.props.project.startDate = this.state.project.startDate;
     this.props.project.endDate = this.state.project.endDate;
+    this.props.project.city = this.state.project.city;
     this.props.project.description = this.state.project.description;
     this.props.project.tasks = this.state.project.tasks;
     this.props.project.city = this.state.project.city;
