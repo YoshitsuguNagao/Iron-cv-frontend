@@ -20,7 +20,7 @@ class Item extends Component {
     return (
       <div className="content-item-container">
         <div className="content-text">
-          <p>{content.title}</p>
+          <h6>{content.title}</h6>
           <p>{content.name}</p>
           <p>{content.description}</p>
           <p>{`${content.startDate.month}/${content.startDate.year} ~ ${content.endDate.month}/${content.endDate.year}`}</p>

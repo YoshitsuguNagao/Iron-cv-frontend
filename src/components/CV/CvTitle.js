@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class CvTitle extends Component {
   render() {
-    const { firstName, lastName, email, address, phone } = this.props.user.contact;
+    const { firstName, lastName } = this.props.user.contact;
     const { headline, summary } = this.props.cv;
     return (
       <article className="cv-title-article">

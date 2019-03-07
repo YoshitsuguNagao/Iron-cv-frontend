@@ -97,6 +97,11 @@
   text-decoration-line: underline;
 }
 
+.content-item-container h6 {
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
 .content-item-container input, textarea {
   border: 1px solid gray;
   border-radius: 5px;
@@ -107,14 +112,25 @@
   margin-bottom: 1rem;
 }
 
+.edit-list-item-word input, .list-item-language, .list-item-level {
+  width: 10rem;
+  margin-right: 1rem;
+}
+
 .list-item-container {
   display: flex;
   justify-content: space-between;
 }
 
+.list-item-word {
+  display: flex;
+  width: 50%;
+}
+
 .edit-list-item-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.7rem;
 }
 
 .edit-profile-btn, .save-profile-btn {
@@ -122,8 +138,7 @@
 }
 
 .edit-profile-btn button,
-.save-profile-btn button ,
-.add-profile-btn button {
+.save-profile-btn button {
   color: white;
   margin: 0 45%;
   width: 5rem;
@@ -132,13 +147,15 @@
 }
 
 .edit-profile-btn button:hover,
-.save-profile-btn button:hover,
-.add-profile-btn button:hover {
+.save-profile-btn button:hover {
   color: black;
   background-color: rgb(227, 227, 227);
 }
 
-.using-btn, .ed-btn, .del-btn {
+.using-btn,
+.ed-btn,
+.del-btn,
+.save-btn {
   margin-right: 1rem;
   color: white;
   background-color: rgb(33, 107, 173);
@@ -146,7 +163,10 @@
   width: 5rem;
 }
 
-.using-btn:hover, .ed-btn:hover, .del-btn:hover {
+.using-btn:hover,
+.ed-btn:hover,
+.del-btn:hover,
+.save-btn:hover {
   color: black;
   background-color: rgb(227, 227, 227);
 }

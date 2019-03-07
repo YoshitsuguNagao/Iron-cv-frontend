@@ -44,12 +44,6 @@ class Home extends Component {
     auth.getUser()
       .then((user) => {
         this.props.setUser(user)
-        // this.props.user = user
-        // this.props.contact.firstName = contact.firstName;
-        // this.props.contact.lastName = contact.lastName;
-        // this.props.contact.email = contact.email;
-        // this.props.contact.address = contact.address;
-        // this.props.contact.phone = contact.phone;
       })
   }
 

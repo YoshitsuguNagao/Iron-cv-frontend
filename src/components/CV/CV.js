@@ -16,7 +16,7 @@ class CV extends Component {
     education: [],
     project: [],
   }
- 
+
   componentDidUpdate() {
     if(this.props.displayContent.work !== this.state.work) {
       this.setState({
@@ -34,7 +34,7 @@ class CV extends Component {
   }
 
   workExperience = () =>{
-    const { isDisplayContent, displayContent } = this.props;
+    const { displayContent } = this.props;
     if(displayContent.work.length > 0) {
       return (
         <div>
@@ -44,14 +44,14 @@ class CV extends Component {
             })
           }
         </div>
-      ) 
+      )
     } else {
       return null
     }
   }
 
   educationExperience = () =>{
-    const { isDisplayContent, displayContent } = this.props;
+    const { displayContent } = this.props;
     if(displayContent.education.length > 0) {
       return (
         <div>
@@ -61,14 +61,14 @@ class CV extends Component {
             })
           }
         </div>
-      ) 
+      )
     } else {
       return null
     }
   }
 
   projectExperience = () =>{
-    const { isDisplayContent, displayContent } = this.props;
+    const { displayContent } = this.props;
     if(displayContent.project.length > 0) {
       return (
         <div>
@@ -78,7 +78,7 @@ class CV extends Component {
             })
           }
         </div>
-      ) 
+      )
     } else {
       return null
     }
@@ -86,9 +86,6 @@ class CV extends Component {
 
   render() {
     const { user, cv } = this.props;
-    const { isDisplayContent, displayContent } = this.props;
-    const { work } = this.state
-    console.log('render cv',displayContent)
     if (user === '') {
       return (
         <div className="cv-component-container">
@@ -109,11 +106,11 @@ class CV extends Component {
             <CvSkills user={user} />
             <CvLanguages user={user} />
             <CvInterests user={user} />
+            {this.projectExperience()}
           </div>
           <div className="primary">
             {this.workExperience()}
             {this.educationExperience()}
-            {this.projectExperience()}
           </div>
          </div>
         </div>

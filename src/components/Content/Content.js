@@ -98,7 +98,6 @@ class Content extends Component {
               if(content.contentType === 'work') {
                 newWorkArr = [...newWorkArr, content];
                 isDisplayContent.work[newWorkArr.length-1] = false
-                // if(this.props.cv.contentId[index] && this.props.cv.contentId[index].indexOf(content._id) >= 0) isDisplayContent.work[newWorkArr.length-1] = true
                 if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
                   isDisplayContent.work[newWorkArr.length-1] = true
                   displayContent.work[newWorkArr.length-1] = content
@@ -106,7 +105,6 @@ class Content extends Component {
               } else if (content.contentType === 'education') {
                 newEduArr = [...newEduArr, content];
                 isDisplayContent.education[newEduArr.length-1] = false
-                // if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0) isDisplayContent.education[newEduArr.length-1] = true
                 if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
                   isDisplayContent.education[newEduArr.length-1] = true
                   displayContent.education[newEduArr.length-1] = content
@@ -114,7 +112,6 @@ class Content extends Component {
               } else if (content.contentType === 'project') {
                 newProjectArr = [...newProjectArr, content];
                 isDisplayContent.project[newProjectArr.length-1] = false
-                // if(this.props.cv.contentId[index] && this.props.cv.contentId.indexOf(content._id) >= 0)  isDisplayContent.project[newProjectArr.length-1] = true
                 if(this.props.cv.contentId && this.props.cv.contentId.indexOf(content._id) >= 0) {
                   isDisplayContent.project[newProjectArr.length-1] = true
                   displayContent.project[newProjectArr.length-1] = content
@@ -230,21 +227,21 @@ class Content extends Component {
       </div>)
   }
 
-  handleUpdateDisplay = () =>{
+  handleUpdateDisplay = () => {
     const newCv =this.props.cv
     newCv.contentId = [];
     if(this.props.displayContent.work) {
-      this.props.displayContent.work.map((item)=>{
+      this.props.displayContent.work.forEach((item) => {
         newCv.contentId = [...newCv.contentId,item._id]
       })
     }
     if(this.props.displayContent.education) {
-      this.props.displayContent.education.map((item)=>{
+      this.props.displayContent.education.forEach((item) => {
         newCv.contentId = [...newCv.contentId,item._id]
       })
     }
     if(this.props.displayContent.project) {
-      this.props.displayContent.project.map((item)=>{
+      this.props.displayContent.project.forEach((item) => {
         newCv.contentId = [...newCv.contentId,item._id]
       })
     }
@@ -472,14 +469,14 @@ class Content extends Component {
           interests.map((interest,index) => {
             if (editInterestIndex === index) {
               return <EditListItem
-                itemType='interest'
+                itemType='Interest'
                 key={index}
                 index={index}
                 listContent={interest}
                 updateListItem={this.handleUpdateInterest} />
             } else {
               return <ListItem
-                itemType='interest'
+                itemType='Interest'
                 key={index}
                 index={index}
                 listContent={interest}
@@ -542,7 +539,11 @@ class Content extends Component {
     const { languages, editLanguageIndex } = this.state;
     return (
       <article className="language-list content-item-container">
-        <h5>Language</h5>
+        <h5>Languages</h5>
+        {/* <div className="list-item-container">
+          <div className="language-title"><p>language</p></div>
+          <div className="language-title"><p>level</p></div>
+        </div> */}
         {
           languages.map((languages,index) => {
             if (editLanguageIndex === index) {
@@ -656,19 +657,19 @@ class Content extends Component {
     return (
       <article className="skill-list ">
         <div className="soft-skill-container content-item-container">
-          <h5>Soft Skill</h5>
+          <h5>Soft Skills</h5>
           {
             softSkills.map((softSkill,index) => {
               if (editSoftSkillIndex === index) {
                 return <EditListItem
-                  itemType='softSkill'
+                  itemType='Soft skill'
                   key={index}
                   index={index}
                   listContent={softSkill}
                   updateListItem={this.handleUpdateSoftSkill} />
               } else {
                 return <ListItem
-                  itemType='softSkill'
+                  itemType='Soft skill'
                   key={index}
                   index={index}
                   listContent={softSkill}
@@ -685,19 +686,19 @@ class Content extends Component {
           </div>
         </div>
         <div className="hard-skill-container content-item-container">
-          <h5>Hard Skill</h5>
+          <h5>Hard Skills</h5>
           {
             hardSkills.map((hardSkill,index) => {
               if (editHardSkillIndex === index) {
                 return <EditListItem
-                  itemType='hardSkill'
+                  itemType='Hard skill'
                   key={index}
                   index={index}
                   listContent={hardSkill}
                   updateListItem={this.handleUpdateHardSkill} />
               } else {
                 return <ListItem
-                  itemType='hardSkill'
+                  itemType='Hard skill'
                   key={index}
                   index={index}
                   listContent={hardSkill}
@@ -733,7 +734,6 @@ class Content extends Component {
   componentDidMount() {
     this.fetchContentInfo()
     this.fetchUserInfo()
-    // const newObj = this.props.displayContent
     this.setState({
       displayContent: this.props.displayContent
     })

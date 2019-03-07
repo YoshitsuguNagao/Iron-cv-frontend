@@ -70,10 +70,10 @@ class Profile extends Component {
         <div className="profile-card">
           <i className="fas fa-user"></i>
           <div className="content-text-container">
-            <p>{firstName}</p>
+            <h6>{firstName}</h6>
           </div>
           <div className="content-text-container">
-            <p>{lastName}</p>
+            <h6>{lastName}</h6>
           </div>
         </div>
         <div className="profile-headline-container">

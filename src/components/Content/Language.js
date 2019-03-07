@@ -26,8 +26,12 @@ class Language extends Component {
       return (
         <div className="list-item-container">
           <div className="list-item-word">
-            <p>{listContent.language}</p>
-            <p>{listContent.level}</p>
+            <div className="list-item-language">
+              <p>{listContent.language}</p>
+            </div>
+            <div className="list-item-level">
+              <p>{listContent.level}</p>
+            </div>
           </div>
           <div className="list-item-btns">
             {/* <button onClick={() => {this.handleUp(index)}}><i className="fas fa-angle-up"></i></button>

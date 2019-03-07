@@ -21,7 +21,7 @@ export const withAuth = () => (Comp) => {
               setUser={authStore.setUser}
               setCv={authStore.setCv}
               setTab={authStore.setTab}
-              selectedTab={authStore.selectedTab} // add
+              selectedTab={authStore.selectedTab}
               contact={authStore.contact}
               setContact={authStore.setContact}
               isDisplayContent={authStore.isDisplayContent}
@@ -35,12 +35,12 @@ export const withAuth = () => (Comp) => {
               languages={authStore.languages}
               softSkill={authStore.softSkill}
               hardSkill={authStore.hardSkill}
-              socialNetwork={authStore.socialNetwork} // add
-              work={authStore.work} // add
+              socialNetwork={authStore.socialNetwork}
+              work={authStore.work}
               workContent={authStore.workContent}
-              education={authStore.education} // add
+              education={authStore.education}
               educationContent={authStore.educationContent}
-              project={authStore.project} // add
+              project={authStore.project}
               projectContent={authStore.projectContent}
               {...this.props} />
           }}
@@ -49,14 +49,13 @@ export const withAuth = () => (Comp) => {
     }
   }
 }
-// [{key: value}] [... {}]
 export default class AuthProvider extends Component {
   state = {
     isLogged: false,
     user: {},
     cv: {},
     status: 'loading',
-    selectedTab: 'profile', // add
+    selectedTab: 'profile',
     contact: {
       firstName: '',
       lastName: '',

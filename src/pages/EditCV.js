@@ -9,7 +9,6 @@ import { withAuth } from '../components/AuthProvider';
 
 class EditCV extends Component {
   fetchCV = () => {
-    // const { user } = this.props;
     const { cvId } = this.props.match.params
     cv.getCv(cvId)
       .then((cv) => {

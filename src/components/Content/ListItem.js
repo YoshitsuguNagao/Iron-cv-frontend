@@ -7,11 +7,11 @@ class ListItem extends Component {
   }
 
   handleEdit = (index) => {
-    if(this.props.itemType === 'interest') {
+    if(this.props.itemType === 'Interest') {
       this.props.interest[0] = this.props.listContent
-    } else if (this.props.itemType === 'softSkill') {
+    } else if (this.props.itemType === 'Soft skill') {
       this.props.softSkill[0] = this.props.listContent
-    } else if (this.props.itemType === 'hardSkill') {
+    } else if (this.props.itemType === 'Hard skill') {
       this.props.hardSkill[0] = this.props.listContent
     }
     this.props.editListItem(index)
