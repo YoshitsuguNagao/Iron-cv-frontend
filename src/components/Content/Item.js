@@ -18,16 +18,20 @@ class Item extends Component {
   render() {
     const { content, index , isUse } = this.props;
     return (
-      <div className="content-item-conteiner">
-        <p>{content.title}</p>
-        <p>{content.name}</p>
-        <p>{content.description}</p>
-        <p>{`${content.startDate.month}/${content.startDate.year} ~ ${content.endDate.month}/${content.endDate.year}`}</p>
-        <p>{content.city}</p>
-        <p>{content.tasks}</p>
-        {isUse ? <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Don't Use</button>: <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Use</button>}
-        <button className="ed-btn" onClick={() => { this.handleEdit(index) }}>edit</button>
-        <button className="del-btn" onClick={() => { this.handleDelete(index)} }>delete</button>
+      <div className="content-item-container">
+        <div className="content-text">
+          <p>{content.title}</p>
+          <p>{content.name}</p>
+          <p>{content.description}</p>
+          <p>{`${content.startDate.month}/${content.startDate.year} ~ ${content.endDate.month}/${content.endDate.year}`}</p>
+          <p>{content.city}</p>
+          <p>{content.tasks}</p>
+        </div>
+        <div className="content-btns">
+          {isUse ? <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Hide</button>: <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Show</button>}
+          <button className="ed-btn" onClick={() => { this.handleEdit(index) }}>Edit</button>
+          <button className="del-btn" onClick={() => { this.handleDelete(index)} }>Delete</button>
+        </div>
       </div>
     )
   }

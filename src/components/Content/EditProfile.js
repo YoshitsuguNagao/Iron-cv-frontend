@@ -160,7 +160,7 @@ class EditProfile extends Component {
     const { github, medium, linkedin } = this.state.socialNetwork;
     const { headline, summary } = this.state;
     return (
-      <div className="content-container">
+      <div className="content-container content-item-container">
         <div className="edit-profile-card">
           <i className="fas fa-user"></i>
           <div className="edit-profile-card-name width-full">

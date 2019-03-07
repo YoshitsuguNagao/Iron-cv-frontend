@@ -35,8 +35,10 @@ class ListItem extends Component {
         <div className="list-item-btns">
           {/* <button onClick={() => {this.handleUp(index)}}><i className="fas fa-angle-up"></i></button>
           <button onClick={() => {this.handleDown(index)}}><i className="fas fa-angle-down"></i></button> */}
-          <button onClick={() => {this.handleEdit(index)}}><i className="fas fa-edit"></i></button>
-          <button onClick={() => {this.handleDelete(index)}}><i className="fas fa-trash-alt"></i></button>
+          {/* <button onClick={() => {this.handleEdit(index)}}><i className="fas fa-edit"></i></button>
+          <button onClick={() => {this.handleDelete(index)}}><i className="fas fa-trash-alt"></i></button> */}
+          <button className="ed-btn" onClick={() => { this.handleEdit(index) }}>Edit</button>
+          <button className="del-btn" onClick={() => { this.handleDelete(index)} }>Delete</button>
         </div>
       </div>
     )

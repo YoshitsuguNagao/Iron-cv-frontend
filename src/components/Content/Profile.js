@@ -66,7 +66,7 @@ class Profile extends Component {
     const { editProfile } = this.props;
     const { headline, summary } = this.props.cv
     return (
-      <article className="content-container">
+      <article className="content-container content-item-container">
         <div className="profile-card">
           <i className="fas fa-user"></i>
           <div className="content-text-container">
@@ -104,7 +104,7 @@ class Profile extends Component {
           <i className="fab fa-linkedin"></i>
           <p>{linkedin}</p>
         </div>
-        <div className="add-profile-btn">
+        <div className="edit-profile-btn">
           <button onClick={() => { editProfile() }}>Edit</button>
         </div>
       </article>

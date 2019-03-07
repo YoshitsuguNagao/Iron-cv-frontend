@@ -131,8 +131,6 @@ class Content extends Component {
             })
             this.props.setIsDisplayContent(isDisplayContent)
             this.props.setDisplayContent(displayContent)
-            console.log('hohoho')
-            console.log(this.state.isDisplayContent)
           })
       })
   }
@@ -227,7 +225,10 @@ class Content extends Component {
             }
           })
         }
-        <button onClick={this.handleCreateWork} ><i className="fas fa-plus-square"></i></button>
+        <div className="add-profile-btn">
+          {/* <button onClick={this.handleCreateWork} ><i className="fas fa-plus-square"></i></button> */}
+          <button onClick={this.handleCreateWork} >Add</button>
+        </div>
         {this.handleUpdateDisplay()}
           {/* {this.props.setDisplayContent(this.props.displayContent)
           } */}
@@ -335,7 +336,10 @@ class Content extends Component {
             }
          })
         }
-        <button onClick={this.handleCreateEdu} ><i className="fas fa-plus-square"></i></button>
+        <div className="add-profile-btn">
+          {/* <button onClick={this.handleCreateEdu} ><i className="fas fa-plus-square"></i></button> */}
+          <button onClick={this.handleCreateEdu} >Add</button>
+        </div>
         {this.handleUpdateDisplay()}
       </div>)
   }
@@ -363,11 +367,11 @@ class Content extends Component {
   handleUpdateProject = (index) => {
     const { project } = this.state;
     content.updateContent(project[index])
-    this.setState({
-      editProjectIndex: '',
-    })
     .then(() => {
       this.fetchContentInfo();
+    })
+    this.setState({
+      editProjectIndex: '',
     })
   }
 
@@ -418,7 +422,10 @@ class Content extends Component {
             }
          })
         }
-        <button onClick={this.handleCreateProject} ><i className="fas fa-plus-square"></i></button>
+        <div className="add-profile-btn">
+          {/* <button onClick={this.handleCreateProject} ><i className="fas fa-plus-square"></i></button> */}
+          <button onClick={this.handleCreateProject} >Add</button>
+        </div>
         {this.handleUpdateDisplay()}
       </div>)
   }
@@ -466,7 +473,8 @@ class Content extends Component {
   getInterests = () => {
     const { interests, editInterestIndex } = this.state;
     return (
-      <article className="ineterest-list">
+      <article className="ineterest-list content-item-container">
+        <h5>Interests</h5>
         {
           interests.map((interest,index) => {
             if (editInterestIndex === index) {
@@ -489,7 +497,10 @@ class Content extends Component {
             }
           })
         }
-        <button onClick={this.handleCreateInterest} ><i className="fas fa-plus-square"></i></button>
+        <div className="add-profile-btn">
+          {/* <button onClick={this.handleCreateInterest} ><i className="fas fa-plus-square"></i></button> */}
+          <button onClick={this.handleCreateInterest} >Add</button>
+        </div>
       </article>
     )
   }
@@ -537,7 +548,8 @@ class Content extends Component {
   getLanguages = () => {
     const { languages, editLanguageIndex } = this.state;
     return (
-      <article className="language-list">
+      <article className="language-list content-item-container">
+        <h5>Language</h5>
         {
           languages.map((languages,index) => {
             if (editLanguageIndex === index) {
@@ -559,7 +571,10 @@ class Content extends Component {
             }
           })
         }
-        <button onClick={this.handleCreateLanguage} ><i className="fas fa-plus-square"></i></button>
+        {/* <button onClick={this.handleCreateLanguage} ><i className="fas fa-plus-square"></i></button> */}
+        <div className="add-profile-btn">
+          <button onClick={this.handleCreateLanguage} >Add</button>
+        </div>
       </article>
     )
   }
@@ -646,9 +661,9 @@ class Content extends Component {
   getSkill = () => {
     const { hardSkills, editHardSkillIndex, softSkills, editSoftSkillIndex } = this.state;
     return (
-      <article className="skill-list">
-        <div className="soft-skill-container">
-          <p>Soft Skill</p>
+      <article className="skill-list ">
+        <div className="soft-skill-container content-item-container">
+          <h5>Soft Skill</h5>
           {
             softSkills.map((softSkill,index) => {
               if (editSoftSkillIndex === index) {
@@ -671,10 +686,13 @@ class Content extends Component {
               }
             })
           }
-          <button onClick={this.handleCreateSoftSkill} ><i className="fas fa-plus-square"></i></button>
+          <div className="add-profile-btn">
+            {/* <button onClick={this.handleCreateSoftSkill} ><i className="fas fa-plus-square"></i></button> */}
+            <button onClick={this.handleCreateSoftSkill} >Add</button>
+          </div>
         </div>
-        <div className="hard-skill-container">
-          <p>Hard Skill</p>
+        <div className="hard-skill-container content-item-container">
+          <h5>Hard Skill</h5>
           {
             hardSkills.map((hardSkill,index) => {
               if (editHardSkillIndex === index) {
@@ -697,7 +715,10 @@ class Content extends Component {
               }
             })
           }
-          <button onClick={this.handleCreateHardSkill} ><i className="fas fa-plus-square"></i></button>
+          <div className="add-profile-btn">
+            {/* <button onClick={this.handleCreateHardSkill} ><i className="fas fa-plus-square"></i></button> */}
+            <button onClick={this.handleCreateHardSkill} >Add</button>
+          </div>
         </div>
       </article>
     )

@@ -76,38 +76,34 @@ class EditProject extends Component {
 
   render() {
     const { title, name, startDate, endDate, description, city, tasks} = this.state.project;
-    const { selectedTab,index } = this.props;
+    const { index } = this.props;
     return (
-      <div className="content-container">
-        <h3>{selectedTab}</h3>
-        <div>
-          <input type="text" value={title} onChange={this.handlePositionInput} placeholder=" Project Name" />
+      <div className="content-item-container">
+        <h5>Project</h5>
+        <div className="edit-content-item-conteiner">
+          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Project Name" />
         </div>
-        <div>
-          <input type="text" value={name} onChange={this.handleCompanyInput} placeholder=" Organization" />
+        <div className="edit-content-item-conteiner">
+          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Organization" />
         </div>
-        <div className="term-conteiner">
+        <div className="term-container">
           <div>
-            <h5>From</h5>
-            <p><input type="text" className="month-input"  value={startDate.month} onChange={this.handleSDMInput} placeholder="mm"/> / <input type="text" className="year-input"  value={startDate.year} onChange={this.handleSDYInput} placeholder="yyyy"/></p>
+            <p><input  type="text" className="input-style month-input"  value={startDate.month} onChange={this.handleSDMInput} placeholder="mm"/> / <input type="text" className="input-style year-input"  value={startDate.year} onChange={this.handleSDYInput} placeholder="yyyy"/></p>
           </div>
+          <div className="term-icon">~</div>
           <div>
-            <h5>To</h5>
-            <p><input type="text" className="month-input"  value={endDate.month} onChange={this.handleEDMInput} placeholder="mm"/> / <input type="text" className="year-input"  value={endDate.year} onChange={this.handleEDYInput} placeholder="yyyy"/></p>
+            <p><input type="text" className="input-style month-input"  value={endDate.month} onChange={this.handleEDMInput} placeholder="mm"/> / <input type="text" className="input-style year-input"  value={endDate.year} onChange={this.handleEDYInput} placeholder="yyyy"/></p>
           </div>
         </div>
-        <div>
-          <input type="text" value={city} onChange={this.handleCityInput} placeholder=" City, Country" />
+        <div className="edit-content-item-conteiner">
+          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country" />
         </div>
-        <h4>Description</h4>
-        <textarea type="text" value={description} onChange={this.handleDescriptionInput}/>
-        <h4>Tasks/Responsibility</h4>
-        <textarea type="text" value={tasks} onChange={this.handleTasksInput}/>
-        {/* {
-          tasks.map((task,index) => {
-            return <input key={index} type="text" value={task} onChange={this.handleTaskInput}/>
-          })
-        } */}
+        <div className="edit-content-item-conteiner">
+          <textarea className="width-full" type="text" value={description} onChange={this.handleDescriptionInput} placeholder="Description" />
+        </div>
+        <div className="edit-content-item-conteiner">
+          <textarea className="width-full" type="text" value={tasks} onChange={this.handleTasksInput} placeholder="Tasks / Responsibility"/>
+        </div>
         <button onClick={() => {this.handleUpdate(index)}}>Save</button>
       </div>
     )
