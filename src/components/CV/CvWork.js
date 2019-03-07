@@ -17,26 +17,3 @@ class CvWork extends Component {
 }
 
 export default CvWork;
-
-// class CvWork extends Component {
-//   render() {
-//     const { content } = this.props;
-//     const { isDisplayContent, displayContent } = this.props;
-//     console.log('looking for', this.props);
-//     if (displayContent.work.length !== 0) {
-//       return (
-//         <div>
-//           <h4 className="cv-body-title">WORK EXPERIENCE</h4>
-//             {displayContent.work.map((content,index)=>{
-//                 return (
-//                   {content.title}
-//                 )
-//               })
-//             }
-          
-//         </div>
-//       )
-//     }
-    
-//   }
-// }
