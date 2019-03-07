@@ -25,6 +25,40 @@ class CV extends Component {
     }
   }
 
+  workExperience = () =>{
+    const { isDisplayContent, displayContent } = this.props;
+    if(displayContent.work.length > 0) {
+      return (
+        <div>
+          <h4 className="cv-body-title">WORK EXPERIENCE</h4>
+          {displayContent.work.map((content,index)=>{
+              return <CvWork key={index} content={content}/>
+            })
+          }
+        </div>
+      ) 
+    } else {
+      return null
+    }
+  }
+
+  educationExperience = () =>{
+    const { isDisplayContent, displayContent } = this.props;
+    if(displayContent.education.length > 0) {
+      return (
+        <div>
+          <h4 className="cv-body-title">EDUCATION</h4>
+          {displayContent.education.map((content,index)=>{
+              return <CvWork key={index} content={content}/>
+            })
+          }
+        </div>
+      ) 
+    } else {
+      return null
+    }
+  }
+
   render() {
     const { user, cv } = this.props;
     const { isDisplayContent, displayContent } = this.props;
@@ -50,14 +84,10 @@ class CV extends Component {
             <CvSkills user={user} />
             <CvLanguages user={user} />
             <CvInterests user={user} />
-            {/* {work ? <p>Work</p> : null} */}
-            {displayContent.work.map((content,index)=>{
-                return <CvWork key={index} content={content}/>
-              })
-              }
-            {
-
-            }
+          </div>
+          <div className="primary">
+            {this.workExperience()}
+            {this.educationExperience()}
           </div>
          </div>
         </div>
