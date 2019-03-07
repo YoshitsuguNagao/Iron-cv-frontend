@@ -3,13 +3,13 @@ import React, { Component } from 'react'
 class EditCvList extends Component {
   state = {
     editInput: this.props.cv.name,
-  }
+  };
 
   handleInput = (event) => {
     this.setState({
       editInput:event.target.value,
-    })
-  }
+    });
+  };
 
   render() {
     const { editInput } = this.state;
@@ -25,8 +25,8 @@ class EditCvList extends Component {
           </div>
         </div>
       </li>
-    )
-  }
-}
+    );
+  };
+};
 
 export default EditCvList;

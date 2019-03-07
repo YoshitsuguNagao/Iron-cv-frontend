@@ -15,8 +15,8 @@ class CvInterests extends Component {
         </div>
       </div>
     </article>
-    )
+    );
   }
-}
+};
 
 export default CvInterests;

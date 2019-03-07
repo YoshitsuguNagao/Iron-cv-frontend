@@ -28,14 +28,14 @@ class Signup extends Component {
         console.log('exists!', error);
         this.setState({
           isWrong: true,
-        })
+        });
       });
-  }
+  };
 
   handleChange = (event) => {
     const {name, value} = event.target;
     this.setState({[name]: value});
-  }
+  };
 
   render() {
     const { username, password } = this.state;
@@ -68,8 +68,8 @@ class Signup extends Component {
         </div>
         
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Signup;

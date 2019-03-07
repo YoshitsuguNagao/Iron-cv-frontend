@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { withAuth } from '../components/AuthProvider';
 class Private extends Component {
   render() {
@@ -7,8 +7,8 @@ class Private extends Component {
       <div>
         <h1>Welcome {user.username}</h1>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default withAuth()(Private);

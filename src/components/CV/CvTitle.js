@@ -13,8 +13,8 @@ class CvTitle extends Component {
           <p>{summary}</p>
         </div>
       </article>
-    )
+    );
   }
-}
+};
 
-export default CvTitle
+export default CvTitle;

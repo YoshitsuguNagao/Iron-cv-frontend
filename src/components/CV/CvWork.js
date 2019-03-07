@@ -12,8 +12,8 @@ class CvWork extends Component {
         <div className="work-text">{content.description}</div>
         <div className="work-text">{content.tasks}</div>
       </div>
-    )
+    );
   }
-}
+};
 
 export default CvWork;

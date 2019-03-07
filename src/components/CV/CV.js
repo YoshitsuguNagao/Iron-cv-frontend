@@ -15,23 +15,23 @@ class CV extends Component {
     work: [],
     education: [],
     project: [],
-  }
+  };
 
   componentDidUpdate() {
     if(this.props.displayContent.work !== this.state.work) {
       this.setState({
         work: this.props.displayContent.work,
-      })
-    } else if(this.props.displayContent.education !== this.state.education) {
+      });
+    } else if (this.props.displayContent.education !== this.state.education) {
       this.setState({
         education: this.props.displayContent.education,
-      })
+      });
     } else if(this.props.displayContent.project !== this.state.project) {
       this.setState({
         project: this.props.displayContent.project,
-      })
-    }
-  }
+      });
+    };
+  };
 
   workExperience = () =>{
     const { displayContent } = this.props;
@@ -44,11 +44,11 @@ class CV extends Component {
             })
           }
         </div>
-      )
+      );
     } else {
-      return null
+      return null;
     }
-  }
+  };
 
   educationExperience = () =>{
     const { displayContent } = this.props;
@@ -61,11 +61,11 @@ class CV extends Component {
             })
           }
         </div>
-      )
+      );
     } else {
-      return null
+      return null;
     }
-  }
+  };
 
   projectExperience = () =>{
     const { displayContent } = this.props;
@@ -78,11 +78,11 @@ class CV extends Component {
             })
           }
         </div>
-      )
+      );
     } else {
-      return null
+      return null;
     }
-  }
+  };
 
   render() {
     const { user, cv } = this.props;
@@ -93,7 +93,7 @@ class CV extends Component {
             my cv
           </div>
         </div>
-      )
+      );
     } else {
       return (
       <div className="cv-component-container">
@@ -115,10 +115,9 @@ class CV extends Component {
          </div>
         </div>
       </div>
-    )
+      );
     }
+  };
+};
 
-  }
-}
-
-export default withAuth()(CV)
+export default withAuth()(CV);

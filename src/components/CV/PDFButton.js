@@ -13,15 +13,15 @@ class PDFButton extends Component {
 			pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
 			pdf.save(filename);
 		});
-  }
+  };
 
   render () {
     return (
       <div>
         <button className="print-btn" onClick={this.printCV}><p>Print</p></button>
       </div>
-    )
+    );
   }
-}
+};
 
-export default PDFButton
+export default PDFButton;

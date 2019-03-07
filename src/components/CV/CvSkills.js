@@ -21,8 +21,8 @@ class CvSkills extends Component {
         </div>
       </div>
     </article>
-    )
+    );
   }
-}
+};
 
 export default CvSkills;

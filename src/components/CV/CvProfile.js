@@ -13,8 +13,8 @@ class CvProfile extends Component {
         { medium ? <div className="cv-profile-card"><i className="fab fa-medium"></i>{medium}</div>: null }
         { linkedin ? <div className="cv-profile-card"><i className="fab fa-linkedin"></i>{linkedin}</div>: null }
       </article>
-    )
+    );
   }
-}
+};
 
-export default CvProfile
+export default CvProfile;

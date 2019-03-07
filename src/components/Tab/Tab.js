@@ -5,12 +5,12 @@ import { withAuth } from '../AuthProvider';
 class Tab extends Component {
   state = {
     selectedTab: '',
-  }
+  };
 
   handleClick = () => {
     const { setTab } = this.props;
     setTab(this.props.title);
-  }
+  };
 
   render() {
     const { title, ariaSelected } = this.props;
@@ -29,8 +29,8 @@ class Tab extends Component {
           aria-selected={ariaSelected}
           onClick={this.handleClick}
         >{title}</a>
-    )
+    );
   }
-}
+};
 
-export default withAuth()(Tab)
+export default withAuth()(Tab);

@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import CvList from '../components/CvList';
 import './Home.css';
 import cv from '../lib/cv-service';
 import auth from '../lib/auth-service';
 import { withAuth } from '../components/AuthProvider';
-import EditCvList from '../components/EditCvList'
+import EditCvList from '../components/EditCvList';
 
 
 class Home extends Component {
   state = {
     cvList: [],
     editIndex: '',
-  }
+  };
 
   handleCreateCV = () => {
     cv.createCv({ user: this.props.user})
@@ -19,16 +19,16 @@ class Home extends Component {
         let newCvList = [...this.state.cvList,newCv];
         this.setState({
          cvList: newCvList,
-       })
-    })
-  }
+       });
+    });
+  };
 
   handleDeleteCV = (cvItem) => {
     cv.deleteCv(cvItem._id)
     .then(() => {
       this.fetchCVs()
-     })
-  }
+    });
+  };
 
   fetchCVs = () => {
     const { user } = this.props;
@@ -36,27 +36,27 @@ class Home extends Component {
       .then((cvs) => {
         this.setState({
           cvList: cvs,
-        })
-      })
-  }
+      });
+    });
+  };
 
   fetchUserInfo = () => {
     auth.getUser()
       .then((user) => {
         this.props.setUser(user)
-      })
-  }
+      });
+  };
 
   componentDidMount(){
     this.fetchCVs();
     this.fetchUserInfo();
-  }
+  };
 
   handleEditCV = (index) => {
     this.setState({
-      editIndex: index
-    })
-  }
+      editIndex: index,
+    });
+  };
 
   handleUpdateCV = (index, editInput) => {
     const { cvList } = this.state;
@@ -66,9 +66,9 @@ class Home extends Component {
       this.fetchCVs()
       this.setState({
         editIndex: '',
-      })
-     })
-  }
+      });
+    });
+  };
 
   listCvs = () => {
     const { cvList, editIndex } = this.state;
@@ -93,13 +93,12 @@ class Home extends Component {
                 updateCv={this.handleUpdateCV}
               />
             }
-            // return <CvPreview key={index} cv={cv} deletecv={this.handleDeleteCV} />
           })
         }
       </ul>
     </div>
-    )
-  }
+    );
+  };
 
   render() {
     return (
@@ -107,8 +106,8 @@ class Home extends Component {
         <button className="add-btn" onClick={this.handleCreateCV}><i className="fas fa-plus"></i></button>
         { this.listCvs() }
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default withAuth()(Home);

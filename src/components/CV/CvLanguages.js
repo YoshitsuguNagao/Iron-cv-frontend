@@ -23,11 +23,11 @@ class CvLanguages extends Component {
             }) }
           </div>
         </article>
-      )
+      );
     } else {
-      return null
+      return null;
     }
-  }
-}
+  };
+};
 
 export default CvLanguages;
