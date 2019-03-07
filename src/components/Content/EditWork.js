@@ -69,6 +69,7 @@ class EditWork extends Component {
     this.props.work.endDate = this.state.work.endDate;
     this.props.work.description = this.state.work.description;
     this.props.work.tasks = this.state.work.tasks;
+    this.props.work.city = this.state.work.city;
   }
 
   handleUpdate = (index) => {

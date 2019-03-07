@@ -94,7 +94,6 @@ class Content extends Component {
               education:[],
               project:[],
             };
-            console.log('ontents',contents)
             contents.forEach((content,index) => {
               if(content.contentType === 'work') {
                 newWorkArr = [...newWorkArr, content];
@@ -162,7 +161,6 @@ class Content extends Component {
     this.setState({
       editWorkIndex: index
     })
-
   }
 
   handleUpdateWork = (index) => {
@@ -185,7 +183,6 @@ class Content extends Component {
   }
 
   handleDisplayWork = (index) => {
-    console.log('objectjjjjjjj')
     const { isDisplayContent } = this.state;
     isDisplayContent.work[index] = !isDisplayContent.work[index]
     let newObj = isDisplayContent
@@ -198,13 +195,11 @@ class Content extends Component {
 
   getWork = () => {
     const { work, editWorkIndex, isDisplayContent} = this.state;
-    console.log('this get work',this.props.isDisplayContent.work)
     this.props.displayContent.work = [];
     return (<div>
         {
           work.map((content,index) => {
             if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content]
-            console.log('hey',this.props.displayContent)
             if(editWorkIndex === index) {
               return <EditWork
                 contentType={'work'}
@@ -238,7 +233,6 @@ class Content extends Component {
   handleUpdateDisplay = () =>{
     const newCv =this.props.cv
     newCv.contentId = [];
-    console.log('haitteru')
     if(this.props.displayContent.work) {
       this.props.displayContent.work.map((item)=>{
         newCv.contentId = [...newCv.contentId,item._id]
@@ -314,7 +308,6 @@ class Content extends Component {
     return (<div>
         {
           education.map((content,index) => {
-            // console.log('hay',this.props.displayContent)
             if(this.props.isDisplayContent.education[index]) this.props.displayContent.education = [...this.props.displayContent.education,content]
             if(editEduIndex === index) {
               return <EditEdu
@@ -745,12 +738,9 @@ class Content extends Component {
       displayContent: this.props.displayContent
     })
     this.props.setDisplayContent(this.state.displayContent)
-     console.log('irukai?',this.props)
   }
 
   render() {
-    console.log('render',)
-
     const { selectedTab } = this.props;
     if (selectedTab === 'profile') {
       return this.getProfile()

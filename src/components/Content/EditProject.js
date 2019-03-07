@@ -68,6 +68,8 @@ class EditProject extends Component {
     this.props.project.startDate = this.state.project.startDate;
     this.props.project.endDate = this.state.project.endDate;
     this.props.project.description = this.state.project.description;
+    this.props.project.tasks = this.state.project.tasks;
+    this.props.project.city = this.state.project.city;
   }
 
   handleUpdate = (index) => {
@@ -104,7 +106,9 @@ class EditProject extends Component {
         <div className="edit-content-item-conteiner">
           <textarea className="width-full" type="text" value={tasks} onChange={this.handleTasksInput} placeholder="Tasks / Responsibility"/>
         </div>
-        <button onClick={() => {this.handleUpdate(index)}}>Save</button>
+        <div className="save-profile-btn">
+          <button onClick={() => {this.handleUpdate(index)}}>Save</button>
+        </div>
       </div>
     )
   }
