@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import auth from '../lib/auth-service';
 
-export const AuthContext = React.createContext(
-  // authStore // default value
-);
+export const AuthContext = React.createContext();
 
 export const { Provider, Consumer }  = AuthContext.Consumer;
 
@@ -45,10 +43,11 @@ export const withAuth = () => (Comp) => {
               {...this.props} />
           }}
         </Consumer>
-      )
+      );
     }
-  }
-}
+  };
+};
+
 export default class AuthProvider extends Component {
   state = {
     isLogged: false,
@@ -131,51 +130,51 @@ export default class AuthProvider extends Component {
       description: '',
       tasks: [],
     },
-  }
+  };
 
   setTab = (tab) => {
     this.setState({
       selectedTab: tab
-    })
-  }
+    });
+  };
 
   setUser = (user) => {
     this.setState({
       isLogged: true,
       user,
-    })
-  }
+    });
+  };
 
   setCv = (cv) => {
     this.setState({
       cv,
-    })
-  }
+    });
+  };
 
   setContact = (contact) => {
     this.setState({
       contact,
-    })
-  }
+    });
+  };
 
   setIsDisplayContent = (isDisplayContent) => {
     this.setState({
       isDisplayContent,
-    })
-  }
+    });
+  };
 
   setDisplayContent = (displayContent) => {
     this.setState({
       displayContent,
-    })
-  }
+    });
+  };
 
   setHeadlines = (headline,summary) => {
     this.setState({
       headline,
-      summary
-    })
-  }
+      summary,
+    });
+  };
 
   logoutUser = () =>{
     auth.logout()
@@ -186,7 +185,7 @@ export default class AuthProvider extends Component {
         });
       })
       .catch( error => console.log(error))
-  }
+  };
 
   componentDidMount() {
     auth.me()
@@ -194,17 +193,17 @@ export default class AuthProvider extends Component {
         this.setState({
           isLogged: true,
           user,
-          status: 'loaded'
+          status: 'loaded',
         })
       })
       .catch((error) => {
         this.setState({
           isLogged: false,
           user: {},
-          status: 'loaded'
+          status: 'loaded',
         });
-      })
-  }
+      });
+  };
 
   render() {
     const { isLogged,
@@ -268,5 +267,5 @@ export default class AuthProvider extends Component {
           </Provider>
         );
     }
-  }
-}
+  };
+};

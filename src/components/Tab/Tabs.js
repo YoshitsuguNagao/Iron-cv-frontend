@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Tab from './Tab';
 import './Tabs.css';
-import { withRouter } from "react-router";
-import { withAuth } from '../AuthProvider'
+import { withRouter } from 'react-router';
+import { withAuth } from '../AuthProvider';
 
 
 class Tabs extends Component {
   state = {
     selectedTab: this.props.selectedTab,
-  }
+  };
 
   render() {
     const { selectedTab, contents } = this.props;
@@ -28,8 +28,8 @@ class Tabs extends Component {
           </div>
         </nav>
       </div>
-    )
+    );
   }
-}
+};
 
 export default withAuth()(withRouter(Tabs));

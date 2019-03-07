@@ -22,8 +22,8 @@ class App extends Component {
           <PrivateRoute exact path="/edit/:cvId" component={EditCV} />
         </div>
       </AuthProvider>
-    )
-  }
-}
+    );
+  };
+};
 
 export default App;

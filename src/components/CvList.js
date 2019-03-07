@@ -6,7 +6,7 @@ class CvList extends Component {
 
   handleDeleteCV = () => {
     this.props.deleteCv(this.props.cv)
-  }
+  };
 
   render() {
     const { index, editCv } = this.props;
@@ -23,9 +23,9 @@ class CvList extends Component {
           </div>
         </div>
       </li>
-    )
-  }
-}
+    );
+  };
+};
 
 
 export default withAuth()(CvList);

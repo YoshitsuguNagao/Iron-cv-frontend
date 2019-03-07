@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
-import './Navbar.css'
+import './Navbar.css';
 
 class Navbar extends Component {
   render() {
@@ -38,7 +38,7 @@ class Navbar extends Component {
         </div>
       </div>
     }
-  }
-}
+  };
+};
 
 export default withAuth()(Navbar);

@@ -14,8 +14,8 @@ const PrivateRoute = ({ component: Component, isLogged, ...rest }) => {
         }
       }}
     />
-  )
-}
+  );
+};
 
 
 

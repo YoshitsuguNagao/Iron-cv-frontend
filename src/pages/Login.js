@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import auth from '../lib/auth-service';
 import './Auth.css';
 import { Link } from 'react-router-dom';
-// import { AuthConsumer } from '../components/AuthProvider';
-
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
     isWrong: false,
-  }
+  };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -23,14 +21,14 @@ class Login extends Component {
     .catch( error => {
       this.setState({
         isWrong: true,
-      })
-    })
-  }
+      });
+    });
+  };
 
   handleChange = (event) => {
     const {name, value} = event.target;
     this.setState({[name]: value});
-  }
+  };
 
   render() {
     const { username, password, isWrong } = this.state;
@@ -62,8 +60,8 @@ class Login extends Component {
           </form>
         </div>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default Login;

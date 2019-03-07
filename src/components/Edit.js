@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Edit.css'
+import './Edit.css';
 import Tabs from './Tab/Tabs';
 import Content from './Content/Content';
 import { withRouter } from "react-router";
@@ -16,8 +16,8 @@ class Edit extends Component {
       {contentType: "project"},
       {contentType: "languages"},
       {contentType: "interests"}
-    ]
-  }
+    ],
+  };
 
   render() {
     const { selectedTab, contents } = this.state
@@ -28,8 +28,8 @@ class Edit extends Component {
           <Content content={contents}/>
         </div>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
-export default withAuth()(withRouter(Edit))
+export default withAuth()(withRouter(Edit));

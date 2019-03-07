@@ -13,19 +13,21 @@ class EditCV extends Component {
     cv.getCv(cvId)
       .then((cv) => {
         this.props.setCv(cv);
-      })
-  }
+      });
+  };
+
   componentDidMount(){
     this.fetchCV();
-  }
+  };
+
   render() {
     return (
       <div className="edit-cv-container">
         <CV />
         <Edit />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default withAuth()(withRouter(EditCV));
