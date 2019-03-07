@@ -1,0 +1,62 @@
+.main-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  float: left;
+  width: 100vw;
+  position: fixed;
+}
+
+.navbar-css {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  position: sticky;
+  background-color: rgb(52, 68, 81);
+  top: 0;
+  padding: 5px 0;
+}
+
+.navbar-hidden {
+  display: none;
+}
+
+.title-logo {
+  display: flex;
+}
+
+.title-logo img {
+  height: 50px;
+  margin-left: 1rem;
+}
+
+.title {
+  padding-top: 4px;
+}
+
+.title h1 {
+  color: white;
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+.title-link {
+  text-decoration: none;
+}
+
+.auth-link a {
+  margin: 10px;
+}
+
+.username {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.username p {
+  color: white;
+  margin: 1rem;
+}

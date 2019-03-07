@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import auth from '../lib/auth-service';
 
+
 class Signup extends Component {
 
   state = {
     username: "",
     password: "",
+    isWrong: false,
   };
 
   handleFormSubmit = (event) => {
@@ -22,7 +24,12 @@ class Signup extends Component {
         });
         this.props.setUser(user)
       })
-      .catch( error => console.log(error) )
+      .catch((error) => {
+        console.log('exists!', error);
+        this.setState({
+          isWrong: true,
+        })
+      });
   }
 
   handleChange = (event) => {
@@ -33,19 +40,33 @@ class Signup extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
-          <input type="submit" value="Signup" />
-        </form>
+      <div className="auth-container">
+        <div className="border-auth-container">
+          <form className="auth-form-container" onSubmit={this.handleFormSubmit}>
+            <img className="logo" src={require("../images/logo.png")} alt="logo"/>
 
-        <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
-        </p>
-
+            <div className="signup-form">
+              <div className="signup-input">
+                <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="username"/>
+              </div>
+              <div className="signup-input">
+                <input type="password" name="password" value={password} onChange={this.handleChange} placeholder="password"/>
+              </div>
+              <input className="auth-button" type="submit" value="Signup" />
+            </div>
+            <div className="switch-auth">
+              { this.state.isWrong ?
+                <div className="incorrect-message">
+                  <p>User already exists</p>
+                </div>
+              : null }
+              <p>Already have account?
+                <Link to={"/login"}> Login</Link>
+              </p>
+            </div>
+          </form>
+        </div>
+        
       </div>
     )
   }

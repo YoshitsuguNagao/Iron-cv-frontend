@@ -1,0 +1,94 @@
+html {
+  background-color: white;
+}
+
+.auth-container {
+  width: 100%;
+  margin: 0 auto 20% auto;
+  padding-top: 6%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(52, 68, 81);
+  height: 100vh;
+}
+
+.border-auth-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(162, 174, 184);
+  border-radius: 7px;
+  margin: 0 30%;
+}
+
+.auth-form-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(52, 68, 81);
+  border-radius: 7px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.switch-auth {
+  margin: 5% auto;
+  width: 80%;
+}
+
+.switch-auth p {
+  font-size: 0.9rem;
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+  padding-top: 0.8rem;
+}
+
+.switch-auth p:nth-child(2n) {
+  padding-top: 43px;
+}
+
+.logo {
+  margin: 10% auto 5% auto;
+  padding: 5% 0;
+  width: 20%;
+}
+
+.signup-input {
+  margin: 7% auto;
+}
+
+.signup-input input {
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+.auth-button {
+  margin: 7% auto;
+  border-radius: 5px;
+  background-color: rgb(33, 107, 173);
+  color: white;
+  width: 100%;
+}
+
+.incorrect-message {
+  width: 70%;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: rgb(193, 37, 60);
+  background-color: rgb(243, 142, 157);
+  margin: 0 auto;
+}
+
+.incorrect-message {
+  color: rgb(193, 37, 60);
+}
+
+.iron-title {
+  color: white;
+  margin: 0 auto 10% auto;
+}
