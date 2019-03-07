@@ -164,11 +164,15 @@ class Content extends Component {
     this.setState({
       editWorkIndex: index
     })
+
   }
 
   handleUpdateWork = (index) => {
     const { work } = this.state;
     content.updateContent(work[index])
+    .then(() => {
+      this.fetchContentInfo();
+    })
     this.setState({
       editWorkIndex: '',
     })
@@ -190,26 +194,19 @@ class Content extends Component {
     this.setState({
       isDisplayContent: newObj,
     })
-        this.props.setCv(this.props.cv)
-
+    this.props.setCv(this.props.cv)
+    this.props.setDisplayContent(this.props.displayContent)
   }
 
   getWork = () => {
     const { work, editWorkIndex, isDisplayContent} = this.state;
     console.log('this get work',this.props.isDisplayContent.work)
     this.props.displayContent.work = [];
-    // debugger
-    // this.props.setDisplayContent([])
     return (<div>
         {
           work.map((content,index) => {
             if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content]
             console.log('hey',this.props.displayContent)
-            // debugger
-            // if(this.props.isDisplayContent.work[index]) {
-            //   const newArr = [...this.props.displayContent.work,content]
-            //   this.props.setDisplayContent
-            // }
             if(editWorkIndex === index) {
               return <EditWork
                 contentType={'work'}
@@ -238,39 +235,25 @@ class Content extends Component {
   }
 
   handleUpdateDisplay = () =>{
-    // .then(()=>{
-      const newCv =this.props.cv
-      newCv.contentId = [];
-      console.log('haitteru')
-      if(this.props.displayContent.work) {
-        this.props.displayContent.work.map((item)=>{
-          newCv.contentId = [...newCv.contentId,item._id]
-          // newDisplayContact.work = [...newDisplayContact.work,
-        })
-      }
-      if(this.props.displayContent.education) {
-        this.props.displayContent.education.map((item)=>{
-          newCv.contentId = [...newCv.contentId,item._id]
-        })
-      }
-      if(this.props.displayContent.project) {
-        this.props.displayContent.project.map((item)=>{
-          newCv.contentId = [...newCv.contentId,item._id]
-        })
-      }
-      cv.updateCv(newCv)
-      // .then((data) => {
-      //   this.props.setCv(data.cv)
-      // })
-      // console.log('object')
-      // this.props.setDisplayContent(this.state.displayContent)
-      // this.props.displayContent.work = this.state.displayContent.work
-    // })
-    // this.handleAdd()
-  }
-
-  handleAdd = () => {
-      // 
+    const newCv =this.props.cv
+    newCv.contentId = [];
+    console.log('haitteru')
+    if(this.props.displayContent.work) {
+      this.props.displayContent.work.map((item)=>{
+        newCv.contentId = [...newCv.contentId,item._id]
+      })
+    }
+    if(this.props.displayContent.education) {
+      this.props.displayContent.education.map((item)=>{
+        newCv.contentId = [...newCv.contentId,item._id]
+      })
+    }
+    if(this.props.displayContent.project) {
+      this.props.displayContent.project.map((item)=>{
+        newCv.contentId = [...newCv.contentId,item._id]
+      })
+    }
+    cv.updateCv(newCv)
   }
 
   //Education Component
@@ -296,6 +279,9 @@ class Content extends Component {
   handleUpdateEdu = (index) => {
     const { education } = this.state;
     content.updateContent(education[index])
+    .then(() => {
+      this.fetchContentInfo();
+    })
     this.setState({
       editEduIndex: '',
     })
@@ -317,6 +303,7 @@ class Content extends Component {
       isDisplayContent: newObj,
     })
     this.props.setCv(this.props.cv)
+    this.props.setDisplayContent(this.props.displayContent)
 
   }
 
@@ -379,6 +366,9 @@ class Content extends Component {
     this.setState({
       editProjectIndex: '',
     })
+    .then(() => {
+      this.fetchContentInfo();
+    })
   }
 
   handleDeleteProject = (index) => {
@@ -397,6 +387,7 @@ class Content extends Component {
       isDisplayContent: newObj,
     })
     this.props.setCv(this.props.cv)
+    this.props.setDisplayContent(this.props.displayContent)
 
   }
 
@@ -406,8 +397,6 @@ class Content extends Component {
     return (<div>
         {
           project.map((content,index) => {
-            // console.log('kay',this.props.displayContent)
-
             if(this.props.isDisplayContent.project[index]) this.props.displayContent.project = [...this.props.displayContent.project,content]
             if(editProjectIndex === index) {
               return <EditProject
@@ -437,7 +426,7 @@ class Content extends Component {
   // Interests
   handleCreateInterest = () => {
     const { interests } = this.state;
-    const newInterests = [...interests, 'text2']
+    const newInterests = [...interests, 'interest']
     this.updateInterestInfo(newInterests);
   }
 
@@ -579,7 +568,7 @@ class Content extends Component {
   // soft skill
   handleCreateSoftSkill = () => {
     const { softSkills } = this.state;
-    const newSoftSkills = [...softSkills, 'new skill']
+    const newSoftSkills = [...softSkills, 'soft skill']
     this.updateSoftSkillInfo(newSoftSkills)
   }
 
@@ -618,7 +607,7 @@ class Content extends Component {
   // hard skill
   handleCreateHardSkill = () => {
     const { hardSkills } = this.state;
-    const newHardSkills = [...hardSkills, 'new skill']
+    const newHardSkills = [...hardSkills, 'hard skill']
     this.updateHardSkillInfo(newHardSkills)
   }
 
@@ -730,7 +719,7 @@ class Content extends Component {
   componentDidMount() {
     this.fetchContentInfo()
     this.fetchUserInfo()
-    const newObj = this.props.displayContent
+    // const newObj = this.props.displayContent
     this.setState({
       displayContent: this.props.displayContent
     })

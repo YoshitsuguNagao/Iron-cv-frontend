@@ -76,7 +76,7 @@ class Profile extends Component {
             <p>{lastName}</p>
           </div>
         </div>
-        <div >
+        <div className="profile-headline-container">
           <p>{headline}</p>
           <p>{summary}</p>
         </div>

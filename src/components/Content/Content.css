@@ -28,6 +28,10 @@
   height: 30px;
 }
 
+.profile-headline-container {
+  margin-left: 40px;
+}
+
 .edit-profile-card {
   align-items: center;
   display: flex;

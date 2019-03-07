@@ -96,34 +96,33 @@ page[size="A5"][layout="landscape"] {
 
 .text-skill {
   color: white;
-  margin: 2px;
-  padding: 1px 2px;
+  margin: 2px 3px;
+  padding: 1px 5px;
   background-color: rgb(33, 107, 173);
-  border-radius: 2px;
+  border-radius: 0.5rem;
 }
 
 .text-interest {
   color: black;
+  margin: 2px 3px;
+  padding: 1px 5px;
+  border-radius: 0.5rem;
   background-color: rgb(227, 227, 227);
-  margin: 2px;
-  padding: 1px 2px;
-  border-radius: 2px;
 }
 
 .cv-body-title {
   font-size: 1.1rem;
-  color: #00a2ff; 
+  color: #00a2ff;
 }
 
 .cv-text-view {
   padding: 1.5rem 2rem;
-  /* width: 90%; */
   border-right-style: solid;
   border-right-color: rgb(227, 227, 227);
 }
 
 .hard-container, .soft-container, .languages-container, .interests-container {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .single-language {

@@ -25,14 +25,7 @@ class Item extends Component {
         <p>{`${content.startDate.month}/${content.startDate.year} ~ ${content.endDate.month}/${content.endDate.year}`}</p>
         <p>{content.city}</p>
         <p>{content.tasks}</p>
-        {/* <ul>
-          {
-            content.tasks.map((task,index) => {
-            return (<li key={index}>{task}</li>)
-            })
-          }
-        </ul> */}
-        {isUse ? <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Use</button>: <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>not Use</button>}
+        {isUse ? <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Don't Use</button>: <button className="using-btn" onClick={() => { this.handleDisplay(index) }}>Use</button>}
         <button className="ed-btn" onClick={() => { this.handleEdit(index) }}>edit</button>
         <button className="del-btn" onClick={() => { this.handleDelete(index)} }>delete</button>
       </div>

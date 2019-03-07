@@ -7,18 +7,29 @@ import CvLanguages from './CvLanguages';
 import CvInterests from './CvInterests';
 import PDFButton from './PDFButton';
 import { withAuth } from '../AuthProvider';
+import CvWork from './CvWork';
 
 
 class CV extends Component {
-componentDidUpdate() {
-  const { isDisplayContent,displayContent } = this.props;
-  // console.log('DisplayContent',isDisplayContent)
-  console.log('DisplayContent',displayContent)
+  state = {
+    work: [],
+  }
 
-}
+  componentDidUpdate() {
+    console.log('cdu',this.state.work,this.props.displayContent.work)
+    if(this.props.displayContent.work !== this.state.work) {
+      this.setState({
+        work: this.props.displayContent.work,
+      })
+
+    }
+  }
 
   render() {
     const { user, cv } = this.props;
+    const { isDisplayContent, displayContent } = this.props;
+    const { work } = this.state
+    console.log('render cv',displayContent)
     if (user === '') {
       return (
         <div className="cv-component-container">
@@ -39,7 +50,14 @@ componentDidUpdate() {
             <CvSkills user={user} />
             <CvLanguages user={user} />
             <CvInterests user={user} />
-            {/* {displayContent.work} */}
+            {/* {work ? <p>Work</p> : null} */}
+            {displayContent.work.map((content,index)=>{
+                return <CvWork key={index} content={content}/>
+              })
+              }
+            {
+
+            }
           </div>
          </div>
         </div>

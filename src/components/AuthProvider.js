@@ -166,6 +166,7 @@ export default class AuthProvider extends Component {
   }
 
   setDisplayContent = (displayContent) => {
+    console.log('set auth pro')
     this.setState({
       displayContent,
     })
