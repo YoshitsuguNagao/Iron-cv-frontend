@@ -7,9 +7,9 @@ class CvInterests extends Component {
     return (
     <article>
       <div className="interests-container">
-        <h4 className="cv-body-title">INTERESTS</h4>
+        { interests[0] ? <h4 className="cv-body-title">INTERESTS</h4> : null }
         <div className="interests-tag">
-        { interests ? <div className="cv-interest-card">{interests.map((interest, index) => { 
+        { interests[0] ? <div className="cv-interest-card">{interests.map((interest, index) => {
           return <div className="text-interest" key={index}>{interest}</div>
           } )}</div> : null }
         </div>
