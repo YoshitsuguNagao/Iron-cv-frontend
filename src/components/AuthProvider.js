@@ -30,6 +30,8 @@ export const withAuth = () => (Comp) => {
               summary={authStore.summary}
               setHeadlines={authStore.setHeadlines}
               interest={authStore.interest}
+              // interests={authStore.interests}
+              setInterests={authStore.setInterests}
               languages={authStore.languages}
               softSkill={authStore.softSkill}
               hardSkill={authStore.hardSkill}
@@ -73,6 +75,7 @@ export default class AuthProvider extends Component {
     softSkill: [''],
     hardSkill: [''],
     interest: [''],
+    // interests: [],
     languages: {
       language: '',
       level: '',
@@ -176,6 +179,12 @@ export default class AuthProvider extends Component {
     });
   };
 
+  // setInterests = (interests) => {
+  //   this.setState({
+  //     interests,
+  //   })
+  // }
+
   logoutUser = () =>{
     auth.logout()
       .then(() => {
@@ -189,8 +198,9 @@ export default class AuthProvider extends Component {
 
   componentDidMount() {
     auth.me()
-      .then((user) => {
-        this.setState({
+    .then((user) => {
+      console.log('object')
+      this.setState({
           isLogged: true,
           user,
           status: 'loaded',
@@ -217,6 +227,7 @@ export default class AuthProvider extends Component {
             headline,
             summary,
             interest,
+            // interests,
             languages,
             softSkill,
             hardSkill,
@@ -244,6 +255,7 @@ export default class AuthProvider extends Component {
                             setHeadlines: this.setHeadlines,
                             setIsDisplayContent: this.setIsDisplayContent,
                             setDisplayContent: this.setDisplayContent,
+                            // setInterests: this.setInterests,
                             setTab: this.setTab,
                             selectedTab,
                             contact,
@@ -252,6 +264,7 @@ export default class AuthProvider extends Component {
                             headline,
                             summary,
                             interest,
+                            // interests,
                             languages,
                             softSkill,
                             hardSkill,
