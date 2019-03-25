@@ -44,7 +44,7 @@ class Signup extends Component {
         <div className="border-auth-container">
           <form className="auth-form-container" onSubmit={this.handleFormSubmit}>
             <img className="logo" src={require("../images/logo.png")} alt="logo"/>
-
+            <h3 className="iron-title"><b>IRON</b> CV</h3>
             <div className="signup-form">
               <div className="signup-input">
                 <input type="text" name="username" value={username} onChange={this.handleChange} placeholder="username"/>
