@@ -9,8 +9,11 @@ class PDFButton extends Component {
 
     html2canvas(document.querySelector('.cv-view'))
       .then((canvas) => {
-			let pdf = new jsPDF('p', 'mm', 'a4');
-			pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+      let pdf = new jsPDF('p', 'mm', 'a4');
+      // pdf.addHTML(canvas, function() {
+      //   pdf.save('stacking-plan.pdf');
+      // });
+			pdf.addImage(canvas.toDataURL('image/png',1.0), 'jpg', 0, 0, 211, 298);
 			pdf.save(filename);
 		});
   };

@@ -172,7 +172,7 @@ class EditProfile extends Component {
           <input type="text" className="width-full" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
         </div>
         <div className="edit-profile-card-textarea headline-card">
-          <textarea type="text" className="width-full" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
+          <textarea id="textarea" type="text" className="width-full" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
         </div>
         <div className="edit-profile-card">
           <i className="fas fa-envelope"></i>

@@ -23,8 +23,16 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Roboto" rel="stylesheet">
     <title>IRON CV</title>
+    <script type="text/javascript">
+      function adustTextarea(){
+          var textarea = document.getElementById("textarea");
+          if( textarea.scrollHeight > textarea.offsetHeight ){
+                    textarea.style.height = textarea.scrollHeight+'px';
+          }
+      }
+    </script>
   </head>
-  <body>
+  <body onload="adustTextarea();">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>

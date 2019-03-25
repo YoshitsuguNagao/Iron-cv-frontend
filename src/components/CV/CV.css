@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   overflow: scroll;
+  overflow-y: scroll;
 }
 
 .cv-view {
