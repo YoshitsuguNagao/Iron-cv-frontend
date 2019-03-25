@@ -20,6 +20,14 @@ html {
   margin: 0 30%;
 }
 
+
+@media (max-width: 700px) {
+  .border-auth-container {
+    margin: 0 5%;
+    width: 90%;
+  }
+}
+
 .auth-form-container {
   width: 100%;
   margin: 0 auto;
@@ -65,6 +73,7 @@ html {
 .signup-input input {
   border-radius: 5px;
   box-shadow: none;
+  text-align: center;
 }
 
 .auth-button {
