@@ -14,7 +14,7 @@ html {
 
 .border-auth-container {
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: rgb(162, 174, 184);
   border-radius: 7px;
   margin: 0 30%;
