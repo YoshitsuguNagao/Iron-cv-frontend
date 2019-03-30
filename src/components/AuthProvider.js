@@ -31,7 +31,7 @@ export const withAuth = () => (Comp) => {
               setHeadlines={authStore.setHeadlines}
               interest={authStore.interest}
               // interests={authStore.interests}
-              setInterests={authStore.setInterests}
+              setInterest={authStore.setInterest}
               languages={authStore.languages}
               softSkill={authStore.softSkill}
               hardSkill={authStore.hardSkill}
@@ -74,7 +74,7 @@ export default class AuthProvider extends Component {
     summary: '',
     softSkill: [''],
     hardSkill: [''],
-    interest: [''],
+    interest: '',
     // interests: [],
     languages: {
       language: '',
@@ -179,11 +179,11 @@ export default class AuthProvider extends Component {
     });
   };
 
-  // setInterests = (interests) => {
-  //   this.setState({
-  //     interests,
-  //   })
-  // }
+  setInterest = (interest) => {
+    this.setState({
+      interest,
+    })
+  }
 
   logoutUser = () =>{
     auth.logout()
@@ -255,7 +255,7 @@ export default class AuthProvider extends Component {
                             setHeadlines: this.setHeadlines,
                             setIsDisplayContent: this.setIsDisplayContent,
                             setDisplayContent: this.setDisplayContent,
-                            // setInterests: this.setInterests,
+                            setInterest: this.setInterest,
                             setTab: this.setTab,
                             selectedTab,
                             contact,
