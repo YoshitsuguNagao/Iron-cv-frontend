@@ -16,6 +16,7 @@ class App extends Component {
       <AuthProvider>
         <div className="main-container">
           <Navbar />
+          <AnonRoute exact path="/" component={Login} />
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
           <PrivateRoute exact path="/home" component={Home} />
