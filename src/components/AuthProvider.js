@@ -30,11 +30,12 @@ export const withAuth = () => (Comp) => {
               summary={authStore.summary}
               setHeadlines={authStore.setHeadlines}
               interest={authStore.interest}
-              // interests={authStore.interests}
               setInterest={authStore.setInterest}
               languages={authStore.languages}
               softSkill={authStore.softSkill}
+              setSoftSkill={authStore.setSoftSkill}
               hardSkill={authStore.hardSkill}
+              setHardSkill={authStore.setHardSkill}
               socialNetwork={authStore.socialNetwork}
               work={authStore.work}
               workContent={authStore.workContent}
@@ -72,10 +73,9 @@ export default class AuthProvider extends Component {
     },
     headline: '',
     summary: '',
-    softSkill: [''],
-    hardSkill: [''],
+    softSkill: '',
+    hardSkill: '',
     interest: '',
-    // interests: [],
     languages: {
       language: '',
       level: '',
@@ -185,6 +185,18 @@ export default class AuthProvider extends Component {
     })
   }
 
+  setSoftSkill = (softSkill) => {
+    this.setState({
+      softSkill,
+    })
+  }
+
+  setHardSkill = (hardSkill) => {
+    this.setState({
+      hardSkill,
+    })
+  }
+
   logoutUser = () =>{
     auth.logout()
       .then(() => {
@@ -199,7 +211,6 @@ export default class AuthProvider extends Component {
   componentDidMount() {
     auth.me()
     .then((user) => {
-      console.log('object')
       this.setState({
           isLogged: true,
           user,
@@ -227,7 +238,6 @@ export default class AuthProvider extends Component {
             headline,
             summary,
             interest,
-            // interests,
             languages,
             softSkill,
             hardSkill,
@@ -256,6 +266,8 @@ export default class AuthProvider extends Component {
                             setIsDisplayContent: this.setIsDisplayContent,
                             setDisplayContent: this.setDisplayContent,
                             setInterest: this.setInterest,
+                            setSoftSkill: this.setSoftSkill,
+                            setHardSkill: this.setHardSkill,
                             setTab: this.setTab,
                             selectedTab,
                             contact,
@@ -264,7 +276,6 @@ export default class AuthProvider extends Component {
                             headline,
                             summary,
                             interest,
-                            // interests,
                             languages,
                             softSkill,
                             hardSkill,
