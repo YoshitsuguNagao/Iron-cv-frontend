@@ -5,7 +5,7 @@ import cv from '../lib/cv-service';
 import './EditCV.css';
 import { withRouter } from "react-router";
 import { withAuth } from '../components/AuthProvider';
-
+import PDFCV from '../components/PDF/PDFCV'
 
 class EditCV extends Component {
   fetchCV = () => {
@@ -22,9 +22,14 @@ class EditCV extends Component {
 
   render() {
     return (
-      <div className="edit-cv-container">
-        <CV />
-        <Edit />
+      <div>
+        <div className="edit-cv-container">
+          <CV />
+          <Edit />
+        </div>
+        <div  className="pdf-cv-container">
+          {/* <PDFCV /> */}
+        </div>
       </div>
     );
   };

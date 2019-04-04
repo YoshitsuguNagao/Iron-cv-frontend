@@ -103,6 +103,10 @@
   padding: 0 0.5rem;
 }
 
+.content-item-container textarea {
+  resize: none;
+}
+
 .edit-content-item-conteiner {
   margin-bottom: 1rem;
 }

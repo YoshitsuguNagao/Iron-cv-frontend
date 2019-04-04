@@ -188,6 +188,33 @@ class Content extends Component {
     this.props.setDisplayContent(this.props.displayContent);
   }
 
+  handleUpWork = (index) => {
+    const work = [...this.state.displayContent.work];
+    const isWork = [...this.state.isDisplayContent.work];
+
+    if(index !== 0) {
+      const newWork = [...work];
+      const newIsWork = [...isWork];
+      newWork[index - 1] = work[index];
+      newWork[index] = work[index - 1];
+      newIsWork[index - 1] = isWork[index];
+      newIsWork[index] = isWork[index - 1];
+
+    //   const newSoftSkills = [...softSkills];
+    //   newSoftSkills[index - 1] = softSkills[index]
+    //   newSoftSkills[index] = softSkills[index - 1]
+      this.setState({
+        // softSkills: newSoftSkills
+      })
+    //   const newUser = {...this.props.user, softSkills: newSoftSkills}
+    //   this.props.setUser(newUser)
+    }
+  }
+
+  handleDownWork = (index) => {
+
+  }
+
   getWork = () => {
     const { work, editWorkIndex, isDisplayContent} = this.state;
     this.props.displayContent.work = [];
@@ -210,6 +237,8 @@ class Content extends Component {
                 content={content}
                 index={index}
                 isUse={isDisplayContent.work[index]}
+                upListItem={this.handleUpWork}
+                downListItem={this.handleDownWork}
                 useContent={this.handleDisplayWork}
                 editContent={this.handleEditWork}
                 deleteContent={this.handleDeleteWork}/>
@@ -456,6 +485,36 @@ class Content extends Component {
       })
   }
 
+  handleUpInterest = (index) => {
+    const { interests } = this.state;
+    if(index !== 0) {
+      const newInterests = [...interests];
+      newInterests[index - 1] = interests[index]
+      newInterests[index] = interests[index - 1]
+      this.setState({
+        interests: newInterests
+      })
+      const newUser = {...this.props.user, interests: newInterests}
+      this.props.setUser(newUser)
+      auth.updateUser(newUser)
+    }
+  }
+
+  handleDownInterest = (index) => {
+    const { interests } = this.state;
+    if(index !== interests.length - 1) {
+      const newInterests = [...interests];
+      newInterests[index] = interests[index + 1]
+      newInterests[index + 1] = interests[index]
+      this.setState({
+        interests: newInterests
+      })
+      const newUser = {...this.props.user, interests: newInterests}
+      this.props.setUser(newUser)
+      auth.updateUser(newUser)
+    }
+  }
+
   getInterests = () => {
     const { interests, editInterestIndex } = this.state;
     return (
@@ -528,6 +587,36 @@ class Content extends Component {
           languages: this.props.user.languages,
         })
       })
+  }
+
+  handleUpLanguage = (index) => {
+    const { languages } = this.state;
+    if(index !== 0) {
+      const newLanguages = [...languages];
+      newLanguages[index - 1] = languages[index]
+      newLanguages[index] = languages[index - 1]
+      this.setState({
+        languages: newLanguages
+      })
+      const newUser = {...this.props.user, languages: newLanguages}
+      this.props.setUser(newUser)
+      auth.updateUser(newUser)
+    }
+  }
+
+  handleDownLanguage = (index) => {
+    const { languages } = this.state;
+    if(index !== languages.length - 1) {
+      const newLanguages = [...languages];
+      newLanguages[index] = languages[index + 1]
+      newLanguages[index + 1] = languages[index]
+      this.setState({
+        languages: newLanguages
+      })
+      const newUser = {...this.props.user, languages: newLanguages}
+      this.props.setUser(newUser)
+      auth.updateUser(newUser)
+    }
   }
 
   getLanguages = () => {
@@ -603,6 +692,36 @@ class Content extends Component {
     this.updateSoftSkillInfo(newSoftSkills);
   }
 
+  handleUpSoftSkill = (index) => {
+    const { softSkills } = this.state;
+    if(index !== 0) {
+      const newSoftSkills = [...softSkills];
+      newSoftSkills[index - 1] = softSkills[index]
+      newSoftSkills[index] = softSkills[index - 1]
+      this.setState({
+        softSkills: newSoftSkills
+      })
+      const newUser = {...this.props.user, softSkills: newSoftSkills}
+      this.props.setUser(newUser)
+      auth.updateUser(newUser)
+    }
+  }
+
+  handleDownSoftSkill = (index) => {
+    const { softSkills } = this.state;
+    if(index !== softSkills.length - 1) {
+      const newSoftSkills = [...softSkills];
+      newSoftSkills[index] = softSkills[index + 1]
+      newSoftSkills[index + 1] = softSkills[index]
+      this.setState({
+        softSkills: newSoftSkills
+      })
+      const newUser = {...this.props.user, softSkills: newSoftSkills}
+      this.props.setUser(newUser)
+      auth.updateUser(newUser)
+    }
+  }
+
   // hard skill
   handleCreateHardSkill = () => {
     const { hardSkills } = this.state;
@@ -640,6 +759,34 @@ class Content extends Component {
     const newHardSkills = [...hardSkills];
     newHardSkills.splice(index,1);
     this.updateHardSkillInfo(newHardSkills);
+  }
+
+  handleUpHardSkill = (index) => {
+    const { hardSkills } = this.state;
+    if(index !== 0) {
+      const newHardSkills = [...hardSkills];
+      newHardSkills[index - 1] = hardSkills[index]
+      newHardSkills[index] = hardSkills[index - 1]
+      this.setState({
+        hardSkills: newHardSkills
+      })
+      const newUser = {...this.props.user, hardSkills: newHardSkills}
+      this.props.setUser(newUser)
+    }
+  }
+
+  handleDownHardSkill = (index) => {
+    const { hardSkills } = this.state;
+    if(index !== hardSkills.length - 1) {
+      const newHardSkills = [...hardSkills];
+      newHardSkills[index] = hardSkills[index + 1]
+      newHardSkills[index + 1] = hardSkills[index]
+      this.setState({
+        hardSkills: newHardSkills
+      })
+      const newUser = {...this.props.user, hardSkills: newHardSkills}
+      this.props.setUser(newUser)
+    }
   }
 
   getSkill = () => {

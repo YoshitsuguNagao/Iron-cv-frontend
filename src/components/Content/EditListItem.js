@@ -15,26 +15,32 @@ class EditListItem extends Component {
 
   componentDidUpdate() {
     if(this.props.itemType === 'Interest') {
-      this.props.interest[0] = this.state.editInput;
+      if(this.state.editInput !== this.props.interest) {
+        this.props.setInterest(this.state.editInput)
+      }
     } else if (this.props.itemType === 'Soft skill') {
-      this.props.softSkill[0] = this.state.editInput;
+      if(this.state.editInput !== this.props.softSkill) {
+        this.props.setSoftSkill(this.state.editInput)
+      }
     } else if (this.props.itemType === 'Hard skill') {
-      this.props.hardSkill[0] = this.state.editInput;
+      if(this.state.editInput !== this.props.hardSkill) {
+        this.props.setHardSkill(this.state.editInput)
+      }
     }
   }
 
   componentWillMount() {
     if(this.props.itemType === 'Interest') {
       this.setState({
-        editInput: this.props.interest[0],
+        editInput: this.props.interest
       })
     } else if (this.props.itemType === 'Soft skill') {
       this.setState({
-        editInput: this.props.softSkill[0],
+        editInput: this.props.softSkill
       })
     } else if (this.props.itemType === 'Hard skill') {
       this.setState({
-        editInput: this.props.hardSkill[0],
+        editInput: this.props.hardSkill
       })
     }
   }
