@@ -60,13 +60,13 @@ class Signup extends Component {
                   <p>User already exists</p>
                 </div>
               : null }
+              {window.innerWidth < 1000 ? <p>This app is not for a mobile screen</p> : null}
               <p>Already have account?
                 <Link to={"/login"}> Login</Link>
               </p>
             </div>
           </form>
         </div>
-        
       </div>
     );
   };

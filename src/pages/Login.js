@@ -53,6 +53,7 @@ class Login extends Component {
                   <p>Incorrect username or password</p>
                 </div>
               : null }
+              {window.innerWidth < 1000 ? <p>This app is not for a mobile screen</p> : null}
               <p>Don't have an account?
                 <Link to={"/signup"}> Signup</Link>
               </p>
