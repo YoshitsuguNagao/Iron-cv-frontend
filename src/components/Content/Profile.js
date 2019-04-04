@@ -3,13 +3,18 @@ import { withAuth } from '../AuthProvider';
 import { withRouter } from "react-router"
 import auth from '../../lib/auth-service';
 import cv from '../../lib/cv-service';
-
+import firebase from 'firebase';
+import FileUploader from 'react-firebase-file-uploader';
 
 class Profile extends Component {
   state = {
     contact: this.props.contact,
     socialNetwork: this.props.socialNetwork,
     newCv: {},
+    avatar: '',
+    isUploading: false,
+    progress: 0,
+    avatarURL: '',
   }
 
   fetchUserInfo = () => {
@@ -55,6 +60,17 @@ class Profile extends Component {
       })
   }
 
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+  handleProgress = (progress) => this.setState({progress});
+  handleUploadError = (error) => {
+  this.setState({isUploading: false});
+  console.error(error);
+  }
+  handleUploadSuccess = (filename) => {
+  this.setState({avatar: filename, progress: 100, isUploading: false});
+  firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}),console.log(this.state.avatarURL));
+  };
+  
   componentDidMount() {
     this.fetchUserInfo();
     this.fetchCvInfo();
@@ -107,6 +123,23 @@ class Profile extends Component {
         <div className="edit-profile-btn">
           <button onClick={() => { editProfile() }}>Edit</button>
         </div>
+        {this.state.isUploading &&
+          <p>Progress: {this.state.progress}</p>
+        }
+        {this.state.avatarURL &&
+          <img src={this.state.avatarURL} />
+        }
+        <FileUploader
+          accept="image/*"
+          name="avatar"
+          randomizeFilename
+          storageRef={firebase.storage().ref('images')}
+          onUploadStart={this.handleUploadStart}
+          onUploadError={this.handleUploadError}
+          onUploadSuccess={this.handleUploadSuccess}
+          onProgress={this.handleProgress}
+        />
+
       </article>
     )
   }

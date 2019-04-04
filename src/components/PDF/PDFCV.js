@@ -21,9 +21,10 @@ const styles = StyleSheet.create({
 const MyDocument = () => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <View style={styles.section}>
-        <Text>Section #1</Text>
-      </View>
+    {/* <Text>Section #1</Text> */}
+
+      {/* <View style={styles.section}>
+      </View> */}
     </Page>
   </Document>
 );

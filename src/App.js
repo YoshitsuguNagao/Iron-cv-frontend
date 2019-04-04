@@ -8,7 +8,17 @@ import Home from './pages/Home';
 import EditCV from './pages/EditCV';
 import AuthProvider from './components/AuthProvider';
 import './App.css';
-
+import firebase from 'firebase'
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBqq-Tssch1Qt8PLIdBfLoepb4iA8SVrJ8",
+    authDomain: "iron-cv.firebaseapp.com",
+    databaseURL: "https://iron-cv.firebaseio.com",
+    projectId: "iron-cv",
+    storageBucket: "iron-cv.appspot.com",
+    messagingSenderId: "782979965386"
+  };
+  firebase.initializeApp(config);
 
 class App extends Component {
   render() {
