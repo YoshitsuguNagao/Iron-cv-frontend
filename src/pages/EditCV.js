@@ -23,12 +23,12 @@ class EditCV extends Component {
   render() {
     return (
       <div>
+        <div  className="pdf-cv-container">
+          <PDFCV />
+        </div>
         <div className="edit-cv-container">
           <CV />
           <Edit />
-        </div>
-        <div  className="pdf-cv-container">
-          <PDFCV />
         </div>
 z      </div>
     );

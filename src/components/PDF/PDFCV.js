@@ -1,41 +1,39 @@
 import React, { Component } from 'react'
-import { Page, Text, View, Document, StyleSheet, PDFViewer } from '@react-pdf/renderer';
-import styled from '@react-pdf/styled-components';
+// import ReactDOM from 'react-dom';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { PDFViewer } from '@react-pdf/renderer';
+// import styled from '@react-pdf/styled-components';
 
+// Create styles
 const styles = StyleSheet.create({
-  cvView: {
-    height: '100%',
-    width: '50%',
-  },
   page: {
     flexDirection: 'row',
-    backgroundColor: '#E4E4E4',
+    backgroundColor: '#E4E4E4'
   },
   section: {
     margin: 10,
     padding: 10,
-    flexGrow: 1,
+    flexGrow: 1
   }
 });
 
+// Create Document Component
 const MyDocument = () => (
   <Document>
     <Page size="A4" style={styles.page}>
-    {/* <Text>Section #1</Text> */}
-
-      {/* <View style={styles.section}>
-      </View> */}
+      <View style={styles.section}>
+        <Text>Section #1</Text>
+      </View>
     </Page>
   </Document>
 );
-
 class PDFCV extends Component {
   render() {
     return (
-        <PDFViewer style={styles.cvView}>
-          <MyDocument />
-        </PDFViewer>
-    )
+      <PDFViewer>
+      <MyDocument />
+    </PDFViewer>
+    );
   }
 }
 
