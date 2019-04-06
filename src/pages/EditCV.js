@@ -24,13 +24,13 @@ class EditCV extends Component {
     return (
       <div>
         <div className="edit-cv-container">
+          <PDFCV />
           <CV />
           <Edit />
         </div>
         <div  className="pdf-cv-container">
-          <PDFCV />
         </div>
-z      </div>
+      </div>
     );
   };
 };
