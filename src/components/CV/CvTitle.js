@@ -4,7 +4,6 @@ class CvTitle extends Component {
   render() {
     const { firstName, lastName } = this.props.user.contact;
     const { avatarURL } = this.props.user;
-    console.log('avatarURL', avatarURL)
     const { headline, summary } = this.props.cv;
     return (
       <article className="cv-title-article">

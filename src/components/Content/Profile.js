@@ -17,7 +17,6 @@ class Profile extends Component {
   fetchUserInfo = () => {
     auth.getUser()
     .then(({contact, socialNetwork, avatarURL}) => {
-      console.log('avatarURL profile', avatarURL)
       if (this.props.contact.firstName === "" &&
       this.props.contact.lastName === "" &&
       this.props.contact.email === "" &&
@@ -28,15 +27,15 @@ class Profile extends Component {
       this.props.socialNetwork.linkedin === ""
       ) {
         this.setState({
-          contact: contact,
-          socialNetwork: socialNetwork,
-          avatarURL,
+          contact,
+          socialNetwork,
+          // avatarURL,
         })
       } else {
         this.setState({
           contact: this.props.contact,
           socialNetwork: this.props.socialNetwork,
-          avatarURL: this.props.avatarURL,
+          // avatarURL: this.props.avatarURL,
         })
       }
     })
@@ -59,7 +58,7 @@ class Profile extends Component {
         }
       })
   }
-  
+
   componentDidMount() {
     this.fetchUserInfo();
     this.fetchCvInfo();

@@ -16,7 +16,7 @@ class EditProfile extends Component {
     avatar: '',
     isUploading: false,
     progress: 0,
-    avatarURL: '',
+    avatarURL: this.props.avatarURL,
   }
 
   handleFirstNameInput = (event) => {
@@ -84,14 +84,9 @@ class EditProfile extends Component {
   }
 
   componentDidUpdate() {
-    this.props.contact.firstName = this.state.contact.firstName;
-    this.props.contact.lastName = this.state.contact.lastName;
-    this.props.contact.email = this.state.contact.email;
-    this.props.contact.address = this.state.contact.address;
-    this.props.contact.phone = this.state.contact.phone;
-    this.props.socialNetwork.github = this.state.socialNetwork.github;
-    this.props.socialNetwork.medium = this.state.socialNetwork.medium;
-    this.props.socialNetwork.linkedin = this.state.socialNetwork.linkedin;
+    if(this.props.contact !== this.state.contact) this.props.setContact(this.state.contact)
+    if(this.props.socialNetwork !== this.state.socialNetwork) this.props.setSocialNetwork(this.state.socialNetwork)
+    if(this.props.avatarURL !== this.state.avatarURL) this.props.setAvatarURL(this.state.avatarURL)
   }
 
   handleUpdateContact = () => {
@@ -109,52 +104,52 @@ class EditProfile extends Component {
 
   fetchUserInfo = () => {
     auth.getUser()
-      .then(({contact, socialNetwork, avatarURL}) => {
-        console.log('avatarURL edit', this.state.avatarURL)
-        if(this.props.contact.firstName === "" &&
-        this.props.contact.lastName === "" &&
-        this.props.contact.email === "" &&
-        this.props.contact.address === "" &&
-        this.props.contact.phone === "" &&
-        this.props.socialNetwork.github === "" &&
-        this.props.socialNetwork.medium === "" &&
-        this.props.socialNetwork.linkedin === ""
-        ) {
-          this.setState({
-            contact: contact,
-            socialNetwork: socialNetwork,
-            avatarURL: avatarURL,
-          })
-        } else {
-          this.setState({
-            contact: this.props.contact,
-            socialNetwork: this.props.socialNetwork,
-            avatarURL: this.props.avatarURL,
-          })
-        }
-      })
+    .then(({contact, socialNetwork, avatarURL}) => {
+      if(this.props.contact.firstName === "" &&
+      this.props.contact.lastName === "" &&
+      this.props.contact.email === "" &&
+      this.props.contact.address === "" &&
+      this.props.contact.phone === "" &&
+      this.props.socialNetwork.github === "" &&
+      this.props.socialNetwork.medium === "" &&
+      this.props.socialNetwork.linkedin === "" &&
+      this.props.avatarURL === ""
+      ) {
+        this.setState({
+          contact,
+          socialNetwork,
+          avatarURL,
+        })
+      } else {
+        this.setState({
+          contact: this.props.contact,
+          socialNetwork: this.props.socialNetwork,
+          avatarURL: this.props.avatarURL,
+        })
+      }
+    })
   }
 
   fetchCvInfo = () => {
     const { cvId } = this.props.match.params;
     cv.getCv(cvId)
-      .then((cv) => {
-        const { headline, summary } = cv;
-        if(this.props.headline === '' &&
-          this.props.summary === '') {
-          this.setState({
-            headline: headline,
-            summary: summary,
-            newCv: cv,
-          })
-        } else {
-          this.setState({
-            headline: this.props.headline,
-            summary: this.props.summary,
-            newCv: cv,
-          })
-        }
-      })
+    .then((cv) => {
+      const { headline, summary } = cv;
+      if(this.props.headline === '' &&
+      this.props.summary === '') {
+        this.setState({
+          headline: headline,
+          summary: summary,
+          newCv: cv,
+        })
+      } else {
+        this.setState({
+          headline: this.props.headline,
+          summary: this.props.summary,
+          newCv: cv,
+        })
+      }
+    })
   }
 
   handleUploadStart = () => this.setState({isUploading: true, progress: 0});
@@ -168,7 +163,14 @@ class EditProfile extends Component {
 
   handleUploadSuccess = (filename) => {
     this.setState({avatar: filename, progress: 100, isUploading: false});
-    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}),console.log('update',this.state.avatar));
+    firebase
+    .storage()
+    .ref('images')
+    .child(filename)
+    .getDownloadURL()
+    .then(url => {
+      this.setState({avatarURL: url})
+    });
   };
 
   componentDidMount() {

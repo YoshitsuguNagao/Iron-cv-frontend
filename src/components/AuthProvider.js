@@ -22,6 +22,8 @@ export const withAuth = () => (Comp) => {
               selectedTab={authStore.selectedTab}
               contact={authStore.contact}
               setContact={authStore.setContact}
+              setSocialNetwork={authStore.setSocialNetwork}
+              setAvatarURL={authStore.setAvatarURL}
               isDisplayContent={authStore.isDisplayContent}
               displayContent={authStore.displayContent}
               setIsDisplayContent={authStore.setIsDisplayContent}
@@ -162,6 +164,18 @@ export default class AuthProvider extends Component {
     });
   };
 
+  setSocialNetwork = (socialNetwork) => {
+    this.setState({
+      socialNetwork,
+    });
+  };
+
+  setAvatarURL = (avatarURL) => {
+    this.setState({
+      avatarURL,
+    });
+  };
+
   setIsDisplayContent = (isDisplayContent) => {
     this.setState({
       isDisplayContent,
@@ -266,6 +280,8 @@ export default class AuthProvider extends Component {
                             setUser: this.setUser,
                             setCv: this.setCv,
                             setContact: this.setContact,
+                            setSocialNetwork: this.setSocialNetwork,
+                            setAvatarURL: this.setAvatarURL,
                             setHeadlines: this.setHeadlines,
                             setIsDisplayContent: this.setIsDisplayContent,
                             setDisplayContent: this.setDisplayContent,
