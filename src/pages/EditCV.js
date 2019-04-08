@@ -27,10 +27,11 @@ class EditCV extends Component {
           <PDFCV />
         </div>
         <div className="edit-cv-container">
+          <PDFCV />
           <CV />
           <Edit />
         </div>
-z      </div>
+      </div>
     );
   };
 };
