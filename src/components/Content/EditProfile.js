@@ -168,7 +168,7 @@ class EditProfile extends Component {
 
   handleUploadSuccess = (filename) => {
     this.setState({avatar: filename, progress: 100, isUploading: false});
-    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}),console.log('update',this.state.avatarURL));
+    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}),console.log('update',this.state.avatar));
   };
 
   componentDidMount() {
