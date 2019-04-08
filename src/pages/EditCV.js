@@ -25,7 +25,6 @@ class EditCV extends Component {
       <div>
         {/* <div  className="pdf-cv-container"> */}
         {/* </div> */}
-        
         <div className="edit-cv-container">
           <PDFCV />
           <CV />
