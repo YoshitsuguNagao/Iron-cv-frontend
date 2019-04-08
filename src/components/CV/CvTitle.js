@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 
 class CvTitle extends Component {
+  state = {
+    isUploaded: false,
+  }
+
+  handleUpload = () => {
+    this.setState({
+      isUploaded: true
+    })
+  }
+
+  
+
   render() {
     const { firstName, lastName } = this.props.user.contact;
     const { headline, summary } = this.props.cv;
