@@ -31,6 +31,7 @@ class EditCV extends Component {
           <Edit />
         </div>
       </div>
+      
     );
   };
 };
