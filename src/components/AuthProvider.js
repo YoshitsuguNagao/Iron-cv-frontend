@@ -37,6 +37,7 @@ export const withAuth = () => (Comp) => {
               hardSkill={authStore.hardSkill}
               setHardSkill={authStore.setHardSkill}
               socialNetwork={authStore.socialNetwork}
+              avatarURL={authStore.avatarURL}
               work={authStore.work}
               workContent={authStore.workContent}
               education={authStore.education}
@@ -85,6 +86,7 @@ export default class AuthProvider extends Component {
       medium: '',
       linkedin: '',
     },
+    avatarURL: '',
     workContent: [],
     educationContent: [],
     projectContent: [],
@@ -243,6 +245,7 @@ export default class AuthProvider extends Component {
             softSkill,
             hardSkill,
             socialNetwork,
+            avatarURL,
             workContent,
             educationContent,
             projectContent,
@@ -281,6 +284,7 @@ export default class AuthProvider extends Component {
                             softSkill,
                             hardSkill,
                             socialNetwork,
+                            avatarURL,
                             workContent,
                             educationContent,
                             projectContent,
