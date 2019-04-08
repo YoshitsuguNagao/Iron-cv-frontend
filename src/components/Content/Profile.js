@@ -11,11 +11,13 @@ class Profile extends Component {
     contact: this.props.contact,
     socialNetwork: this.props.socialNetwork,
     newCv: {},
+    avatarURL: '',
   }
 
   fetchUserInfo = () => {
     auth.getUser()
-    .then(({contact, socialNetwork}) => {
+    .then(({contact, socialNetwork, avatarURL}) => {
+      console.log('avatarURL profile', avatarURL)
       if (this.props.contact.firstName === "" &&
       this.props.contact.lastName === "" &&
       this.props.contact.email === "" &&
@@ -28,11 +30,13 @@ class Profile extends Component {
         this.setState({
           contact: contact,
           socialNetwork: socialNetwork,
+          avatarURL,
         })
       } else {
         this.setState({
           contact: this.props.contact,
           socialNetwork: this.props.socialNetwork,
+          avatarURL: this.props.avatarURL,
         })
       }
     })

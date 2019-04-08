@@ -95,10 +95,10 @@ class EditProfile extends Component {
   }
 
   handleUpdateContact = () => {
-    const { contact, socialNetwork, headline, summary, newCv } = this.state;
+    const { contact, socialNetwork, headline, summary, newCv, avatarURL } = this.state;
     const { user, editProfile } = this.props;
     editProfile();
-    const newUser = {user: {...user, contact, socialNetwork}}
+    const newUser = {user: {...user, contact, socialNetwork, avatarURL}}
     auth.updateUser(newUser.user);
     this.props.setUser(newUser.user);
     newCv.headline = headline;
@@ -109,7 +109,8 @@ class EditProfile extends Component {
 
   fetchUserInfo = () => {
     auth.getUser()
-      .then(({contact, socialNetwork}) => {
+      .then(({contact, socialNetwork, avatarURL}) => {
+        console.log('avatarURL edit', this.state.avatarURL)
         if(this.props.contact.firstName === "" &&
         this.props.contact.lastName === "" &&
         this.props.contact.email === "" &&
@@ -122,11 +123,13 @@ class EditProfile extends Component {
           this.setState({
             contact: contact,
             socialNetwork: socialNetwork,
+            avatarURL: avatarURL,
           })
         } else {
           this.setState({
             contact: this.props.contact,
             socialNetwork: this.props.socialNetwork,
+            avatarURL: this.props.avatarURL,
           })
         }
       })
@@ -165,7 +168,7 @@ class EditProfile extends Component {
 
   handleUploadSuccess = (filename) => {
     this.setState({avatar: filename, progress: 100, isUploading: false});
-    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}),console.log(this.state.avatarURL));
+    firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}),console.log('update',this.state.avatarURL));
   };
 
   componentDidMount() {
@@ -233,7 +236,7 @@ class EditProfile extends Component {
           <p>Progress: {this.state.progress}</p>
         }
         {this.state.avatarURL &&
-          <img src={this.state.avatarURL} />
+          <img src={this.state.avatarURL} alt="profile"/>
         }
       </div>
     )
