@@ -197,6 +197,31 @@ class EditProfile extends Component {
         <div className="edit-profile-card-textarea headline-card">
           <textarea id="textarea" type="text" className="width-full" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
         </div>
+        <div className="edit-profile-upload">
+          <div className="edit-profile-img">
+            {this.state.avatarURL &&
+                <img src={this.state.avatarURL} alt="profile"/>
+              }
+          </div>
+          <div className="edit-profile-btns">
+            <label className="edit-profile-choose">
+              Choose File
+              <FileUploader
+                accept="image/*"
+                name="avatar"
+                randomizeFilename
+                storageRef={firebase.storage().ref('images')}
+                onUploadStart={this.handleUploadStart}
+                onUploadError={this.handleUploadError}
+                onUploadSuccess={this.handleUploadSuccess}
+                onProgress={this.handleProgress}
+              />
+            </label>
+            {this.state.isUploading &&
+              <p>Progress: {this.state.progress}</p>
+            }
+          </div>
+        </div>
         <div className="edit-profile-card">
           <i className="fas fa-envelope"></i>
           <input type="email" className="width-full" value={email} onChange={this.handleEmailInput} placeholder="Email"/>
@@ -224,22 +249,6 @@ class EditProfile extends Component {
         <div className="save-profile-btn">
           <button onClick={this.handleUpdateContact}>Save</button>
         </div>
-        <FileUploader
-          accept="image/*"
-          name="avatar"
-          randomizeFilename
-          storageRef={firebase.storage().ref('images')}
-          onUploadStart={this.handleUploadStart}
-          onUploadError={this.handleUploadError}
-          onUploadSuccess={this.handleUploadSuccess}
-          onProgress={this.handleProgress}
-        />
-        {this.state.isUploading &&
-          <p>Progress: {this.state.progress}</p>
-        }
-        {this.state.avatarURL &&
-          <img src={this.state.avatarURL} alt="profile"/>
-        }
       </div>
     )
   }

@@ -11,12 +11,13 @@ import './App.css';
 import firebase from 'firebase'
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyBqq-Tssch1Qt8PLIdBfLoepb4iA8SVrJ8",
-    authDomain: "iron-cv.firebaseapp.com",
-    databaseURL: "https://iron-cv.firebaseio.com",
-    projectId: "iron-cv",
+    apiKey: process.env.API_KEY,
+    authDomain: `${process.env.PROJECT_ID}iron-cv.firebaseapp.com`,
+    databaseURL: `https://${process.env.DATABASE_NAME}.firebaseio.com`,
+    projectId: process.env.PROJECT_ID,
+    // storageBucket: `${process.env.BUCKET}.appspot.com`,
     storageBucket: "iron-cv.appspot.com",
-    messagingSenderId: "782979965386"
+    messagingSenderId: process.env.SENDER_ID,
   };
   firebase.initializeApp(config);
 

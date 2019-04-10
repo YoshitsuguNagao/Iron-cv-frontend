@@ -214,3 +214,30 @@
 .work-text {
   font-size: 0.8rem;
 }
+
+.edit-profile-img {
+  width: 70px;
+  height: 70px;
+}
+
+.edit-profile-img img {
+  height: 100%;
+}
+
+.edit-profile-upload {
+  margin: 0 0 20px 40px;
+  display: flex;
+  justify-content: space-between
+}
+
+.edit-profile-choose {
+  color: white;
+  width: 7rem;
+  background-color: rgb(33, 107, 173);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.edit-profile-choose input {
+  display: none;
+}
