@@ -211,8 +211,8 @@ class EditProfile extends Component {
               }
           </div> */}
           <div className="edit-profile-btns">
-            <div className="edit-profile-change">
-            </div>
+            {/* <div className="edit-profile-change">
+            </div> */}
               <label
                 className="edit-profile-choose"
                 style={{ backgroundImage: `url(${this.state.avatarURL})`,
