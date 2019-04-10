@@ -3,6 +3,7 @@ import { withAuth } from '../AuthProvider';
 import { withRouter } from "react-router"
 import auth from '../../lib/auth-service';
 import cv from '../../lib/cv-service';
+// import Item from './Item';
 
 
 
@@ -12,6 +13,7 @@ class Profile extends Component {
     socialNetwork: this.props.socialNetwork,
     newCv: {},
     avatarURL: '',
+    // displayPic: []
   }
 
   fetchUserInfo = () => {
@@ -58,6 +60,17 @@ class Profile extends Component {
         }
       })
   }
+
+  // handleDisplayPicture = (index) => {
+  //   const { displayPic } = this.state;
+  //   displayPic.work[index] = !displayPic.work[index];
+  //   let newObj = displayPic;
+  //   this.setState({
+  //     displayPic: newObj,
+  //   })
+  //   this.props.setCv(this.props.cv);
+  //   this.props.setDisplayContent(this.props.displayContent);
+  // }
 
   componentDidMount() {
     this.fetchUserInfo();
@@ -108,6 +121,11 @@ class Profile extends Component {
           <i className="fab fa-linkedin"></i>
           <p>{linkedin}</p>
         </div>
+        {/* <div>
+          <Item
+            useContent={this.handleDisplayPicture}
+          />
+        </div> */}
         <div className="edit-profile-btn">
           <button onClick={() => { editProfile() }}>Edit</button>
         </div>
