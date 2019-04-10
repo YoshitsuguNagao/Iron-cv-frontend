@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 // import ReactDOM from 'react-dom';
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { Page, View, Document, StyleSheet } from '@react-pdf/renderer';
 import { PDFViewer } from '@react-pdf/renderer';
-import CV from '../CV/CV';
-import Header from './Header'
+// import CV from '../CV/CV';
+// import Header from './Header'
 
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';

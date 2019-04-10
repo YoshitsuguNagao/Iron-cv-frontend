@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+// import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 class Header extends Component {
   render() {

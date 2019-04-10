@@ -5,7 +5,7 @@ import cv from '../lib/cv-service';
 import './EditCV.css';
 import { withRouter } from "react-router";
 import { withAuth } from '../components/AuthProvider';
-import PDFCV from '../components/PDF/PDFCV'
+// import PDFCV from '../components/PDF/PDFCV'
 
 class EditCV extends Component {
   fetchCV = () => {
