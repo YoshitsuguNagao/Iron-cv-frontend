@@ -191,53 +191,63 @@ class EditProfile extends Component {
     const { headline, summary } = this.state;
     return (
       <div className="content-container content-item-container">
-        
-        <div className="picture-name-container">
-          <div className="edit-profile-card edit-name-card">
-            <i className="fas fa-user"></i>
-            <div className="edit-profile-card-name width-full">
-              <input type="text" className="width-full name-set" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
-              <input type="text" className="width-full name-set" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
-            </div>
-              <div className="edit-profile-upload">
-                <div>
-                  <label
-                    className="edit-profile-choose"
-                    style={{ backgroundImage: `url(${this.state.avatarURL})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat',
-                  }}>
-                    {/* <div className="edit-text">edit</div> */}
-                    <div className="edit-profile-empty">
-                    edit
-                      <FileUploader
-                        accept="image/*"
-                        name="avatar"
-                        randomizeFilename
-                        storageRef={firebase.storage().ref('images')}
-                        onUploadStart={this.handleUploadStart}
-                        onUploadError={this.handleUploadError}
-                        onUploadSuccess={this.handleUploadSuccess}
-                        onProgress={this.handleProgress}
-                      />
-                    </div>
-                  </label>
-                </div>
-                {this.state.isUploading &&
-                  <p>Progress: {this.state.progress}</p>
-                }
-              </div>
-          </div>
 
+        <div className="picture-name-container">
+          <div className="edit-profile-card edit-profile-title">
+            <i className="fas fa-user"></i>
+            <div className="edit-name-card">
+              <div className="list-item-container">
+                <div className="edit-profile-card-name width-full">
+                  <input type="text" className="width-full name-set" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
+                  <input type="text" className="width-full name-set" value={lastName} onChange={this.handleLastNameInput} placeholder="Last Name" required/>
+                  <input type="text" className="width-full" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
+                </div>
+                <div className="edit-profile-upload">
+                  <div>
+                    <label
+                      className="edit-profile-choose"
+                      style={{ backgroundImage: `url(${this.state.avatarURL})`,
+                      backgroundPosition: 'center',
+                      backgroundSize: 'cover',
+                      backgroundRepeat: 'no-repeat',
+                    }}>
+                      <div className="edit-profile-empty">
+                        edit
+                        <FileUploader
+                          accept="image/*"
+                          name="avatar"
+                          randomizeFilename
+                          storageRef={firebase.storage().ref('images')}
+                          onUploadStart={this.handleUploadStart}
+                          onUploadError={this.handleUploadError}
+                          onUploadSuccess={this.handleUploadSuccess}
+                          onProgress={this.handleProgress}
+                        />
+                      </div>
+                    </label>
+                  </div>
+                  {this.state.isUploading &&
+                    <p>Progress: {this.state.progress}</p>
+                  }
+                </div>
+              </div>
+              <div className="edit-profile-card-textarea">
+                <textarea id="textarea" type="text" className="width-full" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div className="edit-profile-card headline-card">
-          <input type="text" className="width-full" value={headline} onChange={this.handleHeadlineInput} placeholder="Title/Headline"/>
-        </div>
-        <div className="edit-profile-card-textarea headline-card">
-          <textarea id="textarea" type="text" className="width-full" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
         <div className="edit-profile-card">
           <i className="fas fa-envelope"></i>
           <input type="email" className="width-full" value={email} onChange={this.handleEmailInput} placeholder="Email"/>
