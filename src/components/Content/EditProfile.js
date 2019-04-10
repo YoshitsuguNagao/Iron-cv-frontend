@@ -6,6 +6,8 @@ import cv from '../../lib/cv-service';
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
 
+
+
 class EditProfile extends Component {
   state = {
     contact: this.props.contact,
@@ -178,6 +180,11 @@ class EditProfile extends Component {
     this.fetchCvInfo();
   }
 
+  // const profileImg = {
+  //   color: 'yellow',
+  //   background-img: {this.props.avatarURL},
+  // }
+
   render() {
     const { firstName, lastName, email, address, phone } = this.state.contact;
     const { github, medium, linkedin } = this.state.socialNetwork;
@@ -198,25 +205,34 @@ class EditProfile extends Component {
           <textarea id="textarea" type="text" className="width-full" value={summary} onChange={this.handleSummaryInput} placeholder="Summary"/>
         </div>
         <div className="edit-profile-upload">
-          <div className="edit-profile-img">
+          {/* <div className="edit-profile-img">
             {this.state.avatarURL &&
                 <img src={this.state.avatarURL} alt="profile"/>
               }
-          </div>
+          </div> */}
           <div className="edit-profile-btns">
-            <label className="edit-profile-choose">
-              Choose File
-              <FileUploader
-                accept="image/*"
-                name="avatar"
-                randomizeFilename
-                storageRef={firebase.storage().ref('images')}
-                onUploadStart={this.handleUploadStart}
-                onUploadError={this.handleUploadError}
-                onUploadSuccess={this.handleUploadSuccess}
-                onProgress={this.handleProgress}
-              />
-            </label>
+            <div className="edit-profile-change">
+            </div>
+              <label
+                className="edit-profile-choose"
+                style={{ backgroundImage: `url(${this.state.avatarURL})`,
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                      }}>
+                <div className="edit-profile-empty">
+                  <FileUploader
+                    accept="image/*"
+                    name="avatar"
+                    randomizeFilename
+                    storageRef={firebase.storage().ref('images')}
+                    onUploadStart={this.handleUploadStart}
+                    onUploadError={this.handleUploadError}
+                    onUploadSuccess={this.handleUploadSuccess}
+                    onProgress={this.handleProgress}
+                  />
+                </div>
+              </label>
             {this.state.isUploading &&
               <p>Progress: {this.state.progress}</p>
             }

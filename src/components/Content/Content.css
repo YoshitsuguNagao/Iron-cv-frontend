@@ -226,18 +226,37 @@
 
 .edit-profile-upload {
   margin: 0 0 20px 40px;
-  display: flex;
-  justify-content: space-between
+  /* display: flex;
+  justify-content: space-between */
+}
+
+.edit-profile-change {
+  background-color: black;
+  z-index: 100;
+  width: 100px;
+  height: 100px;
 }
 
 .edit-profile-choose {
-  color: white;
-  width: 7rem;
-  background-color: rgb(33, 107, 173);
+  /* color: white;
+  background-color: rgb(33, 107, 173); */
   border-radius: 5px;
   text-align: center;
+  /* opacity: 0.5;
+  background-color: Black; */
+  z-index:10;
+}
+
+.edit-profile-choose:hover {
+  /* color: white; */
+  /* Z-index: 5; */
 }
 
 .edit-profile-choose input {
   display: none;
+}
+
+.edit-profile-empty {
+  width: 100px;
+  height: 100px;
 }
