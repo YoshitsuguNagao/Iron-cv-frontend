@@ -237,17 +237,6 @@ class EditProfile extends Component {
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
         <div className="edit-profile-card">
           <i className="fas fa-envelope"></i>
           <input type="email" className="width-full" value={email} onChange={this.handleEmailInput} placeholder="Email"/>
