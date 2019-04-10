@@ -165,9 +165,17 @@
 .using-btn:hover,
 .ed-btn:hover,
 .del-btn:hover,
-.save-btn:hover {
+.save-btn:hover,
+.arrow-btn:hover {
   color: black;
   background-color: rgb(227, 227, 227);
+}
+
+.arrow-btn {
+  margin-right: 0.5rem;
+  color: white;
+  background-color: rgb(33, 107, 173);
+  border-radius: 5px;
 }
 
 .add-profile-btn button {

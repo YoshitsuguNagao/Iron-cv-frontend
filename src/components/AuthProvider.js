@@ -183,10 +183,13 @@ export default class AuthProvider extends Component {
   };
 
   setDisplayContent = (displayContent) => {
-    console.log('displayContent', displayContent)
-    this.setState({
-      displayContent,
-    });
+    if(displayContent.work.length !== 0 &&
+       displayContent.education !== 0 &&
+       displayContent.project !== 0) {
+         this.setState({
+           displayContent,
+         });
+       }
   };
 
   setHeadlines = (headline,summary) => {

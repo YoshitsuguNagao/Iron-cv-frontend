@@ -8,6 +8,10 @@
   overflow-y: scroll;
 }
 
+.cv-component-container iframe {
+  width: 100%;
+}
+
 .cv-view {
   width: 21cm;
   height: 29.7cm;
