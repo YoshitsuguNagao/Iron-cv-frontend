@@ -23,8 +23,6 @@ class EditCV extends Component {
   render() {
     return (
       <div>
-        {/* <div  className="pdf-cv-container"> */}
-        {/* </div> */}
         <div className="edit-cv-container">
           {/* <PDFCV /> */}
           <CV />
