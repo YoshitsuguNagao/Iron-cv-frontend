@@ -3,23 +3,22 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 class PDFButton extends Component {
-
+  // response.addHeader("Access-Control-Allow-Origin", "*");
 //   printCV = () => {
 // 		const filename  = 'PDFFilename.pdf';
 //     let pdf = new jsPDF('p', 'mm', 'a4');
 
+//     console.log('imgData');
 //     html2canvas(document.querySelector('.cv-view'), {
-//       useCORS : true,
+//       useCORS : false,
 //       onrendered: function(canvas) {
 //          var imgData = canvas.toDataURL('image/jpeg',1.0);
 //          pdf.addImage(imgData, 'jpg', 0, 0, 211, 298);
-//         //  console.log(imgData);
 //          document.querySelector('.cv-view').append(canvas);
 //          pdf.save(filename);
 //       }
 //     })
 //  };
-
 
   printCV = () => {
 		const filename  = 'PDFFilename.pdf';

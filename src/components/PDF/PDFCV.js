@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 // import ReactDOM from 'react-dom';
 import { Page, View, Document, StyleSheet } from '@react-pdf/renderer';
-import { PDFViewer } from '@react-pdf/renderer';
+import { PDFViewer, BlobProvider } from '@react-pdf/renderer';
 // import CV from '../CV/CV';
-// import Header from './Header'
+import Header from './Header'
 
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
@@ -15,7 +15,7 @@ import '../CV/CV.css'
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',
-    backgroundColor: '#E4E4E4',
+    // backgroundColor: '#E4E4E4',
   },
   section: {
     margin: 10,
@@ -25,12 +25,11 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const MyDocument = () => (
+const MyDocument = (props) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
-        {/* <Text>Section #1</Text> */}
-        {/* <Header /> */}
+        <Header {...props}/>
       </View>
     </Page>
   </Document>
@@ -40,7 +39,7 @@ class PDFCV extends Component {
     return (
       <div className="cv-component-container">
         <PDFViewer>
-          <MyDocument />
+          <MyDocument {...this.props}/>
         </PDFViewer>
       </div>
     );
