@@ -9,7 +9,9 @@ const styles = StyleSheet.create({
 });
 class Header extends Component {
   state = {
-    avatarURL: this.props.user.avatarURL
+    avatarURL: 'https://cors-anywhere.herokuapp.com/' + this.props.user.avatarURL,
+    firstName: this.props.user.contact.firstName,
+    lastName: this.props.user.contact.lastName,
   }
   render() {
     const { firstName, lastName } = this.props.user.contact;
@@ -17,7 +19,8 @@ class Header extends Component {
     const { headline, summary } = this.props.cv;
     return (
       <View style={styles.container}>
-        <Image src={this.state.avatarURL}/>
+        {/* <Image src={`https://cors-anywhere.herokuapp.com/${this.props.user.avatarURL}`}/> */}
+        {/* <Image src={this.state.avatarURL}/> */}
         <Text>{`${firstName} ${lastName}`}</Text>
       </View>
 

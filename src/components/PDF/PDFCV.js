@@ -14,7 +14,7 @@ import '../CV/CV.css'
 // Create styles
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     // backgroundColor: '#E4E4E4',
   },
   section: {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
 // Create Document Component
 const MyDocument = (props) => (
   <Document>
+    {/* {console.log('props', props)} */}
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
         <Header {...props}/>
@@ -36,6 +37,7 @@ const MyDocument = (props) => (
 );
 class PDFCV extends Component {
   render() {
+    // console.log('this.props.', this.props.user)
     return (
       <div className="cv-component-container">
         <PDFViewer>
