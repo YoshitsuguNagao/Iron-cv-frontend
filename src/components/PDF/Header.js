@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 });
 class Header extends Component {
   state = {
-    avatarURL: 'https://cors-anywhere.herokuapp.com/' + this.props.user.avatarURL
+    avatarURL: this.props.user.avatarURL
   }
   render() {
     const { firstName, lastName } = this.props.user.contact;
