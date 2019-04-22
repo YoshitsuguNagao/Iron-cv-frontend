@@ -19,6 +19,10 @@ class Edit extends Component {
     ],
   };
 
+  changeView = () => {
+    this.props.setPdfView(!this.props.isPdfView)
+  }
+
   render() {
     const { selectedTab, contents } = this.state
     return (
@@ -26,6 +30,7 @@ class Edit extends Component {
         <Tabs selectedTab={selectedTab} contents={contents}/>
         <div className="edit-content-container">
           <Content content={contents}/>
+          <button onClick={() => { this.changeView() }}>change</button>
         </div>
       </div>
     );

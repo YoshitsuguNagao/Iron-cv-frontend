@@ -24,8 +24,7 @@ class EditCV extends Component {
     return (
       <div>
         <div className="edit-cv-container">
-          <PDFCV />
-          {/* <CV /> */}
+          {this.props.isPdfView ? <PDFCV /> : <CV />}
           <Edit />
         </div>
       </div>

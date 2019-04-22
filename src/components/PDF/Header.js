@@ -8,19 +8,22 @@ const styles = StyleSheet.create({
   },
 });
 class Header extends Component {
-  state = {
-    avatarURL: 'https://cors-anywhere.herokuapp.com/' + this.props.user.avatarURL,
-    firstName: this.props.user.contact.firstName,
-    lastName: this.props.user.contact.lastName,
-  }
+  // state = {
+  //   avatarURL: '',
+  //   firstName: this.props.user.contact.firstName,
+  //   lastName: this.props.user.contact.lastName,
+  // }
+
   render() {
     const { firstName, lastName } = this.props.user.contact;
-    // const { avatarURL } = this.props.user;
+    const { avatarURL } = this.props.user;
     const { headline, summary } = this.props.cv;
     return (
       <View style={styles.container}>
-        {/* <Image src={`https://cors-anywhere.herokuapp.com/${this.props.user.avatarURL}`}/> */}
+      {console.log('this.props.user.avatarURL', this.props.user.avatarURL)}
+        <Image src={`https://cors-anywhere.herokuapp.com/${this.props.user.avatarURL}`}/>
         {/* <Image src={this.state.avatarURL}/> */}
+        {/* <Image src='../../images/logo.png'/> */}
         <Text>{`${firstName} ${lastName}`}</Text>
       </View>
 

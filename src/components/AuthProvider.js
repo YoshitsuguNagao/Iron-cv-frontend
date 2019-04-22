@@ -13,10 +13,12 @@ export const withAuth = () => (Comp) => {
           {(authStore) => {
             return <Comp
               isLogged={authStore.isLogged}
+              isPdfView={authStore.isPdfView}
               user={authStore.user}
               cv={authStore.cv}
               logout={authStore.logout}
               setUser={authStore.setUser}
+              setPdfView={authStore.setPdfView}
               setCv={authStore.setCv}
               setTab={authStore.setTab}
               selectedTab={authStore.selectedTab}
@@ -57,6 +59,7 @@ export const withAuth = () => (Comp) => {
 export default class AuthProvider extends Component {
   state = {
     isLogged: false,
+    isPdfView: false,
     user: {},
     cv: {},
     status: 'loading',
@@ -138,6 +141,12 @@ export default class AuthProvider extends Component {
       tasks: [],
     },
   };
+
+  setPdfView = (isPdfView) => {
+    this.setState({
+      isPdfView: isPdfView
+    })
+  }
 
   setTab = (tab) => {
     this.setState({
@@ -248,6 +257,7 @@ export default class AuthProvider extends Component {
 
   render() {
     const { isLogged,
+            isPdfView,
             user,
             cv,
             status,
@@ -277,10 +287,12 @@ export default class AuthProvider extends Component {
       default:
         return (
           <Provider value={{isLogged,
+                            isPdfView,
                             user,
                             cv,
                             logout: this.logoutUser,
                             setUser: this.setUser,
+                            setPdfView: this.setPdfView,
                             setCv: this.setCv,
                             setContact: this.setContact,
                             setSocialNetwork: this.setSocialNetwork,

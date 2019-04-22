@@ -10,7 +10,7 @@ import { withAuth } from '../AuthProvider';
 import '../CV/CV.css'
 
 // import styled from '@react-pdf/styled-components';
-
+let LOADING = true;
 // Create styles
 const styles = StyleSheet.create({
   page: {
@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
 
 // Create Document Component
 const MyDocument = (props) => (
-  <Document>
-    {/* {console.log('props', props)} */}
+  <Document onRender={() => { LOADING = false;}}>
     <Page size="A4" style={styles.page}>
       <View style={styles.section}>
         <Header {...props}/>
@@ -36,6 +35,9 @@ const MyDocument = (props) => (
   </Document>
 );
 class PDFCV extends Component {
+  shouldComponentUpdate(nextProps, nextState, nextContext) {
+    return !LOADING
+  }
   render() {
     // console.log('this.props.', this.props.user)
     return (
