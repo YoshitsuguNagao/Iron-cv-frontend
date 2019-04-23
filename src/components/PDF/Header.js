@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import { Page, Text, View, Image, Document, StyleSheet } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
-  container: {
-
+  profileImg: {
+     width: '100px',
   },
 });
 class Header extends Component {
@@ -20,11 +20,12 @@ class Header extends Component {
     const { headline, summary } = this.props.cv;
     return (
       <View style={styles.container}>
-      {console.log('this.props.user.avatarURL', this.props.user.avatarURL)}
-        <Image src={`https://cors-anywhere.herokuapp.com/${this.props.user.avatarURL}`}/>
-        {/* <Image src={this.state.avatarURL}/> */}
-        {/* <Image src='../../images/logo.png'/> */}
+      {/* {console.log('this.props.user.avatarURL', this.props.user.avatarURL)} */}
+        {/* <Image style={styles.profileImg} src={`https://cors-anywhere.herokuapp.com/${avatarURL}`}/> */}
         <Text>{`${firstName} ${lastName}`}</Text>
+        <Text>{`${headline}`}</Text>
+        <Text>{`${summary}`}</Text>
+
       </View>
 
       // <article className="cv-title-article">
