@@ -59,7 +59,7 @@ export const withAuth = () => (Comp) => {
 export default class AuthProvider extends Component {
   state = {
     isLogged: false,
-    isPdfView: true,
+    isPdfView: false,
     user: {},
     cv: {},
     status: 'loading',
