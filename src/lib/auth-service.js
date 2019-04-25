@@ -28,7 +28,6 @@ class Auth {
   me(user) {
     return this.auth.get('/auth/me')
       .then(response => {
-        // console.log('response.data', response.data)
         return response.data});
   };
 
