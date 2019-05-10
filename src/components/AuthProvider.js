@@ -3,7 +3,7 @@ import auth from '../lib/auth-service';
 
 export const AuthContext = React.createContext();
 
-export const { Provider, Consumer }  = AuthContext.Consumer;
+export const { Provider, Consumer }  = AuthContext;
 
 export const withAuth = () => (Comp) => {
   return class WithAuth extends Component {
