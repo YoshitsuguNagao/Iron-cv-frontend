@@ -1,117 +1,73 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
 
-class EditEdu extends Component {
-  state = {
-    education: this.props.education,
-  }
+function EditEdu(props) {
+  const title = useFormInput(props.education.title)
+  const name = useFormInput(props.education.name)
+  const startDateYear = useFormInput(props.education.startDate.year)
+  const startDateMonth = useFormInput(props.education.startDate.month)
+  const endDateYear = useFormInput(props.education.endDate.year)
+  const endDateMonth = useFormInput(props.education.endDate.month)
+  const city = useFormInput(props.education.city)
+  const description = useFormInput(props.education.description)
+  const tasks = useFormInput(props.education.tasks)
+  const { index, updateContent } = props;
 
+  useEffect(() => {
+    props.education.title = title.value;
+    props.education.name = name.value;
+    props.education.startDate.year = startDateYear.value;
+    props.education.startDate.month = startDateMonth.value;
+    props.education.endDate.year = endDateYear.value;
+    props.education.endDate.month = endDateMonth.value;
+    props.education.city = city.value;
+    props.education.description = description.value;
+    props.education.tasks = tasks.value;
+  })
 
-  handlePositionInput = (event) => {
-    this.setState({
-      education: {...this.state.education, title: event.target.value},
-    })
-  }
-
-  handleCompanyInput = (event) => {
-    this.setState({
-      education: {...this.state.education, name: event.target.value},
-    })
-  }
-
-  handleDescriptionInput = (event) => {
-    this.setState({
-      education: {...this.state.education, description: event.target.value},
-    })
-  }
-
-  handleSDMInput = (event) => {
-    this.setState({
-      education: {...this.state.education, startDate: {...this.state.education.startDate, month: event.target.value}},
-    })
-  }
-
-  handleSDYInput = (event) => {
-    this.setState({
-      education: {...this.state.education, startDate: {...this.state.education.startDate, year: event.target.value}},
-    })
-  }
-
-  handleEDMInput = (event) => {
-    this.setState({
-      education: {...this.state.education, endDate: {...this.state.education.endDate, month: event.target.value}},
-    })
-  }
-
-  handleEDYInput = (event) => {
-    this.setState({
-      education: {...this.state.education, endDate: {...this.state.education.endDate, year: event.target.value}},
-    })
-  }
-
-  handleTasksInput = (event) => {
-    this.setState({
-      education: {...this.state.education, tasks  : event.target.value},
-    })
-  }
-
-  handleCityInput = (event) => {
-    this.setState({
-      education: {...this.state.education, city: event.target.value},
-    })
-  }
-
-  componentDidUpdate() {
-    this.props.education.title = this.state.education.title;
-    this.props.education.name = this.state.education.name;
-    this.props.education.startDate = this.state.education.startDate;
-    this.props.education.endDate = this.state.education.endDate;
-    this.props.education.city = this.state.education.city;
-    this.props.education.description = this.state.education.description;
-    this.props.education.tasks = this.state.education.tasks;
-    this.props.education.city = this.state.education.city;
-  }
-
-  handleUpdate = (index) => {
-    this.props.updateContent(index);
-  }
-
-  render() {
-    const { title, name, startDate, endDate, description, city, tasks } = this.state.education;
-    const { index } = this.props;
-    return (
-      <div className="content-item-container">
-        <h5>Education</h5>
-        <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={title} onChange={this.handlePositionInput} placeholder="Study Program"/>
+  return (
+    <div className="content-item-container">
+      <h5>Education</h5>
+      <div className="edit-content-item-conteiner">
+        <input className="input-style width-full" type="text" {...title} placeholder="Study Program"/>
+      </div>
+      <div className="edit-content-item-conteiner">
+        <input className="input-style width-full" type="text" {...name} placeholder="Institution / School"/>
+      </div>
+      <div className="term-container">
+        <div>
+          <p><input type="text" className="input-style month-input"  {...startDateMonth} placeholder="mm"/> / <input type="text" className="input-style year-input"  {...startDateYear} placeholder="yyyy"/></p>
         </div>
-        <div className="edit-content-item-conteiner">
-          <input className="input-style width-full" type="text" value={name} onChange={this.handleCompanyInput} placeholder="Institution / School"/>
-        </div>
-        <div className="term-container">
-          <div>
-            <p><input type="text" className="input-style month-input"  value={startDate.month} onChange={this.handleSDMInput} placeholder="mm"/> / <input type="text" className="input-style year-input"  value={startDate.year} onChange={this.handleSDYInput} placeholder="yyyy"/></p>
-          </div>
-          <div className="term-icon">~</div>
-          <div>
-            <p><input type="text" className="input-style month-input"  value={endDate.month} onChange={this.handleEDMInput} placeholder="mm"/> / <input type="text" className="input-style year-input"  value={endDate.year} onChange={this.handleEDYInput} placeholder="yyyy"/></p>
-          </div>
-        </div>
-        <div className="edit-content-item-conteiner">
-          <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country"/>
-        </div>
-        <div className="edit-content-item-conteiner">
-          <textarea className="width-full" type="text" value={description} onChange={this.handleDescriptionInput} placeholder="Description"/>
-        </div>
-        <div className="edit-content-item-conteiner">
-          <textarea className="width-full" type="text" value={tasks} onChange={this.handleTasksInput} placeholder="Tasks / Responsibility"/>
-        </div>
-        <div className="save-profile-btn">
-          <button onClick={() => {this.handleUpdate(index)}}>Save</button>
+        <div className="term-icon">~</div>
+        <div>
+          <p><input type="text" className="input-style month-input"  {...endDateMonth} placeholder="mm"/> / <input type="text" className="input-style year-input"  {...endDateYear} placeholder="yyyy"/></p>
         </div>
       </div>
-    )
+      <div className="edit-content-item-conteiner">
+        <input className="input-style width-half" type="text" {...city} placeholder="City, Country"/>
+      </div>
+      <div className="edit-content-item-conteiner">
+        <textarea className="width-full" type="text" {...description} placeholder="Description"/>
+      </div>
+      <div className="edit-content-item-conteiner">
+        <textarea className="width-full" type="text" {...tasks} placeholder="Tasks / Responsibility"/>
+      </div>
+      <div className="save-profile-btn">
+        <button onClick={() => {updateContent(index)}}>Save</button>
+      </div>
+    </div>
+  )
+}
+
+function useFormInput(initial) {
+  const [value, setValue] = useState(initial)
+  function handleChange(e) {
+    setValue(e.target.value)
+  }
+  return {
+    value,
+    onChange: handleChange,
   }
 }
 
