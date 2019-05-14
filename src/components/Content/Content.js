@@ -7,6 +7,7 @@ import ListItem from './ListItem';
 import EditWork from './EditWork';
 import EditEdu from './EditEdu';
 import EditProject from './EditProject';
+import EditItem from './EditItem';
 import EditListItem from './EditListItem';
 import EditLanguage from './EditLanguage';
 import cv from '../../lib/cv-service';
@@ -224,7 +225,7 @@ class Content extends Component {
           work.map((content,index) => {
             if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content];
             if(editWorkIndex === index) {
-              return <EditWork
+              return <EditItem
                 contentType={'work'}
                 key={index}
                 work={content}
@@ -333,7 +334,7 @@ class Content extends Component {
           education.map((content,index) => {
             if(this.props.isDisplayContent.education[index]) this.props.displayContent.education = [...this.props.displayContent.education,content]
             if(editEduIndex === index) {
-              return <EditEdu
+              return <EditItem
                 contentType={'education'}
                 key={index}
                 education={content}
@@ -419,7 +420,7 @@ class Content extends Component {
           project.map((content,index) => {
             if(this.props.isDisplayContent.project[index]) this.props.displayContent.project = [...this.props.displayContent.project,content]
             if(editProjectIndex === index) {
-              return <EditProject
+              return <EditItem
                 contentType={'project'}
                 key={index}
                 project={content}
