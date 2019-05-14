@@ -102,8 +102,8 @@ class EditWork extends Component {
           <input className="input-style width-half" type="text" value={city} onChange={this.handleCityInput} placeholder="City, Country"/>
         </div>
         <div className="edit-content-item-conteiner">
-        </div>
           <textarea className="width-full" type="text" value={description} onChange={this.handleDescriptionInput} placeholder="Company Description"/>
+        </div>
         <div className="edit-content-item-conteiner">
           <textarea className="width-full" type="text" value={tasks} onChange={this.handleTasksInput} placeholder="Tasks / Responsibility"/>
         </div>
