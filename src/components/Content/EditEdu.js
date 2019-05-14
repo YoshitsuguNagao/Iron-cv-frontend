@@ -3,32 +3,32 @@ import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
 
 function EditEdu(props) {
-  const title = useFormInput(props.education.title)
-  const name = useFormInput(props.education.name)
-  const startDateYear = useFormInput(props.education.startDate.year)
-  const startDateMonth = useFormInput(props.education.startDate.month)
-  const endDateYear = useFormInput(props.education.endDate.year)
-  const endDateMonth = useFormInput(props.education.endDate.month)
-  const city = useFormInput(props.education.city)
-  const description = useFormInput(props.education.description)
-  const tasks = useFormInput(props.education.tasks)
+  const title = useFormInput(props[props.contentType].title)
+  const name = useFormInput(props[props.contentType].name)
+  const startDateYear = useFormInput(props[props.contentType].startDate.year)
+  const startDateMonth = useFormInput(props[props.contentType].startDate.month)
+  const endDateYear = useFormInput(props[props.contentType].endDate.year)
+  const endDateMonth = useFormInput(props[props.contentType].endDate.month)
+  const city = useFormInput(props[props.contentType].city)
+  const description = useFormInput(props[props.contentType].description)
+  const tasks = useFormInput(props[props.contentType].tasks)
   const { index, updateContent } = props;
 
   useEffect(() => {
-    props.education.title = title.value;
-    props.education.name = name.value;
-    props.education.startDate.year = startDateYear.value;
-    props.education.startDate.month = startDateMonth.value;
-    props.education.endDate.year = endDateYear.value;
-    props.education.endDate.month = endDateMonth.value;
-    props.education.city = city.value;
-    props.education.description = description.value;
-    props.education.tasks = tasks.value;
+    props[props.contentType].title = title.value;
+    props[props.contentType].name = name.value;
+    props[props.contentType].startDate.year = startDateYear.value;
+    props[props.contentType].startDate.month = startDateMonth.value;
+    props[props.contentType].endDate.year = endDateYear.value;
+    props[props.contentType].endDate.month = endDateMonth.value;
+    props[props.contentType].city = city.value;
+    props[props.contentType].description = description.value;
+    props[props.contentType].tasks = tasks.value;
   })
 
   return (
     <div className="content-item-container">
-      <h5>Education</h5>
+      <h5>{props.contentType.charAt(0).toUpperCase() + props.contentType.slice(1)}</h5>
       <div className="edit-content-item-conteiner">
         <input className="input-style width-full" type="text" {...title} placeholder="Study Program"/>
       </div>
