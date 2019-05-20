@@ -523,7 +523,7 @@ class Content extends Component {
           interests.map((interest,index) => {
             if (editInterestIndex === index) {
               return <EditListItem
-                itemType='Interest'
+                itemType='interest'
                 key={index}
                 index={index}
                 listContent={interest}
@@ -798,7 +798,7 @@ class Content extends Component {
             softSkills.map((softSkill,index) => {
               if (editSoftSkillIndex === index) {
                 return <EditListItem
-                  itemType='Soft skill'
+                  itemType='softSkill'
                   key={index}
                   index={index}
                   listContent={softSkill}
@@ -826,7 +826,7 @@ class Content extends Component {
             hardSkills.map((hardSkill,index) => {
               if (editHardSkillIndex === index) {
                 return <EditListItem
-                  itemType='Hard skill'
+                  itemType='hardSkill'
                   key={index}
                   index={index}
                   listContent={hardSkill}
