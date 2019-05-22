@@ -7,16 +7,12 @@ function EditListItem(props) {
   const listContent = useFormInput(props[itemType])
 
   useEffect(() => {
-    if(props.itemType === 'interest') {
-      if(props.interest !== listContent.value) {
+    if(props[itemType] !== listContent.value) {
+      if(itemType === 'interest') {
         props.setInterest(listContent.value)
-      }
-    } else if (props.itemType === 'softSkill') {
-      if(props.softSkill !== listContent.value) {
+      } else if (itemType === 'softSkill') {
         props.setSoftSkill(listContent.value)
-      }
-    } else if (props.itemType === 'Hard skill') {
-      if(props.hardSkill !== listContent.value) {
+      } else if (itemType === 'hardSkill') {
         props.setHardSkill(listContent.value)
       }
     }
