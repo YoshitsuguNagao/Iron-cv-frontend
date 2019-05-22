@@ -129,7 +129,7 @@ class Content extends Component {
 
   getProfile = () => {
     const { editProfile } = this.state;
-    console.log('this.state', this.state)
+    // console.log('this.state', this.state)
     if(editProfile) {
       return <EditProfile editProfile={this.handleEditProfile}/>
     } else {
