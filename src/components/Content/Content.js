@@ -129,7 +129,6 @@ class Content extends Component {
 
   getProfile = () => {
     const { editProfile } = this.state;
-    // console.log('this.state', this.state)
     if(editProfile) {
       return <EditProfile editProfile={this.handleEditProfile}/>
     } else {
@@ -137,119 +136,39 @@ class Content extends Component {
     }
   }
 
-  // Work Component
-  handleCreateWork = () => {
-    const { work } = this.state;
+  handleCreate = (contentType) => {
     const { cvId } = this.props.match.params;
-    let index = work.length;
-    content.createContent(this.props.work,cvId)
+    let index = this.state[contentType].length;
+    content.createContent(this.props[contentType],cvId)
       .then((data) => {
         this.fetchContentInfo();
-        this.setState({
-          editWorkIndex: index,
-        })
+        if(contentType === 'work') this.setState({editWorkIndex: index})
+        if(contentType === 'education') this.setState({editEduIndex: index})
+        if(contentType === 'project') this.setState({editProjectIndex: index})
       })
   }
 
-  handleEditWork = (index) => {
-    this.setState({
-      editWorkIndex: index,
-    })
+  handleEdit = (index,contentType) => {
+    if(contentType === 'work') this.setState({editWorkIndex: index})
+    if(contentType === 'education') this.setState({editEduIndex: index})
+    if(contentType === 'project') this.setState({editProjectIndex: index})
   }
 
-  handleUpdateWork = (index) => {
-    const { work } = this.state;
-    content.updateContent(work[index])
-      .then(() => {
-        this.fetchContentInfo();
-      })
-      this.setState({
-        editWorkIndex: '',
-      })
-  }
-
-  handleDeleteWork = (index) => {
-    const { work } = this.state;
-    content.deleteContent(work[index])
+  handleDelete = (index,contentType) => {
+    content.deleteContent(this.state[contentType][index])
       .then(() => {
         this.fetchContentInfo();
       })
   }
 
-  handleDisplayWork = (index) => {
-    const { isDisplayContent } = this.state;
-    isDisplayContent.work[index] = !isDisplayContent.work[index];
-    let newObj = isDisplayContent;
-    this.setState({
-      isDisplayContent: newObj,
-    })
-    this.props.setCv(this.props.cv);
-    this.props.setDisplayContent(this.props.displayContent);
-  }
-
-  handleUpWork = (index) => {
-    const work = [...this.state.displayContent.work];
-    const isWork = [...this.state.isDisplayContent.work];
-
-    if(index !== 0) {
-      const newWork = [...work];
-      const newIsWork = [...isWork];
-      newWork[index - 1] = work[index];
-      newWork[index] = work[index - 1];
-      newIsWork[index - 1] = isWork[index];
-      newIsWork[index] = isWork[index - 1];
-
-    //   const newSoftSkills = [...softSkills];
-    //   newSoftSkills[index - 1] = softSkills[index]
-    //   newSoftSkills[index] = softSkills[index - 1]
-      this.setState({
-        // softSkills: newSoftSkills
+  handleUpdate = (index,contentType) => {
+    content.updateContent(this.state[contentType][index])
+      .then(() => {
+        this.fetchContentInfo();
       })
-    //   const newUser = {...this.props.user, softSkills: newSoftSkills}
-    //   this.props.setUser(newUser)
-    }
-  }
-
-  handleDownWork = (index) => {
-
-  }
-
-  getWork = () => {
-    const { work, editWorkIndex, isDisplayContent} = this.state;
-    this.props.displayContent.work = [];
-    return (
-      <div>
-        {
-          work.map((content,index) => {
-            if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content];
-            if(editWorkIndex === index) {
-              return <EditItem
-                contentType={'work'}
-                key={index}
-                work={content}
-                index={index}
-                updateContent={this.handleUpdateWork}/>
-            } else {
-              return <Item
-                contentType={'work'}
-                key={index}
-                content={content}
-                index={index}
-                isUse={isDisplayContent.work[index]}
-                upListItem={this.handleUpWork}
-                downListItem={this.handleDownWork}
-                useContent={this.handleDisplayWork}
-                editContent={this.handleEditWork}
-                deleteContent={this.handleDeleteWork}/>
-            }
-          })
-        }
-        <div className="add-profile-btn">
-          <button onClick={this.handleCreateWork}>Add</button>
-        </div>
-        {this.handleUpdateDisplay()}
-      </div>
-    )
+      if(contentType === 'work') this.setState({editWorkIndex: ''})
+      if(contentType === 'education') this.setState({editEduIndex: ''})
+      if(contentType === 'project') this.setState({editProjectIndex: ''})
   }
 
   handleUpdateDisplay = () => {
@@ -273,48 +192,9 @@ class Content extends Component {
     cv.updateCv(newCv);
   }
 
-  //Education Component
-  handleCreateEdu = () => {
-    const { education } = this.state;
-    const { cvId } = this.props.match.params;
-    let index = education.length;
-    content.createContent(this.props.education,cvId)
-      .then(() => {
-        this.fetchContentInfo();
-        this.setState({
-          editEduIndex: index,
-        })
-      })
-  }
-
-  handleEditEdu = (index) => {
-    this.setState({
-      editEduIndex: index,
-    })
-  }
-
-  handleUpdateEdu = (index) => {
-    const { education } = this.state;
-    content.updateContent(education[index])
-      .then(() => {
-        this.fetchContentInfo();
-      })
-      this.setState({
-        editEduIndex: '',
-      })
-  }
-
-  handleDeleteEdu = (index) => {
-    const { education } = this.state;
-    content.deleteContent(education[index])
-      .then(() => {
-        this.fetchContentInfo();
-      })
-  }
-
-  handleDisplayEdu = (index) => {
+  handleDisplay = (index,contentType) => {
     const { isDisplayContent } = this.state;
-    isDisplayContent.education[index] = !isDisplayContent.education[index];
+    isDisplayContent[contentType][index] = !isDisplayContent[contentType][index];
     let newObj = isDisplayContent;
     this.setState({
       isDisplayContent: newObj,
@@ -323,6 +203,76 @@ class Content extends Component {
     this.props.setDisplayContent(this.props.displayContent);
   }
 
+  // Work Component
+  handleUpWork = (index) => {
+    const work = [...this.state.displayContent.work];
+    const isWork = [...this.state.isDisplayContent.work];
+    const { isDisplayContent,displayContent } = this.state;
+
+    if(index !== 0) {
+      const newWork = [...work];
+      newWork[index - 1] = work[index];
+      newWork[index] = work[index - 1];
+      let newDisplayContent = [...displayContent]
+      newDisplayContent.work = newWork;
+
+      const newIsWork = [...isWork];
+      newIsWork[index - 1] = isWork[index];
+      newIsWork[index] = isWork[index - 1];
+      let newIsDisplayContent = [...isDisplayContent]
+      newIsDisplayContent.work = newIsWork
+
+      this.setState({
+        displayContent: newDisplayContent,
+        isDisplayContent: newIsDisplayContent,
+      })
+    //   const newUser = {...this.props.user, softSkills: newSoftSkills}
+    //   this.props.setUser(newUser)
+  }
+  }
+
+  handleDownWork = (index) => {
+
+  }
+
+  getWork = () => {
+    const { work, editWorkIndex, isDisplayContent} = this.state;
+    this.props.displayContent.work = [];
+    return (
+      <div>
+        {
+          work.map((content,index) => {
+            if(this.props.isDisplayContent.work[index]) this.props.displayContent.work = [...this.props.displayContent.work,content];
+            if(editWorkIndex === index) {
+              return <EditItem
+                contentType={'work'}
+                key={index}
+                work={content}
+                index={index}
+                updateContent={this.handleUpdate}/>
+            } else {
+              return <Item
+                key={index}
+                content={content}
+                index={index}
+                isUse={isDisplayContent.work[index]}
+                upListItem={this.handleUpWork}
+                downListItem={this.handleDownWork}
+                useContent={this.handleDisplay}
+                editContent={this.handleEdit}
+                deleteContent={this.handleDelete}/>
+            }
+          })
+        }
+        <div className="add-profile-btn">
+          <button onClick={() => {this.handleCreate('work')}}>Add</button>
+        </div>
+        {this.handleUpdateDisplay()}
+      </div>
+    )
+  }
+
+  //Education Component
   getEdu = () => {
     const { education, editEduIndex, isDisplayContent } = this.state;
     this.props.displayContent.education = [];
@@ -337,22 +287,21 @@ class Content extends Component {
                 key={index}
                 education={content}
                 index={index}
-                updateContent={this.handleUpdateEdu}/>
+                updateContent={this.handleUpdate}/>
             } else {
               return <Item
-                contentType={'education'}
                 key={index}
                 content={content}
                 index={index}
                 isUse={isDisplayContent.education[index]}
-                useContent={this.handleDisplayEdu}
-                editContent={this.handleEditEdu}
-                deleteContent={this.handleDeleteEdu}/>
+                useContent={this.handleDisplay}
+                editContent={this.handleEdit}
+                deleteContent={this.handleDelete}/>
             }
          })
         }
         <div className="add-profile-btn">
-          <button onClick={this.handleCreateEdu} >Add</button>
+          <button onClick={() => {this.handleCreate('education')}} >Add</button>
         </div>
         {this.handleUpdateDisplay()}
       </div>
@@ -360,55 +309,6 @@ class Content extends Component {
   }
 
   // Project Component
-  handleCreateProject = () => {
-    const { project } = this.state;
-    const { cvId } = this.props.match.params;
-    let index = project.length;
-    content.createContent(this.props.project,cvId)
-      .then(() => {
-        this.fetchContentInfo();
-        this.setState({
-          editProjectIndex: index,
-        })
-      })
-  }
-
-  handleEditProject = (index) => {
-    this.setState({
-      editProjectIndex: index,
-    })
-  }
-
-  handleUpdateProject = (index) => {
-    const { project } = this.state;
-    content.updateContent(project[index])
-      .then(() => {
-        this.fetchContentInfo();
-      })
-      this.setState({
-        editProjectIndex: '',
-      })
-  }
-
-  handleDeleteProject = (index) => {
-    const { project } = this.state;
-    content.deleteContent(project[index])
-      .then(() => {
-        this.fetchContentInfo();
-      })
-  }
-
-  handleDisplayProject = (index) => {
-    const { isDisplayContent } = this.state;
-    isDisplayContent.project[index] = !isDisplayContent.project[index];
-    let newObj = isDisplayContent;
-    this.setState({
-      isDisplayContent: newObj,
-    })
-    this.props.setCv(this.props.cv);
-    this.props.setDisplayContent(this.props.displayContent);
-  }
-
   getProject = () => {
     const { project, editProjectIndex, isDisplayContent } = this.state;
     this.props.displayContent.project = [];
@@ -423,22 +323,21 @@ class Content extends Component {
                 key={index}
                 project={content}
                 index={index}
-                updateContent={this.handleUpdateProject}/>
+                updateContent={this.handleUpdate}/>
             } else {
               return <Item
-                contentType={'project'}
                 key={index}
                 content={content}
                 index={index}
                 isUse={isDisplayContent.project[index]}
-                useContent={this.handleDisplayProject}
-                editContent={this.handleEditProject}
-                deleteContent={this.handleDeleteProject}/>
+                useContent={this.handleDisplay}
+                editContent={this.handleEdit}
+                deleteContent={this.handleDelete}/>
             }
          })
         }
         <div className="add-profile-btn">
-          <button onClick={this.handleCreateProject} >Add</button>
+          <button onClick={() => {this.handleCreate('project')}} >Add</button>
         </div>
         {this.handleUpdateDisplay()}
       </div>

@@ -54,7 +54,7 @@ function EditItem(props) {
         <textarea className="width-full" type="text" {...tasks} placeholder="Tasks / Responsibility"/>
       </div>
       <div className="save-profile-btn">
-        <button onClick={() => {updateContent(index)}}>Save</button>
+        <button onClick={() => {updateContent(index,props.contentType)}}>Save</button>
       </div>
     </div>
   )
