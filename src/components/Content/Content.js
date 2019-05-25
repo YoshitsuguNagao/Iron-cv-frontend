@@ -687,6 +687,29 @@ class Content extends Component {
     }
   }
 
+  // showItem = (skills,editSkillIndex) => {
+  //   return skills.map((skill,index) => {
+  //     if (editSkillIndex === index) {
+  //       return <EditListItem
+  //         itemType='softSkill'
+  //         key={index}
+  //         index={index}
+  //         listContent={skill}
+  //         updateListItem={this.handleUpdateSoftSkill} />
+  //     } else {
+  //       return <ListItem
+  //         itemType='softSkill'
+  //         key={index}
+  //         index={index}
+  //         listContent={skill}
+  //         upListItem={this.handleUpSoftSkill}
+  //         downListItem={this.handleDownSoftSkill}
+  //         editListItem={this.handleEditSoftSkill}
+  //         deleteListItem={this.handleDeleteSoftSkill} />
+  //     }
+  //   })
+  // }
+
   getSkill = () => {
     const { hardSkills, editHardSkillIndex, softSkills, editSoftSkillIndex } = this.state;
     return (
@@ -694,6 +717,7 @@ class Content extends Component {
         <div className="soft-skill-container content-item-container">
           <h5>Soft Skills</h5>
           {
+            // this.showItem(softSkills,editSoftSkillIndex)
             softSkills.map((softSkill,index) => {
               if (editSoftSkillIndex === index) {
                 return <EditListItem
@@ -704,7 +728,7 @@ class Content extends Component {
                   updateListItem={this.handleUpdateSoftSkill} />
               } else {
                 return <ListItem
-                  itemType='Soft skill'
+                  itemType='Soft Skill'
                   key={index}
                   index={index}
                   listContent={softSkill}
@@ -732,7 +756,7 @@ class Content extends Component {
                   updateListItem={this.handleUpdateHardSkill} />
               } else {
                 return <ListItem
-                  itemType='Hard skill'
+                  itemType='Hard Skill'
                   key={index}
                   index={index}
                   listContent={hardSkill}
