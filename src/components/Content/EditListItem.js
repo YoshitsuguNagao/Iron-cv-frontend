@@ -17,7 +17,7 @@ function EditListItem(props) {
       }
     }
   })
-  console.log('props', props[itemType])
+
   return (
     <div className="edit-list-item-container">
       <div className="edit-list-item-word">
