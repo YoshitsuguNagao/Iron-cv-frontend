@@ -7,6 +7,7 @@ function EditListItem(props) {
   const listContent = useFormInput(props[itemType])
 
   useEffect(() => {
+    console.log('props[itemType]', props)
     if(props[itemType] !== listContent.value) {
       if(itemType === 'interest') {
         props.setInterest(listContent.value)

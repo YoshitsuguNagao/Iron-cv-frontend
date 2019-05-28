@@ -728,7 +728,7 @@ class Content extends Component {
                   updateListItem={this.handleUpdateSoftSkill} />
               } else {
                 return <ListItem
-                  itemType='Soft Skill'
+                  itemType='Soft skill'
                   key={index}
                   index={index}
                   listContent={softSkill}
@@ -756,7 +756,7 @@ class Content extends Component {
                   updateListItem={this.handleUpdateHardSkill} />
               } else {
                 return <ListItem
-                  itemType='Hard Skill'
+                  itemType='Hard skill'
                   key={index}
                   index={index}
                   listContent={hardSkill}
