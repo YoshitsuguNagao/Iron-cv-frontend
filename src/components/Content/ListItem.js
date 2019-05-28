@@ -7,13 +7,7 @@ class ListItem extends Component {
   }
 
   handleEdit = (index) => {
-    if(this.props.itemType === 'Interest') {
-      this.props.setInterest(this.props.listContent)
-    } else if (this.props.itemType === 'Soft skill') {
-      this.props.setSoftSkill(this.props.listContent)
-    } else if (this.props.itemType === 'Hard skill') {
-      this.props.setHardSkill(this.props.listContent)
-    }
+    this.props[this.props.setItem](this.props.listContent)
     this.props.editListItem(index)
   }
 
@@ -35,8 +29,6 @@ class ListItem extends Component {
         <div className="list-item-btns">
           <button className="arrow-btn" onClick={() => {this.handleUp(index)}}><i className="fas fa-angle-up"></i></button>
           <button className="arrow-btn" onClick={() => {this.handleDown(index)}}><i className="fas fa-angle-down"></i></button>
-          {/* <button onClick={() => {this.handleEdit(index)}}><i className="fas fa-edit"></i></button>
-          <button onClick={() => {this.handleDelete(index)}}><i className="fas fa-trash-alt"></i></button> */}
           <button className="ed-btn" onClick={() => { this.handleEdit(index) }}>Edit</button>
           <button className="del-btn" onClick={() => { this.handleDelete(index)} }>Delete</button>
         </div>
