@@ -9,6 +9,7 @@ class Tab extends Component {
 
   handleClick = () => {
     const { setTab } = this.props;
+    console.log('setTab', this.props.title)
     setTab(this.props.title);
   };
 

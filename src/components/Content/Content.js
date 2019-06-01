@@ -77,6 +77,7 @@ class Content extends Component {
       .then(() => {
         content.getContent(cvId)
           .then(contents => {
+            console.log('contents', contents)
             const Contents = { work:[], education:[], project:[] };
             const isDisplayContent = { work:[], education:[], project:[] };
             const displayContent = { work:[], education:[], project:[] };
@@ -93,7 +94,7 @@ class Content extends Component {
               work: Contents['work'],
               education: Contents['education'],
               project: Contents['project'],
-              isDisplayContent,
+              isDisplayContent: isDisplayContent,
               displayContent,
             })
             this.props.setIsDisplayContent(isDisplayContent)
@@ -148,6 +149,7 @@ class Content extends Component {
         newCv.contentId = [...newCv.contentId,item._id];
       })
     }
+    console.log('newCv', newCv)
     cv.updateCv(newCv);
   }
 
@@ -198,7 +200,7 @@ class Content extends Component {
             key={index}
             content={content}
             index={index}
-            isUse={this.state.isDisplayContent.project[index]}
+            isUse={this.state.isDisplayContent[content.contentType][index]}
             useContent={this.handleDisplay}
             editContent={this.handleEdit}
             deleteContent={this.handleDelete}/>)
@@ -740,9 +742,28 @@ class Content extends Component {
     this.props.setDisplayContent(this.state.displayContent);
   }
 
+  // render() {
+  //   const { selectedTab } = this.props;
+  //   return this['get'+selectedTab.charAt(0).toUpperCase() + selectedTab.slice(1)]();
+  // }
   render() {
     const { selectedTab } = this.props;
-    return this['get'+selectedTab.charAt(0).toUpperCase() + selectedTab.slice(1)]();
+    console.log('this.props', this.props,this.state)
+    if (selectedTab === 'profile') {
+      return this.getProfile();
+    } else if (selectedTab === 'work') {
+      return this.getWork();
+    } else if (selectedTab === 'education') {
+      return this.getEducation();
+    } else if (selectedTab === 'skills') {
+      return this.getSkills();
+    } else if (selectedTab === 'project') {
+      return this.getProject();
+    } else if (selectedTab === 'languages') {
+      return this.getLanguages();
+    } else if  (selectedTab === 'interests') {
+      return this.getInterests();
+    }
   }
 }
 
