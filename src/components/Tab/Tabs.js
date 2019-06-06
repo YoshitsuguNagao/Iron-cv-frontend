@@ -12,7 +12,6 @@ class Tabs extends Component {
 
   render() {
     const { selectedTab, contents } = this.props;
-    console.log('selectedTab', selectedTab)
     return (
       <div className="tabs-container">
         <nav>
