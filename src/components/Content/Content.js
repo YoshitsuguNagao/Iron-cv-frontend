@@ -23,7 +23,7 @@ class Content extends Component {
     editWorkIndex: '',
     newEditWork: false,
     education: [],
-    editEduIndex: '',
+    editEducationIndex: '',
     newEditEdu: false,
     project: [],
     editProjectIndex: '',
@@ -234,14 +234,14 @@ class Content extends Component {
 
   //Education Component
   getEducation = () => {
-    const { education, editEduIndex } = this.state;
+    const { education, editEducationIndex } = this.state;
     this.props.displayContent.education = [];
     return (
       <div>
         {
           education.map((content,index) => {
             if(this.props.isDisplayContent.education[index]) this.props.displayContent.education = [...this.props.displayContent.education,content]
-            if(editEduIndex === index) {
+            if(editEducationIndex === index) {
               return <EditItem
                 contentType={'education'}
                 key={index}
