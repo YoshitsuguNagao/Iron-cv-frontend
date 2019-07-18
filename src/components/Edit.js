@@ -30,7 +30,7 @@ class Edit extends Component {
         <Tabs selectedTab={selectedTab} contents={contents}/>
         <div className="edit-content-container">
           <Content content={contents}/>
-          <button onClick={() => { this.changeView() }}>change</button>
+          <button className="pdf-change-btn" onClick={() => { this.changeView() }}>change</button>
         </div>
       </div>
     );
