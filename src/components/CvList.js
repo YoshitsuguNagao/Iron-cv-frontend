@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './CvList.css';
 import { withAuth } from './AuthProvider';
 
 class CvList extends Component {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CvList from '../components/CvList';
-import './Home.css';
 import cv from '../lib/cv-service';
 import auth from '../lib/auth-service';
 import { withAuth } from '../components/AuthProvider';
@@ -74,29 +73,29 @@ class Home extends Component {
     const { cvList, editIndex } = this.state;
     return (
       <div className="cv-Preview-container">
-      <ul>
-        {
-          cvList.map((cv,index) => {
-            if(editIndex !== index) {
-              return <CvList
-                key={index}
-                cv={cv}
-                index={index}
-                deleteCv={this.handleDeleteCV}
-                editCv={this.handleEditCV}
-              />
-            } else {
-              return <EditCvList
-                key={index}
-                cv={cv}
-                index={index}
-                updateCv={this.handleUpdateCV}
-              />
-            }
-          })
-        }
-      </ul>
-    </div>
+        <ul>
+          {
+            cvList.map((cv,index) => {
+              if(editIndex !== index) {
+                return <CvList
+                  key={index}
+                  cv={cv}
+                  index={index}
+                  deleteCv={this.handleDeleteCV}
+                  editCv={this.handleEditCV}
+                />
+              } else {
+                return <EditCvList
+                  key={index}
+                  cv={cv}
+                  index={index}
+                  updateCv={this.handleUpdateCV}
+                />
+              }
+            })
+          }
+        </ul>
+      </div>
     );
   };
 

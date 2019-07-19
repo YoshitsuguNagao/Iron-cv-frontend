@@ -36,8 +36,8 @@ class Language extends Component {
           <div className="list-item-btns">
             {/* <button onClick={() => {this.handleUp(index)}}><i className="fas fa-angle-up"></i></button>
             <button onClick={() => {this.handleDown(index)}}><i className="fas fa-angle-down"></i></button> */}
-            <button className="ed-btn" onClick={() => { this.handleEdit(index) }}>Edit</button>
-            <button className="del-btn" onClick={() => { this.handleDelete(index)} }>Delete</button>
+            <button className="blue-btn" onClick={() => { this.handleEdit(index) }}>Edit</button>
+            <button className="blue-btn" onClick={() => { this.handleDelete(index)} }>Delete</button>
           </div>
         </div>
       )

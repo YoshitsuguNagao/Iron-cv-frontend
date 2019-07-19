@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 // import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
-import './CV.css';
 import CvTitle from './CvTitle';
 import CvProfile from './CvProfile';
 import CvSkills from './CvSkills';

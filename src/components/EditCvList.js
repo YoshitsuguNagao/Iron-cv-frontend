@@ -20,8 +20,8 @@ class EditCvList extends Component {
           <div className="cv-list-title">
             <input className="edit-title" type="text" value={editInput} onChange={this.handleInput}/>
           </div>
-          <div className="cv-list-btn">
-            <button className="edit-list-btn" onClick={() => { updateCv(index, editInput) }}>Save</button>
+          <div className="btn-container">
+            <button className="blue-btn" onClick={() => { updateCv(index, editInput) }}>Save</button>
           </div>
         </div>
       </li>

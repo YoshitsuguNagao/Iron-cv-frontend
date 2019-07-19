@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Tab from './Tab';
-import './Tabs.css';
 import { withRouter } from 'react-router';
 import { withAuth } from '../AuthProvider';
 

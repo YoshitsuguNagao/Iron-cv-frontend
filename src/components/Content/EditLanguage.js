@@ -17,7 +17,7 @@ function EditLanguage(props) {
         <input {...level} placeholder="level"/>
       </div>
       <div className="list-item-btns">
-        <button className="save-btn" onClick={() => {updateLanguage(index, language.value, level.value)}}>Save</button>
+        <button className="blue-btn" onClick={() => {updateLanguage(index, language.value, level.value)}}>Save</button>
       </div>
     </section>
   )

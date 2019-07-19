@@ -126,8 +126,8 @@ class Profile extends Component {
             useContent={this.handleDisplayPicture}
           />
         </div> */}
-        <div className="edit-profile-btn">
-          <button onClick={() => { editProfile() }}>Edit</button>
+        <div className="edit-profile-btn btn-container">
+          <button className="blue-btn" onClick={() => { editProfile() }}>Edit</button>
         </div>
 
       </article>

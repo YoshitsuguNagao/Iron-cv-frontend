@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Edit.css';
 import Tabs from './Tab/Tabs';
 import Content from './Content/Content';
 import { withRouter } from "react-router";

@@ -18,7 +18,7 @@ function EditListItem(props) {
         <input type="text" {...listContent} placeholder={itemType}/>
       </div>
       <div className="list-item-btns">
-        <button className="save-btn" onClick={() => {updateListItem(index, listContent.value)}}>Save</button>
+        <button className="blue-btn" onClick={() => {updateListItem(index, listContent.value)}}>Save</button>
       </div>
     </div>
   )

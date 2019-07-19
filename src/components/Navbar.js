@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
-import './Navbar.css';
 
 class Navbar extends Component {
   render() {
@@ -15,12 +14,12 @@ class Navbar extends Component {
             <h1><b>IRON</b> CV</h1>
           </div></a>
         </div>
-        <div className="username">
+        <div className="nav-username">
           <div>
-            <p className="username-name">{ username }</p>
+            <p >{ username }</p>
           </div>
           <div>
-            <p className="username-logout" onClick={logout}>Logout</p>
+            <p onClick={logout}>Logout</p>
           </div>
         </div>
       </div>

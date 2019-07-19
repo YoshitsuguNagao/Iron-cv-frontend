@@ -4,7 +4,7 @@ class CvWork extends Component {
   render() {
     const { content } = this.props;
     return (
-      <div className="work-container">
+      <div className="work-cv-container">
         <div className="work-title">{content.title}</div>
         <div className="work-company">{content.name}</div>
         <div className="date-city">

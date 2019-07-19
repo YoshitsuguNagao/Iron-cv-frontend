@@ -7,7 +7,6 @@ import Header from './Header'
 
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
-import '../CV/CV.css'
 
 // import styled from '@react-pdf/styled-components';
 let LOADING = true;

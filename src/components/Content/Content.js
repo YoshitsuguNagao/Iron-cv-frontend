@@ -12,7 +12,6 @@ import auth from '../../lib/auth-service';
 import content from '../../lib/content-service';
 import { withRouter } from "react-router";
 import { withAuth } from '../AuthProvider';
-import './Content.css';
 
 class Content extends Component {
   state = {
@@ -224,8 +223,8 @@ class Content extends Component {
             }
           })
         }
-        <div className="add-profile-btn">
-          <button onClick={() => {this.handleCreate('work')}}>Add</button>
+        <div className="btn-container">
+          <button className="blue-btn" onClick={() => {this.handleCreate('work')}}>Add</button>
         </div>
         {this.handleUpdateDisplay('work')}
       </div>
@@ -253,8 +252,8 @@ class Content extends Component {
             }
          })
         }
-        <div className="add-profile-btn">
-          <button onClick={() => {this.handleCreate('education')}} >Add</button>
+        <div className="btn-container">
+          <button className="blue-btn" onClick={() => {this.handleCreate('education')}} >Add</button>
         </div>
         {this.handleUpdateDisplay('education')}
       </div>
@@ -282,8 +281,8 @@ class Content extends Component {
             }
          })
         }
-        <div className="add-profile-btn">
-          <button onClick={() => {this.handleCreate('project')}} >Add</button>
+        <div className="btn-container">
+          <button className="blue-btn" onClick={() => {this.handleCreate('project')}} >Add</button>
         </div>
         {this.handleUpdateDisplay('project')}
       </div>
@@ -388,8 +387,8 @@ class Content extends Component {
             }
           })
         }
-        <div className="add-profile-btn">
-          <button onClick={this.handleCreateInterest} >Add</button>
+        <div className="btn-container">
+          <button className="blue-btn" onClick={this.handleCreateInterest} >Add</button>
         </div>
       </article>
     )
@@ -491,8 +490,8 @@ class Content extends Component {
             }
           })
         }
-        <div className="add-profile-btn">
-          <button onClick={this.handleCreateLanguage}>Add</button>
+        <div className="btn-container">
+          <button className="blue-btn" onClick={this.handleCreateLanguage}>Add</button>
         </div>
       </article>
     )
@@ -680,8 +679,8 @@ class Content extends Component {
               }
             })
           }
-          <div className="add-profile-btn">
-            <button onClick={this.handleCreateSoftSkill} >Add</button>
+          <div className="btn-container">
+            <button className="blue-btn" onClick={this.handleCreateSoftSkill} >Add</button>
           </div>
         </div>
         <div className="hard-skill-container content-item-container">
@@ -710,8 +709,8 @@ class Content extends Component {
               }
             })
           }
-          <div className="add-profile-btn">
-            <button onClick={this.handleCreateHardSkill} >Add</button>
+          <div className="btn-container">
+            <button className="blue-btn" onClick={this.handleCreateHardSkill} >Add</button>
           </div>
         </div>
       </article>

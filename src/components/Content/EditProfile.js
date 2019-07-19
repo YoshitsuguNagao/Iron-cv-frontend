@@ -195,7 +195,7 @@ class EditProfile extends Component {
         <div className="picture-name-container">
           <div className="edit-profile-card edit-profile-title">
             <i className="fas fa-user"></i>
-            <div className="edit-name-card">
+            <div className="width-full">
               <div className="list-item-container">
                 <div className="edit-profile-card-name width-full">
                   <input type="text" className="width-full name-set" value={firstName} onChange={this.handleFirstNameInput} placeholder="First Name" required/>
@@ -261,8 +261,8 @@ class EditProfile extends Component {
           <i className="fab fa-linkedin"></i>
           <input type="text" className="width-full" value={linkedin} onChange={this.handleLinkedinInput} placeholder="LinkedIn"/>
         </div>
-        <div className="save-profile-btn">
-          <button onClick={this.handleUpdateContact}>Save</button>
+        <div className="save-profile-btn btn-container">
+          <button className="blue-btn" onClick={this.handleUpdateContact}>Save</button>
         </div>
       </div>
     )
