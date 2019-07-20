@@ -36,8 +36,8 @@ class Item extends Component {
           <p>{content.tasks}</p>
         </div>
         <div className="content-btns">
-          <button onClick={() => {this.handleUp(index)}}><i className="fas fa-angle-up"></i></button>
-          <button onClick={() => {this.handleDown(index)}}><i className="fas fa-angle-down"></i></button>
+          <button className="arrow-btn" onClick={() => {this.handleUp(index)}}><i className="fas fa-angle-up"></i></button>
+          <button className="arrow-btn" onClick={() => {this.handleDown(index)}}><i className="fas fa-angle-down"></i></button>
           {isUse ? <button className="blue-btn" onClick={() => { this.handleDisplay(index,content.contentType) }}>Hide</button>: <button className="blue-btn" onClick={() => { this.handleDisplay(index,content.contentType) }}>Show</button>}
           <button className="blue-btn" onClick={() => { this.handleEdit(index,content.contentType) }}>Edit</button>
           <button className="blue-btn" onClick={() => { this.handleDelete(index,content.contentType)} }>Delete</button>

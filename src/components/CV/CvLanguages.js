@@ -5,7 +5,7 @@ class CvLanguages extends Component {
     const { languages } =this.props.user;
     if (languages.length !== 0) {
       return (
-        <article className="languages-container">
+        <article className="cv-content-container">
           <h4 className="cv-body-title">LANGUAGES</h4>
           <div>
             { languages.map((languageItem, index) => {
@@ -15,9 +15,7 @@ class CvLanguages extends Component {
                   <div>
                     {language}
                   </div>
-                  <p className="p-language">
-                    {level}
-                  </p>
+                  <p>{level}</p>
                 </div>
               )
             }) }

@@ -5,8 +5,6 @@ import auth from '../../lib/auth-service';
 import cv from '../../lib/cv-service';
 // import Item from './Item';
 
-
-
 class Profile extends Component {
   state = {
     contact: this.props.contact,
@@ -43,7 +41,6 @@ class Profile extends Component {
     })
   }
 
-
   fetchCvInfo = () => {
     const { cvId } = this.props.match.params;
     cv.getCv(cvId)
@@ -72,6 +69,17 @@ class Profile extends Component {
   //   this.props.setDisplayContent(this.props.displayContent);
   // }
 
+  profileCard(title, icon) {
+    return (
+      <div className="profile-card">
+        <div className="profile-icon">
+          <i className={icon}></i>
+        </div>
+        <p>{title}</p>
+      </div>
+    )
+  }
+
   componentDidMount() {
     this.fetchUserInfo();
     this.fetchCvInfo();
@@ -85,48 +93,27 @@ class Profile extends Component {
     return (
       <article className="content-container content-item-container">
         <div className="profile-card">
-          <i className="fas fa-user"></i>
-          <div className="content-text-container">
-            <h6>{firstName}</h6>
+          <div className="profile-icon">
+            <i className="fas fa-user"></i>
           </div>
-          <div className="content-text-container">
-            <h6>{lastName}</h6>
-          </div>
+          <h6>{firstName} {lastName}</h6>
         </div>
         <div className="profile-headline-container">
           <p>{headline}</p>
           <p>{summary}</p>
         </div>
-        <div className="profile-card">
-          <i className="fas fa-envelope"></i>
-          <p>{email}</p>
-        </div>
-        <div className="profile-card">
-          <i className="fas fa-map-marker-alt"></i>
-          <p>{address}</p>
-        </div>
-        <div className="profile-card">
-          <i className="fas fa-mobile-alt"></i>
-          <p>{phone}</p>
-        </div>
-        <div className="profile-card">
-          <i className="fab fa-github-square"></i>
-          <p>{github}</p>
-        </div>
-        <div className="profile-card">
-          <i className="fab fa-medium"></i>
-          <p>{medium}</p>
-        </div>
-        <div className="profile-card">
-          <i className="fab fa-linkedin"></i>
-          <p>{linkedin}</p>
-        </div>
+        {this.profileCard(email, "fas fa-envelope")}
+        {this.profileCard(address, "fas fa-map-marker-alt")}
+        {this.profileCard(phone, "fas fa-mobile-alt")}
+        {this.profileCard(github, "fab fa-github-square")}
+        {this.profileCard(medium, "fab fa-medium")}
+        {this.profileCard(linkedin, "fab fa-linkedin")}
         {/* <div>
           <Item
             useContent={this.handleDisplayPicture}
           />
         </div> */}
-        <div className="edit-profile-btn btn-container">
+        <div className="btn-container">
           <button className="blue-btn" onClick={() => { editProfile() }}>Edit</button>
         </div>
 

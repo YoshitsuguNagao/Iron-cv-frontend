@@ -4,7 +4,7 @@ class CvInterests extends Component {
   render () {
     const { interests } = this.props.user;
     return (
-    <article className="interests-container">
+    <article className="cv-content-container">
       { interests[0] ? <h4 className="cv-body-title">INTERESTS</h4> : null }
       <div className="interests-tag">
       { interests[0] ? <div className="cv-interest-card">{interests.map((interest, index) => {

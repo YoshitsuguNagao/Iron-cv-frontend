@@ -9,10 +9,11 @@ $hoverColor: rgb(227, 227, 227);
   box-sizing: border-box;
 }
 
-@mixin flexbox($justify-content) {
+@mixin flexbox($justify-content: flex-start,$align-items: stretch, $flex-direction: row) {
   display: flex;
   justify-content: $justify-content;
-  align-items: center;
+  align-items: $align-items;
+  flex-direction: $flex-direction;
 }
 
 @mixin blueBtn() {
@@ -20,8 +21,8 @@ $hoverColor: rgb(227, 227, 227);
   color: white;
   border-radius: 5px;
   &:hover {
-    color: black;
     background-color: $hoverColor;
+    color: black;
   }
 }
 @mixin cvTextList() {
@@ -31,25 +32,27 @@ $hoverColor: rgb(227, 227, 227);
   font-size: 0.75rem;
 }
 
-
 body {
+  background-color: white;
   margin: 0px;
   padding: 0px;
-  background-color: white;
 }
 
-.main-container {
-  padding: 0px;
+.width-full {
+  width: 100%;
+}
+
+.width-half {
+  width: 49%;
 }
 
 .auth-container {
+  @include flexbox(flex-start,stretch,column);
   background-color: $navColor;
   width: 100%;
   height: 100vh;
   margin: 0 auto 20% auto;
   padding-top: 6%;
-  display: flex;
-  flex-direction: column;
 }
 
 .border-auth-container {
@@ -66,17 +69,15 @@ body {
 }
 
 .auth-form-container {
+  @include flexbox(flex-start,stretch,column);
+  background-color: $navColor;
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  background-color: $navColor;
   border-radius: 7px;
 }
 
 .signup-form {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(flex-start,stretch,column);
   margin: 0 auto;
 }
 
@@ -84,13 +85,13 @@ body {
   margin: 5% auto;
   width: 80%;
   p {
-  font-size: 0.9rem;
-  text-align: center;
-  color: white;
-  font-weight: lighter;
-  padding-top: 0.8rem;
-  &:nth-child(2n) {
-    padding-top: 43px;
+    color: white;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: lighter;
+    padding-top: 0.8rem;
+    &:nth-child(2n) {
+      padding-top: 43px;
     }
   }
 }
@@ -111,19 +112,19 @@ body {
 }
 
 .auth-button {
-  margin: 7% auto;
-  border-radius: 5px;
   background-color: $blueBtnColor;
   color: white;
+  margin: 7% auto;
+  border-radius: 5px;
   width: 100%;
 }
 
 .incorrect-message {
+  background-color: rgb(243, 142, 157);
   width: 70%;
   border-style: solid;
   border-radius: 5px;
   border-color: $errMsgColor;
-  background-color: rgb(243, 142, 157);
   margin: 0 auto;
 }
 
@@ -137,7 +138,6 @@ body {
 }
 
 .edit-cv-container {
-  border: 1px solid black;
   display: flex;
   height: 95vh;
 }
@@ -147,8 +147,8 @@ body {
 }
 
 .home-container {
-  margin-top: 50px;
   background-color: white;
+  margin-top: 50px;
   margin: 0 auto;
   height: 100vh;
 }
@@ -156,7 +156,7 @@ body {
 .add-btn {
   background-color: $blueBtnColor;
   position: fixed;
-  border-radius: 32px;
+  border-radius: 2rem;
   height: 4rem;
   width: 4rem;
   right: 2rem;
@@ -169,26 +169,24 @@ body {
 }
 
 .cv-Preview-container ul {
+  background-color: white;
   list-style-type: none;
   padding-left: 0;
-  background-color: white;
 }
 
 .main-navbar {
-  @include flexbox(space-between);
+  @include flexbox(space-between, center);
   height: 50px;
-  float: left;
   width: 100vw;
+  float: left;
   position: fixed;
 }
 
 .navbar-css {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  @include flexbox(space-between);
+  background-color: $navColor;
   width: 100%;
   position: sticky;
-  background-color: $navColor;
   top: 0;
   padding: 5px 0;
 }
@@ -199,77 +197,72 @@ body {
 
 .title-logo {
   display: flex;
-  img {
-    height: 50px;
-    margin-left: 1rem;
+  .title-link {
+    @include flexbox(center,center);
+    &:hover {
+      text-decoration: none;
+    }
+    img {
+      height: 50px;
+      margin-left: 1rem;
+    }
+    h1 {
+      color: white;
+      margin: 0;
+      padding-left: 0.5rem;
+    }
   }
-}
-
-.title {
-  padding-top: 4px;
-  h1 {
-    color: white;
-    margin: 0;
-    padding-left: 0.5rem;
-  }
-}
-
-.title-link {
-  text-decoration: none;
-}
-
-.auth-link a {
-  margin: 10px;
 }
 
 .nav-username {
   @include flexbox(space-around);
-  flex-direction: row;
   p {
     color: white;
     margin: 1rem;
   }
+  .logout {
+    cursor: pointer;
+  }
 }
 
 .edit-component-container {
-  border: 1px solid black;
-  width: 50vw;
   background-color: #F4F4F4;
+  border: 1px solid black;
+  border-left: 0;
+  width: 50vw;
 }
 
 .edit-content-container {
-  margin: 1rem;
+  // margin: 1rem;
   overflow: scroll;
   height: 90%;
 }
 
 .pdf-change-btn {
-  color: transparent;
   background-color: transparent;
+  color: transparent;
   border-color: transparent;
 }
 
 .cv-list-container {
+  @include flexbox(space-between);
   max-width: 80vw;
-  display: flex;
-  justify-content: space-between;
   margin: 2rem auto;
   padding: 1.5rem 2rem;
   box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
   &:last-child {
-    margin-bottom: 2rem;
     background-color: white;
+    margin-bottom: 2rem;
   }
 }
 
 .cv-list-btns {
   margin-top: 6px;
-}
-
-.cv-list-btn {
-  margin: 0 0.5rem;
-  background-color: white;
-  border-radius: 3px;
+  .cv-list-btn {
+    background-color: white;
+    margin: 0 0.5rem;
+    border-radius: 3px;
+  }
 }
 
 .edit-btn i {
@@ -294,8 +287,8 @@ body {
 }
 
 .tabs-container {
-  display: flex;
   background-color: white;
+  display: flex;
 }
 
 .content-container {
@@ -322,13 +315,14 @@ body {
 }
 
 .profile-card {
-  align-items: center;
-  display: flex;
+  @include flexbox(flex-start,center);
   height: 30px;
-  i {
-    margin-right: 20px;
-    width: 20px;
-  }
+}
+
+.profile-icon {
+  @include flexbox(center,center);
+  width: 20px;
+  margin-right: 20px;
 }
 
 .profile-headline-container {
@@ -336,17 +330,15 @@ body {
 }
 
 .edit-profile-card {
-  align-items: center;
-  display: flex;
+  @include flexbox(flex-start,center);
   margin-bottom: 1rem;
-  i {
-    margin-right: 20px;
-    width: 20px;
-  }
   input, textarea {
     border: 1px solid gray;
     border-radius: 5px;
     padding: 0 0.5rem;
+  }
+  textarea {
+    margin-top: 1rem;
   }
 }
 
@@ -358,27 +350,8 @@ body {
   }
 }
 
-
-.edit-profile-card-textarea {
-  margin-top: 1rem;
-}
-
-.width-full {
-  width: 100%;
-}
-
-.width-half {
-  width: 49%;
-}
-
-.content-text-container {
-  margin-right: 1rem;
-}
-
 .edit-profile-card-name {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  @include flexbox(space-between,stretch,column);
   width: 70%;
 }
 
@@ -400,8 +373,8 @@ body {
 }
 
 .list-item-container {
+  @include flexbox(space-between);
   display: flex;
-  justify-content: space-between;
 }
 
 .list-item-word {
@@ -410,13 +383,8 @@ body {
 }
 
 .edit-list-item-container {
-  @include flexbox(space-between);
+  @include flexbox(space-between, center);
   margin-bottom: 0.7rem;
-}
-
-.edit-profile-btn,
-.save-profile-btn {
-  margin-top: 2rem;
 }
 
 .blue-btn {
@@ -426,18 +394,18 @@ body {
 }
 
 .btn-container {
-  @include flexbox(center);
+  @include flexbox(center, center);
 }
 
 .arrow-btn {
-  margin-right: 0.5rem;
   @include blueBtn();
+  margin-right: 0.5rem;
+  width: 1.4rem;
 }
 
 .content-item-container {
-  border: 1px solid lightgray;
   max-width: 90vw;
-  margin: 1rem 1rem;
+  margin: 2rem;
   padding: 1.5rem 2rem;
   box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
   h5 {
@@ -456,8 +424,7 @@ body {
 }
 
 .content-btns {
-  display: flex;
-  justify-content: flex-end;
+  @include flexbox(flex-end);
 }
 
 .work-cv-container {
@@ -483,9 +450,9 @@ body {
 }
 
 .edit-profile-choose {
+  color: transparent;
   border-radius: 50px;
   text-align: center;
-  color: transparent;
   position: relative;
   margin: 0;
   input {
@@ -495,13 +462,6 @@ body {
     color: white;
     margin: 0;
   }
-}
-
-.edit-text {
-  position: absolute;
-  color: white;
-  z-index: 2;
-  text-align: center;
 }
 
 .edit-profile-empty {
@@ -519,18 +479,12 @@ body {
   }
 }
 
-.picture-name-container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-}
-
 .cv-component-container {
-  border: 1px solid black;
-  width: 50vw;
+  @include flexbox(center, stretch);
   background-color: lightgray;
-  display: flex;
-  justify-content: center;
+  border: 1px solid black;
+  border-top: 0;
+  width: 50vw;
   overflow: scroll;
   overflow-y: scroll;
   iframe {
@@ -539,11 +493,10 @@ body {
 }
 
 .cv-view {
+  background-color: white;
   width: 21cm;
   height: 29.7cm;
-  /* border: 1px solid black; */
-  background-color: white;
-  margin-top: 10px;
+  margin: auto;
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.3);
 }
 
@@ -554,23 +507,22 @@ body {
   }
 }
 
-.cv-title-text {
-  margin-left: 2rem;
-}
-
 .cv-title-article {
-  padding: 1.5rem 2rem 0 2rem;
+  padding: 1.5rem 2rem 0;
   display: flex;
   img {
     height: 100px;
   }
+  .cv-title-text {
+    margin-left: 2rem;
+  }
 }
 
 .cv-profile-article {
-  padding: 1rem 2rem 1rem 2rem;
+  @include flexbox(space-between);
   background-color: $hoverColor;
+  padding: 1rem 2rem;
   width: 100%;
-  display: flex;
   flex-wrap: wrap;
   i {
     margin-right: 1.3rem;
@@ -578,52 +530,43 @@ body {
   }
 }
 
-.cv-profile-card {
-  width: 50%;
-}
-
 .cv-skill-card, .cv-interest-card {
-  display: flex;
-  justify-content: flex-start;
+  @include flexbox(flex-start,stretch);
   flex-wrap: wrap;
 }
 
 .text-skill {
-  color: white;
-  background-color: $blueBtnColor;
   @include cvTextList();
+  background-color: $blueBtnColor;
+  color: white;
 }
 
 .text-interest {
-  color: black;
-  background-color: $hoverColor;
   @include cvTextList();
+  background-color: $hoverColor;
+  color: black;
 }
 
 .cv-body-title {
-  font-size: 1.1rem;
   color: #00a2ff;
+  font-size: 1.1rem;
 }
 
 .cv-text-view {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+  @include flexbox(space-between);
   padding: 1.5rem 2rem;
 }
 
-.hard-container,
-.soft-container,
-.languages-container,
-.interests-container {
-  margin-bottom: 1.5rem;
+.cv-content-container {
+  margin-bottom: 1rem;
 }
 
 .single-language {
-  margin-bottom: 1rem;
-}
-.p-language {
-  font-style: italic;
+  margin-bottom: 0.5rem;
+  p {
+    font-style: italic;
+    margin: 0;
+  }
 }
 
 .print-btn {
@@ -656,5 +599,5 @@ body {
 }
 
 .date-city {
-  @include flexbox(space-between);
+  @include flexbox(space-between, center);
 }

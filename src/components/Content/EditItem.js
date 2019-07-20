@@ -53,7 +53,7 @@ function EditItem(props) {
       <div className="edit-content-item-conteiner">
         <textarea className="width-full" type="text" {...tasks} placeholder="Tasks / Responsibility"/>
       </div>
-      <div className="save-profile-btn btn-container">
+      <div className="btn-container">
         <button className="blue-btn" onClick={() => {updateContent(index,props.contentType)}}>Save</button>
       </div>
     </div>

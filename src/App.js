@@ -7,7 +7,6 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import EditCV from './pages/EditCV';
 import AuthProvider from './components/AuthProvider';
-import './App.css';
 import firebase from 'firebase'
   // Initialize Firebase
   var config = {
@@ -25,14 +24,12 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
-        <div className="main-container">
-          <Navbar />
-          <AnonRoute exact path="/" component={Login} />
-          <AnonRoute exact path="/signup" component={Signup} />
-          <AnonRoute exact path="/login" component={Login} />
-          <PrivateRoute exact path="/home" component={Home} />
-          <PrivateRoute exact path="/edit/:cvId" component={EditCV} />
-        </div>
+        <Navbar />
+        <AnonRoute exact path="/" component={Login} />
+        <AnonRoute exact path="/signup" component={Signup} />
+        <AnonRoute exact path="/login" component={Login} />
+        <PrivateRoute exact path="/home" component={Home} />
+        <PrivateRoute exact path="/edit/:cvId" component={EditCV} />
       </AuthProvider>
     );
   };
