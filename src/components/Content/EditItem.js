@@ -26,14 +26,29 @@ function EditItem(props) {
     props[props.contentType].tasks = tasks.value;
   })
 
+  const placeHolder = {
+    work: {
+      title: "Title / Position",
+      place: "Workplace / Company",
+    },
+    education: {
+      title: "Study Program",
+      place: "Institution / School",
+    },
+    project: {
+      title: "Project title",
+      place: "Institution / School",
+    }
+  }
+
   return (
     <div className="content-item-container">
       <h5>{props.contentType.charAt(0).toUpperCase() + props.contentType.slice(1)}</h5>
       <div className="edit-content-item-conteiner">
-        <input className="input-style width-full" type="text" {...title} placeholder="Study Program"/>
+        <input className="input-style width-full" type="text" {...title} placeholder={placeHolder[props.contentType].title}/>
       </div>
       <div className="edit-content-item-conteiner">
-        <input className="input-style width-full" type="text" {...name} placeholder="Institution / School"/>
+        <input className="input-style width-full" type="text" {...name} placeholder={placeHolder[props.contentType].place}/>
       </div>
       <div className="term-container">
         <div>

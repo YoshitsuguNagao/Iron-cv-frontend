@@ -1,36 +1,6 @@
-$blueBtnColor: rgb(33, 107, 173);
-$navColor: rgb(52, 68, 81);
-$errMsgColor: rgb(193, 37, 60);
-$hoverColor: rgb(227, 227, 227);
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-@mixin flexbox($justify-content: flex-start,$align-items: stretch, $flex-direction: row) {
-  display: flex;
-  justify-content: $justify-content;
-  align-items: $align-items;
-  flex-direction: $flex-direction;
-}
-
-@mixin blueBtn() {
-  background-color: $blueBtnColor;
-  color: white;
-  border-radius: 5px;
-  &:hover {
-    background-color: $hoverColor;
-    color: black;
-  }
-}
-@mixin cvTextList() {
-  margin: 2px 3px;
-  padding: 1px 5px;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-}
+@import "reset";
+@import "variables";
+@import "mixins";
 
 body {
   background-color: white;
@@ -48,10 +18,9 @@ body {
 
 .auth-container {
   @include flexbox(flex-start,stretch,column);
+  @include size(100%,100vh);
   background-color: $navColor;
-  width: 100%;
-  height: 100vh;
-  margin: 0 auto 20% auto;
+  margin: 0 auto 20%;
   padding-top: 6%;
 }
 
@@ -97,7 +66,7 @@ body {
 }
 
 .logo {
-  margin: 10% auto 5% auto;
+  margin: 10% auto 5%;
   padding: 5% 0;
   width: 20%;
 }
@@ -157,15 +126,14 @@ body {
   background-color: $blueBtnColor;
   position: fixed;
   border-radius: 2rem;
-  height: 4rem;
-  width: 4rem;
+  @include size(4rem,4rem);
   right: 2rem;
   bottom: 2rem;
   z-index: 3;
   box-shadow: 4px 4px 26px 0px rgba(0,0,0,0.75);
- i {
-  color: white;
- }
+  i {
+    color: white;
+  }
 }
 
 .cv-Preview-container ul {
@@ -176,8 +144,7 @@ body {
 
 .main-navbar {
   @include flexbox(space-between, center);
-  height: 50px;
-  width: 100vw;
+  @include size(100vw,50px);
   float: left;
   position: fixed;
 }
@@ -343,8 +310,7 @@ body {
 }
 
 .edit-profile-title {
-  height: 100%;
-  width: 100%;
+  @include size(100%,100%);
   i {
     padding-bottom: 141px;
   }
@@ -357,10 +323,9 @@ body {
 
 .term-container {
   display: flex;
-}
-
-.term-icon {
-  margin: 0 1rem;
+  .term-icon {
+    margin: 0 1rem;
+  }
 }
 
 .edit-content-item-conteiner {
@@ -442,8 +407,7 @@ body {
 }
 
 .edit-profile-img {
-  width: 70px;
-  height: 70px;
+  @include size(70px,70px);
   img {
     height: 100%;
   }
@@ -465,17 +429,16 @@ body {
 }
 
 .edit-profile-empty {
-  width: 100px;
-  height: 100px;
+  @include size(100px,100px);
   &:hover {
     filter: brightness(100%);
     color: white;
     padding-top: 33px;
     font-size: 25px;
-    text-shadow: 2px 2px 1px black,
-    -2px 2px 1px black,
-    2px -2px 1px black,
-    -2px -2px 1px black;
+    text-shadow: 2px  2px 1px black,
+                -2px  2px 1px black,
+                 2px -2px 1px black,
+                -2px -2px 1px black;
   }
 }
 
@@ -493,9 +456,8 @@ body {
 }
 
 .cv-view {
+  @include size(21cm,29.7cm);
   background-color: white;
-  width: 21cm;
-  height: 29.7cm;
   margin: auto;
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.3);
 }
@@ -570,11 +532,10 @@ body {
 }
 
 .print-btn {
+  @include size(5rem,4rem);
   background-color: $blueBtnColor;
   position: fixed;
   border-radius: 10px;
-  height: 4rem;
-  width: 5rem;
   right: 52%;
   top: 7rem;
   z-index: 3;
