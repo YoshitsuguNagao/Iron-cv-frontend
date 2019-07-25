@@ -215,13 +215,13 @@ content - [ObjectID<Content>]
 
 The url to your repository and to your deployed project.
 
-[Client repository Link](http://github.com)
-[Server repository Link](http://github.com)
+[Client repository Link](https://github.com/YoshitsuguNagao/Iron-cv-frontend)
+[Server repository Link](https://github.com/vonspiegel/Iron-cv-backend)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://iron-cv.firebaseapp.com)
 
 ### Slides
 
 The url to your presentation slides
 
-[Slides Link](http://slides.com)
+[Slides Link](https://slides.com/yoshitsugunagao/iron-cv)
